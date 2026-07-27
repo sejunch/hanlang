@@ -43,7 +43,7 @@ for f in tests/t_float.han tests/t_func.han tests/t_edge.han tests/t_list.han \
          tests/t_builtin.han tests/t_str.han tests/t_lib.han tests/t_mok.han \
          tests/t_poly.han tests/t_strcmp.han tests/t_grid.han tests/t_loop.han \
          tests/t_split.han tests/t_end.han tests/t_bit.han tests/t_code.han \
-         tests/t_struct.han; do
+         tests/t_struct.han tests/t_lib2.han; do
     run_ok "$f"
 done
 
