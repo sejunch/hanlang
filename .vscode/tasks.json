@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "한랭: 현재 파일 실행",
+            "type": "shell",
+            "command": "${workspaceFolder}/han",
+            "args": ["${file}"],
+            "group": { "kind": "build", "isDefault": true },
+            "presentation": { "clear": true, "focus": true },
+            "problemMatcher": []
+        },
+        {
+            "label": "한랭: 컴파일러 다시 빌드",
+            "type": "shell",
+            "command": "make",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "한랭: 테스트 전부 돌리기",
+            "type": "shell",
+            "command": "make",
+            "args": ["test"],
+            "options": { "cwd": "${workspaceFolder}" },
+            "group": { "kind": "test", "isDefault": true },
+            "problemMatcher": []
+        }
+    ]
+}

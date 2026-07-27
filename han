@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# 한 줄 실행기:  ./han 프로그램.han
+set -e
+dir=$(cd "$(dirname "$0")" && pwd)
+src="$1"
+if [ -z "$src" ]; then echo "사용법: ./han 파일.han"; exit 1; fi
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+"$dir/hanc" "$src" -o "$tmp/prog"
+shift
+"$tmp/prog" "$@"

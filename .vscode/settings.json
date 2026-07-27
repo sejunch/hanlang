@@ -1,0 +1,8 @@
+{
+    // ▶ 실행 버튼(Code Runner)이 .han 파일을 한랭으로 실행
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.executorMapByFileExtension": {
+        ".han": "\"$workspaceRoot/han\" \"$fullFileName\""
+    }
+}
