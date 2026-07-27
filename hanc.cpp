@@ -7,6 +7,7 @@
 // v8: 입력을 getline 으로 (줄 길이 제한 없앰). 공백 나누기는 lib/문자.han 에
 // v9: 출력 끝맺음 옵션  "안녕"을 끝" " 말하다.
 // v10: 비트 연산(& | ^ ~ << >>), 문자↔코드값, 묶음(구조체). 타입 인코딩 재설계
+// v11: 목록 원소 빼기 (빼다) — 스택·큐가 가능해짐
 // 빌드: g++ -std=c++17 -O2 -o hanc hanc.cpp
 // 사용: ./hanc prog.han > prog.s   또는   ./hanc prog.han -o prog
 #include <bits/stdc++.h>
@@ -105,7 +106,7 @@ static const set<string> KEYWORDS = {
     "만약","라면","이라면","아니면","인","동안","번","반복하다",
     "말하다","돌려주다","란","이란","이다","듣다","바꾸다",
     "정수","소수","문자","참","거짓","번째","넣다",
-    "행","열","채우다","멈추다","계속하다","묶음","새"
+    "행","열","채우다","멈추다","계속하다","묶음","새","빼다"
 };
 
 // ==================== 1단계: 렉서 ====================
@@ -721,6 +722,21 @@ struct Parser {
                 pending.clear();
                 return n;
             }
+            if (isKw("빼다")) {                    // (점수에서 빼다) / (점수의 2번째를 빼다)
+                Token bt = cur(); p++;
+                if (args.size() != 1)
+                    terr(bt, "'목록에서 빼다' 나 '목록의 N번째를 빼다' 꼴이어야 함");
+                bool atIdx = (args[0]->kind == "index");
+                auto n = mk(atIdx ? "popat" : "pop"); at(n.get(), bt);
+                if (atIdx) {
+                    n->kid.push_back(move(args[0]->kid[0]));
+                    n->kid.push_back(move(args[0]->kid[1]));
+                } else {
+                    n->kid.push_back(move(args[0]));
+                }
+                pending.clear();
+                return n;
+            }
             if (isKw("채우다")) {                  // (3행 4열을 0으로 채우다)
                 Token tt = cur(); p++;
                 int gi = -1;
@@ -802,7 +818,8 @@ struct Parser {
         vector<P> args; vector<string> parts;   // parts = 각 인자에 붙은 조사
         string endWith; bool hasEnd = false;    // 끝" " 말하다 — 끝맺음 옵션
         auto atPredicate = [&] {
-            return isKw("반복하다") || isKw("말하다") || isKw("돌려주다") || isKw("인") || isKw("넣다") || isFunc();
+            return isKw("반복하다") || isKw("말하다") || isKw("돌려주다") || isKw("인")
+                || isKw("넣다") || isKw("빼다") || isFunc();
         };
         while (!atPredicate()) {
             // 조사와 서술어 사이의 옵션:  "안녕"을 끝" " 말하다.
@@ -859,6 +876,23 @@ struct Parser {
             if (isKw("번")) { p++; pending = "번"; parts.back() = "번"; }
             if (pending.empty() && !atPredicate())
                 terr(cur(), "문장을 끝맺을 서술어(말하다, 돌려주다 등)를 찾을 수 없음");
+        }
+        if (isKw("빼다")) {                        // 문장으로 쓰면 뺀 값은 버린다
+            Token bt = cur(); p++;
+            expectOp(".", "문장은 '.' 로 끝나야 함");
+            if (args.size() != 1)
+                terr(bt, "'목록에서 빼다' 나 '목록의 N번째를 빼다' 꼴이어야 함");
+            bool atIdx = (args[0]->kind == "index");
+            auto n = mk(atIdx ? "popat" : "pop"); at(n.get(), bt);
+            if (atIdx) {
+                n->kid.push_back(move(args[0]->kid[0]));
+                n->kid.push_back(move(args[0]->kid[1]));
+            } else {
+                n->kid.push_back(move(args[0]));
+            }
+            auto s = mk("exprstmt"); s->file = n->file; s->line = n->line;
+            s->kid.push_back(move(n));
+            return s;
         }
         if (isKw("넣다")) {
             Token nt = cur(); p++;
@@ -1149,6 +1183,20 @@ struct Checker {
                 nerr(ix, m);
             }
             n->ty = (b->ty == TSTR) ? TSTR : elemOf(b->ty);   // 문자의 N번째 = 글자 하나(문자)
+            return;
+        }
+        if (n->kind == "pop" || n->kind == "popat") {
+            Node* b = n->kid[0].get();
+            chkExpr(b);
+            if (!isListTy(b->ty))
+                nerr(n, "'빼다' 는 목록에만 쓸 수 있음 (지금은 " + tyName(b->ty) + ")");
+            if (b->ty == TLU)
+                nerr(n, "빈 목록이라 원소 타입을 알 수 없음. 먼저 '넣다' 로 값을 넣기");
+            if (n->kind == "popat") {
+                chkExpr(n->kid[1].get());
+                if (n->kid[1]->ty != TINT) nerr(n->kid[1].get(), "'번째' 앞은 정수여야 함");
+            }
+            n->ty = elemOf(b->ty);
             return;
         }
         if (n->kind == "len") {
@@ -1515,6 +1563,20 @@ struct Codegen {
             popTo("%rdi");
             text << "    movq $" << n->line << ", %rdx\n"
                  << "    call " << (str ? "__han_schar" : "__han_lget") << "\n";
+            return;
+        }
+        if (n->kind == "pop") {
+            genExpr(n->kid[0].get());
+            text << "    movq %rax, %rdi\n    movq $" << n->line << ", %rsi\n"
+                    "    call __han_lpop\n";
+            return;
+        }
+        if (n->kind == "popat") {
+            genExpr(n->kid[0].get()); push();
+            genExpr(n->kid[1].get());
+            text << "    movq %rax, %rsi\n";
+            popTo("%rdi");
+            text << "    movq $" << n->line << ", %rdx\n    call __han_lremove\n";
             return;
         }
         if (n->kind == "len") {
@@ -2058,6 +2120,63 @@ struct Codegen {
 "    call printf\n"
 "    movl $1, %edi\n"
 "    call exit\n"
+"\n__han_lpop:\n"                       // rdi = 핸들, rsi = 행번호 -> 마지막 값을 빼서 돌려줌
+"    cmpq $0, 24(%rdi)\n"
+"    jne .Lpop_grid\n"
+"    movq 0(%rdi), %rax\n"
+"    testq %rax, %rax\n"
+"    jle .Lpop_empty\n"
+"    decq %rax\n"
+"    movq %rax, 0(%rdi)\n"
+"    movq 16(%rdi), %rcx\n"
+"    movq (%rcx,%rax,8), %rax\n"
+"    ret\n"
+".Lpop_empty:\n"
+"    pushq %rbp\n    movq %rsp, %rbp\n"
+"    leaq .Lpopempty(%rip), %rdi\n"
+"    xorl %eax, %eax\n"
+"    call printf\n"
+"    movl $1, %edi\n"
+"    call exit\n"
+".Lpop_grid:\n"
+"    pushq %rbp\n    movq %rsp, %rbp\n"
+"    leaq .Lgpop(%rip), %rdi\n"
+"    xorl %eax, %eax\n"
+"    call printf\n"
+"    movl $1, %edi\n"
+"    call exit\n"
+"\n__han_lremove:\n"                    // rdi = 핸들, rsi = N(1부터), rdx = 행번호
+"    cmpq $0, 24(%rdi)\n"
+"    jne .Lpop_grid\n"
+"    cmpq $1, %rsi\n"
+"    jl .Lrm_oob\n"
+"    cmpq 0(%rdi), %rsi\n"
+"    jg .Lrm_oob\n"
+"    movq 16(%rdi), %rcx\n"
+"    movq -8(%rcx,%rsi,8), %r8\n"       // 빼낼 값 챙기기
+"    movq %rsi, %rax\n"
+".Lrm_shift:\n"                         // 뒤엣것들을 한 칸씩 앞으로 당기기
+"    cmpq 0(%rdi), %rax\n"
+"    jge .Lrm_done\n"
+"    movq (%rcx,%rax,8), %r9\n"
+"    movq %r9, -8(%rcx,%rax,8)\n"
+"    incq %rax\n"
+"    jmp .Lrm_shift\n"
+".Lrm_done:\n"
+"    decq 0(%rdi)\n"
+"    movq %r8, %rax\n"
+"    ret\n"
+".Lrm_oob:\n"
+"    pushq %rbp\n    movq %rsp, %rbp\n"
+"    movq 0(%rdi), %rcx\n"
+"    movq %rsi, %r8\n"
+"    movq %rdx, %rsi\n"
+"    movq %r8, %rdx\n"
+"    leaq .Loob(%rip), %rdi\n"
+"    xorl %eax, %eax\n"
+"    call printf\n"
+"    movl $1, %edi\n"
+"    call exit\n"
 "\n__han_negsqrt:\n"                    // edi = 행번호
 "    pushq %rbp\n    movq %rsp, %rbp\n"
 "    movl %edi, %esi\n"
@@ -2523,6 +2642,8 @@ struct Codegen {
              ".Lnotgrid:\n    .asciz \"[실행 오류] %lld행: 격자가 아닌 목록에는 '행 열' 을 쓸 수 없음\\n\"\n"
              ".Lgsize:\n    .asciz \"[실행 오류] %lld행: 격자 크기는 1 이상이어야 하는데 %lld행 %lld열을 넣음\\n\"\n"
              ".Lgpush:\n    .asciz \"[실행 오류] 격자에는 '넣다' 를 쓸 수 없음 (칸 수가 고정)\\n\"\n"
+             ".Lgpop:\n    .asciz \"[실행 오류] 격자에는 '빼다' 를 쓸 수 없음 (칸 수가 고정)\\n\"\n"
+             ".Lpopempty:\n    .asciz \"[실행 오류] 빈 목록에서는 뺄 것이 없음\\n\"\n"
              ".Lshift:\n    .asciz \"[실행 오류] %d행: 비트를 %lld칸 밀 수 없음 (0~63 만 됨)\\n\"\n"
              ".Lordempty:\n    .asciz \"[실행 오류] 빈 문자에는 '코드' 가 없음\\n\"\n"
              ".Lchrbad:\n    .asciz \"[실행 오류] %lld행: %lld 는 글자로 만들 수 없는 코드값\\n\"\n";

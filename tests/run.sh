@@ -45,12 +45,12 @@ for f in tests/t_float.han tests/t_func.han tests/t_edge.han tests/t_list.han \
          tests/t_poly.han tests/t_strcmp.han tests/t_grid.han tests/t_loop.han \
          tests/t_split.han tests/t_end.han tests/t_bit.han tests/t_code.han \
          tests/t_struct.han tests/t_lib2.han tests/t_sortlib.han \
-         tests/t_statlib.han tests/t_gridlib.han tests/t_fraclib.han tests/t_biglib.han; do
+         tests/t_statlib.han tests/t_gridlib.han tests/t_fraclib.han tests/t_biglib.han tests/t_pop.han; do
     run_ok "$f"
 done
 
 echo "== 실행 오류 (종료코드 1 이 정답)"
-for f in tests/t_div0.han tests/t_mod0.han tests/t_oob.han tests/t_gerr.han tests/t_shift.han; do
+for f in tests/t_div0.han tests/t_mod0.han tests/t_oob.han tests/t_gerr.han tests/t_shift.han tests/t_popempty.han; do
     run_dies "$f"
 done
 
