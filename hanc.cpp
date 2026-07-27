@@ -296,6 +296,9 @@ struct Resolver {
     void prescan(const vector<Token>& in) {
         for (size_t j = 0; j < in.size(); j++) {
             if (in[j].t != TK::Ident || (in[j].s != "란" && in[j].s != "이란")) continue;
+            // "학생 이란 묶음 {" 은 묶음 정의라 함수가 아니다.
+            // 안 걸러내면 묶음 이름이 함수 이름으로 등록돼 값으로 못 쓰게 된다.
+            if (j + 1 < in.size() && in[j+1].t == TK::Ident && in[j+1].s == "묶음") continue;
             size_t st = 0;
             for (size_t k = j; k-- > 0; ) {
                 if (in[k].t == TK::Op && (in[k].s == "." || in[k].s == "{" || in[k].s == "}")) { st = k + 1; break; }

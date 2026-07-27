@@ -37,13 +37,15 @@ run_ok examples/demo4.han
 run_ok examples/demo5.han
 run_ok examples/demo6.han "$(printf '17 25\n5\n42 7 99 13 68\n')"
 run_ok examples/demo7.han
+run_ok examples/demo8.han
 
 echo "== 기능"
 for f in tests/t_float.han tests/t_func.han tests/t_edge.han tests/t_list.han \
          tests/t_builtin.han tests/t_str.han tests/t_lib.han tests/t_mok.han \
          tests/t_poly.han tests/t_strcmp.han tests/t_grid.han tests/t_loop.han \
          tests/t_split.han tests/t_end.han tests/t_bit.han tests/t_code.han \
-         tests/t_struct.han tests/t_lib2.han; do
+         tests/t_struct.han tests/t_lib2.han tests/t_sortlib.han \
+         tests/t_statlib.han tests/t_gridlib.han tests/t_fraclib.han tests/t_biglib.han; do
     run_ok "$f"
 done
 
