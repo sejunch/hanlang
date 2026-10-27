@@ -55,6 +55,17 @@ if ./hanc tests/t_file.han -o "$tmp/tf" 2>"$tmp/err" && (cd "$tmp" && ./tf >/dev
    [ "$(cat "$tmp/t_file_copy.txt")" = "$(printf '> 첫째 줄\n> 42\n> 3.5 / 끝\n> 덧붙인 줄')" ]; then ok
 else bad "tests/t_file.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
 
+# (명령줄)·종료하다·표준 에러: 화면 출력, 에러 출력, 종료코드를 따로따로 본다
+if ./hanc tests/t_args.han -o "$tmp/ta" 2>"$tmp/err"; then
+    out=$("$tmp/ta" 가나 12 2>"$tmp/stderr"); rc=$?
+    if [ $rc -eq 3 ] && [ "$out" = "$(printf '2\n가나\n13\n다시 화면으로')" ] &&
+       [ "$(cat "$tmp/stderr")" = "$(printf '이건 표준 에러로\n끝냅니다')" ]; then ok
+    else bad "tests/t_args.han (rc=$rc)"; fi
+else bad "tests/t_args.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+if ./hanc tests/t_exit0.han -o "$tmp/te" 2>"$tmp/err" && [ "$(cd "$tmp" && ./te)" = "0" ] &&
+   [ "$(cat "$tmp/t_exit0_out.txt")" = "파일로 감" ]; then ok
+else bad "tests/t_exit0.han"; fi
+
 echo "== 실행 오류 (종료코드 1 이 정답)"
 for f in tests/t_div0.han tests/t_mod0.han tests/t_oob.han tests/t_gerr.han tests/t_shift.han tests/t_popempty.han \
          tests/t_none.han tests/t_nofile.han; do
@@ -83,15 +94,15 @@ done
 
 echo "== 셀프호스팅 (한랭으로 짠 컴파일러 self/한랭.han)"
 # hanc 로 컴파일러를 만들고, 그 컴파일러로 프로그램을 컴파일해서 hanc 와 출력이 같은지 본다
-self_build() {   # $1 = 원본, $2 = 출력 .s  (경로를 입력으로 넘김 — 한랭엔 명령줄 인자가 없음)
-    rm -f "$2"; printf '%s\n%s\n' "$1" "$2" | "$tmp/hanc2" >"$tmp/selfout" 2>&1; [ -f "$2" ]
+self_build() {   # $1 = 원본, $2 = 출력 .s.  에러 메시지는 표준 에러로, 실패하면 종료코드 1
+    rm -f "$2"; "$tmp/hanc2" "$1" "$2" >"$tmp/selfout" 2>"$tmp/selferr"
 }
 if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err"; then
     ok
     for f in self/tests/s[0-9]*.han examples/demo.han tests/t_bit.han; do
         if self_build "$f" "$tmp/s.s" && gcc -no-pie "$tmp/s.s" -o "$tmp/sp" 2>"$tmp/err" &&
            [ "$("$tmp/sp" </dev/null 2>&1)" = "$(./han "$f" </dev/null 2>&1)" ]; then ok
-        else bad "$f (셀프 컴파일러 결과가 hanc 와 다름)"; head -3 "$tmp/selfout" | sed 's/^/    /'; fi
+        else bad "$f (셀프 컴파일러 결과가 hanc 와 다름)"; head -3 "$tmp/selferr" | sed 's/^/    /'; fi
     done
     for f in tests/t_mod0.han tests/t_shift.han; do          # 실행 오류도 똑같이 잡아야 함
         if self_build "$f" "$tmp/s.s" && gcc -no-pie "$tmp/s.s" -o "$tmp/sp" 2>/dev/null &&
@@ -100,12 +111,14 @@ if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err"; then
     done
     # 셀프 컴파일러는 지금까지 짠 한랭 프로그램 중 가장 커서 GC 검증에도 좋다
     if self_build self/tests/s2.han "$tmp/n.s" && cp "$tmp/n.s" "$tmp/n0.s" &&
-       rm -f "$tmp/n.s" && printf '%s\n%s\n' self/tests/s2.han "$tmp/n.s" | HAN_GC_STRESS=1 timeout 120 "$tmp/hanc2" >/dev/null &&
+       rm -f "$tmp/n.s" && HAN_GC_STRESS=1 timeout 120 "$tmp/hanc2" self/tests/s2.han "$tmp/n.s" &&
        cmp -s "$tmp/n0.s" "$tmp/n.s"; then ok
     else bad "self/한랭.han (수거 스트레스 모드에서 결과가 달라짐)"; fi
     for f in self/tests/se*.han; do                           # 컴파일 에러가 나야 하는 것들
         if self_build "$f" "$tmp/s.s"; then bad "$f (셀프 컴파일러: 컴파일 에러가 나야 정상)"
-        elif ! grep -q '^\[오류\]' "$tmp/selfout"; then bad "$f (셀프 컴파일러: 오류 메시지가 없음)"
+        elif [ -f "$tmp/s.s" ]; then bad "$f (셀프 컴파일러: 오류인데 어셈블리를 만듦)"
+        elif ! grep -q '^\[오류\]' "$tmp/selferr" || [ -s "$tmp/selfout" ]; then
+            bad "$f (셀프 컴파일러: 오류 메시지는 표준 에러로만 나와야 함)"
         else ok; fi
     done
 else

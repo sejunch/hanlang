@@ -10,9 +10,7 @@ if [ ! -x "$dir/hanc2" ] || [ "$dir/한랭.han" -nt "$dir/hanc2" ]; then
 fi
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
-# 명령줄 인자를 받을 방법이 없어서 경로를 한 줄씩 입력으로 넘긴다
-printf '%s\n%s\n' "$src" "$tmp/p.s" | "$dir/hanc2"
-[ -f "$tmp/p.s" ] || exit 1          # 오류면 어셈블리 파일을 안 만든다
+"$dir/hanc2" "$src" "$tmp/p.s" || exit 1      # 오류면 표준 에러에 알리고 종료코드 1
 gcc -no-pie "$tmp/p.s" -o "$tmp/p"
 shift
 "$tmp/p" "$@"

@@ -10,6 +10,7 @@
 // v11: 목록 원소 빼기 (빼다) — 스택·큐가 가능해짐
 // v12: 쓰레기 수거(보수적 mark-sweep GC) — 메모리 누수 해결
 // v13: 묶음 안 묶음·목록, 없음, 목록의 목록, (입력끝), 파일 블록 — 한랭으로 컴파일러 짜기 준비
+// v14: (명령줄), 종료하다, 표준 에러(파일 오류를 쓰기로 열다) — 셀프호스팅 1단계에서 드러난 것
 // 빌드: g++ -std=c++17 -O2 -o hanc hanc.cpp
 // 사용: ./hanc prog.han > prog.s   또는   ./hanc prog.han -o prog
 #include <bits/stdc++.h>
@@ -109,7 +110,7 @@ static const set<string> KEYWORDS = {
     "말하다","돌려주다","란","이란","이다","듣다","바꾸다",
     "정수","소수","문자","참","거짓","번째","넣다",
     "행","열","채우다","멈추다","계속하다","묶음","새","빼다",
-    "없음","파일","열다","읽기","쓰기","붙여쓰기"
+    "없음","파일","열다","읽기","쓰기","붙여쓰기","종료하다"
 };
 
 // ==================== 1단계: 렉서 ====================
@@ -327,6 +328,8 @@ struct Resolver {
         for (auto& b : BUILTIN_NOUNS) known.insert(b);
         for (auto& b : GRID_NOUNS) known.insert(b);
         known.insert("입력끝");                     // (입력끝) — 이것도 키워드가 아님
+        known.insert("명령줄");                     // (명령줄) — 마찬가지
+        known.insert("오류");                       // 파일 오류를 쓰기로 열다 — 마찬가지
         prescan(in);
         vector<Token> out;
         for (auto& tk : in) {
@@ -855,7 +858,7 @@ struct Parser {
         string endWith; bool hasEnd = false;    // 끝" " 말하다 — 끝맺음 옵션
         auto atPredicate = [&] {
             return isKw("반복하다") || isKw("말하다") || isKw("돌려주다") || isKw("인")
-                || isKw("넣다") || isKw("빼다") || isFunc();
+                || isKw("넣다") || isKw("빼다") || isKw("종료하다") || isFunc();
         };
         while (!atPredicate()) {
             // 조사와 서술어 사이의 옵션:  "안녕"을 끝" " 말하다.
@@ -950,6 +953,16 @@ struct Parser {
             return n;
         }
         if (hasEnd) terr(first, "'끝' 은 '말하다' 에만 쓸 수 있음");
+        if (isKw("종료하다")) {                    // 종료하다. / 1로 종료하다.
+            Token et = cur(); p++;
+            expectOp(".", "문장은 '.' 로 끝나야 함");
+            if (args.size() > 1) terr(et, "'N로 종료하다' 꼴이어야 함 (종료코드는 하나)");
+            if (args.size() == 1 && parts[0] != "로" && parts[0] != "으로")
+                terr(et, "종료코드는 '로' 로 붙여야 함 (예: 1로 종료하다.)");
+            auto n = mk("exit"); at(n.get(), et);
+            if (args.size() == 1) n->kid.push_back(move(args[0]));
+            return n;
+        }
         if (isKw("돌려주다")) {
             p++; expectOp(".", "문장은 '.' 로 끝나야 함");
             if (args.size() != 1) terr(first, "돌려주다 는 값 하나만 받음");
@@ -1231,10 +1244,12 @@ struct Checker {
         if (n->kind == "input") { n->ty = TSTR; return; }
         if (n->kind == "none")  { n->ty = TNONE; return; }
         if (n->kind == "eof")   { n->ty = TINT; return; }
+        if (n->kind == "argv")  { n->ty = listOf(TSTR); return; }
         if (n->kind == "var") {
             auto it = varTy.find(n->str);
             // (입력끝) 은 키워드가 아니라서 같은 이름의 변수가 있으면 그쪽이 이긴다
             if (it == varTy.end() && n->str == "입력끝") { n->kind = "eof"; n->ty = TINT; return; }
+            if (it == varTy.end() && n->str == "명령줄") { n->kind = "argv"; n->ty = listOf(TSTR); return; }
             if (it == varTy.end()) nerr(n, "정의되지 않은 변수 '" + n->str + "'");
             n->ty = it->second;
             return;
@@ -1519,7 +1534,23 @@ struct Checker {
                 nerr(n->kid[0].get(), "없음은 말할 수 없음. 있는지 보려면 (값 == 없음) 으로 비교하기");
             return;
         }
+        if (n->kind == "exit") {                 // 1로 종료하다.
+            if (!n->kid.empty()) {
+                chkExpr(n->kid[0].get());
+                if (n->kid[0]->ty != TINT)
+                    nerr(n->kid[0].get(), "종료코드는 정수여야 함 (지금은 " + tyName(n->kid[0]->ty) + ")");
+            }
+            return;
+        }
         if (n->kind == "fileblk") {              // 파일 "a.han"을 읽기로 열다 { }
+            Node* nm = n->kid[0].get();
+            // 파일 오류를 쓰기로 열다 = 표준 에러. '오류' 라는 변수가 있으면 그 변수가 이긴다
+            if (nm->kind == "var" && nm->str == "오류" && !varTy.count("오류")) {
+                if (n->num == 0) nerr(nm, "오류(표준 에러)는 쓰기로만 열 수 있음");
+                nm->kind = "stderr"; nm->ty = TSTR;
+                chkStmt(n->kid[1].get());
+                return;
+            }
             chkExpr(n->kid[0].get());
             if (n->kid[0]->ty != TSTR)
                 nerr(n->kid[0].get(), "파일 이름은 문자여야 함 (지금은 " + tyName(n->kid[0]->ty) + ")");
@@ -1693,6 +1724,8 @@ struct Codegen {
         }
         if (n->kind == "input") { text << "    call __han_input\n"; return; }
         if (n->kind == "eof")   { text << "    call __han_eof\n"; return; }
+        if (n->kind == "argv")  { text << "    call __han_args\n"; return; }
+        if (n->kind == "stderr"){ text << "    xorl %eax, %eax\n"; return; }    // 이름 대신 널 = 표준 에러
         if (n->kind == "none")  { text << "    xorl %eax, %eax\n"; return; }      // 없음 = 널 포인터
         if (n->kind == "list") {
             text << "    movl $" << (n->kid.empty() ? 1 : (int)n->kid.size()) << ", %edi\n"
@@ -1990,6 +2023,12 @@ struct Codegen {
             text << "    movq %rdx, " << (n->num * 8) << "(%rax)\n";
             return;
         }
+        if (n->kind == "exit") {
+            if (n->kid.empty()) text << "    xorl %eax, %eax\n";
+            else genExpr(n->kid[0].get());
+            text << "    movq %rax, %rdi\n    call exit\n";      // exit 이 열린 파일을 다 비우고 닫는다
+            return;
+        }
         if (n->kind == "fileblk") {
             // 열면 런타임이 '앞서 보던 파일' 을 돌려준다 → 보관했다가 닫을 때 되돌린다 (블록이 겹쳐도 됨)
             genExpr(n->kid[0].get());
@@ -2115,7 +2154,8 @@ struct Codegen {
         text << "\n.globl " << label << "\n" << label << ":\n";
         text << "    pushq %rbp\n    movq %rsp, %rbp\n";
         // GC 는 여기서부터 아래로 스택을 훑는다. main 의 변수 칸은 rbp 아래라 다 들어간다.
-        if (!f) text << "    movq %rbp, __han_stack_base(%rip)\n";
+        if (!f) text << "    movq %rbp, __han_stack_base(%rip)\n"
+                        "    movq %rdi, __han_argc(%rip)\n    movq %rsi, __han_argv(%rip)\n";   // (명령줄) 용
         if (aligned) text << "    subq $" << aligned << ", %rsp\n";
         if (f) {
             static const char* REG[6] = {"%rdi","%rsi","%rdx","%rcx","%r8","%r9"};
@@ -2981,8 +3021,10 @@ void __han_say_f(double v, const char *end)      { FILE *o = curOut(); fprintf(o
 static const char *modeName(long m) { return m == 0 ? "읽기" : m == 1 ? "쓰기" : "붙여쓰기"; }
 
 /* 파일 블록 열기. 앞서 보던 파일을 돌려줘서 블록이 끝날 때 되돌릴 수 있게 한다 (겹쳐 열기 가능). */
+/* name 이 널이면 표준 에러 (파일 오류를 쓰기로 열다) */
 void *__han_fopen(const char *name, long mode, long line) {
-    FILE *f = fopen(name, mode == 0 ? "r" : mode == 1 ? "w" : "a");
+    if (!name) fflush(curOut());            /* 화면 출력과 에러 출력 순서가 뒤섞이지 않게 */
+    FILE *f = name ? fopen(name, mode == 0 ? "r" : mode == 1 ? "w" : "a") : stderr;
     if (!f) {
         fflush(stdout);
         printf("[실행 오류] %ld행: 파일 '%s' 을 %s로 열 수 없음\n", line, name, modeName(mode));
@@ -2995,7 +3037,19 @@ void *__han_fopen(const char *name, long mode, long line) {
 }
 void __han_fclose(void *prev, long mode) {
     if (mode == 0) { fclose(inF);  inF = prev; }
-    else           { fclose(outF); outF = prev; }
+    else           { if (outF != stderr) fclose(outF); outF = prev; }
+}
+
+/* (명령줄): 실행파일 이름을 뺀 인자들을 새 문자 목록으로. main 이 시작할 때 argc/argv 를 적어 둔다.
+ * 문자열은 복사하지 않는다 — GC 는 자기가 할당하지 않은 포인터를 건드리지 않는다. */
+long __han_argc;
+char **__han_argv;
+void *__han_lnew(long cap);
+void __han_lpush(void *list, long v);
+void *__han_args(void) {
+    void *l = __han_lnew(__han_argc > 1 ? __han_argc - 1 : 1);
+    for (long i = 1; i < __han_argc; i++) __han_lpush(l, (long)__han_argv[i]);
+    return l;
 }
 
 /* 없음의 칸을 꺼내려 할 때 */
