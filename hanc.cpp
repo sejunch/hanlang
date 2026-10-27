@@ -13,6 +13,7 @@
 // v14: (명령줄), 종료하다, 표준 에러(파일 오류를 쓰기로 열다) — 셀프호스팅 1단계에서 드러난 것
 //      hanc --runtime: 런타임만 따로 (셀프호스팅 컴파일러 self/한랭.han 과 링크)
 // v15: 못 열면 { }, (빈 X 목록), [경고] (쪼갠 낱말을 나중에 선언 / 칸 이름 뒤 번째)
+// v16: 사전  점수표의 "철수"는 85이다.  (빈 정수 사전) / 있나 / 빼다 / 개수 / 열쇠들
 // 빌드: g++ -std=c++17 -O2 -o hanc hanc.cpp
 // 사용: ./hanc prog.han > prog.s   또는   ./hanc prog.han -o prog
 #include <bits/stdc++.h>
@@ -117,7 +118,7 @@ static const set<string> KEYWORDS = {
     "말하다","돌려주다","란","이란","이다","듣다","바꾸다",
     "정수","소수","문자","참","거짓","번째","넣다",
     "행","열","채우다","멈추다","계속하다","묶음","새","빼다",
-    "없음","파일","열다","읽기","쓰기","붙여쓰기","종료하다","빈"
+    "없음","파일","열다","읽기","쓰기","붙여쓰기","종료하다","빈","있나"
 };
 
 // ==================== 1단계: 렉서 ====================
@@ -351,6 +352,8 @@ struct Resolver {
         known.insert("입력끝");                     // (입력끝) — 이것도 키워드가 아님
         known.insert("명령줄");                     // (명령줄) — 마찬가지
         known.insert("오류");                       // 파일 오류를 쓰기로 열다 — 마찬가지
+        known.insert("열쇠들");                     // 사전의 열쇠들 — 마찬가지
+        known.insert("사전");                       // (빈 정수 사전) 의 타입 자리
         prescan(in);
         vector<Token> out;
         for (auto& tk : in) {
@@ -491,13 +494,24 @@ struct Resolver {
 //   0,1,2       정수 / 문자 / 소수
 //   3           빈 목록 (원소 타입 미정)
 //   4           없음 (어떤 묶음 자리에도 들어갈 수 있는 빈 값. 묶음 타입이 정해지면 그쪽으로 바뀜)
-//   16+i        i번째 구조체
+//   16+i        i번째 구조체 (16 ~ 511)
+//   512+k       k번째 사전 타입 — 값 타입은 dictVals[k] 에 따로 적는다 (열쇠는 늘 문자).
+//               목록처럼 '더하기' 로 겹쳐 쌓으면 "사전의 목록" 과 "목록의 사전" 이 같은 수가 돼서 표로 뗐다
 //   1024+원소   그 원소의 목록  ("학생 목록" 처럼 구조체 목록도 자연히 표현된다)
 //               목록의 목록은 1024 를 한 번 더 더한 것 (2048+정수 = 정수 목록 목록)
 // 예전엔 목록을 3,4,5 로 붙여 썼는데 구조체를 넣으니 번호가 겹쳤다. 그래서 자리를 떼어놨다.
-enum { TINT = 0, TSTR = 1, TFLT = 2, TLU = 3, TNONE = 4, TSTRUCT = 16, TLIST = 1024 };
+enum { TINT = 0, TSTR = 1, TFLT = 2, TLU = 3, TNONE = 4, TSTRUCT = 16, TDICT = 512, TLIST = 1024 };
 static bool isListTy(int t)   { return t >= TLIST || t == TLU; }
-static bool isStructTy(int t) { return t >= TSTRUCT && t < TLIST; }
+static bool isStructTy(int t) { return t >= TSTRUCT && t < TDICT; }
+static bool isDictTy(int t)   { return t >= TDICT && t < TLIST; }
+static vector<int> dictVals;                 // 사전 타입마다 값 타입
+static int dictOf(int v) {
+    for (size_t k = 0; k < dictVals.size(); k++) if (dictVals[k] == v) return TDICT + (int)k;
+    if (dictVals.size() >= (size_t)(TLIST - TDICT)) { cerr << "사전 타입이 너무 많음\n"; exit(1); }
+    dictVals.push_back(v);
+    return TDICT + (int)dictVals.size() - 1;
+}
+static int dictVal(int t) { return dictVals[(size_t)(t - TDICT)]; }
 static int  listOf(int e)     { return TLIST + e; }
 static int  elemOf(int t)     { return t - TLIST; }
 
@@ -512,6 +526,7 @@ static string tyName(int t) {
         size_t i = (size_t)(t - TSTRUCT);
         return i < structNames.size() ? structNames[i] : "묶음";
     }
+    if (isDictTy(t)) return tyName(dictVal(t)) + " 사전";
     if (t >= TLIST) return tyName(elemOf(t)) + " 목록";
     return "???";
 }
@@ -669,7 +684,7 @@ struct Parser {
         // 묶음의 칸:  철수의 이름
         // 내장 이름(개수/제곱근/행수…)을 먼저 보므로 칸 이름이 그것들과 겹치면 내장이 이긴다.
         if (cur().t == TK::Ident && fieldNames.count(cur().s) &&
-            cur().s != "개수" && !BUILTIN_NOUNS.count(cur().s) && !GRID_NOUNS.count(cur().s)) {
+            cur().s != "개수" && cur().s != "열쇠들" && !BUILTIN_NOUNS.count(cur().s) && !GRID_NOUNS.count(cur().s)) {
             // 칸 이름은 전역이라 같은 이름의 변수를 'X의 칸번째' 로 쓰면 칸으로 읽혀 버린다
             if (tk[p+1].t == TK::Keyword && tk[p+1].s == "번째")
                 diag.warn(cur().file, cur().line, cur().col, cur().blen,
@@ -693,6 +708,13 @@ struct Parser {
             n->kid.push_back(move(base));
             return n;
         }
+        if (cur().t == TK::Ident && cur().s == "열쇠들") {       // 사전의 열쇠들
+            auto n = mk("dkeys"); at(n.get(), cur());
+            pending = cur().particle; p++;
+            if (pending.empty()) grabParticle();
+            n->kid.push_back(move(base));
+            return n;
+        }
         P idx = gridIdx();
         if (isKw("행")) {                       // 판의 2행 3열
             p++;
@@ -706,8 +728,12 @@ struct Parser {
             n->kid.push_back(move(col));
             return n;
         }
-        if (!isKw("번째"))
-            terr(cur(), "'의' 다음에는 '(몇)번째', '(몇)행 (몇)열', '개수' 가 와야 함");
+        if (!isKw("번째")) {                   // 번째 가 없으면 사전 꺼내기:  점수표의 "철수"
+            auto n = mk("dget"); n->file = idx->file; n->line = idx->line; n->col = idx->col; n->blen = idx->blen;
+            n->kid.push_back(move(base));
+            n->kid.push_back(move(idx));       // pending 은 열쇠 식에 붙은 조사 그대로 (는 이면 사전 넣기)
+            return n;
+        }
         auto n = mk("index"); at(n.get(), cur());
         pending = cur().particle; p++;
         if (pending.empty()) grabParticle();
@@ -741,14 +767,15 @@ struct Parser {
             else if (cur().t == TK::Ident && cur().particle.empty()) base = cur().s;
             else terr(cur(), "'빈' 다음에는 '문자 목록' 처럼 타입과 '목록' 이 와야 함");
             p++;
-            int depth = 0;
+            int depth = 0; long long bits = 0;
             string part;
-            while (cur().t == TK::Ident && cur().s == "목록" && part.empty()) {
+            while (cur().t == TK::Ident && (cur().s == "목록" || cur().s == "사전") && part.empty()) {
+                if (cur().s == "사전") bits |= (1LL << depth);
                 depth++; part = cur().particle; p++;
             }
             if (depth == 0)
-                terr(cur(), "'빈 " + base + "' 다음에는 '목록' 이 와야 함 (예: (빈 " + base + " 목록))");
-            auto n = mk("emptylist", base, depth); at(n.get(), bt);
+                terr(cur(), "'빈 " + base + "' 다음에는 '목록' 이나 '사전' 이 와야 함 (예: (빈 " + base + " 목록))");
+            auto n = mk("emptylist", base, bits | ((long long)depth << 32)); at(n.get(), bt);
             pending = part;
             if (pending.empty()) grabParticle();
             return n;
@@ -783,16 +810,41 @@ struct Parser {
     }
 
     // 괄호 안: 묶은 식 / 값으로 쓰는 함수 호출 / X를 정수로 바꾸다
+    // 사전에서 X를 빼다 / 사전에 X가 있나 — '에서'·'에' 붙은 쪽이 사전
+    P dictOp(const string& kind, vector<P>& args, const vector<string>& parts, const Token& at_, const char* mark) {
+        int di = -1;
+        for (int i = 0; i < 2; i++) if (parts[(size_t)i] == mark) di = i;
+        if (di < 0) terr(at_, kind == "dhas" ? "'사전에 열쇠가 있나' 꼴이어야 함 (사전 쪽에 '에')"
+                                             : "'사전에서 열쇠를 빼다' 꼴이어야 함 (사전 쪽에 '에서')");
+        auto n = mk(kind); at(n.get(), at_);
+        n->kid.push_back(move(args[(size_t)di]));
+        n->kid.push_back(move(args[(size_t)(1 - di)]));
+        return n;
+    }
+
     P paren() {
         vector<P> args; string save;
+        vector<string> parts;
         while (true) {
             P e = expr(); save = pending;
             args.push_back(move(e));
+            parts.push_back(save);
+            if (isKw("있나")) {                    // (점수표에 "영희"가 있나)
+                Token ht = cur(); p++;
+                if (args.size() != 2) terr(ht, "'사전에 열쇠가 있나' 꼴이어야 함");
+                pending.clear();
+                return dictOp("dhas", args, parts, ht, "에");
+            }
             if (isFunc()) {
                 auto n = mk("call", cur().s); at(n.get(), cur()); p++;
                 for (auto& a : args) n->kid.push_back(move(a));
                 pending.clear();
                 return n;
+            }
+            if (isKw("빼다") && args.size() == 2) {   // (점수표에서 "철수"를 빼다)
+                Token bt = cur(); p++;
+                pending.clear();
+                return dictOp("ddel", args, parts, bt, "에서");
             }
             if (isKw("빼다")) {                    // (점수에서 빼다) / (점수의 2번째를 빼다)
                 Token bt = cur(); p++;
@@ -946,9 +998,9 @@ struct Parser {
                     expectOp(".", "문장은 '.' 로 끝나야 함");
                     return n;
                 }
-                if (h->kind == "index" || h->kind == "gridget") {
+                if (h->kind == "index" || h->kind == "gridget" || h->kind == "dget") {
                     bool g = (h->kind == "gridget");
-                    auto n = mk(g ? "gridset" : "idxset");
+                    auto n = mk(g ? "gridset" : h->kind == "dget" ? "dset" : "idxset");
                     n->file = h->file; n->line = h->line; n->col = h->col; n->blen = h->blen;
                     n->kid.push_back(move(h->kid[0]));
                     n->kid.push_back(move(h->kid[1]));
@@ -971,6 +1023,14 @@ struct Parser {
             if (isKw("번")) { p++; pending = "번"; parts.back() = "번"; }
             if (pending.empty() && !atPredicate())
                 terr(cur(), "문장을 끝맺을 서술어(말하다, 돌려주다 등)를 찾을 수 없음");
+        }
+        if (isKw("빼다") && args.size() == 2) {   // 점수표에서 "철수"를 빼다.
+            Token bt = cur(); p++;
+            expectOp(".", "문장은 '.' 로 끝나야 함");
+            auto n = dictOp("ddel", args, parts, bt, "에서");
+            auto s = mk("exprstmt"); s->file = n->file; s->line = n->line;
+            s->kid.push_back(move(n));
+            return s;
         }
         if (isKw("빼다")) {                        // 문장으로 쓰면 뺀 값은 버린다
             Token bt = cur(); p++;
@@ -1103,12 +1163,12 @@ struct Parser {
                     for (size_t i = 0; i < structs.size(); i++)
                         if (structs[i].name == cur().s) found = (int)i;
                 if (found < 0)
-                    terr(cur(), "칸 타입은 정수, 소수, 문자 또는 묶음 이름이어야 함 (뒤에 '목록' 을 붙일 수 있음)");
+                    terr(cur(), "칸 타입은 정수, 소수, 문자 또는 묶음 이름이어야 함 (뒤에 '목록'·'사전' 을 붙일 수 있음)");
                 f.ty = TSTRUCT + found;
             }
             p++;
-            while (cur().t == TK::Ident && cur().s == "목록" && cur().particle.empty()) {
-                f.ty = listOf(f.ty); p++;
+            while (cur().t == TK::Ident && (cur().s == "목록" || cur().s == "사전") && cur().particle.empty()) {
+                f.ty = (cur().s == "목록") ? listOf(f.ty) : dictOf(f.ty); p++;
             }
             expectOp(".", "칸 하나마다 '.' 로 끝내야 함");
             for (auto& o : s.fields)
@@ -1306,7 +1366,8 @@ struct Checker {
             if (n->str == "정수") t = TINT; else if (n->str == "문자") t = TSTR; else if (n->str == "소수") t = TFLT;
             else for (size_t i = 0; i < structs.size(); i++) if (structs[i].name == n->str) t = TSTRUCT + (int)i;
             if (t < 0) nerr(n, "'" + n->str + "' 이라는 묶음이 없음");
-            for (long long k = 0; k < n->num; k++) t = listOf(t);
+            int depth = (int)(n->num >> 32);
+            for (int k = 0; k < depth; k++) t = ((n->num >> k) & 1) ? dictOf(t) : listOf(t);
             n->ty = t;
             return;
         }
@@ -1322,6 +1383,7 @@ struct Checker {
         if (n->kind == "conv") {
             chkExpr(n->kid[0].get());
             if (isListTy(n->kid[0]->ty)) nerr(n, "목록은 '바꾸다' 로 바꿀 수 없음");
+            if (isDictTy(n->kid[0]->ty)) nerr(n, "사전은 '바꾸다' 로 바꿀 수 없음");
             if (isRefTy(n->kid[0]->ty)) nerr(n, "묶음은 '바꾸다' 로 바꿀 수 없음. 칸을 하나 꺼내 쓰기");
             n->ty = (n->str == "정수") ? TINT : (n->str == "소수") ? TFLT : TSTR;
             return;
@@ -1372,11 +1434,42 @@ struct Checker {
             n->ty = elemOf(b->ty);
             return;
         }
+        if (n->kind == "dget" || n->kind == "dset" || n->kind == "dhas" || n->kind == "ddel" || n->kind == "dkeys") {
+            Node* b = n->kid[0].get();
+            chkExpr(b);
+            if (!isDictTy(b->ty)) {
+                if (n->kind == "dget" || n->kind == "dset") {
+                    string m = "'의' 뒤에 '번째' 가 없으면 사전 꺼내기인데 이 값은 사전이 아님 (" + tyName(b->ty) + ")";
+                    if (isListTy(b->ty) || b->ty == TSTR) m += ". 목록이면 '(몇)번째' 를 붙이기";
+                    if (isStructTy(b->ty)) m += ". 묶음이면 '의' 뒤에 칸 이름이 와야 함";
+                    nerr(n, m);
+                }
+                nerr(n, "사전에만 쓸 수 있음 (지금은 " + tyName(b->ty) + ")");
+            }
+            if (n->kind != "dkeys") {
+                Node* k = n->kid[1].get();
+                chkExpr(k);
+                if (k->ty != TSTR) {
+                    string m = "사전 열쇠는 문자여야 함 (지금은 " + tyName(k->ty) + ")";
+                    if (k->ty == TINT) m += ". 숫자면 '(수를 문자로 바꾸다)' 쓰기";
+                    nerr(k, m);
+                }
+            }
+            if (n->kind == "dset") {
+                Node* v = n->kid[2].get();
+                chkExpr(v);
+                if (!fits(dictVal(b->ty), v->ty))
+                    nerr(v, "이 사전은 " + tyName(b->ty) + "이라 " + tyName(dictVal(b->ty)) + "만 넣을 수 있는데 " +
+                         tyName(v->ty) + "를 넣으려 함");
+            }
+            n->ty = (n->kind == "dhas") ? TINT : (n->kind == "dkeys") ? listOf(TSTR) : dictVal(b->ty);
+            return;
+        }
         if (n->kind == "len") {
             Node* b = n->kid[0].get();
             chkExpr(b);
-            if (!isListTy(b->ty) && b->ty != TSTR)
-                nerr(n, "'의 개수' 는 목록이나 문자에만 쓸 수 있음 (지금은 " + tyName(b->ty) + ")");
+            if (!isListTy(b->ty) && b->ty != TSTR && !isDictTy(b->ty))
+                nerr(n, "'의 개수' 는 목록·문자·사전에만 쓸 수 있음 (지금은 " + tyName(b->ty) + ")");
             n->ty = TINT;
             return;
         }
@@ -1454,7 +1547,7 @@ struct Checker {
                 n->ty = TSTR;
                 return;
             }
-            if (b->ty == TSTR || isListTy(b->ty) || isRefTy(b->ty))
+            if (b->ty == TSTR || isListTy(b->ty) || isRefTy(b->ty) || isDictTy(b->ty))
                 nerr(b, "'의 " + f + "' 은 숫자에만 쓸 수 있음 (지금은 " + tyName(b->ty) + ")");
             if (f == "제곱근")      n->ty = TFLT;                 // 정수든 소수든 결과는 소수
             else if (f == "절댓값") n->ty = b->ty;                // 넣은 타입 그대로
@@ -1470,6 +1563,7 @@ struct Checker {
             int t = n->kid[0]->ty;
             if (isListTy(t))   nerr(n, "목록에는 '" + n->str + "' 를 쓸 수 없음");
             if (isRefTy(t)) nerr(n, "묶음에는 '" + n->str + "' 를 쓸 수 없음");
+            if (isDictTy(t)) nerr(n, "사전에는 '" + n->str + "' 를 쓸 수 없음");
             if (n->str == "-") {
                 if (t == TSTR) nerr(n, "문자에는 '-' 를 쓸 수 없음");
                 n->ty = t;
@@ -1499,6 +1593,8 @@ struct Checker {
             const string& o = n->str;
             if (isListTy(a->ty) || isListTy(b->ty))
                 nerr(n, "목록은 연산에 바로 쓸 수 없음. (목록의 1번째) 처럼 원소를 꺼내 쓰기");
+            if (isDictTy(a->ty) || isDictTy(b->ty))
+                nerr(n, "사전은 연산에 바로 쓸 수 없음. (사전의 \"열쇠\") 처럼 값을 꺼내 쓰기");
             // 묶음끼리 / 묶음과 없음은 == != 만 된다 (같은 것을 가리키나 = 주소 비교)
             if (isRefTy(a->ty) || isRefTy(b->ty)) {
                 if ((o == "==" || o == "!=") && isRefTy(a->ty) && isRefTy(b->ty)) {
@@ -1583,6 +1679,7 @@ struct Checker {
             n->ty = t;
             return;
         }
+        if (n->kind == "dset") { chkExpr(n); return; }      // 점수표의 "철수"는 85이다.
         if (n->kind == "exprstmt") {
             Node* saved = discardSite; discardSite = n->kid[0].get();
             chkExpr(n->kid[0].get());
@@ -1597,6 +1694,8 @@ struct Checker {
                 nerr(n->kid[0].get(), "묶음은 통째로 말할 수 없음. (철수의 이름) 처럼 칸을 하나씩 말하기");
             if (n->kid[0]->ty == TNONE)
                 nerr(n->kid[0].get(), "없음은 말할 수 없음. 있는지 보려면 (값 == 없음) 으로 비교하기");
+            if (isDictTy(n->kid[0]->ty))
+                nerr(n->kid[0].get(), "사전은 통째로 말할 수 없음. (사전의 \"열쇠\") 처럼 하나씩 말하기");
             return;
         }
         if (n->kind == "exit") {                 // 1로 종료하다.
@@ -1792,7 +1891,26 @@ struct Codegen {
         if (n->kind == "input") { text << "    call __han_input\n"; return; }
         if (n->kind == "eof")   { text << "    call __han_eof\n"; return; }
         if (n->kind == "argv")  { text << "    call __han_args\n"; return; }
-        if (n->kind == "emptylist") { text << "    movl $1, %edi\n    call __han_lnew\n"; return; }
+        if (n->kind == "emptylist") {            // 가장 바깥이 사전이면 사전, 아니면 목록
+            int depth = (int)(n->num >> 32);
+            bool dict = (n->num >> (depth - 1)) & 1;
+            text << (dict ? "    call __han_dnew\n" : "    movl $1, %edi\n    call __han_lnew\n");
+            return;
+        }
+        if (n->kind == "dget" || n->kind == "dhas" || n->kind == "ddel") {
+            genExpr(n->kid[0].get()); push();
+            genExpr(n->kid[1].get());
+            text << "    movq %rax, %rsi\n";
+            popTo("%rdi");
+            text << "    movq $" << n->line << ", %rdx\n"
+                 << "    call " << (n->kind == "dget" ? "__han_dget" : n->kind == "dhas" ? "__han_dhas" : "__han_ddel") << "\n";
+            return;
+        }
+        if (n->kind == "dkeys") {
+            genExpr(n->kid[0].get());
+            text << "    movq %rax, %rdi\n    call __han_dkeys\n";
+            return;
+        }
         if (n->kind == "stderr"){ text << "    xorl %eax, %eax\n"; return; }    // 이름 대신 널 = 표준 에러
         if (n->kind == "none")  { text << "    xorl %eax, %eax\n"; return; }      // 없음 = 널 포인터
         if (n->kind == "list") {
@@ -1847,13 +1965,13 @@ struct Codegen {
             }
             // 목록 칸은 묶음마다 새 빈 목록. 할당 중에 GC 가 돌 수 있으니 묶음은 스택에 둔다.
             bool anyList = false;
-            for (auto& fd : s.fields) if (fd.ty >= TLIST) anyList = true;
+            for (auto& fd : s.fields) if (fd.ty >= TLIST || isDictTy(fd.ty)) anyList = true;
             if (anyList) {
                 push();
                 for (size_t i = 0; i < s.fields.size(); i++) {
-                    if (s.fields[i].ty < TLIST) continue;
-                    text << "    movl $1, %edi\n    call __han_lnew\n"
-                            "    movq (%rsp), %rcx\n    movq %rax, " << (i*8) << "(%rcx)\n";
+                    if (s.fields[i].ty < TLIST && !isDictTy(s.fields[i].ty)) continue;
+                    text << (isDictTy(s.fields[i].ty) ? "    call __han_dnew\n" : "    movl $1, %edi\n    call __han_lnew\n")
+                         << "    movq (%rsp), %rcx\n    movq %rax, " << (i*8) << "(%rcx)\n";
                 }
                 popTo("%rax");
             }
@@ -2118,6 +2236,16 @@ struct Codegen {
                 genStmt(n->kid[2].get());
                 text << ".L" << Lend << ":\n";
             }
+            return;
+        }
+        if (n->kind == "dset") {
+            genExpr(n->kid[0].get()); push();
+            genExpr(n->kid[1].get()); push();
+            genExpr(n->kid[2].get());
+            text << "    movq %rax, %rdx\n";
+            popTo("%rsi");
+            popTo("%rdi");
+            text << "    call __han_dset\n";
             return;
         }
         if (n->kind == "gridset") {
@@ -2468,10 +2596,7 @@ struct Codegen {
 "    jne .Lrand_go\n"
 "    movl $1, %eax\n"
 "    movl %eax, .Lseeded(%rip)\n"
-"    xorl %edi, %edi\n"
-"    call time\n"
-"    movl %eax, %edi\n"
-"    call srand\n"
+"    call __han_seed\n"                 // 보통은 시각, HAN_SEED 가 있으면 그 수 (테스트용)
 ".Lrand_go:\n"
 "    call rand\n"
 "    cltq\n"
@@ -2968,6 +3093,7 @@ static const char* C_RUNTIME = R"HANRT(
 #include <string.h>
 #include <stdint.h>
 #include <setjmp.h>
+#include <time.h>
 
 typedef struct Hdr { size_t size; uint32_t idx; uint32_t mark; } Hdr;   /* 16바이트 */
 
@@ -3150,6 +3276,110 @@ void *__han_args(void) {
     void *l = __han_lnew(__han_argc > 1 ? __han_argc - 1 : 1);
     for (long i = 1; i < __han_argc; i++) __han_lpush(l, (long)__han_argv[i]);
     return l;
+}
+
+/* ---- 사전 (열쇠는 문자) ----
+ * 파이썬 dict 처럼 '넣은 순서' 를 기억한다: 항목은 keys/vals 에 차례로 쌓고, 해시 칸(idx)은
+ * 항목 번호+1 을 가리킨다(0 = 빈 칸). 지운 항목은 열쇠를 NULL 로 두고 다시 지을 때 걷어낸다.
+ * live 를 맨 앞에 둬서 (사전의 개수) 가 목록처럼 첫 8바이트를 읽으면 되게 했다.
+ * 메모리는 전부 __han_alloc — GC 가 열쇠·값 포인터를 따라간다. */
+typedef struct HDict { long live, used, cap, icap; char **keys; long *vals; long *idx; } HDict;
+
+static unsigned long hhash(const char *s) {          /* FNV-1a */
+    unsigned long h = 1469598103934665603UL;
+    while (*s) { h ^= (unsigned char)*s++; h *= 1099511628211UL; }
+    return h;
+}
+
+void *__han_dnew(void) {
+    HDict *d = __han_alloc(sizeof(HDict));
+    d->cap = 4; d->icap = 8;
+    d->keys = __han_alloc(4 * sizeof(char *));
+    d->vals = __han_alloc(4 * sizeof(long));
+    d->idx = __han_alloc(8 * sizeof(long));
+    return d;
+}
+
+static long dfind(HDict *d, const char *k, unsigned long *slot) {
+    unsigned long m = (unsigned long)d->icap - 1, i = hhash(k) & m;
+    for (;;) {
+        long e = d->idx[i];
+        if (e == 0) { *slot = i; return -1; }
+        if (d->keys[e - 1] && strcmp(d->keys[e - 1], k) == 0) { *slot = i; return e - 1; }
+        i = (i + 1) & m;
+    }
+}
+
+static void drebuild(HDict *d, long need) {
+    long cap = 4;
+    while (cap < need * 2) cap *= 2;
+    char **nk = __han_alloc(cap * sizeof(char *));
+    long *nv = __han_alloc(cap * sizeof(long));
+    long n = 0;
+    for (long i = 0; i < d->used; i++)
+        if (d->keys[i]) { nk[n] = d->keys[i]; nv[n] = d->vals[i]; n++; }
+    long icap = 8;
+    while (icap < cap * 2) icap *= 2;
+    long *ix = __han_alloc(icap * sizeof(long));
+    for (long i = 0; i < n; i++) {
+        unsigned long m = (unsigned long)icap - 1, j = hhash(nk[i]) & m;
+        while (ix[j]) j = (j + 1) & m;
+        ix[j] = i + 1;
+    }
+    d->keys = nk; d->vals = nv; d->idx = ix; d->cap = cap; d->icap = icap; d->used = n;
+}
+
+void __han_dset(void *dv, char *k, long v) {
+    HDict *d = dv;
+    unsigned long slot;
+    long e = dfind(d, k, &slot);
+    if (e >= 0) { d->vals[e] = v; return; }
+    if (d->used + 1 > d->cap) { drebuild(d, d->live + 1); dfind(d, k, &slot); }
+    d->keys[d->used] = k; d->vals[d->used] = v;
+    d->idx[slot] = d->used + 1;
+    d->used++; d->live++;
+}
+
+static void dmissing(const char *k, long line) {
+    fflush(stdout);
+    printf("[실행 오류] %ld행: 사전에 '%s' 는 없음\n", line, k);
+    exit(1);
+}
+
+long __han_dget(void *dv, char *k, long line) {
+    unsigned long slot;
+    long e = dfind(dv, k, &slot);
+    if (e < 0) dmissing(k, line);
+    return ((HDict *)dv)->vals[e];
+}
+
+long __han_dhas(void *dv, char *k) {
+    unsigned long slot;
+    return dfind(dv, k, &slot) >= 0;
+}
+
+long __han_ddel(void *dv, char *k, long line) {
+    HDict *d = dv;
+    unsigned long slot;
+    long e = dfind(d, k, &slot);
+    if (e < 0) dmissing(k, line);
+    long v = d->vals[e];
+    d->keys[e] = NULL; d->vals[e] = 0;      /* 해시 칸은 그대로 둬야 뒤엣것을 계속 찾아갈 수 있다 */
+    d->live--;
+    return v;
+}
+
+void *__han_dkeys(void *dv) {                       /* 넣은 순서대로 */
+    HDict *d = dv;
+    void *l = __han_lnew(d->live > 0 ? d->live : 1);
+    for (long i = 0; i < d->used; i++) if (d->keys[i]) __han_lpush(l, (long)d->keys[i]);
+    return l;
+}
+
+/* (N의 무작위) 의 씨앗. HAN_SEED 환경변수가 있으면 그 수로 — 테스트에서 결과를 고정하려고 */
+void __han_seed(void) {
+    const char *e = getenv("HAN_SEED");
+    srand(e ? (unsigned)atol(e) : (unsigned)time(NULL));
 }
 
 /* 없음의 칸을 꺼내려 할 때 */

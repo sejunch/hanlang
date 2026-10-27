@@ -47,7 +47,7 @@ for f in tests/t_float.han tests/t_func.han tests/t_edge.han tests/t_list.han \
          tests/t_split.han tests/t_end.han tests/t_bit.han tests/t_code.han \
          tests/t_struct.han tests/t_lib2.han tests/t_sortlib.han \
          tests/t_statlib.han tests/t_gridlib.han tests/t_fraclib.han tests/t_biglib.han tests/t_pop.han \
-         tests/t_tree.han tests/t_nest.han; do
+         tests/t_tree.han tests/t_nest.han tests/t_dict.han; do
     run_ok "$f"
 done
 run_ok tests/t_eof.han "$(printf '10\n20\n12\n')"
@@ -77,7 +77,7 @@ else bad "tests/t_exit0.han"; fi
 
 echo "== 실행 오류 (종료코드 1 이 정답)"
 for f in tests/t_div0.han tests/t_mod0.han tests/t_oob.han tests/t_gerr.han tests/t_shift.han tests/t_popempty.han \
-         tests/t_none.han tests/t_nofile.han; do
+         tests/t_none.han tests/t_nofile.han tests/t_dictmiss.han; do
     run_dies "$f"
 done
 
@@ -94,7 +94,7 @@ for f in examples/demo4.han examples/demo7.han tests/t_list.han tests/t_str.han 
          tests/t_struct.han tests/t_split.han tests/t_pop.han tests/t_grid.han \
          tests/t_poly.han tests/t_lib.han tests/t_sortlib.han tests/t_fraclib.han \
          tests/t_biglib.han tests/t_statlib.han tests/t_gridlib.han tests/t_strcmp.han \
-         tests/t_tree.han tests/t_nest.han; do
+         tests/t_tree.han tests/t_nest.han tests/t_dict.han; do
     if ./hanc "$f" -o "$tmp/p" 2>"$tmp/err" &&
        a=$("$tmp/p" </dev/null 2>&1) && b=$(HAN_GC_STRESS=1 timeout 60 "$tmp/p" </dev/null 2>&1) &&
        [ "$a" = "$b" ]; then ok
@@ -102,6 +102,7 @@ for f in examples/demo4.han examples/demo7.han tests/t_list.han tests/t_str.han 
 done
 
 echo "== 셀프호스팅 (한랭으로 짠 컴파일러 self/한랭.han)"
+export HAN_SEED=1          # (N의 무작위) 를 쓰는 프로그램도 양쪽 결과가 같게
 # hanc 로 컴파일러(1세대)를 만들고, 그걸로 프로그램을 컴파일해서 hanc 와 결과가 같은지 본다.
 # 셀프 컴파일러가 낸 어셈블리는 런타임(hanc --runtime)과 같이 링크한다.
 self_build() {   # $1 = 컴파일러, $2 = 원본, $3 = 출력 .s.  에러는 표준 에러로, 실패하면 종료코드 1
@@ -155,6 +156,8 @@ if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err" && ./hanc --runtime > "$t
 else
     bad "self/한랭.han (hanc 로 컴파일 실패)"; sed 's/^/    /' "$tmp/err" | head -5
 fi
+
+unset HAN_SEED
 
 echo "== 에러 메시지 (컴파일 실패가 정답)"
 for f in tests/e*.han; do
