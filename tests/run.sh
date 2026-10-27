@@ -130,6 +130,15 @@ if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err" && ./hanc --runtime > "$t
     if self_build "$tmp/hanc2" self/tests/s2.han "$tmp/n0.s" &&
        HAN_GC_STRESS=1 timeout 120 "$tmp/hanc2" self/tests/s2.han "$tmp/n.s" && cmp -s "$tmp/n0.s" "$tmp/n.s"; then ok
     else bad "self/한랭.han (수거 스트레스 모드에서 결과가 달라짐)"; fi
+    # 에러 메시지(문구·캐럿·호출 문맥)가 hanc 와 글자 하나까지 같아야 한다.
+    # se6 은 빼고: hanc 는 문자열이 여러 줄에 걸칠 수 있어 행 번호가 다르다 (셀프 렉서는 줄 단위)
+    for f in tests/e*.han self/tests/se*.han; do
+        case "$f" in */se6.han) continue;; esac
+        self_build "$tmp/hanc2" "$f" "$tmp/s.s"
+        grep -q "셀프 컴파일러" "$tmp/selferr" && continue        # 아직 안 되는 기능 (소수·불러오기 등)
+        if [ "$(./hanc "$f" -o "$tmp/p" 2>&1)" = "$(cat "$tmp/selferr")" ]; then ok
+        else bad "$f (셀프 컴파일러 에러 메시지가 hanc 와 다름)"; fi
+    done
     for f in self/tests/se*.han; do                           # 컴파일 에러가 나야 하는 것들
         if self_build "$tmp/hanc2" "$f" "$tmp/s.s"; then bad "$f (셀프 컴파일러: 컴파일 에러가 나야 정상)"
         elif [ -f "$tmp/s.s" ]; then bad "$f (셀프 컴파일러: 오류인데 어셈블리를 만듦)"
