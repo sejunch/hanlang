@@ -11,6 +11,7 @@
 // v12: 쓰레기 수거(보수적 mark-sweep GC) — 메모리 누수 해결
 // v13: 묶음 안 묶음·목록, 없음, 목록의 목록, (입력끝), 파일 블록 — 한랭으로 컴파일러 짜기 준비
 // v14: (명령줄), 종료하다, 표준 에러(파일 오류를 쓰기로 열다) — 셀프호스팅 1단계에서 드러난 것
+//      hanc --runtime: 런타임만 따로 (셀프호스팅 컴파일러 self/한랭.han 과 링크)
 // 빌드: g++ -std=c++17 -O2 -o hanc hanc.cpp
 // 사용: ./hanc prog.han > prog.s   또는   ./hanc prog.han -o prog
 #include <bits/stdc++.h>
@@ -2809,16 +2810,10 @@ struct Codegen {
 "    call exit\n";
     }
 
-    string run(Node* top, map<string,Func>& fs, map<string, deque<Inst>>& is) {
-        funcs = &fs; insts = &is;
-        // 검사된 조합만 코드로 낸다. 안 불린 라이브러리 함수는 조합이 없어 자동으로 빠진다.
-        for (auto& kv : is)
-            for (auto& in : kv.second)
-                genFunc(in.label, &fs.at(kv.first), in.body.get());
-        genFunc("main", nullptr, top);
-
-        ostringstream o;
-        o << "    .section .rodata\n"
+    // 런타임이 쓰는 고정 문자열들
+    static const char* runtimeData() {
+        return
+             "    .section .rodata\n"
              ".Lfmt:\n    .asciz \"%lld\\n\"\n"
              ".Lfmt2:\n    .asciz \"%lld\"\n"
              ".LfmtF:\n    .asciz \"%.15g\\n\"\n"
@@ -2840,6 +2835,32 @@ struct Codegen {
              ".Lshift:\n    .asciz \"[실행 오류] %d행: 비트를 %lld칸 밀 수 없음 (0~63 만 됨)\\n\"\n"
              ".Lordempty:\n    .asciz \"[실행 오류] 빈 문자에는 '코드' 가 없음\\n\"\n"
              ".Lchrbad:\n    .asciz \"[실행 오류] %lld행: %lld 는 글자로 만들 수 없는 코드값\\n\"\n";
+    }
+
+    // hanc --runtime: 런타임만 따로 (셀프호스팅 컴파일러가 만든 어셈블리와 같이 링크한다).
+    // 파일이 나뉘면 라벨이 안 보이므로 __han_ 함수들을 .globl 로 연다.
+    static string runtimeOnly() {
+        string rt = runtime(), g;
+        for (size_t p = 0; (p = rt.find("__han_", p)) != string::npos; p++) {
+            if (p > 0 && rt[p-1] != '\n') continue;
+            size_t e = rt.find(':', p);
+            if (e == string::npos || rt.find('\n', p) < e) continue;
+            g += ".globl " + rt.substr(p, e - p) + "\n";
+        }
+        return string(runtimeData()) + "\n    .bss\n.Lseeded:\n    .skip 4\n\n    .text\n" + g + rt +
+               "\n    .section .note.GNU-stack,\"\",@progbits\n";
+    }
+
+    string run(Node* top, map<string,Func>& fs, map<string, deque<Inst>>& is) {
+        funcs = &fs; insts = &is;
+        // 검사된 조합만 코드로 낸다. 안 불린 라이브러리 함수는 조합이 없어 자동으로 빠진다.
+        for (auto& kv : is)
+            for (auto& in : kv.second)
+                genFunc(in.label, &fs.at(kv.first), in.body.get());
+        genFunc("main", nullptr, top);
+
+        ostringstream o;
+        o << runtimeData();
         o << rodata.str();
         o << "\n    .bss\n.Lseeded:\n    .skip 4\n";
         o << "\n    .text\n";
@@ -3101,8 +3122,13 @@ int main(int argc, char** argv) {
                 "사용법:\n"
                 "  hanc 파일.han -o 실행파일   실행파일 만들기\n"
                 "  hanc 파일.han               어셈블리를 화면에 뿌리기\n"
-                "  han  파일.han               한 번에 컴파일하고 실행\n\n"
+                "  han  파일.han               한 번에 컴파일하고 실행\n"
+                "  hanc --runtime              런타임만 어셈블리로 (self/한랭.han 이 만든 것과 링크용)\n\n"
                 "라이브러리는 부르는 파일 옆, $HAN_LIB, 설치 폴더 순으로 찾는다.\n";
+        return 0;
+    }
+    if (argc >= 2 && string(argv[1]) == "--runtime") {      // 런타임만 (self/한랭.han 용)
+        cout << Codegen::runtimeOnly() << buildRuntimeAsm();
         return 0;
     }
     if (argc < 2) { cerr << "사용법: hanc 파일.han [-o 실행파일]\n       hanc --help\n"; return 1; }

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # 한랭 회귀 테스트 전부 돌리기.  사용:  make test   또는  ./tests/run.sh
 cd "$(dirname "$0")/.." || exit 1
+ROOT=$PWD
 
 pass=0; fail=0
 tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
@@ -93,29 +94,44 @@ for f in examples/demo4.han examples/demo7.han tests/t_list.han tests/t_str.han 
 done
 
 echo "== 셀프호스팅 (한랭으로 짠 컴파일러 self/한랭.han)"
-# hanc 로 컴파일러를 만들고, 그 컴파일러로 프로그램을 컴파일해서 hanc 와 출력이 같은지 본다
-self_build() {   # $1 = 원본, $2 = 출력 .s.  에러 메시지는 표준 에러로, 실패하면 종료코드 1
-    rm -f "$2"; "$tmp/hanc2" "$1" "$2" >"$tmp/selfout" 2>"$tmp/selferr"
+# hanc 로 컴파일러(1세대)를 만들고, 그걸로 프로그램을 컴파일해서 hanc 와 결과가 같은지 본다.
+# 셀프 컴파일러가 낸 어셈블리는 런타임(hanc --runtime)과 같이 링크한다.
+self_build() {   # $1 = 컴파일러, $2 = 원본, $3 = 출력 .s.  에러는 표준 에러로, 실패하면 종료코드 1
+    rm -f "$3"; "$1" "$2" "$3" >"$tmp/selfout" 2>"$tmp/selferr"
 }
-if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err"; then
+self_link() { gcc -no-pie "$1" "$tmp/rt.s" -o "$2" -lm 2>"$tmp/err"; }
+# 출력과 종료코드를 hanc 쪽과 비교 (입력·인자·작업 폴더도 같게)
+self_same() {   # $1 = 컴파일러, $2 = 원본
+    self_build "$1" "$2" "$tmp/s.s" && self_link "$tmp/s.s" "$tmp/sp" &&
+    [ "$(cd "$tmp" && printf '10\n20\n12\n' | ./sp 가나 12 2>&1; echo "rc=$?")" = \
+      "$(cd "$tmp" && printf '10\n20\n12\n' | "$ROOT/han" "$ROOT/$2" 가나 12 2>&1; echo "rc=$?")" ]
+}
+SELF_SAME="self/tests/s1.han self/tests/s2.han examples/demo.han tests/t_bit.han tests/t_tree.han
+    tests/t_nest.han tests/t_gc.han tests/t_args.han tests/t_eof.han tests/t_exit0.han tests/t_code.han
+    tests/t_str.han tests/t_loop.han tests/t_none.han tests/t_nofile.han tests/t_oob.han
+    tests/t_mod0.han tests/t_shift.han tests/t_popempty.han"
+if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err" && ./hanc --runtime > "$tmp/rt.s"; then
     ok
-    for f in self/tests/s[0-9]*.han examples/demo.han tests/t_bit.han; do
-        if self_build "$f" "$tmp/s.s" && gcc -no-pie "$tmp/s.s" -o "$tmp/sp" 2>"$tmp/err" &&
-           [ "$("$tmp/sp" </dev/null 2>&1)" = "$(./han "$f" </dev/null 2>&1)" ]; then ok
+    for f in $SELF_SAME; do
+        if self_same "$tmp/hanc2" "$f"; then ok
         else bad "$f (셀프 컴파일러 결과가 hanc 와 다름)"; head -3 "$tmp/selferr" | sed 's/^/    /'; fi
     done
-    for f in tests/t_mod0.han tests/t_shift.han; do          # 실행 오류도 똑같이 잡아야 함
-        if self_build "$f" "$tmp/s.s" && gcc -no-pie "$tmp/s.s" -o "$tmp/sp" 2>/dev/null &&
-           ! "$tmp/sp" >/dev/null 2>&1; then ok
-        else bad "$f (셀프 컴파일러: 실행 오류가 나야 정상)"; fi
+    # 셀프호스팅: 1세대가 자기 자신을 컴파일해 2세대, 2세대가 또 컴파일해 3세대.
+    # 2세대와 3세대 어셈블리가 바이트 단위로 같아야 한다 (고정점)
+    if self_build "$tmp/hanc2" self/한랭.han "$tmp/g2.s" && self_link "$tmp/g2.s" "$tmp/hanc_g2" &&
+       self_build "$tmp/hanc_g2" self/한랭.han "$tmp/g3.s" && cmp -s "$tmp/g2.s" "$tmp/g3.s"; then ok
+    else bad "self/한랭.han (자기 자신 컴파일: 2세대와 3세대가 다름)"; head -3 "$tmp/selferr" | sed 's/^/    /'; fi
+    # 2세대 컴파일러(한랭이 컴파일한 컴파일러)도 똑같이 맞아야 한다
+    for f in self/tests/s2.han tests/t_tree.han tests/t_args.han; do
+        if [ -x "$tmp/hanc_g2" ] && self_same "$tmp/hanc_g2" "$f"; then ok
+        else bad "$f (2세대 셀프 컴파일러 결과가 hanc 와 다름)"; fi
     done
     # 셀프 컴파일러는 지금까지 짠 한랭 프로그램 중 가장 커서 GC 검증에도 좋다
-    if self_build self/tests/s2.han "$tmp/n.s" && cp "$tmp/n.s" "$tmp/n0.s" &&
-       rm -f "$tmp/n.s" && HAN_GC_STRESS=1 timeout 120 "$tmp/hanc2" self/tests/s2.han "$tmp/n.s" &&
-       cmp -s "$tmp/n0.s" "$tmp/n.s"; then ok
+    if self_build "$tmp/hanc2" self/tests/s2.han "$tmp/n0.s" &&
+       HAN_GC_STRESS=1 timeout 120 "$tmp/hanc2" self/tests/s2.han "$tmp/n.s" && cmp -s "$tmp/n0.s" "$tmp/n.s"; then ok
     else bad "self/한랭.han (수거 스트레스 모드에서 결과가 달라짐)"; fi
     for f in self/tests/se*.han; do                           # 컴파일 에러가 나야 하는 것들
-        if self_build "$f" "$tmp/s.s"; then bad "$f (셀프 컴파일러: 컴파일 에러가 나야 정상)"
+        if self_build "$tmp/hanc2" "$f" "$tmp/s.s"; then bad "$f (셀프 컴파일러: 컴파일 에러가 나야 정상)"
         elif [ -f "$tmp/s.s" ]; then bad "$f (셀프 컴파일러: 오류인데 어셈블리를 만듦)"
         elif ! grep -q '^\[오류\]' "$tmp/selferr" || [ -s "$tmp/selfout" ]; then
             bad "$f (셀프 컴파일러: 오류 메시지는 표준 에러로만 나와야 함)"
