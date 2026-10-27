@@ -14,6 +14,7 @@
 //      hanc --runtime: 런타임만 따로 (셀프호스팅 컴파일러 self/한랭.han 과 링크)
 // v15: 못 열면 { }, (빈 X 목록), [경고] (쪼갠 낱말을 나중에 선언 / 칸 이름 뒤 번째)
 // v16: 사전  점수표의 "철수"는 85이다.  (빈 정수 사전) / 있나 / 빼다 / 개수 / 열쇠들
+// v17: (X의 환경값) (X의 실제경로) (실행파일) (X를 실행하다) — 셀프 컴파일러를 hanc 와 같게 하려고
 // 빌드: g++ -std=c++17 -O2 -o hanc hanc.cpp
 // 사용: ./hanc prog.han > prog.s   또는   ./hanc prog.han -o prog
 #include <bits/stdc++.h>
@@ -109,7 +110,7 @@ static const vector<string> PARTICLES = {
 static const set<string> DECL_PARTICLES = { "는", "은" };
 // "9의 제곱근" 꼴 내장 값들 (값을 주는 것 = 명사형, 동작 = 동사형 규칙)
 static const set<string> BUILTIN_NOUNS = {
-    "제곱근","절댓값","반올림","올림","버림","무작위","코드","글자"
+    "제곱근","절댓값","반올림","올림","버림","무작위","코드","글자","환경값","실제경로"
 };
 // "판의 행수" 꼴. 키워드가 아니라 known 에 넣어 '의' 뒤에서만 특별 해석 (이름 충돌 회피)
 static const set<string> GRID_NOUNS = { "행수", "열수" };
@@ -118,7 +119,7 @@ static const set<string> KEYWORDS = {
     "말하다","돌려주다","란","이란","이다","듣다","바꾸다",
     "정수","소수","문자","참","거짓","번째","넣다",
     "행","열","채우다","멈추다","계속하다","묶음","새","빼다",
-    "없음","파일","열다","읽기","쓰기","붙여쓰기","종료하다","빈","있나"
+    "없음","파일","열다","읽기","쓰기","붙여쓰기","종료하다","빈","있나","실행하다"
 };
 
 // ==================== 1단계: 렉서 ====================
@@ -353,6 +354,7 @@ struct Resolver {
         known.insert("명령줄");                     // (명령줄) — 마찬가지
         known.insert("오류");                       // 파일 오류를 쓰기로 열다 — 마찬가지
         known.insert("열쇠들");                     // 사전의 열쇠들 — 마찬가지
+        known.insert("실행파일");                   // (실행파일) — 마찬가지
         known.insert("사전");                       // (빈 정수 사전) 의 타입 자리
         prescan(in);
         vector<Token> out;
@@ -829,6 +831,14 @@ struct Parser {
             P e = expr(); save = pending;
             args.push_back(move(e));
             parts.push_back(save);
+            if (isKw("실행하다")) {                // ("gcc a.s -o a"를 실행하다) -> 종료코드
+                Token xt = cur(); p++;
+                if (args.size() != 1) terr(xt, "'\"명령\"을 실행하다' 꼴이어야 함 (명령 하나)");
+                auto n = mk("system"); at(n.get(), xt);
+                n->kid.push_back(move(args[0]));
+                pending.clear();
+                return n;
+            }
             if (isKw("있나")) {                    // (점수표에 "영희"가 있나)
                 Token ht = cur(); p++;
                 if (args.size() != 2) terr(ht, "'사전에 열쇠가 있나' 꼴이어야 함");
@@ -966,7 +976,7 @@ struct Parser {
         string endWith; bool hasEnd = false;    // 끝" " 말하다 — 끝맺음 옵션
         auto atPredicate = [&] {
             return isKw("반복하다") || isKw("말하다") || isKw("돌려주다") || isKw("인")
-                || isKw("넣다") || isKw("빼다") || isKw("종료하다") || isFunc();
+                || isKw("넣다") || isKw("빼다") || isKw("종료하다") || isKw("실행하다") || isFunc();
         };
         while (!atPredicate()) {
             // 조사와 서술어 사이의 옵션:  "안녕"을 끝" " 말하다.
@@ -1045,6 +1055,16 @@ struct Parser {
             } else {
                 n->kid.push_back(move(args[0]));
             }
+            auto s = mk("exprstmt"); s->file = n->file; s->line = n->line;
+            s->kid.push_back(move(n));
+            return s;
+        }
+        if (isKw("실행하다")) {                    // "명령"을 실행하다.  (종료코드는 버림)
+            Token xt = cur(); p++;
+            expectOp(".", "문장은 '.' 로 끝나야 함");
+            if (args.size() != 1) terr(xt, "'\"명령\"을 실행하다' 꼴이어야 함 (명령 하나)");
+            auto n = mk("system"); at(n.get(), xt);
+            n->kid.push_back(move(args[0]));
             auto s = mk("exprstmt"); s->file = n->file; s->line = n->line;
             s->kid.push_back(move(n));
             return s;
@@ -1361,6 +1381,14 @@ struct Checker {
         if (n->kind == "none")  { n->ty = TNONE; return; }
         if (n->kind == "eof")   { n->ty = TINT; return; }
         if (n->kind == "argv")  { n->ty = listOf(TSTR); return; }
+        if (n->kind == "exe")   { n->ty = TSTR; return; }
+        if (n->kind == "system") {               // ("명령"을 실행하다)
+            chkExpr(n->kid[0].get());
+            if (n->kid[0]->ty != TSTR)
+                nerr(n->kid[0].get(), "실행할 명령은 문자여야 함 (지금은 " + tyName(n->kid[0]->ty) + ")");
+            n->ty = TINT;
+            return;
+        }
         if (n->kind == "emptylist") {            // (빈 문자 목록) — 아래 genExpr 에서 lnew(1)
             int t = -1;
             if (n->str == "정수") t = TINT; else if (n->str == "문자") t = TSTR; else if (n->str == "소수") t = TFLT;
@@ -1376,6 +1404,7 @@ struct Checker {
             // (입력끝) 은 키워드가 아니라서 같은 이름의 변수가 있으면 그쪽이 이긴다
             if (it == varTy.end() && n->str == "입력끝") { n->kind = "eof"; n->ty = TINT; return; }
             if (it == varTy.end() && n->str == "명령줄") { n->kind = "argv"; n->ty = listOf(TSTR); return; }
+            if (it == varTy.end() && n->str == "실행파일") { n->kind = "exe"; n->ty = TSTR; return; }
             if (it == varTy.end()) nerr(n, "정의되지 않은 변수 '" + n->str + "'");
             n->ty = it->second;
             return;
@@ -1535,6 +1564,12 @@ struct Checker {
             Node* b = n->kid[0].get();
             chkExpr(b);
             const string& f = n->str;
+            if (f == "환경값" || f == "실제경로") {             // ("HAN_LIB"의 환경값) / (경로의 실제경로)
+                if (b->ty != TSTR)
+                    nerr(b, "'의 " + f + "' 는 문자에만 쓸 수 있음 (지금은 " + tyName(b->ty) + ")");
+                n->ty = TSTR;
+                return;
+            }
             if (f == "코드") {                                  // "가"의 코드 -> 정수
                 if (b->ty != TSTR)
                     nerr(b, "'의 코드' 는 문자에만 쓸 수 있음 (지금은 " + tyName(b->ty) + ")");
@@ -1891,6 +1926,12 @@ struct Codegen {
         if (n->kind == "input") { text << "    call __han_input\n"; return; }
         if (n->kind == "eof")   { text << "    call __han_eof\n"; return; }
         if (n->kind == "argv")  { text << "    call __han_args\n"; return; }
+        if (n->kind == "exe")   { text << "    call __han_exe\n"; return; }
+        if (n->kind == "system") {
+            genExpr(n->kid[0].get());
+            text << "    movq %rax, %rdi\n    call __han_system\n";
+            return;
+        }
         if (n->kind == "emptylist") {            // 가장 바깥이 사전이면 사전, 아니면 목록
             int depth = (int)(n->num >> 32);
             bool dict = (n->num >> (depth - 1)) & 1;
@@ -2019,6 +2060,10 @@ struct Codegen {
             if (f == "무작위") {
                 text << "    movq %rax, %rdi\n    movq $" << n->line << ", %rsi\n"
                         "    call __han_rand\n";
+                return;
+            }
+            if (f == "환경값" || f == "실제경로") {
+                text << "    movq %rax, %rdi\n    call " << (f == "환경값" ? "__han_getenv" : "__han_realpath") << "\n";
                 return;
             }
             if (f == "코드" || f == "글자") {
@@ -3094,6 +3139,8 @@ static const char* C_RUNTIME = R"HANRT(
 #include <stdint.h>
 #include <setjmp.h>
 #include <time.h>
+#include <unistd.h>
+#include <sys/wait.h>
 
 typedef struct Hdr { size_t size; uint32_t idx; uint32_t mark; } Hdr;   /* 16바이트 */
 
@@ -3374,6 +3421,31 @@ void *__han_dkeys(void *dv) {                       /* 넣은 순서대로 */
     void *l = __han_lnew(d->live > 0 ? d->live : 1);
     for (long i = 0; i < d->used; i++) if (d->keys[i]) __han_lpush(l, (long)d->keys[i]);
     return l;
+}
+
+/* ---- 바깥 세상: 환경변수 · 실제 경로 · 내 실행파일 · 다른 프로그램 실행 ---- */
+char *__han_getenv(const char *k) {
+    const char *v = getenv(k);
+    return __han_strdup(v ? v : "");
+}
+char *__han_realpath(const char *p) {
+    char buf[4096];
+    if (!realpath(p, buf)) return __han_strdup("");
+    return __han_strdup(buf);
+}
+char *__han_exe(void) {
+    char buf[4096];
+    ssize_t n = readlink("/proc/self/exe", buf, sizeof(buf) - 1);
+    if (n < 0) n = 0;
+    buf[n] = 0;
+    return __han_strdup(buf);
+}
+long __han_system(const char *cmd) {
+    fflush(stdout); fflush(stderr); fflush(curOut());   /* 내 출력이 먼저 나가게 */
+    int r = system(cmd);
+    if (r == -1) return -1;
+    if (WIFEXITED(r)) return WEXITSTATUS(r);
+    return 128 + WTERMSIG(r);                            /* 신호로 죽었으면 셸처럼 128+신호 */
 }
 
 /* (N의 무작위) 의 씨앗. HAN_SEED 환경변수가 있으면 그 수로 — 테스트에서 결과를 고정하려고 */

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # 한랭으로 짠 한랭 컴파일러(self/한랭.han)로 컴파일하고 실행:  self/han2 프로그램.han [인자...]
-# 컴파일러 자체는 hanc 로 만든다. 런타임(GC·목록·문자·입출력)은 hanc --runtime 것을 같이 링크한다.
+# 컴파일러 자체는 hanc 로 만든다. 런타임(쓰레기 수거·목록·사전·입출력)은 hanc --runtime 이 만든
+# self/runtime.s — 셀프 컴파일러가 자기 옆에서 찾아 어셈블리 뒤에 붙인다.
 set -e
 dir=$(cd "$(dirname "$0")" && pwd)
 src="$1"
@@ -14,7 +15,7 @@ if [ ! -f "$dir/runtime.s" ] || [ "$hanc" -nt "$dir/runtime.s" ]; then
 fi
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
-"$dir/hanc2" "$src" "$tmp/p.s" "$dir/../lib" || exit 1   # 셋째 = 라이브러리 폴더. 오류면 표준 에러 + 종료코드 1
-gcc -no-pie "$tmp/p.s" "$dir/runtime.s" -o "$tmp/p" -lm
+# 셀프 컴파일러는 self/ 에 있어서 '컴파일러 옆 lib/' 가 저장소의 lib/ 가 아니다 — $HAN_LIB 로 알려준다
+HAN_LIB="${HAN_LIB:-$dir/../lib}" "$dir/hanc2" "$src" -o "$tmp/p" || exit 1
 shift
 "$tmp/p" "$@"

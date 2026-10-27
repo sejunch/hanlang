@@ -60,6 +60,11 @@ else bad "tests/t_file.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
 if ./hanc tests/t_v15.han -o "$tmp/t15" 2>"$tmp/err" &&
    [ "$(cd "$tmp" && ./t15)" = "$(printf '못 열었음\n계속 감\n한 줄\n한 줄\n(없음)\n0\n가\n1\n2\n0')" ]; then ok
 else bad "tests/t_v15.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+# 환경값·실제경로·실행파일·실행하다 (v17)
+if ./hanc tests/t_v17.han -o "$tmp/t17" 2>"$tmp/err" &&
+   [ "$(HAN_V17=있음 "$tmp/t17")" = "$(printf '있음\n1\n1\n1\n1\n3\n바깥에서 찍음\n0')" ]; then ok
+else bad "tests/t_v17.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+run_ok tests/t_mlstr.han
 # 경고: 컴파일은 되면서 표준 에러에 [경고] 가 나와야 하는 것
 for f in tests/e32.han tests/e33.han; do
     if ./hanc "$f" -o "$tmp/p" 2>&1 | grep -q '^\[경고\]'; then ok; else bad "$f ([경고] 가 나와야 함)"; fi
@@ -104,11 +109,12 @@ done
 echo "== 셀프호스팅 (한랭으로 짠 컴파일러 self/한랭.han)"
 export HAN_SEED=1          # (N의 무작위) 를 쓰는 프로그램도 양쪽 결과가 같게
 # hanc 로 컴파일러(1세대)를 만들고, 그걸로 프로그램을 컴파일해서 hanc 와 결과가 같은지 본다.
-# 셀프 컴파일러가 낸 어셈블리는 런타임(hanc --runtime)과 같이 링크한다.
+# 셀프 컴파일러는 hanc 와 같은 명령줄: '컴파일러 파일' 이면 어셈블리(런타임까지 붙은 것)를 화면에.
+# 런타임은 컴파일러 옆 runtime.s 에서 찾는다 (hanc --runtime 이 만든 것)
 self_build() {   # $1 = 컴파일러, $2 = 원본, $3 = 출력 .s.  에러는 표준 에러로, 실패하면 종료코드 1
-    rm -f "$3"; "$1" "$2" "$3" "$ROOT/lib" >"$tmp/selfout" 2>"$tmp/selferr"
+    rm -f "$3"; HAN_LIB="$ROOT/lib" "$1" "$2" >"$3" 2>"$tmp/selferr"
 }
-self_link() { gcc -no-pie "$1" "$tmp/rt.s" -o "$2" -lm 2>"$tmp/err"; }
+self_link() { gcc -no-pie "$1" -o "$2" -lm 2>"$tmp/err"; }
 # 출력과 종료코드를 hanc 쪽과 비교 (입력·인자·작업 폴더도 같게)
 self_same() {   # $1 = 컴파일러, $2 = 원본
     self_build "$1" "$2" "$tmp/s.s" && self_link "$tmp/s.s" "$tmp/sp" &&
@@ -117,7 +123,7 @@ self_same() {   # $1 = 컴파일러, $2 = 원본
 }
 # 예제·기능 테스트 전부 (입력·인자는 양쪽에 똑같이 준다)
 SELF_SAME="self/tests/s1.han self/tests/s2.han $(ls examples/*.han tests/t_*.han | tr '\n' ' ')"
-if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err" && ./hanc --runtime > "$tmp/rt.s"; then
+if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err" && ./hanc --runtime > "$tmp/runtime.s"; then
     ok
     for f in $SELF_SAME; do
         if self_same "$tmp/hanc2" "$f"; then ok
@@ -133,23 +139,24 @@ if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err" && ./hanc --runtime > "$t
         if [ -x "$tmp/hanc_g2" ] && self_same "$tmp/hanc_g2" "$f"; then ok
         else bad "$f (2세대 셀프 컴파일러 결과가 hanc 와 다름)"; fi
     done
+    # hanc 와 같은 명령줄: -o 로 실행파일까지 만들고 중간 .s 는 지운다
+    if HAN_LIB="$ROOT/lib" "$tmp/hanc2" tests/t_lib.han -o "$tmp/tl" 2>"$tmp/err" && [ ! -e "$tmp/tl.s" ] &&
+       [ "$("$tmp/tl")" = "$(./han tests/t_lib.han)" ]; then ok
+    else bad "self/한랭.han (-o 로 실행파일 만들기)"; head -3 "$tmp/err" | sed 's/^/    /'; fi
     # 셀프 컴파일러는 지금까지 짠 한랭 프로그램 중 가장 커서 GC 검증에도 좋다
     if self_build "$tmp/hanc2" self/tests/s2.han "$tmp/n0.s" &&
-       HAN_GC_STRESS=1 timeout 120 "$tmp/hanc2" self/tests/s2.han "$tmp/n.s" && cmp -s "$tmp/n0.s" "$tmp/n.s"; then ok
+       HAN_GC_STRESS=1 timeout 120 "$tmp/hanc2" self/tests/s2.han >"$tmp/n.s" && cmp -s "$tmp/n0.s" "$tmp/n.s"; then ok
     else bad "self/한랭.han (수거 스트레스 모드에서 결과가 달라짐)"; fi
-    # 에러 메시지(문구·캐럿·호출 문맥)가 hanc 와 글자 하나까지 같아야 한다.
-    # se6 은 빼고: hanc 는 문자열이 여러 줄에 걸칠 수 있어 행 번호가 다르다 (셀프 렉서는 줄 단위)
+    # 에러 메시지(문구·캐럿·호출 문맥)가 hanc 와 글자 하나까지 같아야 한다
     for f in tests/e*.han self/tests/se*.han; do
-        case "$f" in */se6.han) continue;; esac
         self_build "$tmp/hanc2" "$f" "$tmp/s.s"
-        grep -q "셀프 컴파일러" "$tmp/selferr" && continue        # 아직 안 되는 기능 (소수·불러오기 등)
         if [ "$(./hanc "$f" -o "$tmp/p" 2>&1)" = "$(cat "$tmp/selferr")" ]; then ok
         else bad "$f (셀프 컴파일러 에러 메시지가 hanc 와 다름)"; fi
     done
     for f in self/tests/se*.han; do                           # 컴파일 에러가 나야 하는 것들
         if self_build "$tmp/hanc2" "$f" "$tmp/s.s"; then bad "$f (셀프 컴파일러: 컴파일 에러가 나야 정상)"
-        elif [ -f "$tmp/s.s" ]; then bad "$f (셀프 컴파일러: 오류인데 어셈블리를 만듦)"
-        elif ! grep -q '^\[오류\]' "$tmp/selferr" || [ -s "$tmp/selfout" ]; then
+        elif [ -s "$tmp/s.s" ]; then bad "$f (셀프 컴파일러: 오류인데 어셈블리를 냄)"
+        elif ! grep -q '^\[오류\]' "$tmp/selferr"; then
             bad "$f (셀프 컴파일러: 오류 메시지는 표준 에러로만 나와야 함)"
         else ok; fi
     done
