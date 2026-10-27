@@ -14,7 +14,7 @@ if [ ! -f "$dir/runtime.s" ] || [ "$hanc" -nt "$dir/runtime.s" ]; then
 fi
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
-"$dir/hanc2" "$src" "$tmp/p.s" || exit 1      # 오류면 표준 에러에 알리고 종료코드 1
+"$dir/hanc2" "$src" "$tmp/p.s" "$dir/../lib" || exit 1   # 셋째 = 라이브러리 폴더. 오류면 표준 에러 + 종료코드 1
 gcc -no-pie "$tmp/p.s" "$dir/runtime.s" -o "$tmp/p" -lm
 shift
 "$tmp/p" "$@"

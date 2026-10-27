@@ -12,6 +12,7 @@
 // v13: 묶음 안 묶음·목록, 없음, 목록의 목록, (입력끝), 파일 블록 — 한랭으로 컴파일러 짜기 준비
 // v14: (명령줄), 종료하다, 표준 에러(파일 오류를 쓰기로 열다) — 셀프호스팅 1단계에서 드러난 것
 //      hanc --runtime: 런타임만 따로 (셀프호스팅 컴파일러 self/한랭.han 과 링크)
+// v15: 못 열면 { }, (빈 X 목록), [경고] (쪼갠 낱말을 나중에 선언 / 칸 이름 뒤 번째)
 // 빌드: g++ -std=c++17 -O2 -o hanc hanc.cpp
 // 사용: ./hanc prog.han > prog.s   또는   ./hanc prog.han -o prog
 #include <bits/stdc++.h>
@@ -52,8 +53,15 @@ struct Diag {
         files.push_back(move(sf));
         return (int)files.size() - 1;
     }
+    // 경고: 형식은 오류와 같고 끝내지 않는다 (호출 문맥도 안 붙임)
+    void warn(int file, int line, int col, int blen, const string& m) { show("[경고] ", file, line, col, blen, m); }
     [[noreturn]] void error(int file, int line, int col, int blen, const string& m) {
-        cerr << "[오류] ";
+        show("[오류] ", file, line, col, blen, m);
+        for (size_t k = errCtx.size(); k-- > 0; ) cerr << errCtx[k] << "\n";
+        exit(1);
+    }
+    void show(const char* head, int file, int line, int col, int blen, const string& m) {
+        cerr << head;
         if (files.size() > 1 && file >= 0 && file < (int)files.size())
             cerr << files[file].name << " ";
         cerr << line << "행: " << m << "\n";
@@ -80,8 +88,6 @@ struct Diag {
             }
             cerr << "\n";
         }
-        for (size_t k = errCtx.size(); k-- > 0; ) cerr << errCtx[k] << "\n";
-        exit(1);
     }
 };
 static Diag diag;
@@ -111,7 +117,7 @@ static const set<string> KEYWORDS = {
     "말하다","돌려주다","란","이란","이다","듣다","바꾸다",
     "정수","소수","문자","참","거짓","번째","넣다",
     "행","열","채우다","멈추다","계속하다","묶음","새","빼다",
-    "없음","파일","열다","읽기","쓰기","붙여쓰기","종료하다"
+    "없음","파일","열다","읽기","쓰기","붙여쓰기","종료하다","빈"
 };
 
 // ==================== 1단계: 렉서 ====================
@@ -298,6 +304,20 @@ struct Loader {
 struct Resolver {
     set<string> known;
     set<string> funcNames;
+    // "아는 이름 + 조사" 로 쪼갠 낱말 -> 그 자리. 나중에 그 낱말 통째가 변수로 선언되면
+    // 앞에서 쪼갠 게 뜻과 달랐을 가능성이 크다 ('나' 가 있을 때 '나이' 를 '나' + '이' 로 읽음)
+    map<string, Token> splitAt;
+    void warnIfSplitBefore(const string& name, const Token& here) {
+        auto it = splitAt.find(name);
+        if (it == splitAt.end()) return;
+        const Token& t = it->second;
+        string where = (t.file != here.file && t.file < (int)diag.files.size())
+                     ? diag.files[t.file].name + " " : string();
+        diag.warn(here.file, here.line, here.col, here.blen,
+                  "'" + name + "' 를 앞의 " + where + to_string(t.line) + "행에서는 '" + t.s + "' + 조사 '" +
+                  t.particle + "' 로 읽었음 (그때는 '" + name + "' 라는 이름이 없었음). 그 줄을 확인하거나 다른 이름을 쓰기");
+        splitAt.erase(it);
+    }
 
     void prescan(const vector<Token>& in) {
         for (size_t j = 0; j < in.size(); j++) {
@@ -348,8 +368,10 @@ struct Resolver {
             bool done = false;
             for (auto& p : PARTICLES)                       // 아는 변수 + 조사
                 if (endsWith(w, p) && known.count(w.substr(0, w.size()-p.size()))) {
+                    string whole = w;                       // w 는 tk.s 의 참조라 바꾸기 전에 복사
                     tk.s = w.substr(0, w.size()-p.size()); tk.particle = p;
                     tk.blen = (int)tk.s.size();
+                    if (!splitAt.count(whole)) splitAt[whole] = tk;
                     out.push_back(tk); done = true; break;
                 }
             if (done) continue;
@@ -451,11 +473,13 @@ struct Resolver {
                     known.insert(stem);
                     tk.s = stem; tk.particle = p;
                     tk.blen = (int)stem.size();
+                    warnIfSplitBefore(stem, tk);
                     out.push_back(tk); done = true; break;
                 }
             if (done) continue;
 
             known.insert(w);
+            warnIfSplitBefore(w, tk);
             out.push_back(tk);
         }
         return out;
@@ -646,6 +670,11 @@ struct Parser {
         // 내장 이름(개수/제곱근/행수…)을 먼저 보므로 칸 이름이 그것들과 겹치면 내장이 이긴다.
         if (cur().t == TK::Ident && fieldNames.count(cur().s) &&
             cur().s != "개수" && !BUILTIN_NOUNS.count(cur().s) && !GRID_NOUNS.count(cur().s)) {
+            // 칸 이름은 전역이라 같은 이름의 변수를 'X의 칸번째' 로 쓰면 칸으로 읽혀 버린다
+            if (tk[p+1].t == TK::Keyword && tk[p+1].s == "번째")
+                diag.warn(cur().file, cur().line, cur().col, cur().blen,
+                          "'" + cur().s + "' 는 묶음의 칸 이름이라 여기서도 칸으로 읽음. '" + cur().s +
+                          "번째' 를 쓰려던 거면 변수 이름을 칸 이름과 다르게 짓기");
             auto n = mk("field", cur().s); at(n.get(), cur());
             pending = cur().particle; p++;
             if (pending.empty()) grabParticle();
@@ -702,6 +731,26 @@ struct Parser {
             auto n = mk("var", t.s); at(n.get(), t);
             pending = t.particle;
             p++;
+            return n;
+        }
+        if (isKw("빈")) {                       // (빈 문자 목록) — 타입 있는 빈 목록
+            p++;
+            Token bt = cur();
+            string base;
+            if (isKw("정수") || isKw("문자") || isKw("소수")) base = cur().s;
+            else if (cur().t == TK::Ident && cur().particle.empty()) base = cur().s;
+            else terr(cur(), "'빈' 다음에는 '문자 목록' 처럼 타입과 '목록' 이 와야 함");
+            p++;
+            int depth = 0;
+            string part;
+            while (cur().t == TK::Ident && cur().s == "목록" && part.empty()) {
+                depth++; part = cur().particle; p++;
+            }
+            if (depth == 0)
+                terr(cur(), "'빈 " + base + "' 다음에는 '목록' 이 와야 함 (예: (빈 " + base + " 목록))");
+            auto n = mk("emptylist", base, depth); at(n.get(), bt);
+            pending = part;
+            if (pending.empty()) grabParticle();
             return n;
         }
         if (isKw("새")) {                       // (새 학생) — 묶음 하나 만들기
@@ -831,6 +880,12 @@ struct Parser {
             auto n = mk("fileblk", "", mode); at(n.get(), first);
             n->kid.push_back(move(name));
             n->kid.push_back(block());
+            // 파일 …을 읽기로 열다 { } 못 열면 { }  — '못'·'열면' 은 키워드가 아니라 여기서만 읽는다
+            if (cur().t == TK::Ident && cur().s == "못" && cur().particle.empty() &&
+                tk[p+1].t == TK::Ident && tk[p+1].s == "열면") {
+                p += 2;
+                n->kid.push_back(block());
+            }
             return n;
         }
         // 대입:  X는 <식>이다.  /  X는 듣다.
@@ -1246,6 +1301,15 @@ struct Checker {
         if (n->kind == "none")  { n->ty = TNONE; return; }
         if (n->kind == "eof")   { n->ty = TINT; return; }
         if (n->kind == "argv")  { n->ty = listOf(TSTR); return; }
+        if (n->kind == "emptylist") {            // (빈 문자 목록) — 아래 genExpr 에서 lnew(1)
+            int t = -1;
+            if (n->str == "정수") t = TINT; else if (n->str == "문자") t = TSTR; else if (n->str == "소수") t = TFLT;
+            else for (size_t i = 0; i < structs.size(); i++) if (structs[i].name == n->str) t = TSTRUCT + (int)i;
+            if (t < 0) nerr(n, "'" + n->str + "' 이라는 묶음이 없음");
+            for (long long k = 0; k < n->num; k++) t = listOf(t);
+            n->ty = t;
+            return;
+        }
         if (n->kind == "var") {
             auto it = varTy.find(n->str);
             // (입력끝) 은 키워드가 아니라서 같은 이름의 변수가 있으면 그쪽이 이긴다
@@ -1550,12 +1614,14 @@ struct Checker {
                 if (n->num == 0) nerr(nm, "오류(표준 에러)는 쓰기로만 열 수 있음");
                 nm->kind = "stderr"; nm->ty = TSTR;
                 chkStmt(n->kid[1].get());
+                if (n->kid.size() == 3) chkStmt(n->kid[2].get());
                 return;
             }
             chkExpr(n->kid[0].get());
             if (n->kid[0]->ty != TSTR)
                 nerr(n->kid[0].get(), "파일 이름은 문자여야 함 (지금은 " + tyName(n->kid[0]->ty) + ")");
             chkStmt(n->kid[1].get());
+            if (n->kid.size() == 3) chkStmt(n->kid[2].get());     // 못 열면 { }
             return;
         }
         if (n->kind == "fieldset") {             // 철수의 이름은 "철수"이다.
@@ -1726,6 +1792,7 @@ struct Codegen {
         if (n->kind == "input") { text << "    call __han_input\n"; return; }
         if (n->kind == "eof")   { text << "    call __han_eof\n"; return; }
         if (n->kind == "argv")  { text << "    call __han_args\n"; return; }
+        if (n->kind == "emptylist") { text << "    movl $1, %edi\n    call __han_lnew\n"; return; }
         if (n->kind == "stderr"){ text << "    xorl %eax, %eax\n"; return; }    // 이름 대신 널 = 표준 에러
         if (n->kind == "none")  { text << "    xorl %eax, %eax\n"; return; }      // 없음 = 널 포인터
         if (n->kind == "list") {
@@ -2032,15 +2099,25 @@ struct Codegen {
         }
         if (n->kind == "fileblk") {
             // 열면 런타임이 '앞서 보던 파일' 을 돌려준다 → 보관했다가 닫을 때 되돌린다 (블록이 겹쳐도 됨)
+            // '못 열면' 블록이 있으면 실패해도 죽지 않고 -1 을 돌려받아 그 블록으로 간다
+            bool alt = (n->kid.size() == 3);
+            int Lfail = newLabel(), Lend = newLabel();
             genExpr(n->kid[0].get());
             text << "    movq %rax, %rdi\n    movq $" << n->num << ", %rsi\n"
-                    "    movq $" << n->line << ", %rdx\n    call __han_fopen\n"
-                    "    movq %rax, " << n->slot << "(%rbp)\n";
+                    "    movq $" << n->line << ", %rdx\n    movq $" << (alt ? 1 : 0) << ", %rcx\n"
+                    "    call __han_fopen\n";
+            if (alt) text << "    cmpq $-1, %rax\n    je .L" << Lfail << "\n";
+            text << "    movq %rax, " << n->slot << "(%rbp)\n";
             openFiles.push_back({n->slot, (int)n->num});
             genStmt(n->kid[1].get());
             openFiles.pop_back();
             text << "    movq " << n->slot << "(%rbp), %rdi\n    movq $" << n->num << ", %rsi\n"
                     "    call __han_fclose\n";
+            if (alt) {
+                text << "    jmp .L" << Lend << "\n.L" << Lfail << ":\n";
+                genStmt(n->kid[2].get());
+                text << ".L" << Lend << ":\n";
+            }
             return;
         }
         if (n->kind == "gridset") {
@@ -3043,9 +3120,11 @@ static const char *modeName(long m) { return m == 0 ? "읽기" : m == 1 ? "쓰�
 
 /* 파일 블록 열기. 앞서 보던 파일을 돌려줘서 블록이 끝날 때 되돌릴 수 있게 한다 (겹쳐 열기 가능). */
 /* name 이 널이면 표준 에러 (파일 오류를 쓰기로 열다) */
-void *__han_fopen(const char *name, long mode, long line) {
+/* can_fail: '못 열면' 블록이 있으면 실패해도 끝내지 않고 (void*)-1 을 돌려준다 (상태는 그대로) */
+void *__han_fopen(const char *name, long mode, long line, long can_fail) {
     if (!name) fflush(curOut());            /* 화면 출력과 에러 출력 순서가 뒤섞이지 않게 */
     FILE *f = name ? fopen(name, mode == 0 ? "r" : mode == 1 ? "w" : "a") : stderr;
+    if (!f && can_fail) return (void *)-1;
     if (!f) {
         fflush(stdout);
         printf("[실행 오류] %ld행: 파일 '%s' 을 %s로 열 수 없음\n", line, name, modeName(mode));

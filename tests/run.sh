@@ -56,6 +56,14 @@ if ./hanc tests/t_file.han -o "$tmp/tf" 2>"$tmp/err" && (cd "$tmp" && ./tf >/dev
    [ "$(cat "$tmp/t_file_copy.txt")" = "$(printf '> 첫째 줄\n> 42\n> 3.5 / 끝\n> 덧붙인 줄')" ]; then ok
 else bad "tests/t_file.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
 
+# 못 열면 / (빈 X 목록): 파일을 만들어서 임시 폴더에서 돌린다
+if ./hanc tests/t_v15.han -o "$tmp/t15" 2>"$tmp/err" &&
+   [ "$(cd "$tmp" && ./t15)" = "$(printf '못 열었음\n계속 감\n한 줄\n한 줄\n(없음)\n0\n가\n1\n2\n0')" ]; then ok
+else bad "tests/t_v15.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+# 경고: 컴파일은 되면서 표준 에러에 [경고] 가 나와야 하는 것
+for f in tests/e32.han tests/e33.han; do
+    if ./hanc "$f" -o "$tmp/p" 2>&1 | grep -q '^\[경고\]'; then ok; else bad "$f ([경고] 가 나와야 함)"; fi
+done
 # (명령줄)·종료하다·표준 에러: 화면 출력, 에러 출력, 종료코드를 따로따로 본다
 if ./hanc tests/t_args.han -o "$tmp/ta" 2>"$tmp/err"; then
     out=$("$tmp/ta" 가나 12 2>"$tmp/stderr"); rc=$?
@@ -97,7 +105,7 @@ echo "== 셀프호스팅 (한랭으로 짠 컴파일러 self/한랭.han)"
 # hanc 로 컴파일러(1세대)를 만들고, 그걸로 프로그램을 컴파일해서 hanc 와 결과가 같은지 본다.
 # 셀프 컴파일러가 낸 어셈블리는 런타임(hanc --runtime)과 같이 링크한다.
 self_build() {   # $1 = 컴파일러, $2 = 원본, $3 = 출력 .s.  에러는 표준 에러로, 실패하면 종료코드 1
-    rm -f "$3"; "$1" "$2" "$3" >"$tmp/selfout" 2>"$tmp/selferr"
+    rm -f "$3"; "$1" "$2" "$3" "$ROOT/lib" >"$tmp/selfout" 2>"$tmp/selferr"
 }
 self_link() { gcc -no-pie "$1" "$tmp/rt.s" -o "$2" -lm 2>"$tmp/err"; }
 # 출력과 종료코드를 hanc 쪽과 비교 (입력·인자·작업 폴더도 같게)
@@ -106,10 +114,8 @@ self_same() {   # $1 = 컴파일러, $2 = 원본
     [ "$(cd "$tmp" && printf '10\n20\n12\n' | ./sp 가나 12 2>&1; echo "rc=$?")" = \
       "$(cd "$tmp" && printf '10\n20\n12\n' | "$ROOT/han" "$ROOT/$2" 가나 12 2>&1; echo "rc=$?")" ]
 }
-SELF_SAME="self/tests/s1.han self/tests/s2.han examples/demo.han tests/t_bit.han tests/t_tree.han
-    tests/t_nest.han tests/t_gc.han tests/t_args.han tests/t_eof.han tests/t_exit0.han tests/t_code.han
-    tests/t_str.han tests/t_loop.han tests/t_none.han tests/t_nofile.han tests/t_oob.han
-    tests/t_mod0.han tests/t_shift.han tests/t_popempty.han"
+# 예제·기능 테스트 전부 (입력·인자는 양쪽에 똑같이 준다)
+SELF_SAME="self/tests/s1.han self/tests/s2.han $(ls examples/*.han tests/t_*.han | tr '\n' ' ')"
 if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err" && ./hanc --runtime > "$tmp/rt.s"; then
     ok
     for f in $SELF_SAME; do
