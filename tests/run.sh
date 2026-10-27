@@ -45,12 +45,19 @@ for f in tests/t_float.han tests/t_func.han tests/t_edge.han tests/t_list.han \
          tests/t_poly.han tests/t_strcmp.han tests/t_grid.han tests/t_loop.han \
          tests/t_split.han tests/t_end.han tests/t_bit.han tests/t_code.han \
          tests/t_struct.han tests/t_lib2.han tests/t_sortlib.han \
-         tests/t_statlib.han tests/t_gridlib.han tests/t_fraclib.han tests/t_biglib.han tests/t_pop.han; do
+         tests/t_statlib.han tests/t_gridlib.han tests/t_fraclib.han tests/t_biglib.han tests/t_pop.han \
+         tests/t_tree.han tests/t_nest.han; do
     run_ok "$f"
 done
+run_ok tests/t_eof.han "$(printf '10\n20\n12\n')"
+# 파일을 만드는 테스트는 임시 폴더 안에서 돌리고, 결과 파일 내용까지 본다
+if ./hanc tests/t_file.han -o "$tmp/tf" 2>"$tmp/err" && (cd "$tmp" && ./tf >/dev/null) &&
+   [ "$(cat "$tmp/t_file_copy.txt")" = "$(printf '> 첫째 줄\n> 42\n> 3.5 / 끝\n> 덧붙인 줄')" ]; then ok
+else bad "tests/t_file.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
 
 echo "== 실행 오류 (종료코드 1 이 정답)"
-for f in tests/t_div0.han tests/t_mod0.han tests/t_oob.han tests/t_gerr.han tests/t_shift.han tests/t_popempty.han; do
+for f in tests/t_div0.han tests/t_mod0.han tests/t_oob.han tests/t_gerr.han tests/t_shift.han tests/t_popempty.han \
+         tests/t_none.han tests/t_nofile.han; do
     run_dies "$f"
 done
 
@@ -66,7 +73,8 @@ else bad "tests/t_gc.han (메모리 제한 안에서 끝나야 하고 출력이 
 for f in examples/demo4.han examples/demo7.han tests/t_list.han tests/t_str.han \
          tests/t_struct.han tests/t_split.han tests/t_pop.han tests/t_grid.han \
          tests/t_poly.han tests/t_lib.han tests/t_sortlib.han tests/t_fraclib.han \
-         tests/t_biglib.han tests/t_statlib.han tests/t_gridlib.han tests/t_strcmp.han; do
+         tests/t_biglib.han tests/t_statlib.han tests/t_gridlib.han tests/t_strcmp.han \
+         tests/t_tree.han tests/t_nest.han; do
     if ./hanc "$f" -o "$tmp/p" 2>"$tmp/err" &&
        a=$("$tmp/p" </dev/null 2>&1) && b=$(HAN_GC_STRESS=1 timeout 60 "$tmp/p" </dev/null 2>&1) &&
        [ "$a" = "$b" ]; then ok

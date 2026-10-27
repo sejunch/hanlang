@@ -9,6 +9,7 @@
 // v10: 비트 연산(& | ^ ~ << >>), 문자↔코드값, 묶음(구조체). 타입 인코딩 재설계
 // v11: 목록 원소 빼기 (빼다) — 스택·큐가 가능해짐
 // v12: 쓰레기 수거(보수적 mark-sweep GC) — 메모리 누수 해결
+// v13: 묶음 안 묶음·목록, 없음, 목록의 목록, (입력끝), 파일 블록 — 한랭으로 컴파일러 짜기 준비
 // 빌드: g++ -std=c++17 -O2 -o hanc hanc.cpp
 // 사용: ./hanc prog.han > prog.s   또는   ./hanc prog.han -o prog
 #include <bits/stdc++.h>
@@ -107,7 +108,8 @@ static const set<string> KEYWORDS = {
     "만약","라면","이라면","아니면","인","동안","번","반복하다",
     "말하다","돌려주다","란","이란","이다","듣다","바꾸다",
     "정수","소수","문자","참","거짓","번째","넣다",
-    "행","열","채우다","멈추다","계속하다","묶음","새","빼다"
+    "행","열","채우다","멈추다","계속하다","묶음","새","빼다",
+    "없음","파일","열다","읽기","쓰기","붙여쓰기"
 };
 
 // ==================== 1단계: 렉서 ====================
@@ -324,6 +326,7 @@ struct Resolver {
         known.insert("개수");
         for (auto& b : BUILTIN_NOUNS) known.insert(b);
         for (auto& b : GRID_NOUNS) known.insert(b);
+        known.insert("입력끝");                     // (입력끝) — 이것도 키워드가 아님
         prescan(in);
         vector<Token> out;
         for (auto& tk : in) {
@@ -459,10 +462,12 @@ struct Resolver {
 // 타입 인코딩
 //   0,1,2       정수 / 문자 / 소수
 //   3           빈 목록 (원소 타입 미정)
+//   4           없음 (어떤 묶음 자리에도 들어갈 수 있는 빈 값. 묶음 타입이 정해지면 그쪽으로 바뀜)
 //   16+i        i번째 구조체
 //   1024+원소   그 원소의 목록  ("학생 목록" 처럼 구조체 목록도 자연히 표현된다)
+//               목록의 목록은 1024 를 한 번 더 더한 것 (2048+정수 = 정수 목록 목록)
 // 예전엔 목록을 3,4,5 로 붙여 썼는데 구조체를 넣으니 번호가 겹쳤다. 그래서 자리를 떼어놨다.
-enum { TINT = 0, TSTR = 1, TFLT = 2, TLU = 3, TSTRUCT = 16, TLIST = 1024 };
+enum { TINT = 0, TSTR = 1, TFLT = 2, TLU = 3, TNONE = 4, TSTRUCT = 16, TLIST = 1024 };
 static bool isListTy(int t)   { return t >= TLIST || t == TLU; }
 static bool isStructTy(int t) { return t >= TSTRUCT && t < TLIST; }
 static int  listOf(int e)     { return TLIST + e; }
@@ -474,6 +479,7 @@ static string tyName(int t) {
     if (t == TSTR) return "문자";
     if (t == TFLT) return "소수";
     if (t == TLU)  return "목록";
+    if (t == TNONE) return "없음";
     if (isStructTy(t)) {
         size_t i = (size_t)(t - TSTRUCT);
         return i < structNames.size() ? structNames[i] : "묶음";
@@ -481,6 +487,15 @@ static string tyName(int t) {
     if (t >= TLIST) return tyName(elemOf(t)) + " 목록";
     return "???";
 }
+// want 자리에 got 타입 값을 넣어도 되나. 같은 타입 말고도
+// 묶음 자리에 없음, 타입 정해진 목록 자리에 빈 목록 [] 은 들어갈 수 있다.
+static bool fits(int want, int got) {
+    if (want == got) return true;
+    if (isStructTy(want) && got == TNONE) return true;
+    if (want >= TLIST && got == TLU) return true;
+    return false;
+}
+static bool isRefTy(int t) { return isStructTy(t) || t == TNONE; }   // 묶음이거나 없음
 
 struct Node; using P = unique_ptr<Node>;
 // kind: num flt str var un bin call input conv | assign print ret if while repeat block exprstmt
@@ -490,6 +505,7 @@ struct Node {
     double f = 0;
     int file = 0, line = 0, col = -1, blen = 0;
     int ty = TINT;
+    int slot = 0;              // 코드 생성용 스택 칸 (파일 블록이 쓴다)
     vector<P> kid;
 };
 static P mk(string k, string s = "", long long n = 0) {
@@ -674,6 +690,8 @@ struct Parser {
         if (t.t == TK::Str)  { auto n = mk("str",t.s); at(n.get(),t); p++; grabParticle(); return n; }
         if (isKw("참"))  { auto n = mk("num","",1); at(n.get(),t); p++; grabParticle(); return n; }
         if (isKw("거짓")){ auto n = mk("num","",0); at(n.get(),t); p++; grabParticle(); return n; }
+        if (isKw("없음")){ auto n = mk("none"); at(n.get(),t); pending = t.particle; p++;
+                          if (pending.empty()) grabParticle(); return n; }
         if (t.t == TK::Ident) {
             if (funcNames.count(t.s))
                 terr(t, "함수 '" + t.s + "' 를 값으로 쓰려면 ( ) 로 감싸야 함");
@@ -792,6 +810,23 @@ struct Parser {
             else terr(cur(), "'만약 (조건)' 뒤에는 '라면' 이 와야 함");
             n->kid.push_back(block());
             if (isKw("아니면")) { p++; n->kid.push_back(block()); }
+            return n;
+        }
+        // 파일 "a.han"을 읽기로 열다 { }  — 블록 안에서는 듣다/입력끝(읽기) 이나 말하다(쓰기) 가 파일을 본다
+        if (isKw("파일")) {
+            p++;
+            P name = expr();
+            if (pending != "을" && pending != "를")
+                terr(cur(), "'파일 \"이름\"을 읽기로 열다' 꼴이어야 함 (파일 이름 뒤에 '을')");
+            if (!(isKw("읽기") || isKw("쓰기") || isKw("붙여쓰기")) ||
+                (cur().particle != "로" && cur().particle != "으로"))
+                terr(cur(), "파일을 어떻게 열지 '읽기로', '쓰기로', '붙여쓰기로' 중 하나로 써야 함");
+            int mode = isKw("읽기") ? 0 : isKw("쓰기") ? 1 : 2;
+            p++;
+            expectKw("열다", "'읽기로' 다음에는 '열다' 가 와야 함");
+            auto n = mk("fileblk", "", mode); at(n.get(), first);
+            n->kid.push_back(move(name));
+            n->kid.push_back(block());
             return n;
         }
         // 대입:  X는 <식>이다.  /  X는 듣다.
@@ -977,9 +1012,10 @@ struct Parser {
         if (!(isKw("란") || isKw("이란"))) terr(cur(), "묶음 이름 뒤에는 '이란' 이 와야 함");
         p++;
         expectKw("묶음");
-        for (auto& old : structs)
-            if (old.name == s.name)
-                terr(nameTok, "'" + s.name + "' 묶음이 이미 있음 (" + to_string(old.line) + "행)");
+        // 이름은 prescanStructs 가 미리 등록해 뒀다 (칸에서 자기 자신이나 뒤에 나올 묶음을 부르려고)
+        size_t si = 0;
+        while (si < structs.size() && !(structs[si].file == s.file && structs[si].line == s.line &&
+                                        structs[si].name == s.name)) si++;
         expectOp("{", "묶음 내용은 '{' 로 열어야 함");
         while (!isOp("}")) {
             if (cur().t == TK::End) terr(cur(), "'}' 로 닫아야 함");
@@ -987,11 +1023,24 @@ struct Parser {
                 terr(cur(), "묶음 안은 '이름은 정수.' 꼴이어야 함");
             Field f; f.name = cur().s;
             Token ft = cur(); p++;
+            // 칸 타입:  정수 / 소수 / 문자 / 묶음이름,  뒤에 '목록' 을 붙인 만큼 목록으로 감싼다
+            //   점수들은 정수 목록.   자식들은 노드 목록.   표는 정수 목록 목록.
             if      (isKw("정수")) f.ty = TINT;
             else if (isKw("문자")) f.ty = TSTR;
             else if (isKw("소수")) f.ty = TFLT;
-            else terr(cur(), "칸 타입은 정수, 소수, 문자 중 하나여야 함");
+            else {
+                int found = -1;
+                if (cur().t == TK::Ident && cur().particle.empty())
+                    for (size_t i = 0; i < structs.size(); i++)
+                        if (structs[i].name == cur().s) found = (int)i;
+                if (found < 0)
+                    terr(cur(), "칸 타입은 정수, 소수, 문자 또는 묶음 이름이어야 함 (뒤에 '목록' 을 붙일 수 있음)");
+                f.ty = TSTRUCT + found;
+            }
             p++;
+            while (cur().t == TK::Ident && cur().s == "목록" && cur().particle.empty()) {
+                f.ty = listOf(f.ty); p++;
+            }
             expectOp(".", "칸 하나마다 '.' 로 끝내야 함");
             for (auto& o : s.fields)
                 if (o.name == f.name) terr(ft, "'" + f.name + "' 칸이 이 묶음에 이미 있음");
@@ -999,8 +1048,7 @@ struct Parser {
         }
         expectOp("}");
         if (s.fields.empty()) err(s.file, s.line, "'" + s.name + "' 묶음에 칸이 하나도 없음");
-        structNames.push_back(s.name);
-        structs.push_back(move(s));
+        structs[si].fields = move(s.fields);
     }
 
     void funcDef() {
@@ -1032,6 +1080,17 @@ struct Parser {
         for (size_t k = 0; k + 1 < tk.size(); k++) {
             if (!(tk[k].t == TK::Keyword && (tk[k].s == "란" || tk[k].s == "이란"))) continue;
             if (!(tk[k+1].t == TK::Keyword && tk[k+1].s == "묶음")) continue;
+            // 묶음 이름을 정의 순서대로 먼저 등록 — 칸 타입에서 자기 자신(노드의 왼쪽은 노드)이나
+            // 뒤에 정의될 묶음을 부를 수 있게. 칸 목록은 structDef 가 채운다.
+            if (k > 0 && tk[k-1].t == TK::Ident) {
+                const Token& nt = tk[k-1];
+                for (auto& old : structs)
+                    if (old.name == nt.s)
+                        terr(nt, "'" + nt.s + "' 묶음이 이미 있음 (" + to_string(old.line) + "행)");
+                Struct s; s.name = nt.s; s.file = nt.file; s.line = nt.line;
+                structNames.push_back(s.name);
+                structs.push_back(move(s));
+            }
             size_t j = k + 2;
             if (!(j < tk.size() && tk[j].t == TK::Op && tk[j].s == "{")) continue;
             for (j++; j < tk.size() && !(tk[j].t == TK::Op && tk[j].s == "}"); j++)
@@ -1085,6 +1144,27 @@ struct Checker {
     int loopDepth = 0;
     bool inFunc = false;
     string curName;
+    Node* discardSite = nullptr;    // 값이 버려지는 호출 (문장으로 쓴 함수 호출)
+
+    static void fieldsUsedOn(const Node* n, const string& var, set<string>& out) {
+        if ((n->kind == "field" || n->kind == "fieldset") && !n->kid.empty() &&
+            n->kid[0]->kind == "var" && n->kid[0]->str == var)
+            out.insert(n->str);
+        for (auto& k : n->kid) fieldsUsedOn(k.get(), var, out);
+    }
+    // f 의 i번째 매개변수에 없음이 들어올 때 무슨 묶음인지 칸 이름으로 짐작. 모르면 TNONE 그대로.
+    static int guessStruct(const Func& f, size_t i) {
+        set<string> used;
+        fieldsUsedOn(f.body.get(), f.params[i], used);
+        if (used.empty()) return TNONE;
+        int hit = TNONE, cnt = 0;
+        for (size_t s = 0; s < structs.size(); s++) {
+            bool all = true;
+            for (auto& u : used) if (findField(TSTRUCT + (int)s, u) < 0) { all = false; break; }
+            if (all) { hit = TSTRUCT + (int)s; cnt++; }
+        }
+        return cnt == 1 ? hit : TNONE;
+    }
 
     static string typeList(const vector<int>& t) {
         string s;
@@ -1103,8 +1183,11 @@ struct Checker {
         deque<Inst>& list = insts[name];
         for (size_t i = 0; i < list.size(); i++) {
             if (list[i].pt != argTy) continue;
-            if (list[i].st == 1 && list[i].rt == -1)
+            if (list[i].st == 1 && list[i].rt == -1) {
+                // 문장으로 부른 재귀(값을 안 씀)는 돌려주는 타입을 몰라도 된다 — 트리 순회 같은 것
+                if (site && site == discardSite) { site->num = (long long)i; return TINT; }
                 nerr(site, "재귀 호출보다 앞에서 '돌려주다' 로 무엇을 돌려주는지 한 번은 알려줘야 함");
+            }
             if (site) site->num = (long long)i;
             return list[i].rt;
         }
@@ -1146,8 +1229,12 @@ struct Checker {
         if (n->kind == "flt")   { n->ty = TFLT; return; }
         if (n->kind == "str")   { n->ty = TSTR; return; }
         if (n->kind == "input") { n->ty = TSTR; return; }
+        if (n->kind == "none")  { n->ty = TNONE; return; }
+        if (n->kind == "eof")   { n->ty = TINT; return; }
         if (n->kind == "var") {
             auto it = varTy.find(n->str);
+            // (입력끝) 은 키워드가 아니라서 같은 이름의 변수가 있으면 그쪽이 이긴다
+            if (it == varTy.end() && n->str == "입력끝") { n->kind = "eof"; n->ty = TINT; return; }
             if (it == varTy.end()) nerr(n, "정의되지 않은 변수 '" + n->str + "'");
             n->ty = it->second;
             return;
@@ -1155,19 +1242,24 @@ struct Checker {
         if (n->kind == "conv") {
             chkExpr(n->kid[0].get());
             if (isListTy(n->kid[0]->ty)) nerr(n, "목록은 '바꾸다' 로 바꿀 수 없음");
-            if (isStructTy(n->kid[0]->ty)) nerr(n, "묶음은 '바꾸다' 로 바꿀 수 없음. 칸을 하나 꺼내 쓰기");
+            if (isRefTy(n->kid[0]->ty)) nerr(n, "묶음은 '바꾸다' 로 바꿀 수 없음. 칸을 하나 꺼내 쓰기");
             n->ty = (n->str == "정수") ? TINT : (n->str == "소수") ? TFLT : TSTR;
             return;
         }
         if (n->kind == "list") {
             if (n->kid.empty()) { n->ty = TLU; return; }
             for (auto& k : n->kid) chkExpr(k.get());
-            int e = n->kid[0]->ty;
-            if (isListTy(e)) nerr(n->kid[0].get(), "목록 안에 목록은 아직 만들 수 없음");
-            for (size_t i = 1; i < n->kid.size(); i++)
-                if (n->kid[i]->ty != e)
-                    nerr(n->kid[i].get(), "목록 안 값은 타입이 모두 같아야 함. 1번째가 " + tyName(e) +
-                         "인데 이 값은 " + tyName(n->kid[i]->ty));
+            // 원소 타입은 처음 나오는 '타입이 분명한' 값이 정한다. [[], [1]] 의 [] 나 [없음, 철수] 의
+            // 없음은 그 자체로는 타입을 모르니 건너뛴다.
+            size_t ei = 0;
+            while (ei < n->kid.size() && (n->kid[ei]->ty == TLU || n->kid[ei]->ty == TNONE)) ei++;
+            if (ei == n->kid.size())
+                nerr(n, "원소가 전부 빈 목록이나 없음이라 원소 타입을 알 수 없음");
+            int e = n->kid[ei]->ty;
+            for (size_t i = 0; i < n->kid.size(); i++)
+                if (!fits(e, n->kid[i]->ty))
+                    nerr(n->kid[i].get(), "목록 안 값은 타입이 모두 같아야 함. " + to_string(ei + 1) +
+                         "번째가 " + tyName(e) + "인데 이 값은 " + tyName(n->kid[i]->ty));
             n->ty = listOf(e);
             return;
         }
@@ -1220,6 +1312,8 @@ struct Checker {
         if (n->kind == "field") {                // 철수의 이름
             Node* b = n->kid[0].get();
             chkExpr(b);
+            if (b->ty == TNONE)
+                nerr(n, "없음에는 칸이 없음. 먼저 (새 ○○) 로 만든 묶음을 넣기");
             if (!isStructTy(b->ty))
                 nerr(n, "'" + n->str + "' 은 묶음의 칸인데 " + tyName(b->ty) + " 에 쓰려고 함");
             int fi = findField(b->ty, n->str);
@@ -1280,7 +1374,7 @@ struct Checker {
                 n->ty = TSTR;
                 return;
             }
-            if (b->ty == TSTR || isListTy(b->ty) || isStructTy(b->ty))
+            if (b->ty == TSTR || isListTy(b->ty) || isRefTy(b->ty))
                 nerr(b, "'의 " + f + "' 은 숫자에만 쓸 수 있음 (지금은 " + tyName(b->ty) + ")");
             if (f == "제곱근")      n->ty = TFLT;                 // 정수든 소수든 결과는 소수
             else if (f == "절댓값") n->ty = b->ty;                // 넣은 타입 그대로
@@ -1295,7 +1389,7 @@ struct Checker {
             chkExpr(n->kid[0].get());
             int t = n->kid[0]->ty;
             if (isListTy(t))   nerr(n, "목록에는 '" + n->str + "' 를 쓸 수 없음");
-            if (isStructTy(t)) nerr(n, "묶음에는 '" + n->str + "' 를 쓸 수 없음");
+            if (isRefTy(t)) nerr(n, "묶음에는 '" + n->str + "' 를 쓸 수 없음");
             if (n->str == "-") {
                 if (t == TSTR) nerr(n, "문자에는 '-' 를 쓸 수 없음");
                 n->ty = t;
@@ -1312,17 +1406,31 @@ struct Checker {
             if (!funcs->count(n->str)) nerr(n, "없는 함수 '" + n->str + "'");
             vector<int> at;
             for (auto& a : n->kid) { chkExpr(a.get()); at.push_back(a->ty); }
+            // 없음을 넘기면 어느 묶음인지 몰라 몸통의 '뿌리의 값' 을 검사할 수 없다.
+            // 몸통에서 그 매개변수에 쓴 칸 이름들을 다 가진 묶음이 하나뿐이면 그 묶음으로 본다.
+            for (size_t i = 0; i < at.size(); i++)
+                if (at[i] == TNONE) at[i] = guessStruct(funcs->at(n->str), i);
             n->ty = typeFunc(n->str, at, n);
             return;
         }
         if (n->kind == "bin") {
             Node *a = n->kid[0].get(), *b = n->kid[1].get();
             chkExpr(a); chkExpr(b);
+            const string& o = n->str;
             if (isListTy(a->ty) || isListTy(b->ty))
                 nerr(n, "목록은 연산에 바로 쓸 수 없음. (목록의 1번째) 처럼 원소를 꺼내 쓰기");
-            if (isStructTy(a->ty) || isStructTy(b->ty))
+            // 묶음끼리 / 묶음과 없음은 == != 만 된다 (같은 것을 가리키나 = 주소 비교)
+            if (isRefTy(a->ty) || isRefTy(b->ty)) {
+                if ((o == "==" || o == "!=") && isRefTy(a->ty) && isRefTy(b->ty)) {
+                    if (isStructTy(a->ty) && isStructTy(b->ty) && a->ty != b->ty)
+                        nerr(n, tyName(a->ty) + " 와 " + tyName(b->ty) + " 는 서로 다른 묶음이라 비교할 수 없음");
+                    n->ty = TINT;
+                    return;
+                }
+                if (o == "==" || o == "!=")
+                    nerr(n, "묶음은 묶음이나 없음하고만 비교할 수 있음 (값을 보려면 칸을 꺼내 비교하기)");
                 nerr(n, "묶음은 연산에 바로 쓸 수 없음. (철수의 점수) 처럼 칸을 꺼내 쓰기");
-            const string& o = n->str;
+            }
             bool num2 = (a->ty != TSTR && b->ty != TSTR);
             if (o == "+") {
                 if (a->ty == TSTR && b->ty == TSTR) { n->ty = TSTR; return; }
@@ -1384,7 +1492,8 @@ struct Checker {
             if (it == varTy.end()) varTy[n->str] = t;
             else if (it->second == TLU && isListTy(t)) it->second = t;      // 빈 목록 -> 타입 확정
             else if (isListTy(it->second) && t == TLU) { /* 빈 목록 재대입: 타입 유지 */ }
-            else if (it->second != t) {
+            else if (it->second == TNONE && isStructTy(t)) it->second = t;   // 없음 -> 묶음 타입 확정
+            else if (!fits(it->second, t)) {
                 string m = "'" + n->str + "' 는 " + tyName(it->second) + " 변수인데 " +
                            tyName(t) + "를 넣으려 함";
                 if (it->second == TINT && t == TFLT)
@@ -1394,25 +1503,41 @@ struct Checker {
             n->ty = t;
             return;
         }
-        if (n->kind == "exprstmt") { chkExpr(n->kid[0].get()); return; }
+        if (n->kind == "exprstmt") {
+            Node* saved = discardSite; discardSite = n->kid[0].get();
+            chkExpr(n->kid[0].get());
+            discardSite = saved;
+            return;
+        }
         if (n->kind == "print") {
             chkExpr(n->kid[0].get());
             if (isListTy(n->kid[0]->ty))
                 nerr(n->kid[0].get(), "목록은 통째로 말할 수 없음. (목록의 1번째) 처럼 하나씩 말하기");
             if (isStructTy(n->kid[0]->ty))
                 nerr(n->kid[0].get(), "묶음은 통째로 말할 수 없음. (철수의 이름) 처럼 칸을 하나씩 말하기");
+            if (n->kid[0]->ty == TNONE)
+                nerr(n->kid[0].get(), "없음은 말할 수 없음. 있는지 보려면 (값 == 없음) 으로 비교하기");
+            return;
+        }
+        if (n->kind == "fileblk") {              // 파일 "a.han"을 읽기로 열다 { }
+            chkExpr(n->kid[0].get());
+            if (n->kid[0]->ty != TSTR)
+                nerr(n->kid[0].get(), "파일 이름은 문자여야 함 (지금은 " + tyName(n->kid[0]->ty) + ")");
+            chkStmt(n->kid[1].get());
             return;
         }
         if (n->kind == "fieldset") {             // 철수의 이름은 "철수"이다.
             Node *b = n->kid[0].get(), *v = n->kid[1].get();
             chkExpr(b); chkExpr(v);
+            if (b->ty == TNONE)
+                nerr(n, "없음에는 칸이 없음. 먼저 (새 ○○) 로 만든 묶음을 넣기");
             if (!isStructTy(b->ty))
                 nerr(n, "'" + n->str + "' 은 묶음의 칸인데 " + tyName(b->ty) + " 에 쓰려고 함");
             int fi = findField(b->ty, n->str);
             if (fi < 0)
                 nerr(n, "'" + tyName(b->ty) + "' 묶음에 '" + n->str + "' 칸이 없음");
             int ft = structs[(size_t)(b->ty - TSTRUCT)].fields[(size_t)fi].ty;
-            if (v->ty != ft)
+            if (!fits(ft, v->ty))
                 nerr(v, "'" + n->str + "' 칸은 " + tyName(ft) + " 인데 " + tyName(v->ty) + "를 넣으려 함");
             n->num = fi;
             return;
@@ -1446,12 +1571,14 @@ struct Checker {
                 nerr(b, (isSet ? string("'의 N번째' 는") : string("'에 넣다' 는")) +
                      " 목록에만 쓸 수 있음 (지금은 " + tyName(b->ty) + ")");
             if (ix && ix->ty != TINT) nerr(ix, "'번째' 앞은 정수여야 함");
-            if (isListTy(v->ty)) nerr(v, "목록 안에 목록은 아직 넣을 수 없음");
             if (b->ty == TLU) {                       // 빈 목록: 첫 값이 원소 타입 확정
+                if (v->ty == TLU || v->ty == TNONE)
+                    nerr(v, "빈 목록에 " + tyName(v->ty) + "을 넣으면 원소 타입을 알 수 없음. "
+                            "타입이 분명한 값을 먼저 넣기");
                 if (b->kind == "var") { varTy[b->str] = listOf(v->ty); b->ty = listOf(v->ty); }
                 else nerr(b, "빈 목록의 원소 타입을 알 수 없음");
             }
-            if (v->ty != elemOf(b->ty))
+            if (!fits(elemOf(b->ty), v->ty))
                 nerr(v, "이 목록은 " + tyName(b->ty) + "이라 " + tyName(elemOf(b->ty)) +
                      "만 넣을 수 있는데 " + tyName(v->ty) + "를 넣으려 함");
             return;
@@ -1461,7 +1588,8 @@ struct Checker {
             chkExpr(n->kid[0].get());
             int t = n->kid[0]->ty;
             if (*curRet == -1) *curRet = t;
-            else if (*curRet != t)
+            else if (*curRet == TNONE && isStructTy(t)) *curRet = t;   // 없음만 돌려주다가 묶음 확정
+            else if (!fits(*curRet, t))
                 nerr(n, "'" + curName + "' 는 " + tyName(*curRet) + "를 돌려주기로 했는데 " +
                      tyName(t) + "를 돌려주려 함");
             return;
@@ -1519,7 +1647,26 @@ struct Codegen {
         if (!n) return;
         if (n->kind == "assign" && !slot.count(n->str)) { frame += 8; slot[n->str] = -frame; }
         if (n->kind == "repeat") { frame += 8; n->num = -frame; }
+        if (n->kind == "fileblk") { frame += 8; n->slot = -frame; }    // 앞서 열려 있던 파일 보관 칸
         for (auto& k : n->kid) collectVars(k.get());
+    }
+
+    // 지금 열려 있는 파일 블록들 {보관 칸, 방식}. 돌려주다/멈추다/계속하다 로 블록을 뛰쳐나갈 때
+    // 여기 쌓인 것들을 닫아줘야 한다. 안 그러면 파일이 안 닫히고 듣다/말하다 가 엉뚱한 곳을 본다.
+    vector<pair<int,int>> openFiles;
+    vector<size_t> loopFiles;           // 각 반복이 시작될 때 openFiles 크기
+    void closeFiles(size_t downTo) {
+        for (size_t i = openFiles.size(); i-- > downTo; )
+            text << "    movq " << openFiles[i].first << "(%rbp), %rdi\n"
+                 << "    movq $" << openFiles[i].second << ", %rsi\n    call __han_fclose\n";
+    }
+    // 묶음 칸을 꺼내기 직전 rax(묶음)가 없음인지 검사
+    void noneGuard(Node* n) {
+        int id = strId++;
+        rodata << ".Lstr" << id << ":\n    .asciz \"" << escape(n->str) << "\"\n";
+        text << "    testq %rax, %rax\n    jne 1f\n"
+                "    movq $" << n->line << ", %rdi\n    leaq .Lstr" << id << "(%rip), %rsi\n"
+                "    call __han_nonefield\n1:\n";
     }
 
     void push()  { text << "    subq $16, %rsp\n    movq %rax, (%rsp)\n"; }
@@ -1545,6 +1692,8 @@ struct Codegen {
             return;
         }
         if (n->kind == "input") { text << "    call __han_input\n"; return; }
+        if (n->kind == "eof")   { text << "    call __han_eof\n"; return; }
+        if (n->kind == "none")  { text << "    xorl %eax, %eax\n"; return; }      // 없음 = 널 포인터
         if (n->kind == "list") {
             text << "    movl $" << (n->kid.empty() ? 1 : (int)n->kid.size()) << ", %edi\n"
                     "    call __han_lnew\n";
@@ -1589,17 +1738,29 @@ struct Codegen {
         if (n->kind == "new") {
             const Struct& s = structs[(size_t)n->num];
             text << "    movl $" << (s.fields.size() * 8) << ", %edi\n    call __han_alloc\n";
+            // 정수·소수 칸은 0, 묶음 칸은 없음(0) — 할당이 0으로 채워 주므로 따로 할 일 없음.
             for (size_t i = 0; i < s.fields.size(); i++) {
                 // 문자 칸은 빈 문자로 시작한다 (0 이면 널 포인터라 찍는 순간 죽는다)
                 if (s.fields[i].ty == TSTR)
                     text << "    leaq .Lempty(%rip), %rcx\n    movq %rcx, " << (i*8) << "(%rax)\n";
-                else
-                    text << "    movq $0, " << (i*8) << "(%rax)\n";
+            }
+            // 목록 칸은 묶음마다 새 빈 목록. 할당 중에 GC 가 돌 수 있으니 묶음은 스택에 둔다.
+            bool anyList = false;
+            for (auto& fd : s.fields) if (fd.ty >= TLIST) anyList = true;
+            if (anyList) {
+                push();
+                for (size_t i = 0; i < s.fields.size(); i++) {
+                    if (s.fields[i].ty < TLIST) continue;
+                    text << "    movl $1, %edi\n    call __han_lnew\n"
+                            "    movq (%rsp), %rcx\n    movq %rax, " << (i*8) << "(%rcx)\n";
+                }
+                popTo("%rax");
             }
             return;
         }
         if (n->kind == "field") {
             genExpr(n->kid[0].get());
+            noneGuard(n);
             text << "    movq " << (n->num * 8) << "(%rax), %rax\n";
             return;
         }
@@ -1825,7 +1986,21 @@ struct Codegen {
             genExpr(n->kid[1].get());
             text << "    movq %rax, %rdx\n";
             popTo("%rax");
+            noneGuard(n);
             text << "    movq %rdx, " << (n->num * 8) << "(%rax)\n";
+            return;
+        }
+        if (n->kind == "fileblk") {
+            // 열면 런타임이 '앞서 보던 파일' 을 돌려준다 → 보관했다가 닫을 때 되돌린다 (블록이 겹쳐도 됨)
+            genExpr(n->kid[0].get());
+            text << "    movq %rax, %rdi\n    movq $" << n->num << ", %rsi\n"
+                    "    movq $" << n->line << ", %rdx\n    call __han_fopen\n"
+                    "    movq %rax, " << n->slot << "(%rbp)\n";
+            openFiles.push_back({n->slot, (int)n->num});
+            genStmt(n->kid[1].get());
+            openFiles.pop_back();
+            text << "    movq " << n->slot << "(%rbp), %rdi\n    movq $" << n->num << ", %rsi\n"
+                    "    call __han_fclose\n";
             return;
         }
         if (n->kind == "gridset") {
@@ -1849,41 +2024,27 @@ struct Codegen {
             return;
         }
         if (n->kind == "print") {
+            // 출력은 C 런타임(__han_say_*)이 한다 — '파일 …을 쓰기로 열다' 블록 안에선 파일로 가야 해서.
+            // 끝맺음: 기본(n->num == 0)은 널 = 줄바꿈, 끝"..." 이면 그 문자열.
+            // (사용자 문자열은 형식 문자열로 안 쓴다 — 런타임이 fputs 로 그대로 찍음)
             Node* a = n->kid[0].get();
             genExpr(a);
-            if (n->num == 0) {                       // 기본: 줄바꿈으로 끝
-                if (a->ty == TSTR)
-                    text << "    movq %rax, %rdi\n    call puts\n";
-                else if (a->ty == TFLT)
-                    text << "    movq %rax, %xmm0\n    leaq .LfmtF(%rip), %rdi\n"
-                            "    movl $1, %eax\n    call printf\n";
-                else
-                    text << "    movq %rax, %rsi\n    leaq .Lfmt(%rip), %rdi\n"
-                            "    xorl %eax, %eax\n    call printf\n";
-                return;
-            }
-            // 끝"..." 옵션: 값만 찍고 정해준 문자로 끝맺는다
-            if (a->ty == TSTR)
-                text << "    movq %rax, %rsi\n    leaq .LfmtS(%rip), %rdi\n"
-                        "    xorl %eax, %eax\n    call printf\n";
-            else if (a->ty == TFLT)
-                text << "    movq %rax, %xmm0\n    leaq .LfmtG(%rip), %rdi\n"
-                        "    movl $1, %eax\n    call printf\n";
-            else
-                text << "    movq %rax, %rsi\n    leaq .Lfmt2(%rip), %rdi\n"
-                        "    xorl %eax, %eax\n    call printf\n";
-            if (!n->str.empty()) {
+            string endReg = (a->ty == TFLT) ? "%rdi" : "%rsi";
+            if (n->num == 0) text << "    xorl " << (a->ty == TFLT ? "%edi" : "%esi") << ", "
+                                  << (a->ty == TFLT ? "%edi" : "%esi") << "\n";
+            else {
                 int id = strId++;
                 rodata << ".Lstr" << id << ":\n    .asciz \"" << escape(n->str) << "\"\n";
-                // 사용자 문자열을 형식 문자열로 쓰면 안 되므로 %s 로 넘긴다
-                text << "    leaq .Lstr" << id << "(%rip), %rsi\n"
-                        "    leaq .LfmtS(%rip), %rdi\n"
-                        "    xorl %eax, %eax\n    call printf\n";
+                text << "    leaq .Lstr" << id << "(%rip), " << endReg << "\n";
             }
+            if (a->ty == TSTR)      text << "    movq %rax, %rdi\n    call __han_say_s\n";
+            else if (a->ty == TFLT) text << "    movq %rax, %xmm0\n    call __han_say_f\n";
+            else                    text << "    movq %rax, %rdi\n    call __han_say_i\n";
             return;
         }
         if (n->kind == "ret") {
             genExpr(n->kid[0].get());
+            if (!openFiles.empty()) { push(); closeFiles(0); popTo("%rax"); }
             text << "    jmp " << retLabel << "\n";
             return;
         }
@@ -1903,8 +2064,9 @@ struct Codegen {
             genExpr(n->kid[0].get());
             text << "    cmpq $0, %rax\n    je .L" << Lend << "\n";
             loops.push_back({Lend, Ltop});      // 계속하다 = 조건 다시 보기
+            loopFiles.push_back(openFiles.size());
             genStmt(n->kid[1].get());
-            loops.pop_back();
+            loops.pop_back(); loopFiles.pop_back();
             text << "    jmp .L" << Ltop << "\n.L" << Lend << ":\n";
             return;
         }
@@ -1916,15 +2078,19 @@ struct Codegen {
             text << "    cmpq $0, " << off << "(%rbp)\n    jle .L" << Lend << "\n";
             // 계속하다 는 Ltop 이 아니라 Lcont 로 가야 한다. 안 그러면 횟수가 안 줄어 무한 반복.
             loops.push_back({Lend, Lcont});
+            loopFiles.push_back(openFiles.size());
             genStmt(n->kid[1].get());
-            loops.pop_back();
+            loops.pop_back(); loopFiles.pop_back();
             text << ".L" << Lcont << ":\n";
             text << "    decq " << off << "(%rbp)\n    jmp .L" << Ltop << "\n";
             text << ".L" << Lend << ":\n";
             return;
         }
-        if (n->kind == "break")    { text << "    jmp .L" << loops.back().first  << "\n"; return; }
-        if (n->kind == "continue") { text << "    jmp .L" << loops.back().second << "\n"; return; }
+        // 반복 안에서 연 파일 블록을 뛰쳐나가면 그 파일들은 닫고 간다
+        if (n->kind == "break")    { closeFiles(loopFiles.back());
+                                     text << "    jmp .L" << loops.back().first  << "\n"; return; }
+        if (n->kind == "continue") { closeFiles(loopFiles.back());
+                                     text << "    jmp .L" << loops.back().second << "\n"; return; }
         nerr(n, "알 수 없는 문장");
     }
 
@@ -1963,27 +2129,7 @@ struct Codegen {
 
     static const char* runtime() {
         return
-// getline 을 쓴다. 예전엔 256바이트 고정 버퍼 + fgets 라서 긴 줄이 조용히 잘렸다.
-// getline 은 필요한 만큼 버퍼를 늘려주므로 줄 길이 제한이 없다.
-"__han_input:\n"
-"    pushq %rbp\n    movq %rsp, %rbp\n"
-"    leaq .Lgline(%rip), %rdi\n"
-"    leaq .Lgcap(%rip), %rsi\n"
-"    movq stdin(%rip), %rdx\n"
-"    call getline\n"
-"    testq %rax, %rax\n"
-"    jg .Lin_ok\n"
-"    leaq .Lempty(%rip), %rdi\n"        // 입력 끝 -> 빈 문자
-"    call __han_strdup\n"
-"    leave\n    ret\n"
-".Lin_ok:\n"
-"    movq .Lgline(%rip), %rdi\n"
-"    leaq .Lnl(%rip), %rsi\n"
-"    call strcspn\n"                    // 줄바꿈(\\r 도) 자리 찾기
-"    movq .Lgline(%rip), %rdi\n"
-"    movb $0, (%rdi,%rax)\n"
-"    call __han_strdup\n"
-"    leave\n    ret\n"
+// 입력(__han_input)·출력(__han_say_*)·파일은 C 런타임(C_RUNTIME)에 있다.
 "\n__han_tostr:\n"
 "    pushq %rbp\n    movq %rsp, %rbp\n"
 "    subq $16, %rsp\n"
@@ -2655,7 +2801,7 @@ struct Codegen {
              ".Lordempty:\n    .asciz \"[실행 오류] 빈 문자에는 '코드' 가 없음\\n\"\n"
              ".Lchrbad:\n    .asciz \"[실행 오류] %lld행: %lld 는 글자로 만들 수 없는 코드값\\n\"\n";
         o << rodata.str();
-        o << "\n    .bss\n.Lgline:\n    .skip 8\n.Lgcap:\n    .skip 8\n.Lseeded:\n    .skip 4\n";
+        o << "\n    .bss\n.Lseeded:\n    .skip 4\n";
         o << "\n    .text\n";
         o << runtime();
         o << text.str();
@@ -2677,7 +2823,8 @@ struct Codegen {
 //   - 할당한 양이 max(8MB, 지난번 살아남은 양) 을 넘으면 수거한다.
 //   - HAN_GC_STRESS 환경변수가 있으면 할당마다 수거한다 (테스트용 — 숨은 버그를 끌어냄).
 // 컴파일할 때마다 gcc -S 로 구워 어셈블리 뒤에 붙인다. 그래서 .s 파일 하나로 완결된다.
-static const char* GC_RUNTIME = R"HANRT(
+// v13 부터 입출력(듣다/말하다/입력끝/파일)도 여기 있다 — 파일 블록이 입출력 대상을 바꿔야 해서.
+static const char* C_RUNTIME = R"HANRT(
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -2800,6 +2947,63 @@ char *__han_strdup(const char *s) {
     memcpy(p, s, n + 1);
     return p;
 }
+
+/* ---- 입출력 ----
+ * 듣다/입력끝 은 curIn(), 말하다 는 curOut() 을 본다. 평소엔 키보드/화면이고
+ * '파일 …을 읽기로/쓰기로 열다' 블록 안에서만 그 파일로 바뀐다. */
+static FILE *inF, *outF;                /* NULL = stdin / stdout */
+static FILE *curIn(void)  { return inF ? inF : stdin; }
+static FILE *curOut(void) { return outF ? outF : stdout; }
+
+/* getline: 줄 길이 제한 없음 (예전 fgets+256바이트는 긴 줄을 조용히 잘랐다) */
+char *__han_input(void) {
+    static char *buf; static size_t cap;
+    ssize_t n = getline(&buf, &cap, curIn());
+    if (n <= 0) return __han_strdup("");          /* 입력 끝 -> 빈 문자 */
+    buf[strcspn(buf, "\r\n")] = 0;
+    return __han_strdup(buf);
+}
+
+/* (입력끝): 더 읽을 게 없으면 참. C 의 feof 와 달리 '읽어 보기 전에' 안다 —
+ * 한 글자 엿보고 되돌려 놓는다. 그래서 (입력끝) 이 거짓인 동안 { 듣다 } 가 빈 줄을 덤으로 안 읽는다. */
+long __han_eof(void) {
+    FILE *f = curIn();
+    int c = getc(f);
+    if (c == EOF) return 1;
+    ungetc(c, f);
+    return 0;
+}
+
+void __han_say_s(const char *s, const char *end) { FILE *o = curOut(); fputs(s, o); fputs(end ? end : "\n", o); }
+void __han_say_i(long v, const char *end)        { FILE *o = curOut(); fprintf(o, "%ld", v); fputs(end ? end : "\n", o); }
+void __han_say_f(double v, const char *end)      { FILE *o = curOut(); fprintf(o, "%.15g", v); fputs(end ? end : "\n", o); }
+
+static const char *modeName(long m) { return m == 0 ? "읽기" : m == 1 ? "쓰기" : "붙여쓰기"; }
+
+/* 파일 블록 열기. 앞서 보던 파일을 돌려줘서 블록이 끝날 때 되돌릴 수 있게 한다 (겹쳐 열기 가능). */
+void *__han_fopen(const char *name, long mode, long line) {
+    FILE *f = fopen(name, mode == 0 ? "r" : mode == 1 ? "w" : "a");
+    if (!f) {
+        fflush(stdout);
+        printf("[실행 오류] %ld행: 파일 '%s' 을 %s로 열 수 없음\n", line, name, modeName(mode));
+        exit(1);
+    }
+    FILE *prev;
+    if (mode == 0) { prev = inF; inF = f; }
+    else           { prev = outF; outF = f; }
+    return prev;
+}
+void __han_fclose(void *prev, long mode) {
+    if (mode == 0) { fclose(inF);  inF = prev; }
+    else           { fclose(outF); outF = prev; }
+}
+
+/* 없음의 칸을 꺼내려 할 때 */
+void __han_nonefield(long line, const char *field) {
+    fflush(stdout);
+    printf("[실행 오류] %ld행: 없음에서 '%s' 칸을 꺼낼 수 없음\n", line, field);
+    exit(1);
+}
 )HANRT";
 
 // GC_RUNTIME 을 gcc -S 로 어셈블리로 굽는다.
@@ -2812,7 +3016,7 @@ static string buildRuntimeAsm() {
     close(fd);
     string c = string(cpath.data()) + ".c", s = string(cpath.data()) + ".s";
     rename(cpath.data(), c.c_str());
-    { ofstream f(c); f << GC_RUNTIME; }
+    { ofstream f(c); f << C_RUNTIME; }
     string cmd = "gcc -O2 -S -fno-asynchronous-unwind-tables -o '" + s + "' '" + c + "'";
     int rc = system(cmd.c_str());
     remove(c.c_str());
