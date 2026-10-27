@@ -1,0 +1,65 @@
+{
+  "name": "hanlang",
+  "displayName": "한랭 (Hanlang)",
+  "description": "교육용 한글 프로그래밍 언어 한랭(.han) — 문법 색칠, 저장할 때 오류 밑줄, 실행 버튼, 키워드 설명",
+  "version": "0.1.0",
+  "publisher": "sejunch",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/sejunch/hanlang" },
+  "engines": { "vscode": "^1.74.0" },
+  "categories": ["Programming Languages", "Snippets", "Linters"],
+  "main": "./extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "languages": [
+      {
+        "id": "hanlang",
+        "aliases": ["한랭", "Hanlang"],
+        "extensions": [".han"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      { "language": "hanlang", "scopeName": "source.hanlang", "path": "./syntaxes/hanlang.tmLanguage.json" }
+    ],
+    "snippets": [
+      { "language": "hanlang", "path": "./snippets/hanlang.json" }
+    ],
+    "commands": [
+      { "command": "hanlang.run", "title": "한랭: 실행", "icon": "$(play)" },
+      { "command": "hanlang.check", "title": "한랭: 오류 검사" }
+    ],
+    "menus": {
+      "editor/title/run": [
+        { "command": "hanlang.run", "when": "editorLangId == hanlang", "group": "navigation" }
+      ],
+      "commandPalette": [
+        { "command": "hanlang.run", "when": "editorLangId == hanlang" },
+        { "command": "hanlang.check", "when": "editorLangId == hanlang" }
+      ]
+    },
+    "keybindings": [
+      { "command": "hanlang.run", "key": "f5", "when": "editorLangId == hanlang && !inDebugMode" }
+    ],
+    "configuration": {
+      "title": "한랭",
+      "properties": {
+        "hanlang.hancPath": {
+          "type": "string",
+          "default": "",
+          "description": "hanc(컴파일러) 경로. 비우면 작업 폴더의 hanc → PATH 의 hanc 순으로 찾음"
+        },
+        "hanlang.hanPath": {
+          "type": "string",
+          "default": "",
+          "description": "han(컴파일하고 실행하는 스크립트) 경로. 비우면 작업 폴더의 han → PATH 의 han 순으로 찾음"
+        },
+        "hanlang.checkOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "저장할 때(와 열 때) hanc 로 검사해서 오류·경고에 밑줄 긋기"
+        }
+      }
+    }
+  }
+}

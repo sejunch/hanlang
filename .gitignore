@@ -20,3 +20,6 @@ CLAUDE.md
 # 셀프호스팅 컴파일러 (self/han2 가 만듦)
 /self/hanc2
 /self/runtime.s
+
+# VS Code 확장 패키지 (make vscode 가 만듦)
+*.vsix

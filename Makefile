@@ -1,5 +1,5 @@
 .POSIX:
-.PHONY: all test install uninstall clean
+.PHONY: all test install uninstall clean vscode
 
 PREFIX ?= /usr/local
 CXX    ?= g++
@@ -28,3 +28,8 @@ uninstall:
 
 clean:
 	rm -f hanc *.s
+
+# VS Code 확장: .vsix 만들고 설치 (editors/vscode/)
+vscode:
+	python3 editors/vscode/pack.py
+	code --install-extension editors/vscode/hanlang-0.1.0.vsix --force

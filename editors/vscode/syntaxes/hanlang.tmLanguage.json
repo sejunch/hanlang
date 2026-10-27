@@ -1,0 +1,296 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "한랭",
+  "scopeName": "source.hanlang",
+  "comment": "한랭은 조사가 낱말에 붙는다(나이를, 참이다). 그래서 키워드 끝에 조사가 붙어도 키워드만 칠하고, 낱말 경계는 한글까지 포함해서 본다. 변수에 붙은 조사는 아는 이름을 알아야 가를 수 있어서(나이 = 나 + 이?) 칠하지 않는다 — 괄호·따옴표·숫자 바로 뒤의 조사만 칠한다.",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#definitions"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#particles"
+    },
+    {
+      "include": "#calls"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.hanlang",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.hanlang",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.hanlang",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.hanlang",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "definitions": {
+      "patterns": [
+        {
+          "comment": "학생 이란 묶음 {",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])([가-힣A-Za-z_][가-힣A-Za-z0-9_]*)\\s+(이란|란)\\s+(묶음)(?![가-힣\\w])",
+          "captures": {
+            "1": {
+              "name": "entity.name.type.struct.hanlang"
+            },
+            "2": {
+              "name": "keyword.other.definition.hanlang"
+            },
+            "3": {
+              "name": "storage.type.struct.hanlang"
+            }
+          }
+        },
+        {
+          "comment": "가와 나를 더하다 란 {  — 란 바로 앞 낱말이 함수 이름",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])([가-힣A-Za-z_][가-힣A-Za-z0-9_]*)\\s+(이란|란)(?=\\s*\\{)",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.hanlang"
+            },
+            "2": {
+              "name": "keyword.other.definition.hanlang"
+            }
+          }
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "comment": "제어",
+          "name": "keyword.control.hanlang",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])(만약|이라면|라면|아니면|반복하다|멈추다|계속하다|돌려주다|종료하다)(?![가-힣\\w])"
+        },
+        {
+          "comment": "(조건) 인 동안",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])(인)\\s+(동안)(?![가-힣\\w])",
+          "captures": {
+            "1": {
+              "name": "keyword.control.hanlang"
+            },
+            "2": {
+              "name": "keyword.control.hanlang"
+            }
+          }
+        },
+        {
+          "comment": "10번 반복하다",
+          "match": "(번)(?=\\s+반복하다)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.hanlang"
+            }
+          }
+        },
+        {
+          "comment": "못 열면 { }",
+          "name": "keyword.control.hanlang",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])못\\s+열면(?![가-힣\\w])"
+        },
+        {
+          "comment": "동작 (언어에 들어 있는 서술어)",
+          "name": "support.function.builtin.hanlang",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])(말하다|듣다|바꾸다|넣다|빼다|채우다|열다|있나|불러오다)(?![가-힣\\w])"
+        },
+        {
+          "comment": "정의·만들기",
+          "name": "keyword.other.definition.hanlang",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])(이란|란|묶음)(?![가-힣\\w])"
+        },
+        {
+          "name": "keyword.other.new.hanlang",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])(새|빈)(?=\\s)"
+        },
+        {
+          "comment": "참 / 거짓 / 없음 (조사가 붙어도: 참을, 없음이다)",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])(참|거짓|없음)(이라고|라고|으로|이다|를|을|는|은|이|가|의|에|로|와|과|다)?(?![가-힣\\w])",
+          "captures": {
+            "1": {
+              "name": "constant.language.hanlang"
+            },
+            "2": {
+              "name": "keyword.operator.particle.hanlang"
+            }
+          }
+        },
+        {
+          "comment": "타입 (정수로 바꾸다 처럼 조사가 붙어도)",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])(정수|소수|문자)(으로|로)?(?![가-힣\\w])",
+          "captures": {
+            "1": {
+              "name": "storage.type.hanlang"
+            },
+            "2": {
+              "name": "keyword.operator.particle.hanlang"
+            }
+          }
+        },
+        {
+          "comment": "타입 자리의 목록·사전 (정수 목록. / (빈 정수 사전)) — 변수 '목록' 은 안 칠함",
+          "match": "(?<=\\s)(목록|사전)(?=\\s*[.)]|\\s+(목록|사전))",
+          "captures": {
+            "1": {
+              "name": "storage.type.hanlang"
+            }
+          }
+        },
+        {
+          "comment": "파일 \"a.txt\"를 읽기로 열다 / 파일 오류를 쓰기로 열다",
+          "name": "keyword.other.file.hanlang",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])파일(?=\\s)"
+        },
+        {
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])(붙여쓰기|읽기|쓰기)(으로|로)(?![가-힣\\w])",
+          "captures": {
+            "1": {
+              "name": "keyword.other.file.hanlang"
+            },
+            "2": {
+              "name": "keyword.operator.particle.hanlang"
+            }
+          }
+        },
+        {
+          "match": "(?<=파일\\s)(오류)",
+          "captures": {
+            "1": {
+              "name": "support.variable.builtin.hanlang"
+            }
+          }
+        },
+        {
+          "comment": "끝\"...\" 끝맺음 옵션",
+          "name": "keyword.other.end.hanlang",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])끝(?=\")"
+        },
+        {
+          "comment": "N번째 (번호번째 처럼 낱말 끝에 붙어도)",
+          "match": "(번째)(이라고|라고|으로|를|을|는|은|이|가|의|에|로|와|과)?(?=이다|(?![가-힣\\w]))",
+          "captures": {
+            "1": {
+              "name": "keyword.other.index.hanlang"
+            },
+            "2": {
+              "name": "keyword.operator.particle.hanlang"
+            }
+          }
+        },
+        {
+          "comment": "3행 4열 / (가 + 1)행 — 숫자·괄호 바로 뒤만 (여행·배열·진행 은 안 칠함)",
+          "match": "(?<=[0-9\\)])(행|열)(이라고|라고|으로|를|을|는|은|이|가|의|에|로|와|과)?(?=이다|(?![가-힣\\w]))",
+          "captures": {
+            "1": {
+              "name": "keyword.other.index.hanlang"
+            },
+            "2": {
+              "name": "keyword.operator.particle.hanlang"
+            }
+          }
+        },
+        {
+          "comment": "의 뒤의 내장 값",
+          "match": "(?<=의\\s)(개수|제곱근|절댓값|반올림|올림|버림|무작위|코드|글자|행수|열수|열쇠들)(?![가-힣\\w])",
+          "captures": {
+            "1": {
+              "name": "support.variable.builtin.hanlang"
+            }
+          }
+        },
+        {
+          "name": "support.variable.builtin.hanlang",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])(입력끝|명령줄)(?![가-힣\\w])"
+        },
+        {
+          "comment": "값 뒤의 이다 (17이다. / (가 + 1)이다.)",
+          "name": "keyword.other.copula.hanlang",
+          "match": "이다(?=\\s*\\.)"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.hanlang",
+          "match": "(?<![\\w가-힣])\\d+\\.\\d+"
+        },
+        {
+          "name": "constant.numeric.integer.hanlang",
+          "match": "(?<![\\w가-힣])\\d+"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.hanlang",
+          "match": "~/|&&|\\|\\||<<|>>|<=|>=|==|!=|[-+*/%<>=!&|^~]"
+        },
+        {
+          "name": "punctuation.terminator.hanlang",
+          "match": "\\."
+        }
+      ]
+    },
+    "particles": {
+      "patterns": [
+        {
+          "comment": "괄호·따옴표·대괄호·숫자 바로 뒤의 조사 — 여기는 헷갈릴 일이 없다",
+          "match": "(?<=[\"\\)\\]0-9])(이라고|라고|으로|에서|에게|를|을|는|은|이|가|의|에|로|와|과)(?![가-힣\\w])",
+          "captures": {
+            "1": {
+              "name": "keyword.operator.particle.hanlang"
+            }
+          }
+        }
+      ]
+    },
+    "calls": {
+      "patterns": [
+        {
+          "comment": "문장 끝 서술어 (… 더하다. / (… 더하다)) — 함수 호출. '이다' 로 끝나는 건 빼고",
+          "match": "(?<![가-힣ㄱ-ㅎㅏ-ㅣ\\w])([가-힣][가-힣A-Za-z0-9_]*(?<!이)다)(?=\\s*[.)])",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.call.hanlang"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -49,7 +49,13 @@ han 프로그램.han
 
 ## VSCode
 
-이 폴더를 열면 `.han` 파일에서 ▶ 버튼(Code Runner)이나 `Ctrl+Shift+B` 로 바로 실행된다.
+```bash
+make vscode          # 한랭 확장(.vsix)을 만들어 설치
+```
+
+문법 색칠, 저장할 때 오류·경고 밑줄(hanc 의 캐럿 자리 그대로), ▶ / `F5` 실행, 키워드에 마우스를 올리면 설명,
+코드 조각(`만약`, `동안`, `함수`, `사전` …). 자세한 건 [editors/vscode/README.md](editors/vscode/README.md).
+확장 없이도 이 폴더를 열면 `Ctrl+Shift+B` 로 실행된다.
 
 ## 뭐가 되나
 
@@ -121,6 +127,7 @@ self/han2 self/tests/s2.han     # 한랭으로 짠 컴파일러로 컴파일하�
 | `self/한랭.han` | 한랭으로 짠 한랭 컴파일러 (자기 자신을 컴파일함) |
 | `self/han2` | 셀프 컴파일러로 컴파일하고 실행하는 스크립트 |
 | `self/tests/` | 셀프 컴파일러 테스트. `s*` 는 hanc 와 결과 비교, `se*` 는 컴파일 에러가 정답 |
+| `editors/vscode/` | VS Code 확장 (`make vscode`) |
 
 ## 아직 안 되는 것
 
