@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# 한랭으로 짠 한랭 컴파일러(self/한랭.han)로 컴파일하고 실행:  self/han2 프로그램.han
+# 컴파일러 자체는 hanc 로 만든다 (아직 자기 자신은 못 컴파일함 — 1단계)
+set -e
+dir=$(cd "$(dirname "$0")" && pwd)
+src="$1"
+if [ -z "$src" ]; then echo "사용법: self/han2 파일.han"; exit 1; fi
+if [ ! -x "$dir/hanc2" ] || [ "$dir/한랭.han" -nt "$dir/hanc2" ]; then
+    "$dir/../hanc" "$dir/한랭.han" -o "$dir/hanc2"
+fi
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+# 명령줄 인자를 받을 방법이 없어서 경로를 한 줄씩 입력으로 넘긴다
+printf '%s\n%s\n' "$src" "$tmp/p.s" | "$dir/hanc2"
+[ -f "$tmp/p.s" ] || exit 1          # 오류면 어셈블리 파일을 안 만든다
+gcc -no-pie "$tmp/p.s" -o "$tmp/p"
+shift
+"$tmp/p" "$@"
