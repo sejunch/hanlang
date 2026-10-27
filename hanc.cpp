@@ -8,6 +8,7 @@
 // v9: 출력 끝맺음 옵션  "안녕"을 끝" " 말하다.
 // v10: 비트 연산(& | ^ ~ << >>), 문자↔코드값, 묶음(구조체). 타입 인코딩 재설계
 // v11: 목록 원소 빼기 (빼다) — 스택·큐가 가능해짐
+// v12: 쓰레기 수거(보수적 mark-sweep GC) — 메모리 누수 해결
 // 빌드: g++ -std=c++17 -O2 -o hanc hanc.cpp
 // 사용: ./hanc prog.han > prog.s   또는   ./hanc prog.han -o prog
 #include <bits/stdc++.h>
@@ -1587,7 +1588,7 @@ struct Codegen {
         }
         if (n->kind == "new") {
             const Struct& s = structs[(size_t)n->num];
-            text << "    movl $" << (s.fields.size() * 8) << ", %edi\n    call malloc\n";
+            text << "    movl $" << (s.fields.size() * 8) << ", %edi\n    call __han_alloc\n";
             for (size_t i = 0; i < s.fields.size(); i++) {
                 // 문자 칸은 빈 문자로 시작한다 (0 이면 널 포인터라 찍는 순간 죽는다)
                 if (s.fields[i].ty == TSTR)
@@ -1947,6 +1948,8 @@ struct Codegen {
 
         text << "\n.globl " << label << "\n" << label << ":\n";
         text << "    pushq %rbp\n    movq %rsp, %rbp\n";
+        // GC 는 여기서부터 아래로 스택을 훑는다. main 의 변수 칸은 rbp 아래라 다 들어간다.
+        if (!f) text << "    movq %rbp, __han_stack_base(%rip)\n";
         if (aligned) text << "    subq $" << aligned << ", %rsp\n";
         if (f) {
             static const char* REG[6] = {"%rdi","%rsi","%rdx","%rcx","%r8","%r9"};
@@ -1971,7 +1974,7 @@ struct Codegen {
 "    testq %rax, %rax\n"
 "    jg .Lin_ok\n"
 "    leaq .Lempty(%rip), %rdi\n"        // 입력 끝 -> 빈 문자
-"    call strdup\n"
+"    call __han_strdup\n"
 "    leave\n    ret\n"
 ".Lin_ok:\n"
 "    movq .Lgline(%rip), %rdi\n"
@@ -1979,14 +1982,14 @@ struct Codegen {
 "    call strcspn\n"                    // 줄바꿈(\\r 도) 자리 찾기
 "    movq .Lgline(%rip), %rdi\n"
 "    movb $0, (%rdi,%rax)\n"
-"    call strdup\n"
+"    call __han_strdup\n"
 "    leave\n    ret\n"
 "\n__han_tostr:\n"
 "    pushq %rbp\n    movq %rsp, %rbp\n"
 "    subq $16, %rsp\n"
 "    movq %rdi, 8(%rsp)\n"
 "    movl $40, %edi\n"
-"    call malloc\n"
+"    call __han_alloc\n"
 "    movq %rax, 0(%rsp)\n"
 "    movq %rax, %rdi\n"
 "    leaq .Lfmt2(%rip), %rsi\n"
@@ -2000,7 +2003,7 @@ struct Codegen {
 "    subq $16, %rsp\n"
 "    movq %rdi, 8(%rsp)\n"
 "    movl $40, %edi\n"
-"    call malloc\n"
+"    call __han_alloc\n"
 "    movq %rax, 0(%rsp)\n"
 "    movq %rax, %rdi\n"
 "    leaq .LfmtG(%rip), %rsi\n"
@@ -2020,7 +2023,7 @@ struct Codegen {
 "    call strlen\n"
 "    addq 16(%rsp), %rax\n"
 "    leaq 1(%rax), %rdi\n"
-"    call malloc\n"
+"    call __han_alloc\n"
 "    movq %rax, 16(%rsp)\n"
 "    movq %rax, %rdi\n"
 "    movq 0(%rsp), %rsi\n"
@@ -2038,13 +2041,13 @@ struct Codegen {
 "    call printf\n"
 "    movl $1, %edi\n"
 "    call exit\n"
-// 목록 = 핸들 24바이트 { len, cap, data* }. 핸들 주소는 성장(realloc) 후에도 안 변함.
+// 목록 = 핸들 32바이트 { len, cap, data*, cols }. 핸들 주소는 성장(realloc) 후에도 안 변함.
 "\n__han_lnew:\n"                       // rdi = 처음 용량(>=1) -> rax = 핸들
 "    pushq %rbp\n    movq %rsp, %rbp\n"
 "    subq $16, %rsp\n"
 "    movq %rdi, 0(%rsp)\n"
 "    movl $32, %edi\n"                  // 핸들 32바이트: len, cap, data*, cols
-"    call malloc\n"
+"    call __han_alloc\n"
 "    movq %rax, 8(%rsp)\n"
 "    movq $0, 0(%rax)\n"
 "    movq $0, 24(%rax)\n"               // cols = 0 -> 평범한 목록 (격자 아님)
@@ -2052,7 +2055,7 @@ struct Codegen {
 "    movq 0(%rsp), %rcx\n"
 "    movq %rcx, 8(%rax)\n"
 "    leaq 0(,%rcx,8), %rdi\n"
-"    call malloc\n"
+"    call __han_alloc\n"
 "    movq 8(%rsp), %rcx\n"
 "    movq %rax, 16(%rcx)\n"
 "    movq %rcx, %rax\n"
@@ -2072,7 +2075,7 @@ struct Codegen {
 "    movq %rcx, 8(%rdi)\n"
 "    leaq 0(,%rcx,8), %rsi\n"
 "    movq 16(%rdi), %rdi\n"
-"    call realloc\n"
+"    call __han_realloc\n"
 "    movq 0(%rsp), %rdi\n"
 "    movq %rax, 16(%rdi)\n"
 "1:\n"
@@ -2129,7 +2132,9 @@ struct Codegen {
 "    decq %rax\n"
 "    movq %rax, 0(%rdi)\n"
 "    movq 16(%rdi), %rcx\n"
-"    movq (%rcx,%rax,8), %rax\n"
+"    movq (%rcx,%rax,8), %rdx\n"
+"    movq $0, (%rcx,%rax,8)\n"          // 빈 자리는 0으로: GC 가 뺀 값을 붙잡고 있지 않게
+"    movq %rdx, %rax\n"
 "    ret\n"
 ".Lpop_empty:\n"
 "    pushq %rbp\n    movq %rsp, %rbp\n"
@@ -2164,6 +2169,8 @@ struct Codegen {
 "    jmp .Lrm_shift\n"
 ".Lrm_done:\n"
 "    decq 0(%rdi)\n"
+"    movq 0(%rdi), %rax\n"
+"    movq $0, (%rcx,%rax,8)\n"          // 맨 끝 빈 자리 0으로 (lpop 과 같은 이유)
 "    movq %r8, %rax\n"
 "    ret\n"
 ".Lrm_oob:\n"
@@ -2281,7 +2288,7 @@ struct Codegen {
 "    movq %rcx, 24(%rsp)\n"
 "    movq %r9, 32(%rsp)\n"
 "    leaq 1(%r9), %rdi\n"
-"    call malloc\n"
+"    call __han_alloc\n"
 "    movq %rax, 40(%rsp)\n"
 "    movq %rax, %rdi\n"
 "    movq 24(%rsp), %rsi\n"
@@ -2325,7 +2332,7 @@ struct Codegen {
 "    imulq %rsi, %rax\n"
 "    movq %rax, 32(%rsp)\n"             // 전체 칸 수
 "    movl $32, %edi\n"
-"    call malloc\n"
+"    call __han_alloc\n"
 "    movq %rax, 40(%rsp)\n"
 "    movq 32(%rsp), %rcx\n"
 "    movq %rcx, 0(%rax)\n"
@@ -2333,7 +2340,7 @@ struct Codegen {
 "    movq 8(%rsp), %rdx\n"
 "    movq %rdx, 24(%rax)\n"             // cols
 "    leaq 0(,%rcx,8), %rdi\n"
-"    call malloc\n"
+"    call __han_alloc\n"
 "    movq 40(%rsp), %rcx\n"
 "    movq %rax, 16(%rcx)\n"
 "    movq 32(%rsp), %rdx\n"
@@ -2543,7 +2550,7 @@ struct Codegen {
 "    cmpq $1114111, %rdi\n"
 "    jg .Lchr_bad\n"
 "    movl $5, %edi\n"
-"    call malloc\n"
+"    call __han_alloc\n"
 "    movq %rax, 16(%rsp)\n"
 "    movq 0(%rsp), %rcx\n"
 "    movq %rax, %rdx\n"
@@ -2657,6 +2664,173 @@ struct Codegen {
     }
 };
 
+// ==================== 쓰레기 수거 (GC) ====================
+// 문자·목록·묶음은 전부 여기서 할당한다. 예전엔 malloc 만 하고 free 를 안 해서
+// 반복문에서 문자를 이어붙이면 메모리가 끝없이 불었다.
+//
+// 방식: 보수적 mark-sweep (Boehm GC 와 같은 원리를 작게).
+//   - 뿌리 = 스택 전체. 한랭 변수는 전부 스택 칸에 있고 계산 중인 값도 스택에 push 되므로
+//     스택만 훑으면 살아 있는 값을 다 찾는다. 레지스터는 setjmp 로 스택에 쏟아 놓고 훑는다.
+//   - 스택의 8바이트 하나하나를 "포인터일지도 모름"으로 본다. 정수가 우연히 주소처럼
+//     생겼으면 그 덩어리는 살려 둔다 (조금 덜 치울 뿐 잘못 지우는 일은 없다).
+//   - 덩어리 안을 가리키는 포인터도 인정한다 (문자 중간을 가리키는 경우 대비).
+//   - 할당한 양이 max(8MB, 지난번 살아남은 양) 을 넘으면 수거한다.
+//   - HAN_GC_STRESS 환경변수가 있으면 할당마다 수거한다 (테스트용 — 숨은 버그를 끌어냄).
+// 컴파일할 때마다 gcc -S 로 구워 어셈블리 뒤에 붙인다. 그래서 .s 파일 하나로 완결된다.
+static const char* GC_RUNTIME = R"HANRT(
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <setjmp.h>
+
+typedef struct Hdr { size_t size; uint32_t idx; uint32_t mark; } Hdr;   /* 16바이트 */
+
+void *__han_stack_base;                 /* main 이 시작할 때 자기 rbp 를 적어 둔다 */
+static Hdr **tab;                       /* 할당한 덩어리 전부 */
+static size_t ntab, captab;
+static size_t since, limit = 8u << 20;  /* 지난 수거 뒤 할당한 양 / 수거 기준 */
+static int stress = -1;
+static Hdr **stk;                       /* 표시(mark) 작업 스택 */
+static size_t nstk, capstk;
+
+static void oom(void) {
+    printf("[실행 오류] 메모리가 모자람\n");
+    exit(1);
+}
+
+static int byAddr(const void *a, const void *b) {
+    uintptr_t x = (uintptr_t)*(Hdr *const *)a, y = (uintptr_t)*(Hdr *const *)b;
+    return x < y ? -1 : x > y;
+}
+
+/* w 가 어떤 덩어리(머리 포함) 안을 가리키면 그 덩어리. tab 이 정렬돼 있어야 한다. */
+static Hdr *lookup(uintptr_t w) {
+    if (ntab == 0 || w < (uintptr_t)tab[0]) return NULL;
+    size_t lo = 0, hi = ntab;           /* tab[lo] <= w 인 가장 큰 lo 찾기 */
+    while (hi - lo > 1) {
+        size_t mid = (lo + hi) / 2;
+        if ((uintptr_t)tab[mid] <= w) lo = mid; else hi = mid;
+    }
+    Hdr *h = tab[lo];
+    size_t sz = h->size ? h->size : 1;
+    return w < (uintptr_t)h + sizeof(Hdr) + sz ? h : NULL;
+}
+
+static void markWord(uintptr_t w) {
+    Hdr *h = lookup(w);
+    if (!h || h->mark) return;
+    h->mark = 1;
+    if (nstk == capstk) {
+        capstk = capstk ? capstk * 2 : 1024;
+        stk = realloc(stk, capstk * sizeof(Hdr *));
+        if (!stk) oom();
+    }
+    stk[nstk++] = h;
+}
+
+static void scanRange(uintptr_t lo, uintptr_t hi) {
+    lo = (lo + 7) & ~(uintptr_t)7;
+    for (uintptr_t p = lo; p + 8 <= hi; p += 8) markWord(*(uintptr_t *)p);
+}
+
+static void __attribute__((noinline)) collectInner(void) {
+    volatile uintptr_t here = 0;
+    qsort(tab, ntab, sizeof(Hdr *), byAddr);
+    if (__han_stack_base) scanRange((uintptr_t)&here, (uintptr_t)__han_stack_base);
+    while (nstk) {                      /* 살아 있는 덩어리 속도 훑기 (목록 → 원소, 묶음 → 칸) */
+        Hdr *h = stk[--nstk];
+        uintptr_t body = (uintptr_t)(h + 1);
+        scanRange(body, body + h->size);
+    }
+    size_t j = 0, live = 0;
+    for (size_t i = 0; i < ntab; i++) {
+        Hdr *h = tab[i];
+        if (h->mark) { h->mark = 0; h->idx = (uint32_t)j; tab[j++] = h; live += h->size; }
+        else free(h);
+    }
+    ntab = j;
+    since = 0;
+    limit = live > ((size_t)8 << 20) ? live : ((size_t)8 << 20);
+}
+
+static void collect(void) {
+    jmp_buf jb;
+    setjmp(jb);                         /* 레지스터를 스택에 쏟아서 같이 훑이게 한다 */
+    collectInner();
+}
+
+static void maybeCollect(void) {
+    if (stress < 0) stress = getenv("HAN_GC_STRESS") != NULL;
+    if (stress || since >= limit) collect();
+}
+
+void *__han_alloc(size_t n) {
+    maybeCollect();
+    if (ntab == captab) {
+        captab = captab ? captab * 2 : 1024;
+        tab = realloc(tab, captab * sizeof(Hdr *));
+        if (!tab) oom();
+    }
+    Hdr *h = malloc(sizeof(Hdr) + n);
+    if (!h) { collect(); h = malloc(sizeof(Hdr) + n); if (!h) oom(); }
+    memset(h + 1, 0, n);                /* 0 으로 채움: 쓰레기 값이 포인터로 오해받지 않게 */
+    h->size = n; h->mark = 0; h->idx = (uint32_t)ntab;
+    tab[ntab++] = h;
+    since += sizeof(Hdr) + n;
+    return h + 1;
+}
+
+void *__han_realloc(void *p, size_t n) {
+    if (!p) return __han_alloc(n);
+    maybeCollect();                     /* p 는 이 함수 지역변수라 스택/레지스터에서 살아 있다 */
+    Hdr *h = (Hdr *)p - 1;
+    size_t old = h->size;
+    Hdr *nh = realloc(h, sizeof(Hdr) + n);
+    if (!nh) oom();
+    if (n > old) { memset((char *)(nh + 1) + old, 0, n - old); since += n - old; }
+    nh->size = n;
+    tab[nh->idx] = nh;
+    return nh + 1;
+}
+
+char *__han_strdup(const char *s) {
+    size_t n = strlen(s);
+    char *p = __han_alloc(n + 1);
+    memcpy(p, s, n + 1);
+    return p;
+}
+)HANRT";
+
+// GC_RUNTIME 을 gcc -S 로 어셈블리로 굽는다.
+static string buildRuntimeAsm() {
+    const char* td = getenv("TMPDIR");
+    string base = string(td && *td ? td : "/tmp") + "/hanrtXXXXXX";
+    vector<char> cpath(base.begin(), base.end()); cpath.push_back(0);
+    int fd = mkstemp(cpath.data());
+    if (fd < 0) { cerr << "임시 파일을 못 만듦\n"; exit(1); }
+    close(fd);
+    string c = string(cpath.data()) + ".c", s = string(cpath.data()) + ".s";
+    rename(cpath.data(), c.c_str());
+    { ofstream f(c); f << GC_RUNTIME; }
+    string cmd = "gcc -O2 -S -fno-asynchronous-unwind-tables -o '" + s + "' '" + c + "'";
+    int rc = system(cmd.c_str());
+    remove(c.c_str());
+    if (rc != 0) { remove(s.c_str()); cerr << "gcc 실패 (런타임)\n"; exit(1); }
+    // gcc 의 지역 라벨(.L0, .LC0 …)이 우리 라벨과 겹치므로 .Lrt 로 바꾸고,
+    // .note.GNU-stack 은 우리 쪽에 이미 있으니 뺀다.
+    ifstream f(s); string line, out;
+    while (getline(f, line)) {
+        if (line.find(".note.GNU-stack") != string::npos) continue;
+        for (size_t p = 0; (p = line.find(".L", p)) != string::npos; p += 4)
+            line.replace(p, 2, ".Lrt");
+        out += line + "\n";
+    }
+    f.close();
+    remove(s.c_str());
+    return out;
+}
+
 // ==================== main ====================
 static const char* HAN_VERSION = "한랭 0.10";
 
@@ -2694,7 +2868,7 @@ int main(int argc, char** argv) {
     auto ast = ps.program();
     Checker ck;
     ck.run(ast.get(), ps.funcs);
-    string asmOut = Codegen{}.run(ast.get(), ps.funcs, ck.insts);
+    string asmOut = Codegen{}.run(ast.get(), ps.funcs, ck.insts) + buildRuntimeAsm();
 
     if (argc >= 4 && string(argv[2]) == "-o") {
         string sfile = string(argv[3]) + ".s";
