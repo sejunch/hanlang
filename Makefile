@@ -1,25 +1,54 @@
-.POSIX:
-.PHONY: all test install uninstall clean vscode
+.PHONY: all test install uninstall clean vscode bootstrap
 
 PREFIX ?= /usr/local
-CXX    ?= g++
-CXXFLAGS ?= -std=c++17 -O2
+CC     ?= gcc
 
-all: hanc
+# 한랭 컴파일러는 한랭으로 짜여 있다 (compiler/한랭.han).
+# 처음 빌드할 때는 그 컴파일러가 자기 자신을 컴파일해 둔 어셈블리(bootstrap/hanc.s)를
+# gcc 로 링크만 한다 — 그래서 gcc 만 있으면 된다.
+# 컴파일러 소스를 고친 뒤에는 `make bootstrap` 으로 bootstrap/hanc.s 를 새로 만든다.
 
-hanc: hanc.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $<
+RTFLAGS = -O2 -S -fno-asynchronous-unwind-tables
 
-test: hanc
+all: hanc runtime/runtime.s runtime/runtime-window.s
+
+hanc: bootstrap/hanc.s
+	$(CC) -no-pie bootstrap/hanc.s -o $@ -lm
+
+# 런타임: 어셈블리 도우미 + C 를 구운 것. 둘을 한 파일로 이어 붙이므로
+# gcc 가 만든 지역 라벨(.L…)은 우리 라벨과 안 겹치게 .Lrt… 로 바꾼다.
+runtime/runtime.s: runtime/helpers.s runtime/core.c
+	{ cat runtime/helpers.s; $(CC) $(RTFLAGS) -o - runtime/core.c | \
+	  sed -e '/\.note\.GNU-stack/d' -e 's/\.L/.Lrt/g'; } > $@
+
+# 창 그리기 런타임 (X11 + Xft). 창을 쓰는 프로그램에만 붙는다.
+runtime/runtime-window.s: runtime/window.c
+	$(CC) $(RTFLAGS) -I/usr/include/freetype2 -o - runtime/window.c | \
+	  sed -e '/\.note\.GNU-stack/d' -e 's/\.L/.Lwn/g' > $@
+
+# 컴파일러 소스로 bootstrap/hanc.s 를 새로 만든다. 두 번 돌려서(새 컴파일러로 다시 컴파일)
+# 결과가 같은지(고정점)까지 확인한다 — 다르면 새 컴파일러가 자기 자신을 다르게 컴파일한다는 뜻.
+bootstrap: hanc runtime/runtime.s
+	./hanc compiler/한랭.han -o hanc.new
+	./hanc.new compiler/한랭.han > bootstrap/hanc.s.new
+	$(CC) -no-pie bootstrap/hanc.s.new -o hanc.new2 -lm
+	./hanc.new2 compiler/한랭.han > bootstrap/hanc.s.new2
+	cmp bootstrap/hanc.s.new bootstrap/hanc.s.new2
+	mv bootstrap/hanc.s.new bootstrap/hanc.s
+	rm -f hanc.new hanc.new2 bootstrap/hanc.s.new2
+	$(CC) -no-pie bootstrap/hanc.s -o hanc -lm
+	@echo "bootstrap/hanc.s 를 새로 만듦 (고정점 확인)."
+
+test: all
 	@./tests/run.sh
 
-# hanc 와 han 은 bin 에, 라이브러리는 lib/hanlang 에 둔다.
+# hanc 와 han 은 bin 에, 라이브러리·런타임은 lib/hanlang 에 둔다.
 # hanc 는 자기 위치 기준으로 ../lib/hanlang 을 찾으므로 이대로 두면 된다.
-install: hanc
+install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin $(DESTDIR)$(PREFIX)/lib/hanlang
 	cp hanc han $(DESTDIR)$(PREFIX)/bin/
 	chmod +x $(DESTDIR)$(PREFIX)/bin/hanc $(DESTDIR)$(PREFIX)/bin/han
-	cp lib/*.han $(DESTDIR)$(PREFIX)/lib/hanlang/
+	cp lib/*.han runtime/runtime.s runtime/runtime-window.s $(DESTDIR)$(PREFIX)/lib/hanlang/
 	@echo "설치 끝.  han 프로그램.han  으로 실행."
 
 uninstall:
@@ -27,7 +56,7 @@ uninstall:
 	rm -rf $(DESTDIR)$(PREFIX)/lib/hanlang
 
 clean:
-	rm -f hanc *.s
+	rm -f hanc runtime/runtime.s runtime/runtime-window.s
 
 # VS Code 확장: .vsix 만들고 설치 (editors/vscode/)
 vscode:

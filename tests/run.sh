@@ -121,76 +121,47 @@ for f in examples/demo4.han examples/demo7.han tests/t_list.han tests/t_str.han 
     else bad "$f (수거 스트레스 모드에서 결과가 달라짐)"; fi
 done
 
-echo "== 셀프호스팅 (한랭으로 짠 컴파일러 self/한랭.han)"
-export HAN_SEED=1          # (N의 무작위) 를 쓰는 프로그램도 양쪽 결과가 같게
-# hanc 로 컴파일러(1세대)를 만들고, 그걸로 프로그램을 컴파일해서 hanc 와 결과가 같은지 본다.
-# 셀프 컴파일러는 hanc 와 같은 명령줄: '컴파일러 파일' 이면 어셈블리(런타임까지 붙은 것)를 화면에.
-# 런타임은 컴파일러 옆 runtime.s 에서 찾는다 (hanc --runtime 이 만든 것)
-self_build() {   # $1 = 컴파일러, $2 = 원본, $3 = 출력 .s.  에러는 표준 에러로, 실패하면 종료코드 1
-    rm -f "$3"; HAN_LIB="$ROOT/lib" "$1" "$2" >"$3" 2>"$tmp/selferr"
-}
-self_link() {    # 창 런타임이 붙었으면 X11/Xft 도 링크
-    if grep -q '__han_wopen:' "$1"; then gcc -no-pie "$1" -o "$2" -lm -lX11 -lXft 2>"$tmp/err"
-    else gcc -no-pie "$1" -o "$2" -lm 2>"$tmp/err"; fi
-}
-# 출력과 종료코드를 hanc 쪽과 비교 (입력·인자·작업 폴더도 같게)
-self_same() {   # $1 = 컴파일러, $2 = 원본
-    self_build "$1" "$2" "$tmp/s.s" && self_link "$tmp/s.s" "$tmp/sp" &&
-    [ "$(cd "$tmp" && printf '10\n20\n12\n' | ./sp 가나 12 2>&1; echo "rc=$?")" = \
-      "$(cd "$tmp" && printf '10\n20\n12\n' | "$ROOT/han" "$ROOT/$2" 가나 12 2>&1; echo "rc=$?")" ]
-}
-# 예제·기능 테스트 전부 (입력·인자는 양쪽에 똑같이 준다)
-SELF_SAME="self/tests/s1.han self/tests/s2.han $(ls examples/*.han tests/t_*.han | grep -v t_win | tr '\n' ' ')"
-if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err" && ./hanc --runtime > "$tmp/runtime.s" &&
-   ./hanc --runtime-window > "$tmp/runtime-window.s"; then
-    ok
-    for f in $SELF_SAME; do
-        if self_same "$tmp/hanc2" "$f"; then ok
-        else bad "$f (셀프 컴파일러 결과가 hanc 와 다름)"; head -3 "$tmp/selferr" | sed 's/^/    /'; fi
-    done
-    # 셀프호스팅: 1세대가 자기 자신을 컴파일해 2세대, 2세대가 또 컴파일해 3세대.
-    # 2세대와 3세대 어셈블리가 바이트 단위로 같아야 한다 (고정점)
-    if self_build "$tmp/hanc2" self/한랭.han "$tmp/g2.s" && self_link "$tmp/g2.s" "$tmp/hanc_g2" &&
-       self_build "$tmp/hanc_g2" self/한랭.han "$tmp/g3.s" && cmp -s "$tmp/g2.s" "$tmp/g3.s"; then ok
-    else bad "self/한랭.han (자기 자신 컴파일: 2세대와 3세대가 다름)"; head -3 "$tmp/selferr" | sed 's/^/    /'; fi
-    # 2세대 컴파일러(한랭이 컴파일한 컴파일러)도 똑같이 맞아야 한다
-    for f in self/tests/s2.han tests/t_tree.han tests/t_args.han; do
-        if [ -x "$tmp/hanc_g2" ] && self_same "$tmp/hanc_g2" "$f"; then ok
-        else bad "$f (2세대 셀프 컴파일러 결과가 hanc 와 다름)"; fi
-    done
-    # 창 그림이 hanc 것과 픽셀 하나까지 같은가 (X 가 있을 때)
-    if [ $HAS_X = 1 ]; then
-        if HAN_LIB="$ROOT/lib" "$tmp/hanc2" tests/t_win.han -o "$tmp/sw" 2>"$tmp/err" && "$tmp/sw" >/dev/null &&
-           cp "$HAN_SCREENSHOT" "$tmp/self.ppm" && ./hanc tests/t_win.han -o "$tmp/hw" && "$tmp/hw" >/dev/null &&
-           cmp -s "$tmp/self.ppm" "$HAN_SCREENSHOT"; then ok
-        else bad "tests/t_win.han (셀프 컴파일러 창 그림이 hanc 와 다름)"; fi
-    fi
-    # hanc 와 같은 명령줄: -o 로 실행파일까지 만들고 중간 .s 는 지운다
-    if HAN_LIB="$ROOT/lib" "$tmp/hanc2" tests/t_lib.han -o "$tmp/tl" 2>"$tmp/err" && [ ! -e "$tmp/tl.s" ] &&
-       [ "$("$tmp/tl")" = "$(./han tests/t_lib.han)" ]; then ok
-    else bad "self/한랭.han (-o 로 실행파일 만들기)"; head -3 "$tmp/err" | sed 's/^/    /'; fi
-    # 셀프 컴파일러는 지금까지 짠 한랭 프로그램 중 가장 커서 GC 검증에도 좋다
-    if self_build "$tmp/hanc2" self/tests/s2.han "$tmp/n0.s" &&
-       HAN_GC_STRESS=1 timeout 120 "$tmp/hanc2" self/tests/s2.han >"$tmp/n.s" && cmp -s "$tmp/n0.s" "$tmp/n.s"; then ok
-    else bad "self/한랭.han (수거 스트레스 모드에서 결과가 달라짐)"; fi
-    # 에러 메시지(문구·캐럿·호출 문맥)가 hanc 와 글자 하나까지 같아야 한다
-    for f in tests/e*.han self/tests/se*.han; do
-        self_build "$tmp/hanc2" "$f" "$tmp/s.s"
-        if [ "$(./hanc "$f" -o "$tmp/p" 2>&1)" = "$(cat "$tmp/selferr")" ]; then ok
-        else bad "$f (셀프 컴파일러 에러 메시지가 hanc 와 다름)"; fi
-    done
-    for f in self/tests/se*.han; do                           # 컴파일 에러가 나야 하는 것들
-        if self_build "$tmp/hanc2" "$f" "$tmp/s.s"; then bad "$f (셀프 컴파일러: 컴파일 에러가 나야 정상)"
-        elif [ -s "$tmp/s.s" ]; then bad "$f (셀프 컴파일러: 오류인데 어셈블리를 냄)"
-        elif ! grep -q '^\[오류\]' "$tmp/selferr"; then
-            bad "$f (셀프 컴파일러: 오류 메시지는 표준 에러로만 나와야 함)"
-        else ok; fi
-    done
-else
-    bad "self/한랭.han (hanc 로 컴파일 실패)"; sed 's/^/    /' "$tmp/err" | head -5
-fi
-
+echo "== 정답 비교 (출력·종료코드·에러 메시지를 tests/expected/ 와 글자 단위로)"
+# 정답은 C++ 로 짠 옛 컴파일러(hanc.cpp, 2026-10-28 지움)가 낸 결과다. 한랭으로 짠 지금 컴파일러가
+# 그것과 똑같이 돌아야 한다. 프로그램은 임시 폴더에서 같은 입력·인자로 돌린다.
+# 새 기능을 넣어 출력이 바뀌는 게 맞으면: 눈으로 확인한 뒤 tests/expected/ 의 그 파일을 새로 쓰기.
+export HAN_SEED=1          # (N의 무작위) 를 쓰는 프로그램도 결과가 늘 같게
+for f in $(ls examples/*.han tests/t_*.han | grep -v t_win); do
+    exp="tests/expected/$(dirname "$f" | tr / _)_$(basename "$f" .han).out"
+    if [ ! -f "$exp" ]; then bad "$f (정답 파일 $exp 이 없음)"; continue; fi
+    if ./hanc "$f" -o "$tmp/gp" 2>"$tmp/err" &&
+       (cd "$tmp" && rm -f t_*.txt t_*.csv; printf '10\n20\n12\n' | ./gp 가나 12 > out 2>&1; echo "rc=$?" >> out) &&
+       cmp -s "$tmp/out" "$exp"; then ok
+    else bad "$f (출력이 정답과 다름)"; diff "$tmp/out" "$exp" 2>/dev/null | head -4 | sed 's/^/    /'; fi
+done
+for f in tests/e*.han; do
+    ./hanc "$f" -o "$tmp/gp" >/dev/null 2>"$tmp/err"
+    if cmp -s "$tmp/err" "tests/expected/err_$(basename "$f" .han).out"; then ok
+    else bad "$f (에러 메시지가 정답과 다름)"; diff "$tmp/err" "tests/expected/err_$(basename "$f" .han).out" | head -4 | sed 's/^/    /'; fi
+done
 unset HAN_SEED
+
+echo "== 셀프호스팅 (compiler/한랭.han 이 자기 자신을 컴파일)"
+# 지금 hanc 로 컴파일러를 새로 만들고(1세대), 그게 자기 자신을 컴파일한 것(2세대 어셈블리)이
+# ① bootstrap/hanc.s 와 같아야 하고 (다르면 컴파일러를 고친 뒤 make bootstrap 을 안 한 것)
+# ② 2세대가 또 컴파일한 3세대와 같아야 한다 (고정점)
+mkdir -p "$tmp/rt/runtime" && cp runtime/runtime.s runtime/runtime-window.s "$tmp/rt/runtime/"
+if ./hanc compiler/한랭.han -o "$tmp/rt/hanc" 2>"$tmp/err" &&
+   "$tmp/rt/hanc" compiler/한랭.han > "$tmp/g2.s" && gcc -no-pie "$tmp/g2.s" -o "$tmp/rt/hanc2" -lm &&
+   "$tmp/rt/hanc2" compiler/한랭.han > "$tmp/g3.s"; then
+    if cmp -s "$tmp/g2.s" "$tmp/g3.s"; then ok; else bad "compiler/한랭.han (2세대와 3세대가 다름)"; fi
+    if cmp -s "$tmp/g2.s" bootstrap/hanc.s; then ok
+    else bad "bootstrap/hanc.s 가 컴파일러 소스보다 옛것 (make bootstrap 하기)"; fi
+else
+    bad "compiler/한랭.han (컴파일 실패)"; sed 's/^/    /' "$tmp/err" | head -5
+fi
+# -o 로 실행파일까지 만들고 중간 .s 는 지운다
+if ./hanc tests/t_lib.han -o "$tmp/tl" 2>"$tmp/err" && [ ! -e "$tmp/tl.s" ] && "$tmp/tl" >/dev/null; then ok
+else bad "hanc -o (실행파일 만들기)"; fi
+# 컴파일러는 가장 큰 한랭 프로그램이라 GC 검증에도 좋다: 할당마다 수거해도 같은 결과
+if ./hanc tests/t_basic2.han > "$tmp/n0.s" &&
+   HAN_GC_STRESS=1 timeout 120 ./hanc tests/t_basic2.han > "$tmp/n.s" && cmp -s "$tmp/n0.s" "$tmp/n.s"; then ok
+else bad "hanc (수거 스트레스 모드에서 결과가 달라짐)"; fi
 
 echo "== 에러 메시지 (컴파일 실패가 정답)"
 for f in tests/e*.han; do
