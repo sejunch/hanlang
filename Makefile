@@ -30,12 +30,12 @@ runtime/runtime-window.s: runtime/window.c
 # 결과가 같은지(고정점)까지 확인한다 — 다르면 새 컴파일러가 자기 자신을 다르게 컴파일한다는 뜻.
 bootstrap: hanc runtime/runtime.s
 	./hanc compiler/한랭.han -o hanc.new
-	./hanc.new compiler/한랭.han > bootstrap/hanc.s.new
-	$(CC) -no-pie bootstrap/hanc.s.new -o hanc.new2 -lm
-	./hanc.new2 compiler/한랭.han > bootstrap/hanc.s.new2
-	cmp bootstrap/hanc.s.new bootstrap/hanc.s.new2
-	mv bootstrap/hanc.s.new bootstrap/hanc.s
-	rm -f hanc.new hanc.new2 bootstrap/hanc.s.new2
+	./hanc.new compiler/한랭.han > bootstrap/new.s
+	$(CC) -no-pie bootstrap/new.s -o hanc.new2 -lm
+	./hanc.new2 compiler/한랭.han > bootstrap/new2.s
+	cmp bootstrap/new.s bootstrap/new2.s
+	mv bootstrap/new.s bootstrap/hanc.s
+	rm -f hanc.new hanc.new2 bootstrap/new2.s
 	$(CC) -no-pie bootstrap/hanc.s -o hanc -lm
 	@echo "bootstrap/hanc.s 를 새로 만듦 (고정점 확인)."
 
