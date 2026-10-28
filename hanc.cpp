@@ -15,6 +15,7 @@
 // v15: 못 열면 { }, (빈 X 목록), [경고] (쪼갠 낱말을 나중에 선언 / 칸 이름 뒤 번째)
 // v16: 사전  점수표의 "철수"는 85이다.  (빈 정수 사전) / 있나 / 빼다 / 개수 / 열쇠들
 // v17: (X의 환경값) (X의 실제경로) (실행파일) (X를 실행하다) — 셀프 컴파일러를 hanc 와 같게 하려고
+// v18: (지금시각) / N초 기다리다 / (글에서 무늬를 맞추다) 정규식 / 창 그리기(X11+Xft, 쓸 때만 링크)
 // 빌드: g++ -std=c++17 -O2 -o hanc hanc.cpp
 // 사용: ./hanc prog.han > prog.s   또는   ./hanc prog.han -o prog
 #include <bits/stdc++.h>
@@ -119,7 +120,8 @@ static const set<string> KEYWORDS = {
     "말하다","돌려주다","란","이란","이다","듣다","바꾸다",
     "정수","소수","문자","참","거짓","번째","넣다",
     "행","열","채우다","멈추다","계속하다","묶음","새","빼다",
-    "없음","파일","열다","읽기","쓰기","붙여쓰기","종료하다","빈","있나","실행하다"
+    "없음","파일","열다","읽기","쓰기","붙여쓰기","종료하다","빈","있나","실행하다",
+    "초","기다리다","맞추다","창","색칠하다","사각형그리다","선긋다","점찍다","글쓰다","보여주다"
 };
 
 // ==================== 1단계: 렉서 ====================
@@ -355,6 +357,7 @@ struct Resolver {
         known.insert("오류");                       // 파일 오류를 쓰기로 열다 — 마찬가지
         known.insert("열쇠들");                     // 사전의 열쇠들 — 마찬가지
         known.insert("실행파일");                   // (실행파일) — 마찬가지
+        known.insert("지금시각");                   // (지금시각) — 마찬가지
         known.insert("사전");                       // (빈 정수 사전) 의 타입 자리
         prescan(in);
         vector<Token> out;
@@ -446,16 +449,19 @@ struct Resolver {
                 done = true; break;
             }
             if (done) continue;
-            // "개수번" -> 개수 + 번
-            if (endsWith(w, "번") && known.count(w.substr(0, w.size() - strlen("번")))) {
-                string stem = w.substr(0, w.size() - strlen("번"));
+            // "개수번" -> 개수 + 번,  "쉴초" -> 쉴 + 초  (아는 이름일 때만)
+            done = false;
+            for (const char* dep : {"번", "초"}) {
+                if (!(endsWith(w, dep) && known.count(w.substr(0, w.size() - strlen(dep))))) continue;
+                string stem = w.substr(0, w.size() - strlen(dep));
                 Token v = tk; v.s = stem; v.particle = ""; v.blen = (int)stem.size();
                 out.push_back(v);
-                Token k; k.t = TK::Keyword; k.s = "번"; k.file = tk.file; k.line = tk.line;
+                Token k; k.t = TK::Keyword; k.s = dep; k.file = tk.file; k.line = tk.line;
                 k.col = tk.col + (int)stem.size(); k.blen = (int)(w.size() - stem.size());
                 out.push_back(k);
-                continue;
+                done = true; break;
             }
+            if (done) continue;
             // 모르는 낱말이라도 이다/다 로 끝나면 쪼갬:
             // "미지수이다" -> 미지수 + 이다. 어차피 둘 다 에러지만
             // "정의되지 않은 변수 '미지수'" 쪽이 훨씬 정확한 진단임
@@ -831,6 +837,17 @@ struct Parser {
             P e = expr(); save = pending;
             args.push_back(move(e));
             parts.push_back(save);
+            if (isKw("맞추다")) {                  // (글에서 "[0-9]+"를 맞추다) -> 맞은 부분들
+                Token mt = cur(); p++;
+                if (args.size() != 2) terr(mt, "'(글에서 \"무늬\"를 맞추다)' 꼴이어야 함");
+                int ti = (parts[1] == "에서") ? 1 : 0;      // '에서' 붙은 쪽이 글
+                if (parts[(size_t)ti] != "에서") terr(mt, "어느 글에서 찾을지 '에서' 로 표시해야 함 (예: (글에서 \"[0-9]+\"를 맞추다))");
+                auto n = mk("rematch"); at(n.get(), mt);
+                n->kid.push_back(move(args[(size_t)ti]));
+                n->kid.push_back(move(args[(size_t)(1 - ti)]));
+                pending.clear();
+                return n;
+            }
             if (isKw("실행하다")) {                // ("gcc a.s -o a"를 실행하다) -> 종료코드
                 Token xt = cur(); p++;
                 if (args.size() != 1) terr(xt, "'\"명령\"을 실행하다' 꼴이어야 함 (명령 하나)");
@@ -928,6 +945,16 @@ struct Parser {
             return n;
         }
         // 파일 "a.han"을 읽기로 열다 { }  — 블록 안에서는 듣다/입력끝(읽기) 이나 말하다(쓰기) 가 파일을 본다
+        if (isKw("창")) {                       // 창 640과 480을 열다.
+            p++;
+            P w = expr();
+            P h = expr();
+            expectKw("열다", "'창 가로와 세로를 열다.' 꼴이어야 함");
+            expectOp(".", "문장은 '.' 로 끝나야 함");
+            auto n = mk("wopen"); at(n.get(), first);
+            n->kid.push_back(move(w)); n->kid.push_back(move(h));
+            return n;
+        }
         if (isKw("파일")) {
             p++;
             P name = expr();
@@ -976,7 +1003,9 @@ struct Parser {
         string endWith; bool hasEnd = false;    // 끝" " 말하다 — 끝맺음 옵션
         auto atPredicate = [&] {
             return isKw("반복하다") || isKw("말하다") || isKw("돌려주다") || isKw("인")
-                || isKw("넣다") || isKw("빼다") || isKw("종료하다") || isKw("실행하다") || isFunc();
+                || isKw("넣다") || isKw("빼다") || isKw("종료하다") || isKw("실행하다") || isKw("기다리다")
+                || isKw("색칠하다") || isKw("사각형그리다") || isKw("선긋다") || isKw("점찍다")
+                || isKw("글쓰다") || isKw("보여주다") || isFunc();
         };
         while (!atPredicate()) {
             // 조사와 서술어 사이의 옵션:  "안녕"을 끝" " 말하다.
@@ -1031,6 +1060,7 @@ struct Parser {
             }
             parts.push_back(pending);
             if (isKw("번")) { p++; pending = "번"; parts.back() = "번"; }
+            else if (isKw("초")) { p++; pending = "초"; parts.back() = "초"; }
             if (pending.empty() && !atPredicate())
                 terr(cur(), "문장을 끝맺을 서술어(말하다, 돌려주다 등)를 찾을 수 없음");
         }
@@ -1058,6 +1088,24 @@ struct Parser {
             auto s = mk("exprstmt"); s->file = n->file; s->line = n->line;
             s->kid.push_back(move(n));
             return s;
+        }
+        if (isKw("기다리다")) {                    // 2초 기다리다.
+            Token wt = cur(); p++;
+            expectOp(".", "문장은 '.' 로 끝나야 함");
+            if (args.size() != 1 || parts[0] != "초") terr(wt, "'N초 기다리다.' 꼴이어야 함 (예: 0.5초 기다리다.)");
+            auto n = mk("sleep"); at(n.get(), wt);
+            n->kid.push_back(move(args[0]));
+            return n;
+        }
+        // 창에 그리기:  "빨강"으로 색칠하다.  x와 y와 너비와 높이를 사각형그리다.  … 보여주다.
+        // 인자는 쓴 순서대로 (조사는 읽기 좋으라고 붙이는 것)
+        for (const char* wv : {"색칠하다", "사각형그리다", "선긋다", "점찍다", "글쓰다", "보여주다"}) {
+            if (!isKw(wv)) continue;
+            Token wt = cur(); p++;
+            expectOp(".", "문장은 '.' 로 끝나야 함");
+            auto n = mk("wcall", wv); at(n.get(), wt);
+            for (auto& a : args) n->kid.push_back(move(a));
+            return n;
         }
         if (isKw("실행하다")) {                    // "명령"을 실행하다.  (종료코드는 버림)
             Token xt = cur(); p++;
@@ -1381,6 +1429,14 @@ struct Checker {
         if (n->kind == "none")  { n->ty = TNONE; return; }
         if (n->kind == "eof")   { n->ty = TINT; return; }
         if (n->kind == "argv")  { n->ty = listOf(TSTR); return; }
+        if (n->kind == "now")   { n->ty = TFLT; return; }
+        if (n->kind == "rematch") {              // (글에서 "무늬"를 맞추다)
+            chkExpr(n->kid[0].get()); chkExpr(n->kid[1].get());
+            if (n->kid[0]->ty != TSTR) nerr(n->kid[0].get(), "정규식으로 찾을 글은 문자여야 함 (지금은 " + tyName(n->kid[0]->ty) + ")");
+            if (n->kid[1]->ty != TSTR) nerr(n->kid[1].get(), "정규식 무늬는 문자여야 함 (지금은 " + tyName(n->kid[1]->ty) + ")");
+            n->ty = listOf(TSTR);
+            return;
+        }
         if (n->kind == "exe")   { n->ty = TSTR; return; }
         if (n->kind == "system") {               // ("명령"을 실행하다)
             chkExpr(n->kid[0].get());
@@ -1405,6 +1461,7 @@ struct Checker {
             if (it == varTy.end() && n->str == "입력끝") { n->kind = "eof"; n->ty = TINT; return; }
             if (it == varTy.end() && n->str == "명령줄") { n->kind = "argv"; n->ty = listOf(TSTR); return; }
             if (it == varTy.end() && n->str == "실행파일") { n->kind = "exe"; n->ty = TSTR; return; }
+            if (it == varTy.end() && n->str == "지금시각") { n->kind = "now"; n->ty = TFLT; return; }
             if (it == varTy.end()) nerr(n, "정의되지 않은 변수 '" + n->str + "'");
             n->ty = it->second;
             return;
@@ -1733,6 +1790,38 @@ struct Checker {
                 nerr(n->kid[0].get(), "사전은 통째로 말할 수 없음. (사전의 \"열쇠\") 처럼 하나씩 말하기");
             return;
         }
+        if (n->kind == "sleep") {                // 2초 기다리다.
+            chkExpr(n->kid[0].get());
+            int t = n->kid[0]->ty;
+            if (t != TINT && t != TFLT) nerr(n->kid[0].get(), "기다릴 시간(초)은 숫자여야 함 (지금은 " + tyName(t) + ")");
+            return;
+        }
+        if (n->kind == "wopen" || n->kind == "wcall") {
+            // 그리기 동작마다: 인자 개수, 첫 인자가 문자인가(색칠하다·글쓰다)
+            static const map<string, pair<int,bool>> SIG = {
+                {"색칠하다", {1, true}}, {"사각형그리다", {4, false}}, {"선긋다", {4, false}},
+                {"점찍다", {2, false}}, {"글쓰다", {3, true}}, {"보여주다", {0, false}}};
+            static const map<string, string> USAGE = {
+                {"색칠하다", "'\"빨강\"으로 색칠하다.'"}, {"사각형그리다", "'x와 y와 너비와 높이를 사각형그리다.'"},
+                {"선긋다", "'x1과 y1과 x2와 y2를 선긋다.'"}, {"점찍다", "'x와 y를 점찍다.'"},
+                {"글쓰다", "'\"글\"을 x와 y에 글쓰다.'"}, {"보여주다", "'보여주다.'"}};
+            string nm = (n->kind == "wopen") ? string("창") : n->str;
+            int want = (n->kind == "wopen") ? 2 : SIG.at(nm).first;
+            bool strFirst = (n->kind == "wcall") && SIG.at(nm).second;
+            if ((int)n->kid.size() != want)
+                nerr(n, "'" + nm + "' 는 값 " + to_string(want) + "개가 필요한데 " + to_string(n->kid.size()) + "개를 넣음. " +
+                     (n->kind == "wopen" ? string("'창 640과 480을 열다.'") : USAGE.at(nm)) + " 꼴");
+            for (size_t i = 0; i < n->kid.size(); i++) {
+                chkExpr(n->kid[i].get());
+                int t = n->kid[i]->ty;
+                if (strFirst && i == 0) {
+                    if (t != TSTR) nerr(n->kid[i].get(), "'" + nm + "' 의 첫 값은 문자여야 함 (지금은 " + tyName(t) + ")");
+                } else if (t != TINT && t != TFLT) {
+                    nerr(n->kid[i].get(), "'" + nm + "' 의 자리·크기는 숫자여야 함 (지금은 " + tyName(t) + ")");
+                }
+            }
+            return;
+        }
         if (n->kind == "exit") {                 // 1로 종료하다.
             if (!n->kid.empty()) {
                 chkExpr(n->kid[0].get());
@@ -1864,6 +1953,7 @@ struct Checker {
 //   정수 = 그대로, 문자 = 포인터, 소수 = double 비트 패턴.
 //   소수 연산 때만 xmm 으로 옮겼다가 돌아온다.
 //   -> 사용자 함수 호출이 타입과 무관하게 같은 규약(rdi, rsi, ...)을 쓴다.
+static bool windowUsed = false;     // 창 그리기를 쓰면 X11/Xft 런타임을 붙이고 링크한다
 struct Codegen {
     ostringstream text, rodata;
     map<string,int> slot;
@@ -1926,6 +2016,15 @@ struct Codegen {
         if (n->kind == "input") { text << "    call __han_input\n"; return; }
         if (n->kind == "eof")   { text << "    call __han_eof\n"; return; }
         if (n->kind == "argv")  { text << "    call __han_args\n"; return; }
+        if (n->kind == "now")   { text << "    call __han_now\n    movq %xmm0, %rax\n"; return; }
+        if (n->kind == "rematch") {
+            genExpr(n->kid[0].get()); push();
+            genExpr(n->kid[1].get());
+            text << "    movq %rax, %rsi\n";
+            popTo("%rdi");
+            text << "    movq $" << n->line << ", %rdx\n    call __han_match\n";
+            return;
+        }
         if (n->kind == "exe")   { text << "    call __han_exe\n"; return; }
         if (n->kind == "system") {
             genExpr(n->kid[0].get());
@@ -2252,6 +2351,29 @@ struct Codegen {
             popTo("%rax");
             noneGuard(n);
             text << "    movq %rdx, " << (n->num * 8) << "(%rax)\n";
+            return;
+        }
+        if (n->kind == "sleep") {
+            genExpr(n->kid[0].get());
+            if (n->kid[0]->ty == TINT) toF();
+            text << "    movq %rax, %xmm0\n    call __han_sleep\n";
+            return;
+        }
+        if (n->kind == "wopen" || n->kind == "wcall") {
+            windowUsed = true;
+            static const map<string, string> FN = {
+                {"색칠하다", "__han_wcolor"}, {"사각형그리다", "__han_wrect"}, {"선긋다", "__han_wline"},
+                {"점찍다", "__han_wpoint"}, {"글쓰다", "__han_wtext"}, {"보여주다", "__han_wshow"}};
+            static const char* REG[6] = {"%rdi","%rsi","%rdx","%rcx","%r8","%r9"};
+            size_t k = n->kid.size();
+            for (auto& a : n->kid) {                 // 자리·크기는 정수로 (소수면 버림)
+                genExpr(a.get());
+                if (a->ty == TFLT) text << "    movq %rax, %xmm0\n    cvttsd2si %xmm0, %rax\n";
+                push();
+            }
+            for (size_t i = k; i-- > 0; ) popTo(REG[i]);
+            text << "    movq $" << n->line << ", " << REG[k] << "\n"
+                 << "    call " << (n->kind == "wopen" ? string("__han_wopen") : FN.at(n->str)) << "\n";
             return;
         }
         if (n->kind == "exit") {
@@ -3141,6 +3263,8 @@ static const char* C_RUNTIME = R"HANRT(
 #include <time.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <regex.h>
+#include <locale.h>
 
 typedef struct Hdr { size_t size; uint32_t idx; uint32_t mark; } Hdr;   /* 16바이트 */
 
@@ -3448,6 +3572,68 @@ long __han_system(const char *cmd) {
     return 128 + WTERMSIG(r);                            /* 신호로 죽었으면 셸처럼 128+신호 */
 }
 
+/* ---- 시간 ---- */
+double __han_now(void) {                             /* (지금시각): 1970년부터 초 (밀리초 아래까지) */
+    struct timespec t;
+    clock_gettime(CLOCK_REALTIME, &t);
+    return (double)t.tv_sec + t.tv_nsec / 1e9;
+}
+void __han_sleep(double s) {                         /* N초 기다리다 */
+    if (s <= 0) return;
+    fflush(stdout); fflush(curOut());                /* 기다리기 전에 찍은 게 보이게 */
+    struct timespec t = { (time_t)s, (long)((s - (double)(time_t)s) * 1e9) };
+    while (nanosleep(&t, &t) != 0) { }
+}
+
+/* ---- 정규식: (글에서 "무늬"를 맞추다) -> 맞은 부분들 (POSIX 확장 정규식) ----
+ * 한글 한 글자가 '.' 하나에 맞으려면 UTF-8 로케일이어야 한다. 프로그램 전체 로케일은
+ * 건드리지 않고(출력 형식이 바뀌면 안 되니까) 이 함수 안에서만 바꾼다.
+ * C.UTF-8 은 [가-힣] 같은 한글 범위를 못 받아서(glibc) 한국어 → 영어 → C.UTF-8 순으로 해 본다. */
+void *__han_match(const char *text, const char *pat, long line) {
+    static const char *LOCS[] = { "ko_KR.UTF-8", "en_US.UTF-8", "C.UTF-8" };
+    static locale_t locs[3];
+    static int ready;
+    if (!ready) {
+        for (int i = 0; i < 3; i++) locs[i] = newlocale(LC_CTYPE_MASK | LC_COLLATE_MASK, LOCS[i], (locale_t)0);
+        ready = 1;
+    }
+    locale_t old = uselocale((locale_t)0);
+    regex_t re;
+    int rc = -1;
+    for (int i = 0; i < 3 && rc != 0; i++) {
+        if (!locs[i]) continue;
+        uselocale(locs[i]);
+        rc = regcomp(&re, pat, REG_EXTENDED);
+    }
+    if (rc == -1) rc = regcomp(&re, pat, REG_EXTENDED);   /* UTF-8 로케일이 하나도 없음 */
+    if (rc != 0) {
+        char why[256];
+        regerror(rc, &re, why, sizeof why);
+        uselocale(old);
+        fflush(stdout);
+        printf("[실행 오류] %ld행: 정규식 '%s' 이 잘못됨 (%s)\n", line, pat, why);
+        exit(1);
+    }
+    void *l = __han_lnew(1);
+    const char *p = text;
+    regmatch_t m;
+    while (*p && regexec(&re, p, 1, &m, p == text ? 0 : REG_NOTBOL) == 0) {
+        size_t n = (size_t)(m.rm_eo - m.rm_so);
+        if (n == 0) {                                /* 빈 맞음: 한 글자 건너뛰고 계속 (무한 반복 방지) */
+            p += m.rm_so;
+            do p++; while ((*p & 0xC0) == 0x80);
+            continue;
+        }
+        char *piece = __han_alloc(n + 1);
+        memcpy(piece, p + m.rm_so, n);
+        __han_lpush(l, (long)piece);
+        p += m.rm_eo;
+    }
+    regfree(&re);
+    uselocale(old);
+    return l;
+}
+
 /* (N의 무작위) 의 씨앗. HAN_SEED 환경변수가 있으면 그 수로 — 테스트에서 결과를 고정하려고 */
 void __han_seed(void) {
     const char *e = getenv("HAN_SEED");
@@ -3462,8 +3648,166 @@ void __han_nonefield(long line, const char *field) {
 }
 )HANRT";
 
+// ---- 창 (X11 + Xft) ----  창 그리기를 쓰는 프로그램에만 붙인다 (-lX11 -lXft)
+// 그림은 먼저 픽스맵(보이지 않는 도화지)에 그리고, 보여주다 에서 창에 옮겨 띄운다.
+// 그래서 창이 가려졌다 다시 보여도(Expose) 다시 그릴 수 있고, HAN_SCREENSHOT=파일.ppm 을 주면
+// 창을 띄우지 않고 그림을 파일로 저장한다 (테스트용).
+static const char* WIN_RUNTIME = R"HANWIN(
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/Xft/Xft.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+static Display *dpy;
+static Window win;
+static Pixmap pm;
+static GC gc;
+static XftDraw *xd;
+static XftFont *font;
+static XftColor xcol;
+static int W, H, scr;
+static unsigned long pix;
+
+static void werr(long line, const char *msg) {
+    fflush(stdout);
+    printf("[실행 오류] %ld행: %s\n", line, msg);
+    exit(1);
+}
+static void need(long line) {
+    if (!dpy) werr(line, "창을 먼저 열어야 함 (예: 창 640과 480을 열다.)");
+}
+
+static const struct { const char *n; unsigned c; } NAMES[] = {
+    {"검정", 0x000000}, {"하양", 0xFFFFFF}, {"흰색", 0xFFFFFF}, {"검은색", 0x000000},
+    {"빨강", 0xE53935}, {"주황", 0xFB8C00}, {"노랑", 0xFDD835}, {"초록", 0x43A047},
+    {"파랑", 0x1E88E5}, {"남색", 0x3949AB}, {"보라", 0x8E24AA}, {"분홍", 0xF06292},
+    {"갈색", 0x6D4C41}, {"회색", 0x9E9E9E}, {"연회색", 0xE0E0E0}, {"하늘", 0x4FC3F7},
+};
+
+static void setrgb(unsigned c) {
+    XColor x;
+    x.red = ((c >> 16) & 255) * 257; x.green = ((c >> 8) & 255) * 257; x.blue = (c & 255) * 257;
+    x.flags = DoRed | DoGreen | DoBlue;
+    XAllocColor(dpy, DefaultColormap(dpy, scr), &x);
+    pix = x.pixel;
+    XSetForeground(dpy, gc, pix);
+    XRenderColor rc = { x.red, x.green, x.blue, 0xFFFF };
+    XftColorFree(dpy, DefaultVisual(dpy, scr), DefaultColormap(dpy, scr), &xcol);
+    XftColorAllocValue(dpy, DefaultVisual(dpy, scr), DefaultColormap(dpy, scr), &rc, &xcol);
+}
+
+void __han_wopen(long w, long h, long line) {
+    if (w < 1 || h < 1 || w > 8000 || h > 8000) werr(line, "창 크기는 1~8000 이어야 함");
+    if (dpy) werr(line, "창은 하나만 열 수 있음 (보여주다 로 닫은 뒤 다시 열기)");
+    dpy = XOpenDisplay(NULL);
+    if (!dpy) werr(line, "창을 띄울 화면이 없음 (DISPLAY 가 없음)");
+    scr = DefaultScreen(dpy);
+    W = (int)w; H = (int)h;
+    win = XCreateSimpleWindow(dpy, RootWindow(dpy, scr), 0, 0, W, H, 0, 0, 0xFFFFFF);
+    XStoreName(dpy, win, "한랭");
+    Xutf8SetWMProperties(dpy, win, "한랭", "한랭", NULL, 0, NULL, NULL, NULL);
+    pm = XCreatePixmap(dpy, win, W, H, DefaultDepth(dpy, scr));
+    gc = XCreateGC(dpy, pm, 0, NULL);
+    xd = XftDrawCreate(dpy, pm, DefaultVisual(dpy, scr), DefaultColormap(dpy, scr));
+    font = XftFontOpenName(dpy, scr, "sans-serif:pixelsize=15:lang=ko");
+    memset(&xcol, 0, sizeof xcol);
+    XRenderColor black = {0, 0, 0, 0xFFFF};
+    XftColorAllocValue(dpy, DefaultVisual(dpy, scr), DefaultColormap(dpy, scr), &black, &xcol);
+    setrgb(0xFFFFFF);                                /* 하얀 도화지 */
+    XFillRectangle(dpy, pm, gc, 0, 0, W, H);
+    setrgb(0x000000);
+}
+
+void __han_wcolor(const char *name, long line) {
+    need(line);
+    for (size_t i = 0; i < sizeof NAMES / sizeof NAMES[0]; i++)
+        if (strcmp(name, NAMES[i].n) == 0) { setrgb(NAMES[i].c); return; }
+    if (name[0] == '#' && strlen(name) == 7) {
+        char *end; unsigned long v = strtoul(name + 1, &end, 16);
+        if (*end == 0) { setrgb((unsigned)v); return; }
+    }
+    char m[300];
+    snprintf(m, sizeof m, "'%s' 는 모르는 색 (검정 하양 빨강 주황 노랑 초록 파랑 남색 보라 분홍 갈색 회색 연회색 하늘, 또는 \"#ff8800\")", name);
+    werr(line, m);
+}
+
+void __han_wrect(long x, long y, long w, long h, long line) {
+    need(line);
+    if (w < 0) { x += w; w = -w; }
+    if (h < 0) { y += h; h = -h; }
+    XFillRectangle(dpy, pm, gc, (int)x, (int)y, (unsigned)w, (unsigned)h);
+}
+void __han_wline(long x1, long y1, long x2, long y2, long line) {
+    need(line);
+    XDrawLine(dpy, pm, gc, (int)x1, (int)y1, (int)x2, (int)y2);
+}
+void __han_wpoint(long x, long y, long line) {
+    need(line);
+    XDrawPoint(dpy, pm, gc, (int)x, (int)y);
+}
+/* y 는 글자의 위쪽 (기준선이 아니라) — 사각형과 같은 셈법이 헷갈리지 않는다 */
+void __han_wtext(const char *s, long x, long y, long line) {
+    need(line);
+    if (font) XftDrawStringUtf8(xd, &xcol, font, (int)x, (int)y + font->ascent, (const FcChar8 *)s, (int)strlen(s));
+}
+
+static void shot(const char *path) {                 /* 픽스맵을 PPM 으로 */
+    XImage *im = XGetImage(dpy, pm, 0, 0, W, H, AllPlanes, ZPixmap);
+    FILE *f = fopen(path, "wb");
+    if (!f || !im) { printf("[실행 오류] 그림을 '%s' 에 저장할 수 없음\n", path); exit(1); }
+    fprintf(f, "P6\n%d %d\n255\n", W, H);
+    for (int y = 0; y < H; y++)
+        for (int x = 0; x < W; x++) {
+            unsigned long p = XGetPixel(im, x, y);
+            unsigned char rgb[3] = { (p >> 16) & 255, (p >> 8) & 255, p & 255 };
+            fwrite(rgb, 1, 3, f);
+        }
+    fclose(f);
+    XDestroyImage(im);
+}
+
+static void closeAll(void) {
+    XftDrawDestroy(xd);
+    if (font) XftFontClose(dpy, font);
+    XFreePixmap(dpy, pm);
+    XFreeGC(dpy, gc);
+    XDestroyWindow(dpy, win);
+    XCloseDisplay(dpy);
+    dpy = NULL;
+}
+
+/* 보여주다: 창을 띄우고 닫을 때까지(창의 X, Esc, q) 기다린다 */
+void __han_wshow(long line) {
+    need(line);
+    fflush(stdout);
+    const char *sp = getenv("HAN_SCREENSHOT");
+    if (sp && *sp) { XSync(dpy, False); shot(sp); closeAll(); return; }
+    Atom del = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
+    XSetWMProtocols(dpy, win, &del, 1);
+    XSelectInput(dpy, win, ExposureMask | KeyPressMask | StructureNotifyMask);
+    XMapWindow(dpy, win);
+    for (;;) {
+        XEvent e;
+        XNextEvent(dpy, &e);
+        if (e.type == Expose) XCopyArea(dpy, pm, win, gc, 0, 0, W, H, 0, 0);
+        else if (e.type == ClientMessage && (Atom)e.xclient.data.l[0] == del) break;
+        else if (e.type == KeyPress) {
+            KeySym k = XLookupKeysym(&e.xkey, 0);
+            if (k == XK_Escape || k == XK_q) break;
+        }
+    }
+    closeAll();
+}
+)HANWIN";
+
 // GC_RUNTIME 을 gcc -S 로 어셈블리로 굽는다.
-static string buildRuntimeAsm() {
+// C 소스를 gcc -S 로 굽는다. 지역 라벨 접두사(lprefix)는 덩어리마다 달라야 서로 안 겹친다.
+static string buildCAsm(const char* src, const string& flags, const string& lprefix);
+static string buildRuntimeAsm() { return buildCAsm(C_RUNTIME, "", ".Lrt"); }
+static string buildWindowAsm() { return buildCAsm(WIN_RUNTIME, "-I/usr/include/freetype2", ".Lwn"); }
+static string buildCAsm(const char* src, const string& flags, const string& lprefix) {
     const char* td = getenv("TMPDIR");
     string base = string(td && *td ? td : "/tmp") + "/hanrtXXXXXX";
     vector<char> cpath(base.begin(), base.end()); cpath.push_back(0);
@@ -3472,8 +3816,8 @@ static string buildRuntimeAsm() {
     close(fd);
     string c = string(cpath.data()) + ".c", s = string(cpath.data()) + ".s";
     rename(cpath.data(), c.c_str());
-    { ofstream f(c); f << C_RUNTIME; }
-    string cmd = "gcc -O2 -S -fno-asynchronous-unwind-tables -o '" + s + "' '" + c + "'";
+    { ofstream f(c); f << src; }
+    string cmd = "gcc -O2 -S -fno-asynchronous-unwind-tables " + flags + " -o '" + s + "' '" + c + "'";
     int rc = system(cmd.c_str());
     remove(c.c_str());
     if (rc != 0) { remove(s.c_str()); cerr << "gcc 실패 (런타임)\n"; exit(1); }
@@ -3482,8 +3826,8 @@ static string buildRuntimeAsm() {
     ifstream f(s); string line, out;
     while (getline(f, line)) {
         if (line.find(".note.GNU-stack") != string::npos) continue;
-        for (size_t p = 0; (p = line.find(".L", p)) != string::npos; p += 4)
-            line.replace(p, 2, ".Lrt");
+        for (size_t p = 0; (p = line.find(".L", p)) != string::npos; p += lprefix.size())
+            line.replace(p, 2, lprefix);
         out += line + "\n";
     }
     f.close();
@@ -3512,6 +3856,10 @@ int main(int argc, char** argv) {
         cout << Codegen::runtimeOnly() << buildRuntimeAsm();
         return 0;
     }
+    if (argc >= 2 && string(argv[1]) == "--runtime-window") {   // 창 런타임만 (링크: -lX11 -lXft)
+        cout << buildWindowAsm();                // runtime.s 뒤에 붙여 쓰므로 .note.GNU-stack 은 거기 것
+        return 0;
+    }
     if (argc < 2) { cerr << "사용법: hanc 파일.han [-o 실행파일]\n       hanc --help\n"; return 1; }
     { // 표준 라이브러리를 찾으려면 컴파일러 자기 위치를 알아야 함
         char buf[PATH_MAX];
@@ -3534,11 +3882,12 @@ int main(int argc, char** argv) {
     Checker ck;
     ck.run(ast.get(), ps.funcs);
     string asmOut = Codegen{}.run(ast.get(), ps.funcs, ck.insts) + buildRuntimeAsm();
+    if (windowUsed) asmOut = "# 창을 쓰므로 링크할 때 -lX11 -lXft 가 필요함\n" + asmOut + buildWindowAsm();
 
     if (argc >= 4 && string(argv[2]) == "-o") {
         string sfile = string(argv[3]) + ".s";
         ofstream sf(sfile); sf << asmOut; sf.close();
-        string cmd = "gcc -no-pie '" + sfile + "' -o '" + argv[3] + "' -lm";
+        string cmd = "gcc -no-pie '" + sfile + "' -o '" + argv[3] + "' -lm" + (windowUsed ? " -lX11 -lXft" : "");
         if (system(cmd.c_str()) != 0) { cerr << "gcc 실패\n"; return 1; }
         remove(sfile.c_str());
         return 0;

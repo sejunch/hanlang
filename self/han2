@@ -13,6 +13,9 @@ fi
 if [ ! -f "$dir/runtime.s" ] || [ "$hanc" -nt "$dir/runtime.s" ]; then
     "$hanc" --runtime > "$dir/runtime.s"
 fi
+if [ ! -f "$dir/runtime-window.s" ] || [ "$hanc" -nt "$dir/runtime-window.s" ]; then
+    "$hanc" --runtime-window > "$dir/runtime-window.s"       # 창 그리기를 쓰면 붙음 (-lX11 -lXft)
+fi
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
 # 셀프 컴파일러는 self/ 에 있어서 '컴파일러 옆 lib/' 가 저장소의 lib/ 가 아니다 — $HAN_LIB 로 알려준다

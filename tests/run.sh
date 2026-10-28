@@ -4,6 +4,9 @@ cd "$(dirname "$0")/.." || exit 1
 ROOT=$PWD
 
 pass=0; fail=0
+# 창 그리기는 창을 띄우는 대신 그림을 파일로 받는다 (테스트가 창 닫기를 기다리며 멈추지 않게)
+export HAN_SCREENSHOT="$(mktemp -u)".ppm
+HAS_X=0; [ -n "$DISPLAY" ] && HAS_X=1
 tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
 
 ok()   { pass=$((pass+1)); }
@@ -47,7 +50,8 @@ for f in tests/t_float.han tests/t_func.han tests/t_edge.han tests/t_list.han \
          tests/t_split.han tests/t_end.han tests/t_bit.han tests/t_code.han \
          tests/t_struct.han tests/t_lib2.han tests/t_sortlib.han \
          tests/t_statlib.han tests/t_gridlib.han tests/t_fraclib.han tests/t_biglib.han tests/t_pop.han \
-         tests/t_tree.han tests/t_nest.han tests/t_dict.han; do
+         tests/t_tree.han tests/t_nest.han tests/t_dict.han \
+         tests/t_v18.han tests/t_heaplib.han tests/t_timelib.han tests/t_relib.han; do
     run_ok "$f"
 done
 run_ok tests/t_eof.han "$(printf '10\n20\n12\n')"
@@ -65,6 +69,17 @@ if ./hanc tests/t_v17.han -o "$tmp/t17" 2>"$tmp/err" &&
    [ "$(HAN_V17=있음 "$tmp/t17")" = "$(printf '있음\n1\n1\n1\n1\n3\n바깥에서 찍음\n0')" ]; then ok
 else bad "tests/t_v17.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
 run_ok tests/t_mlstr.han
+# 표.han: CSV 를 만들어 읽고 쓰므로 임시 폴더에서
+if ./hanc tests/t_tablelib.han -o "$tmp/ttab" 2>"$tmp/err" && out=$(cd "$tmp" && ./ttab) &&
+   [ "$(echo "$out" | sed -n '1p;9p;15p;16p;17p;18p;19p')" = "$(printf '5\n86\n180\n3\n민수\n3\n과일,값')" ] &&
+   [ "$(echo "$out" | tail -1)" = '사과,"1,000"' ]; then ok
+else bad "tests/t_tablelib.han"; echo "$out" | head -3 | sed 's/^/    /'; fi
+# 창 그리기: 화면(X)이 있을 때만. 그림 파일 크기·머리만 본다 (모양은 셀프 컴파일러와 픽셀 비교)
+if [ $HAS_X = 1 ]; then
+    if ./hanc tests/t_win.han -o "$tmp/tw" 2>"$tmp/err" && [ "$("$tmp/tw")" = "창 닫힘" ] &&
+       [ "$(head -c 15 "$HAN_SCREENSHOT")" = "$(printf 'P6\n320 200\n255\n')" ]; then ok
+    else bad "tests/t_win.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+else echo "  (화면이 없어서 창 그리기 테스트는 건너뜀)"; fi
 # 경고: 컴파일은 되면서 표준 에러에 [경고] 가 나와야 하는 것
 for f in tests/e32.han tests/e33.han; do
     if ./hanc "$f" -o "$tmp/p" 2>&1 | grep -q '^\[경고\]'; then ok; else bad "$f ([경고] 가 나와야 함)"; fi
@@ -82,7 +97,7 @@ else bad "tests/t_exit0.han"; fi
 
 echo "== 실행 오류 (종료코드 1 이 정답)"
 for f in tests/t_div0.han tests/t_mod0.han tests/t_oob.han tests/t_gerr.han tests/t_shift.han tests/t_popempty.han \
-         tests/t_none.han tests/t_nofile.han tests/t_dictmiss.han; do
+         tests/t_none.han tests/t_nofile.han tests/t_dictmiss.han tests/t_rebad.han; do
     run_dies "$f"
 done
 
@@ -114,7 +129,10 @@ export HAN_SEED=1          # (N의 무작위) 를 쓰는 프로그램도 양쪽 
 self_build() {   # $1 = 컴파일러, $2 = 원본, $3 = 출력 .s.  에러는 표준 에러로, 실패하면 종료코드 1
     rm -f "$3"; HAN_LIB="$ROOT/lib" "$1" "$2" >"$3" 2>"$tmp/selferr"
 }
-self_link() { gcc -no-pie "$1" -o "$2" -lm 2>"$tmp/err"; }
+self_link() {    # 창 런타임이 붙었으면 X11/Xft 도 링크
+    if grep -q '__han_wopen:' "$1"; then gcc -no-pie "$1" -o "$2" -lm -lX11 -lXft 2>"$tmp/err"
+    else gcc -no-pie "$1" -o "$2" -lm 2>"$tmp/err"; fi
+}
 # 출력과 종료코드를 hanc 쪽과 비교 (입력·인자·작업 폴더도 같게)
 self_same() {   # $1 = 컴파일러, $2 = 원본
     self_build "$1" "$2" "$tmp/s.s" && self_link "$tmp/s.s" "$tmp/sp" &&
@@ -122,8 +140,9 @@ self_same() {   # $1 = 컴파일러, $2 = 원본
       "$(cd "$tmp" && printf '10\n20\n12\n' | "$ROOT/han" "$ROOT/$2" 가나 12 2>&1; echo "rc=$?")" ]
 }
 # 예제·기능 테스트 전부 (입력·인자는 양쪽에 똑같이 준다)
-SELF_SAME="self/tests/s1.han self/tests/s2.han $(ls examples/*.han tests/t_*.han | tr '\n' ' ')"
-if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err" && ./hanc --runtime > "$tmp/runtime.s"; then
+SELF_SAME="self/tests/s1.han self/tests/s2.han $(ls examples/*.han tests/t_*.han | grep -v t_win | tr '\n' ' ')"
+if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err" && ./hanc --runtime > "$tmp/runtime.s" &&
+   ./hanc --runtime-window > "$tmp/runtime-window.s"; then
     ok
     for f in $SELF_SAME; do
         if self_same "$tmp/hanc2" "$f"; then ok
@@ -139,6 +158,13 @@ if ./hanc self/한랭.han -o "$tmp/hanc2" 2>"$tmp/err" && ./hanc --runtime > "$t
         if [ -x "$tmp/hanc_g2" ] && self_same "$tmp/hanc_g2" "$f"; then ok
         else bad "$f (2세대 셀프 컴파일러 결과가 hanc 와 다름)"; fi
     done
+    # 창 그림이 hanc 것과 픽셀 하나까지 같은가 (X 가 있을 때)
+    if [ $HAS_X = 1 ]; then
+        if HAN_LIB="$ROOT/lib" "$tmp/hanc2" tests/t_win.han -o "$tmp/sw" 2>"$tmp/err" && "$tmp/sw" >/dev/null &&
+           cp "$HAN_SCREENSHOT" "$tmp/self.ppm" && ./hanc tests/t_win.han -o "$tmp/hw" && "$tmp/hw" >/dev/null &&
+           cmp -s "$tmp/self.ppm" "$HAN_SCREENSHOT"; then ok
+        else bad "tests/t_win.han (셀프 컴파일러 창 그림이 hanc 와 다름)"; fi
+    fi
     # hanc 와 같은 명령줄: -o 로 실행파일까지 만들고 중간 .s 는 지운다
     if HAN_LIB="$ROOT/lib" "$tmp/hanc2" tests/t_lib.han -o "$tmp/tl" 2>"$tmp/err" && [ ! -e "$tmp/tl.s" ] &&
        [ "$("$tmp/tl")" = "$(./han tests/t_lib.han)" ]; then ok
