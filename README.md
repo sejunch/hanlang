@@ -124,7 +124,13 @@ make bootstrap      # 새 컴파일러로 자기 자신을 두 번 컴파일해 
 에러 메시지까지 똑같이 도는 걸 확인한 뒤 C++ 판은 지웠다. 그때 옛 컴파일러가 낸 결과는
 `tests/expected/` 에 정답으로 남겨서, 지금도 `make test` 가 글자 단위로 비교한다.
 
-런타임(쓰레기 수거·목록·사전·입출력·창)은 [runtime/](runtime/) 의 C·어셈블리이고 `make` 가 `runtime/runtime.s` 로 굽는다.
+런타임(쓰레기 수거·목록·사전·입출력·정규식 …)도 한랭으로 짰다: [runtime/기본.han](runtime/기본.han).
+메모리를 직접 만지고 libc 함수를 부르는 낮은 수준 기능(파일 맨 위 `낮은수준을 쓰다.`)을 쓰고,
+`make` 가 `hanc --모듈` 로 구워 어셈블리 몇 줄([runtime/helpers.s](runtime/helpers.s))과 함께 `runtime/runtime.s` 로 만든다.
+C 는 창 그리기(X11, [runtime/window.c](runtime/window.c))에만 남아 있다.
+
+컴파일러는 자주 쓰는 변수를 레지스터에 두고, 비교는 바로 분기하고, 목록 칸 읽기·쓰기를 그 자리에 펼치고,
+작은 함수를 펼치고 상수를 미리 계산한다. 대략 C 를 최적화 없이(-O0) 컴파일한 정도의 속도가 나온다.
 
 ## 파일
 
@@ -132,7 +138,7 @@ make bootstrap      # 새 컴파일러로 자기 자신을 두 번 컴파일해 
 |---|---|
 | `compiler/한랭.han` | 컴파일러 전체 (한랭으로 작성) |
 | `bootstrap/hanc.s` | 컴파일러가 자기 자신을 컴파일해 둔 것 (`make` 가 링크) |
-| `runtime/` | 런타임: `core.c`(GC·입출력·사전·시간·정규식), `window.c`(창), `helpers.s`(목록·문자 도우미) |
+| `runtime/` | 런타임: `기본.han`(GC·목록·문자·입출력·사전·시간·정규식, 한랭), `helpers.s`(어셈블리 몇 줄), `window.c`(창) |
 | `han` | 컴파일하고 바로 실행하는 스크립트 |
 | `lib/*.han` | 표준 라이브러리 13개 (전부 한랭으로 작성) |
 | `tests/` | 회귀 테스트 (`make test`). `t_*` 는 돌려서 `expected/` 와 출력 비교, `e*` 는 컴파일 에러(문구까지 비교) |

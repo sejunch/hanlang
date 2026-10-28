@@ -15,11 +15,12 @@ all: hanc runtime/runtime.s runtime/runtime-window.s
 hanc: bootstrap/hanc.s
 	$(CC) -no-pie bootstrap/hanc.s -o $@ -lm
 
-# 런타임: 어셈블리 도우미 + C 를 구운 것. 둘을 한 파일로 이어 붙이므로
-# gcc 가 만든 지역 라벨(.L…)은 우리 라벨과 안 겹치게 .Lrt… 로 바꾼다.
-runtime/runtime.s: runtime/helpers.s runtime/core.c
-	{ cat runtime/helpers.s; $(CC) $(RTFLAGS) -o - runtime/core.c | \
-	  sed -e '/\.note\.GNU-stack/d' -e 's/\.L/.Lrt/g'; } > $@
+# 런타임: 어셈블리 몇 줄(helpers.s) + 한랭으로 짠 것(runtime/기본.han, hanc --모듈). C 는 없다.
+# 한랭 모듈 쪽은 컴파일러가 알아서 hm… / .L9억… 라벨을 써서 프로그램 라벨과 안 겹친다.
+runtime/runtime.s: runtime/helpers.s runtime/기본.han hanc
+	./hanc --모듈 runtime/기본.han > runtime/기본.s.tmp
+	cat runtime/helpers.s runtime/기본.s.tmp > $@
+	rm -f runtime/기본.s.tmp
 
 # 창 그리기 런타임 (X11 + Xft). 창을 쓰는 프로그램에만 붙는다.
 runtime/runtime-window.s: runtime/window.c

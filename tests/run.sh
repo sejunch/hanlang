@@ -114,7 +114,7 @@ for f in examples/demo4.han examples/demo7.han tests/t_list.han tests/t_str.han 
          tests/t_struct.han tests/t_split.han tests/t_pop.han tests/t_grid.han \
          tests/t_poly.han tests/t_lib.han tests/t_sortlib.han tests/t_fraclib.han \
          tests/t_biglib.han tests/t_statlib.han tests/t_gridlib.han tests/t_strcmp.han \
-         tests/t_tree.han tests/t_nest.han tests/t_dict.han; do
+         tests/t_tree.han tests/t_nest.han tests/t_dict.han tests/t_dictcache.han; do
     if ./hanc "$f" -o "$tmp/p" 2>"$tmp/err" &&
        a=$("$tmp/p" </dev/null 2>&1) && b=$(HAN_GC_STRESS=1 timeout 60 "$tmp/p" </dev/null 2>&1) &&
        [ "$a" = "$b" ]; then ok
