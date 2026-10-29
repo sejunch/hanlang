@@ -10,7 +10,7 @@ CC     ?= gcc
 
 RTFLAGS = -O2 -S -fno-asynchronous-unwind-tables
 
-all: hanc runtime/runtime.s runtime/runtime-window.s
+all: hanc runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s
 
 hanc: bootstrap/hanc.s
 	$(CC) -no-pie bootstrap/hanc.s -o $@ -lm
@@ -26,6 +26,14 @@ runtime/runtime.s: runtime/helpers.s runtime/기본.han hanc
 runtime/runtime-window.s: runtime/window.c
 	$(CC) $(RTFLAGS) -I/usr/include/freetype2 -o - runtime/window.c | \
 	  sed -e '/\.note\.GNU-stack/d' -e 's/\.L/.Lwn/g' > $@
+
+# GPU 런타임 (Vulkan). GPU의 돌리다 를 쓰는 프로그램에만 붙는다.
+# vulkan 헤더가 없으면 GPU 를 쓸 때 실행 오류만 내는 대체품(gpu_none.c)을 굽는다 — make 가 깨지지 않게
+runtime/runtime-gpu.s: runtime/gpu.c runtime/gpu_none.c
+	{ $(CC) $(RTFLAGS) -o runtime/gpu.s.tmp runtime/gpu.c 2>/dev/null || \
+	  $(CC) $(RTFLAGS) -o runtime/gpu.s.tmp runtime/gpu_none.c; }
+	sed -e '/\.note\.GNU-stack/d' -e 's/\.L/.Lgp/g' runtime/gpu.s.tmp > $@
+	rm -f runtime/gpu.s.tmp
 
 # 컴파일러 소스로 bootstrap/hanc.s 를 새로 만든다. 두 번 돌려서(새 컴파일러로 다시 컴파일)
 # 결과가 같은지(고정점)까지 확인한다 — 다르면 새 컴파일러가 자기 자신을 다르게 컴파일한다는 뜻.
@@ -49,7 +57,7 @@ install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin $(DESTDIR)$(PREFIX)/lib/hanlang
 	cp hanc han $(DESTDIR)$(PREFIX)/bin/
 	chmod +x $(DESTDIR)$(PREFIX)/bin/hanc $(DESTDIR)$(PREFIX)/bin/han
-	cp lib/*.han runtime/runtime.s runtime/runtime-window.s $(DESTDIR)$(PREFIX)/lib/hanlang/
+	cp lib/*.han runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s $(DESTDIR)$(PREFIX)/lib/hanlang/
 	@echo "설치 끝.  han 프로그램.han  으로 실행."
 
 uninstall:
@@ -57,7 +65,7 @@ uninstall:
 	rm -rf $(DESTDIR)$(PREFIX)/lib/hanlang
 
 clean:
-	rm -f hanc runtime/runtime.s runtime/runtime-window.s
+	rm -f hanc runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s
 
 # VS Code 확장: .vsix 만들고 설치 (editors/vscode/)
 vscode:

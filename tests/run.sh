@@ -144,8 +144,8 @@ echo "== 정답 비교 (출력·종료코드·에러 메시지를 tests/expected
 # 새 기능을 넣어 출력이 바뀌는 게 맞으면: 눈으로 확인한 뒤 tests/expected/ 의 그 파일을 새로 쓰기.
 export HAN_SEED=1          # (N의 무작위) 를 쓰는 프로그램도 결과가 늘 같게
 # t_req 은 libcurl 이 있을 때만 (lib/요청.han 이 -lcurl 로 링크)
-skip='t_win'
-ldconfig -p 2>/dev/null | grep -q 'libcurl\.so' || skip='t_win\|t_req'
+skip='t_win\|t_gpu'                   # 창·GPU 테스트는 따로 (화면·장치가 있을 때만)
+ldconfig -p 2>/dev/null | grep -q 'libcurl\.so' || skip='t_win\|t_gpu\|t_req'
 for f in $(ls examples/*.han tests/t_*.han | grep -v "$skip"); do
     exp="tests/expected/$(dirname "$f" | tr / _)_$(basename "$f" .han).out"
     if [ ! -f "$exp" ]; then bad "$f (정답 파일 $exp 이 없음)"; continue; fi
@@ -160,6 +160,37 @@ for f in tests/e*.han; do
     else bad "$f (에러 메시지가 정답과 다름)"; diff "$tmp/err" "tests/expected/err_$(basename "$f" .han).out" | head -4 | sed 's/^/    /'; fi
 done
 unset HAN_SEED
+
+echo "== GPU (Vulkan) — 장치가 있을 때만"
+if ldconfig -p 2>/dev/null | grep -q 'libvulkan\.so' && ./hanc tests/t_gpu.han -o "$tmp/tg" 2>"$tmp/err"; then
+    out=$("$tmp/tg" 2>&1)
+    if echo "$out" | grep -q 'GPU 를 쓸 수 없음'; then echo "  (Vulkan 장치가 없어서 GPU 테스트는 건너뜀)"
+    else
+        echo "$out" > "$tmp/out"; echo "rc=0" >> "$tmp/out"
+        if cmp -s "$tmp/out" tests/expected/tests_t_gpu.out; then ok
+        else bad "tests/t_gpu.han (GPU 답이 정답과 다름)"; diff "$tmp/out" tests/expected/tests_t_gpu.out | head -4 | sed 's/^/    /'; fi
+        # 자료 목록(넷째 인자) + GPU32.han
+        if ./hanc tests/t_gpu2.han -o "$tmp/tg2" 2>"$tmp/err" && { "$tmp/tg2"; echo "rc=$?"; } > "$tmp/out" 2>&1 &&
+           cmp -s "$tmp/out" tests/expected/tests_t_gpu2.out; then ok
+        else bad "tests/t_gpu2.han (GPU 자료·GPU32 답이 정답과 다름)"; diff "$tmp/out" tests/expected/tests_t_gpu2.out | head -4 | sed 's/^/    /'; fi
+        # 벡터 (GPU 안에서 평면·공간 벡터)
+        if ./hanc tests/t_gpu3.han -o "$tmp/tg3" 2>"$tmp/err" && { "$tmp/tg3"; echo "rc=$?"; } > "$tmp/out" 2>&1 &&
+           cmp -s "$tmp/out" tests/expected/tests_t_gpu3.out; then ok
+        else bad "tests/t_gpu3.han (GPU 벡터 답이 정답과 다름)"; diff "$tmp/out" tests/expected/tests_t_gpu3.out | head -4 | sed 's/^/    /'; fi
+        # 레이 트레이서 예제: 작게 64비트·32비트로 그려서 PPM 이 제대로 나오나
+        for m in 64 32; do
+            if ./hanc examples/GPU/광선추적.han -o "$tmp/gpurt" 2>"$tmp/err" &&
+               (cd "$tmp" && rm -f 그림.ppm && ./gpurt $m 64 36 | grep -q "^그림.ppm: 64x36, 소수 ${m}비트" &&
+                [ "$(wc -l < 그림.ppm)" = $((3 + 64 * 36)) ]); then ok
+            else bad "examples/GPU/광선추적.han ($m 비트)"; sed 's/^/    /' "$tmp/err" | head -3; fi
+        done
+        if [ $HAS_X = 1 ]; then
+            if ./hanc examples/GPU/만델브로.han -o "$tmp/mb" 2>"$tmp/err" &&
+               [ "$(HAN_FRAMES=2 "$tmp/mb")" = "프레임 2개" ]; then ok
+            else bad "examples/GPU/만델브로.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+        fi
+    fi
+else echo "  (libvulkan 이 없어서 GPU 테스트는 건너뜀)"; fi
 
 echo "== 웹 놀이터 모드 (hanc --놀이터: 바깥 세상을 건드리는 기능은 컴파일 오류)"
 for f in tests/play/p[1-2].han; do
