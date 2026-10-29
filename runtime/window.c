@@ -3,6 +3,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xft/Xft.h>
+#include <X11/keysym.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,6 +17,17 @@ static XftFont *font;
 static XftColor xcol;
 static int W, H, scr;
 static unsigned long pix;
+
+/* 실시간 창 (다시그리다 · 눌린키들 · 창닫힘) */
+static int mapped, closed, frames;
+static Atom wmDelete;
+#define KEYMAX 64
+static const char *keyq[KEYMAX];      /* 눌린 키 이름 (고정 문자열) — 눌린키들 이 꺼내 감 */
+static char keybuf[KEYMAX][4];        /* 글자 키는 여기에 */
+static int nkeys;
+void *__han_lnew(long cap);
+void __han_lpush(void *list, long v);
+char *__han_strdup(const char *s);
 
 static void werr(long line, const char *msg) {
     fflush(stdout);
@@ -48,6 +60,7 @@ static void setrgb(unsigned c) {
 void __han_wopen(long w, long h, long line) {
     if (w < 1 || h < 1 || w > 8000 || h > 8000) werr(line, "창 크기는 1~8000 이어야 함");
     if (dpy) werr(line, "창은 하나만 열 수 있음 (보여주다 로 닫은 뒤 다시 열기)");
+    mapped = closed = frames = nkeys = 0;
     dpy = XOpenDisplay(NULL);
     if (!dpy) werr(line, "창을 띄울 화면이 없음 (DISPLAY 가 없음)");
     scr = DefaultScreen(dpy);
@@ -125,16 +138,89 @@ static void closeAll(void) {
     dpy = NULL;
 }
 
+static void mapWin(void) {                         /* 창을 화면에 처음 띄움 (한 번만) */
+    if (mapped) return;
+    wmDelete = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
+    XSetWMProtocols(dpy, win, &wmDelete, 1);
+    XSelectInput(dpy, win, ExposureMask | KeyPressMask | StructureNotifyMask);
+    XMapWindow(dpy, win);
+    for (;;) { XEvent e; XNextEvent(dpy, &e); if (e.type == MapNotify) break; }
+    mapped = 1;
+}
+
+static void pushKey(XKeyEvent *k) {
+    if (nkeys >= KEYMAX) return;
+    KeySym s = XLookupKeysym(k, 0);
+    const char *n = NULL;
+    switch (s) {
+    case XK_Left: n = "왼쪽"; break;   case XK_Right: n = "오른쪽"; break;
+    case XK_Up: n = "위"; break;       case XK_Down: n = "아래"; break;
+    case XK_space: n = "스페이스"; break; case XK_Return: n = "엔터"; break;
+    case XK_Escape: n = "esc"; break;  case XK_BackSpace: n = "지우기"; break;
+    default:
+        if ((s >= XK_a && s <= XK_z) || (s >= XK_0 && s <= XK_9)) {
+            keybuf[nkeys][0] = (char)s; keybuf[nkeys][1] = 0; n = keybuf[nkeys];
+        }
+    }
+    if (n) keyq[nkeys++] = n;
+}
+
+static void pump(void) {                            /* 쌓인 창 사건을 처리 (기다리지 않음) */
+    if (!dpy || !mapped) return;
+    while (XPending(dpy)) {
+        XEvent e;
+        XNextEvent(dpy, &e);
+        if (e.type == Expose) XCopyArea(dpy, pm, win, gc, 0, 0, W, H, 0, 0);
+        else if (e.type == ClientMessage && (Atom)e.xclient.data.l[0] == wmDelete) closed = 1;
+        else if (e.type == KeyPress) pushKey(&e.xkey);
+    }
+}
+
+/* 다시그리다: 지금까지 그린 것을 창에 보여주고 바로 돌아온다 (보여주다 와 달리 안 멈춤).
+ * HAN_SCREENSHOT 이면 창 대신 HAN_FRAMES(기본 1)번째 다시그리다 의 그림을 저장하고 창닫힘 을 참으로 */
+void __han_wpresent(long line) {
+    need(line);
+    fflush(stdout);
+    const char *sp = getenv("HAN_SCREENSHOT");
+    if (sp && *sp) {
+        const char *fe = getenv("HAN_FRAMES");
+        long limit = fe ? atol(fe) : 1;
+        if (closed) return;
+        if (++frames >= limit) { XSync(dpy, False); shot(sp); closed = 1; }
+        return;
+    }
+    if (closed) return;
+    mapWin();
+    XCopyArea(dpy, pm, win, gc, 0, 0, W, H, 0, 0);
+    XFlush(dpy);
+    pump();
+}
+
+/* (창닫힘): 창의 X 를 눌렀으면 참 */
+long __han_wclosed(void) {
+    pump();
+    return closed;
+}
+
+/* (눌린키들): 지난번 뒤로 눌린 키 이름들 (문자 목록) */
+void *__han_wkeys(void) {
+    pump();
+    void *l = __han_lnew(nkeys > 0 ? nkeys : 1);
+    for (int i = 0; i < nkeys; i++) __han_lpush(l, (long)__han_strdup(keyq[i]));
+    nkeys = 0;
+    return l;
+}
+
 /* 보여주다: 창을 띄우고 닫을 때까지(창의 X, Esc, q) 기다린다 */
 void __han_wshow(long line) {
     need(line);
     fflush(stdout);
     const char *sp = getenv("HAN_SCREENSHOT");
     if (sp && *sp) { XSync(dpy, False); shot(sp); closeAll(); return; }
-    Atom del = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
-    XSetWMProtocols(dpy, win, &del, 1);
-    XSelectInput(dpy, win, ExposureMask | KeyPressMask | StructureNotifyMask);
-    XMapWindow(dpy, win);
+    if (closed) { closeAll(); return; }              /* 다시그리다 쓰다가 이미 창을 닫음 */
+    mapWin();
+    Atom del = wmDelete;
+    XCopyArea(dpy, pm, win, gc, 0, 0, W, H, 0, 0);
     for (;;) {
         XEvent e;
         XNextEvent(dpy, &e);

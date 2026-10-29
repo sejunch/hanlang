@@ -79,6 +79,15 @@ if [ $HAS_X = 1 ]; then
     if ./hanc tests/t_win.han -o "$tmp/tw" 2>"$tmp/err" && [ "$("$tmp/tw")" = "창 닫힘" ] &&
        [ "$(head -c 15 "$HAN_SCREENSHOT")" = "$(printf 'P6\n320 200\n255\n')" ]; then ok
     else bad "tests/t_win.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+    # 실시간 창: HAN_FRAMES 번째 다시그리다 에서 그림을 저장하고 창닫힘 이 참이 된다
+    if ./hanc tests/t_win2.han -o "$tmp/tw2" 2>"$tmp/err" &&
+       [ "$(HAN_FRAMES=3 "$tmp/tw2")" = "다시그리다 3번, 키 0개" ] &&
+       [ "$(head -c 15 "$HAN_SCREENSHOT")" = "$(printf 'P6\n200 100\n255\n')" ]; then ok
+    else bad "tests/t_win2.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+    # 창 게임 예제: 컴파일되고 몇 프레임 돌다 끝나는지
+    if ./hanc examples/게임/모양채우기.han -o "$tmp/game" 2>"$tmp/err" &&
+       [ "$(HAN_SEED=1 HAN_FRAMES=3 "$tmp/game")" = "점수: 0" ]; then ok
+    else bad "examples/게임/모양채우기.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
 else echo "  (화면이 없어서 창 그리기 테스트는 건너뜀)"; fi
 # 경고: 컴파일은 되면서 표준 에러에 [경고] 가 나와야 하는 것
 for f in tests/e32.han tests/e33.han; do
