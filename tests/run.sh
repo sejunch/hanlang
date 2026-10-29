@@ -84,6 +84,14 @@ if [ $HAS_X = 1 ]; then
        [ "$(HAN_FRAMES=3 "$tmp/tw2")" = "다시그리다 3번, 키 0개" ] &&
        [ "$(head -c 15 "$HAN_SCREENSHOT")" = "$(printf 'P6\n200 100\n255\n')" ]; then ok
     else bad "tests/t_win2.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+    # 3D: lib/입체.han 의 두 그리기 (삼각형그리다 / 깊이 버퍼 + 그림으로그리다)
+    if ./hanc tests/t_win3.han -o "$tmp/tw3" 2>"$tmp/err" &&
+       [ "$(HAN_FRAMES=2 "$tmp/tw3")" = "$(printf '380\n그림 둘')" ] &&
+       [ "$(head -c 15 "$HAN_SCREENSHOT")" = "$(printf 'P6\n160 120\n255\n')" ]; then ok
+    else bad "tests/t_win3.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+    if ./hanc examples/게임/상자모으기.han -o "$tmp/game3" 2>"$tmp/err" &&
+       [ "$(HAN_SEED=1 HAN_FRAMES=2 "$tmp/game3")" = "모은 상자: 0" ]; then ok
+    else bad "examples/게임/상자모으기.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
     # 창 게임 예제: 컴파일되고 몇 프레임 돌다 끝나는지
     if ./hanc examples/게임/모양채우기.han -o "$tmp/game" 2>"$tmp/err" &&
        [ "$(HAN_SEED=1 HAN_FRAMES=3 "$tmp/game")" = "점수: 0" ]; then ok

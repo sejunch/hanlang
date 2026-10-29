@@ -31,7 +31,8 @@ char *__han_strdup(const char *s);
 
 static void werr(long line, const char *msg) {
     fflush(stdout);
-    printf("[실행 오류] %ld행: %s\n", line, msg);
+    if (line > 0) printf("[실행 오류] %ld행: %s\n", line, msg);
+    else printf("[실행 오류] %s\n", msg);
     exit(1);
 }
 static void need(long line) {
@@ -107,6 +108,34 @@ void __han_wpoint(long x, long y, long line) {
     need(line);
     XDrawPoint(dpy, pm, gc, (int)x, (int)y);
 }
+/* 채운 삼각형 (3D 면 그리기용). 인자가 6개라 줄 번호는 못 받는다 */
+void __han_wtri(long x1, long y1, long x2, long y2, long x3, long y3) {
+    need(0);
+    XPoint p[3] = { {(short)x1, (short)y1}, {(short)x2, (short)y2}, {(short)x3, (short)y3} };
+    XFillPolygon(dpy, pm, gc, p, 3, Convex, CoordModeOrigin);
+}
+
+/* 격자를 그림으로그리다: 칸마다 0xRRGGBB 정수가 든 격자를 (0, 0) 부터 한꺼번에 (픽셀 버퍼).
+ * 목록 핸들 {개수, 용량, 자료, 열 수} 를 그대로 읽는다 */
+void __han_wimage(long *grid, long line) {
+    need(line);
+    long cols = grid[3];
+    if (cols == 0) werr(line, "'그림으로그리다' 에는 격자를 줘야 함 (예: (480행 640열을 0으로 채우다))");
+    long rows = grid[0] / cols;
+    long *cells = (long *)grid[2];
+    int w = cols < W ? (int)cols : W, h = rows < H ? (int)rows : H;
+    if (w <= 0 || h <= 0) return;
+    unsigned int *buf = malloc((size_t)w * h * 4);
+    if (!buf) werr(line, "그림을 만들 메모리가 모자람");
+    for (int y = 0; y < h; y++)
+        for (int x = 0; x < w; x++)
+            buf[y * w + x] = (unsigned int)(cells[y * cols + x] & 0xFFFFFF);
+    XImage *im = XCreateImage(dpy, DefaultVisual(dpy, scr), DefaultDepth(dpy, scr), ZPixmap, 0, (char *)buf, w, h, 32, 0);
+    if (!im) { free(buf); werr(line, "그림을 만들 수 없음"); }
+    XPutImage(dpy, pm, gc, im, 0, 0, 0, 0, w, h);
+    XDestroyImage(im);                                 /* buf 도 같이 풀림 */
+}
+
 /* y 는 글자의 위쪽 (기준선이 아니라) — 사각형과 같은 셈법이 헷갈리지 않는다 */
 void __han_wtext(const char *s, long x, long y, long line) {
     need(line);
