@@ -74,12 +74,13 @@ def 깨끗한환경(폴더):
     return 환경
 
 
-def 돌리다(명령, 폴더, 입력, cpu, mem, 벽시계, 파일크기):
+def 돌리다(명령, 폴더, 입력, cpu, mem, 벽시계, 파일크기, 놀이터=False):
     """명령을 돌려 (종료코드, 출력 글, 시간초과?) 를 준다. 출력은 표준 출력·에러를 한 파일에 (순서 그대로)."""
     출력경로 = os.path.join(폴더, "out.txt")
     환경 = 깨끗한환경(폴더)
     환경["HAN_SCREENSHOT"] = os.path.join(폴더, "shot.ppm")
-    환경["HAN_PLAYGROUND"] = "1"
+    if 놀이터:                    # 사용자 프로그램만 — 컴파일러는 자기 런타임·라이브러리를 읽어야 한다
+        환경["HAN_PLAYGROUND"] = "1"
     with open(출력경로, "wb") as 출력:
         p = subprocess.Popen(명령, cwd=폴더, stdin=subprocess.PIPE, stdout=출력, stderr=subprocess.STDOUT,
                              env=환경, preexec_fn=제한걸기(cpu, mem, 파일크기))
@@ -124,7 +125,7 @@ def 실행하다(코드, 입력):
         if 종료 != 0 or not os.path.exists(os.path.join(폴더, "prog")):
             return {"단계": "컴파일", "출력": 글, "종료코드": 종료, "까닭": 끝난까닭(종료, 초과)}
         시작 = time.time()
-        종료, 글, 초과 = 돌리다(["./prog"], 폴더, 입력, RUN_CPU, RUN_MEM, RUN_WALL, 32 * 1024 * 1024)
+        종료, 글, 초과 = 돌리다(["./prog"], 폴더, 입력, RUN_CPU, RUN_MEM, RUN_WALL, 32 * 1024 * 1024, 놀이터=True)
         답 = {"단계": "실행", "출력": 글, "종료코드": 종료, "까닭": 끝난까닭(종료, 초과),
              "걸린시간": round(time.time() - 시작, 3)}
         그림 = os.path.join(폴더, "shot.ppm")
