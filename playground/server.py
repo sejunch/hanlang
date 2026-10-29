@@ -5,12 +5,13 @@
 남의 코드를 이 서버에서 돌리는 것이라 막는 장치가 여러 겹이다:
   1. hanc --놀이터 : 실행하다 · 낮은 수준(요청.han 포함) 은 컴파일 오류. 파일은 HAN_PLAYGROUND 를 넘겨서
      런타임이 이 폴더 안만 열게 막는다. 한랭은 범위 검사가 있어서 이러면 서버를 건드릴 길이 없다
-  2. 실행 제한 : CPU 5초 · 벽시계 8초 · 메모리 512MB · 파일 32MB (넘으면 운영체제가 끝냄), 보여주는 출력은 1MB 까지
+  2. 실행 제한 : CPU 5초 · 벽시계 8초 · 메모리 512MB(HAN_MEM_MB) · 파일 32MB (넘으면 운영체제가 끝냄), 보여주는 출력은 1MB 까지
   3. 서버 환경 변수는 안 넘김 (비밀값이 새지 않게), 실행마다 새 임시 폴더
   4. 동시에 2개, IP 마다 1분에 30번
 
     python3 playground/server.py          # http://localhost:7860
-환경 변수: PORT (기본 7860), HANC (기본: 저장소의 ./hanc)
+환경 변수: PORT (기본 7860), HOST (기본 0.0.0.0), HANC (기본: 저장소의 ./hanc),
+          HAN_JOBS (동시 실행 수, 기본 2), HAN_MEM_MB (프로그램 하나의 메모리, 기본 512)
 """
 import base64
 import json
@@ -29,16 +30,17 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 HANC = os.environ.get("HANC", os.path.join(ROOT, "hanc"))
 PORT = int(os.environ.get("PORT", "7860"))
+HOST = os.environ.get("HOST", "0.0.0.0")
 
 MAX_CODE = 64 * 1024
 MAX_INPUT = 64 * 1024
 MAX_OUTPUT = 1024 * 1024
 RUN_CPU = 5
 RUN_WALL = 8
-RUN_MEM = 512 * 1024 * 1024
+RUN_MEM = int(os.environ.get("HAN_MEM_MB", "512")) * 1024 * 1024
 COMPILE_WALL = 30
 
-동시실행 = threading.BoundedSemaphore(2)
+동시실행 = threading.BoundedSemaphore(int(os.environ.get("HAN_JOBS", "2")))
 요청기록 = {}                     # IP -> 최근 1분 실행 시각들
 기록잠금 = threading.Lock()
 
@@ -210,6 +212,6 @@ def 가상화면띄우다():
 
 if __name__ == "__main__":
     가상화면띄우다()
-    서버 = ThreadingHTTPServer(("0.0.0.0", PORT), 처리기)
+    서버 = ThreadingHTTPServer((HOST, PORT), 처리기)
     print("한랭 놀이터: http://localhost:%d" % PORT, flush=True)
     서버.serve_forever()
