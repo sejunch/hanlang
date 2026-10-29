@@ -6552,1121 +6552,1121 @@
 .Ls3276:
     .asciz "    movq %xmm0, %rax"
 .Ls3277:
-    .asciz "field"
+    .asciz "함수명"
 .Ls3278:
-    .asciz "가지들"
+    .asciz "함수명"
 .Ls3279:
-    .asciz "    movq "
+    .asciz "curl_"
 .Ls3280:
-    .asciz "셈"
+    .asciz "컬씀"
 .Ls3281:
-    .asciz "(%rax), %rax"
+    .asciz "field"
 .Ls3282:
-    .asciz "builtin"
+    .asciz "가지들"
 .Ls3283:
-    .asciz "가지들"
+    .asciz "    movq "
 .Ls3284:
-    .asciz "이름"
+    .asciz "셈"
 .Ls3285:
-    .asciz "환경값"
+    .asciz "(%rax), %rax"
 .Ls3286:
-    .asciz "실제경로"
+    .asciz "builtin"
 .Ls3287:
-    .asciz "    movq %rax, %rdi"
-.Ls3288:
-    .asciz "환경값"
-.Ls3289:
-    .asciz "    call __han_getenv"
-.Ls3290:
-    .asciz "    call __han_realpath"
-.Ls3291:
-    .asciz "코드"
-.Ls3292:
-    .asciz "글자"
-.Ls3293:
-    .asciz "무작위"
-.Ls3294:
-    .asciz "    movq %rax, %rdi"
-.Ls3295:
-    .asciz "    movq $"
-.Ls3296:
-    .asciz ", %rsi"
-.Ls3297:
-    .asciz "코드"
-.Ls3298:
-    .asciz "    call __han_ord"
-.Ls3299:
-    .asciz "글자"
-.Ls3300:
-    .asciz "    call __han_chr"
-.Ls3301:
-    .asciz "무작위"
-.Ls3302:
-    .asciz "    call __han_rand"
-.Ls3303:
-    .asciz "절댓값"
-.Ls3304:
-    .asciz "형"
-.Ls3305:
-    .asciz "    movabsq $9223372036854775807, %rcx"
-.Ls3306:
-    .asciz "    andq %rcx, %rax"
-.Ls3307:
-    .asciz "    cqto"
-.Ls3308:
-    .asciz "    xorq %rdx, %rax"
-.Ls3309:
-    .asciz "    subq %rdx, %rax"
-.Ls3310:
-    .asciz "형"
-.Ls3311:
-    .asciz "제곱근"
-.Ls3312:
-    .asciz "    movq %rax, %xmm0"
-.Ls3313:
-    .asciz "    pxor %xmm1, %xmm1"
-.Ls3314:
-    .asciz "    ucomisd %xmm1, %xmm0"
-.Ls3315:
-    .asciz "    jae 1f"
-.Ls3316:
-    .asciz "    movl $"
-.Ls3317:
-    .asciz ", %edi"
-.Ls3318:
-    .asciz "    call __han_negsqrt"
-.Ls3319:
-    .asciz "1:"
-.Ls3320:
-    .asciz "    sqrtsd %xmm0, %xmm0"
-.Ls3321:
-    .asciz "    movq %xmm0, %rax"
-.Ls3322:
-    .asciz "floor"
-.Ls3323:
-    .asciz "반올림"
-.Ls3324:
-    .asciz "round"
-.Ls3325:
-    .asciz "올림"
-.Ls3326:
-    .asciz "ceil"
-.Ls3327:
-    .asciz "    movq %rax, %xmm0"
-.Ls3328:
-    .asciz "    call "
-.Ls3329:
-    .asciz "    cvttsd2si %xmm0, %rax"
-.Ls3330:
-    .asciz "conv"
-.Ls3331:
     .asciz "가지들"
-.Ls3332:
-    .asciz "형"
-.Ls3333:
-    .asciz "형"
-.Ls3334:
-    .asciz "형"
-.Ls3335:
-    .asciz "형"
-.Ls3336:
-    .asciz "    movq %rax, %xmm0"
-.Ls3337:
-    .asciz "    cvttsd2si %xmm0, %rax"
-.Ls3338:
+.Ls3288:
+    .asciz "이름"
+.Ls3289:
+    .asciz "환경값"
+.Ls3290:
+    .asciz "실제경로"
+.Ls3291:
     .asciz "    movq %rax, %rdi"
+.Ls3292:
+    .asciz "환경값"
+.Ls3293:
+    .asciz "    call __han_getenv"
+.Ls3294:
+    .asciz "    call __han_realpath"
+.Ls3295:
+    .asciz "코드"
+.Ls3296:
+    .asciz "글자"
+.Ls3297:
+    .asciz "무작위"
+.Ls3298:
+    .asciz "    movq %rax, %rdi"
+.Ls3299:
+    .asciz "    movq $"
+.Ls3300:
+    .asciz ", %rsi"
+.Ls3301:
+    .asciz "코드"
+.Ls3302:
+    .asciz "    call __han_ord"
+.Ls3303:
+    .asciz "글자"
+.Ls3304:
+    .asciz "    call __han_chr"
+.Ls3305:
+    .asciz "무작위"
+.Ls3306:
+    .asciz "    call __han_rand"
+.Ls3307:
+    .asciz "절댓값"
+.Ls3308:
+    .asciz "형"
+.Ls3309:
+    .asciz "    movabsq $9223372036854775807, %rcx"
+.Ls3310:
+    .asciz "    andq %rcx, %rax"
+.Ls3311:
+    .asciz "    cqto"
+.Ls3312:
+    .asciz "    xorq %rdx, %rax"
+.Ls3313:
+    .asciz "    subq %rdx, %rax"
+.Ls3314:
+    .asciz "형"
+.Ls3315:
+    .asciz "제곱근"
+.Ls3316:
+    .asciz "    movq %rax, %xmm0"
+.Ls3317:
+    .asciz "    pxor %xmm1, %xmm1"
+.Ls3318:
+    .asciz "    ucomisd %xmm1, %xmm0"
+.Ls3319:
+    .asciz "    jae 1f"
+.Ls3320:
+    .asciz "    movl $"
+.Ls3321:
+    .asciz ", %edi"
+.Ls3322:
+    .asciz "    call __han_negsqrt"
+.Ls3323:
+    .asciz "1:"
+.Ls3324:
+    .asciz "    sqrtsd %xmm0, %xmm0"
+.Ls3325:
+    .asciz "    movq %xmm0, %rax"
+.Ls3326:
+    .asciz "floor"
+.Ls3327:
+    .asciz "반올림"
+.Ls3328:
+    .asciz "round"
+.Ls3329:
+    .asciz "올림"
+.Ls3330:
+    .asciz "ceil"
+.Ls3331:
+    .asciz "    movq %rax, %xmm0"
+.Ls3332:
+    .asciz "    call "
+.Ls3333:
+    .asciz "    cvttsd2si %xmm0, %rax"
+.Ls3334:
+    .asciz "conv"
+.Ls3335:
+    .asciz "가지들"
+.Ls3336:
+    .asciz "형"
+.Ls3337:
+    .asciz "형"
+.Ls3338:
+    .asciz "형"
 .Ls3339:
-    .asciz "    call atoll"
+    .asciz "형"
 .Ls3340:
-    .asciz "형"
+    .asciz "    movq %rax, %xmm0"
 .Ls3341:
-    .asciz "형"
+    .asciz "    cvttsd2si %xmm0, %rax"
 .Ls3342:
     .asciz "    movq %rax, %rdi"
 .Ls3343:
-    .asciz "    call atof"
+    .asciz "    call atoll"
 .Ls3344:
-    .asciz "    movq %xmm0, %rax"
+    .asciz "형"
 .Ls3345:
-    .asciz "    movq %rax, %rdi"
+    .asciz "형"
 .Ls3346:
-    .asciz "형"
+    .asciz "    movq %rax, %rdi"
 .Ls3347:
-    .asciz "    call __han_tostr"
+    .asciz "    call atof"
 .Ls3348:
-    .asciz "    call __han_ftostr"
+    .asciz "    movq %xmm0, %rax"
 .Ls3349:
-    .asciz "un"
+    .asciz "    movq %rax, %rdi"
 .Ls3350:
-    .asciz "가지들"
-.Ls3351:
-    .asciz "이름"
-.Ls3352:
-    .asciz "-"
-.Ls3353:
     .asciz "형"
+.Ls3351:
+    .asciz "    call __han_tostr"
+.Ls3352:
+    .asciz "    call __han_ftostr"
+.Ls3353:
+    .asciz "un"
 .Ls3354:
-    .asciz "    movabsq $-9223372036854775808, %rcx"
+    .asciz "가지들"
 .Ls3355:
-    .asciz "    xorq %rcx, %rax"
+    .asciz "이름"
 .Ls3356:
-    .asciz "    negq %rax"
+    .asciz "-"
 .Ls3357:
-    .asciz "이름"
+    .asciz "형"
 .Ls3358:
-    .asciz "~"
+    .asciz "    movabsq $-9223372036854775808, %rcx"
 .Ls3359:
-    .asciz "    notq %rax"
+    .asciz "    xorq %rcx, %rax"
 .Ls3360:
-    .asciz "이름"
+    .asciz "    negq %rax"
 .Ls3361:
-    .asciz "!"
+    .asciz "이름"
 .Ls3362:
-    .asciz "    cmpq $0, %rax"
+    .asciz "~"
 .Ls3363:
-    .asciz "    sete %al"
+    .asciz "    notq %rax"
 .Ls3364:
-    .asciz "    movzbq %al, %rax"
+    .asciz "이름"
 .Ls3365:
-    .asciz "call"
+    .asciz "!"
 .Ls3366:
-    .asciz "가지들"
+    .asciz "    cmpq $0, %rax"
 .Ls3367:
-    .asciz "인자는 6개까지만 됨"
+    .asciz "    sete %al"
 .Ls3368:
-    .asciz "조합들"
+    .asciz "    movzbq %al, %rax"
 .Ls3369:
-    .asciz "셈"
+    .asciz "call"
 .Ls3370:
-    .asciz "본몸"
+    .asciz "가지들"
 .Ls3371:
-    .asciz "치환이름들"
+    .asciz "인자는 6개까지만 됨"
 .Ls3372:
-    .asciz "가지들"
+    .asciz "조합들"
 .Ls3373:
-    .asciz "가지들"
+    .asciz "셈"
 .Ls3374:
-    .asciz "꼴"
+    .asciz "본몸"
 .Ls3375:
-    .asciz "ret"
+    .asciz "치환이름들"
 .Ls3376:
     .asciz "가지들"
 .Ls3377:
     .asciz "가지들"
 .Ls3378:
-    .asciz "가지들"
+    .asciz "꼴"
 .Ls3379:
-    .asciz ""
+    .asciz "ret"
 .Ls3380:
-    .asciz "함수들"
+    .asciz "가지들"
 .Ls3381:
-    .asciz "대상번호"
+    .asciz "가지들"
 .Ls3382:
-    .asciz "매개들"
+    .asciz "가지들"
 .Ls3383:
-    .asciz "치환이름들"
+    .asciz ""
 .Ls3384:
-    .asciz "치환마디들"
+    .asciz "함수들"
 .Ls3385:
-    .asciz "가지들"
+    .asciz "대상번호"
 .Ls3386:
-    .asciz "가지들"
+    .asciz "매개들"
 .Ls3387:
     .asciz "치환이름들"
 .Ls3388:
     .asciz "치환마디들"
 .Ls3389:
-    .asciz "%rdi"
+    .asciz "가지들"
 .Ls3390:
-    .asciz "%rsi"
+    .asciz "가지들"
 .Ls3391:
-    .asciz "%rdx"
+    .asciz "치환이름들"
 .Ls3392:
-    .asciz "%rcx"
+    .asciz "치환마디들"
 .Ls3393:
-    .asciz "%r8"
+    .asciz "%rdi"
 .Ls3394:
-    .asciz "%r9"
+    .asciz "%rsi"
 .Ls3395:
-    .asciz "가지들"
+    .asciz "%rdx"
 .Ls3396:
-    .asciz ""
+    .asciz "%rcx"
 .Ls3397:
-    .asciz ""
+    .asciz "%r8"
 .Ls3398:
-    .asciz "가지들"
+    .asciz "%r9"
 .Ls3399:
-    .asciz "    movq %rax, "
+    .asciz "가지들"
 .Ls3400:
     .asciz ""
 .Ls3401:
     .asciz ""
 .Ls3402:
-    .asciz "    movq "
+    .asciz "가지들"
 .Ls3403:
-    .asciz ", "
+    .asciz "    movq %rax, "
 .Ls3404:
-    .asciz "    call "
-.Ls3405:
-    .asciz "조합들"
-.Ls3406:
-    .asciz "셈"
-.Ls3407:
-    .asciz "표지"
-.Ls3408:
-    .asciz "글수"
-.Ls3409:
-    .asciz "글수"
-.Ls3410:
-    .asciz ".Ls"
-.Ls3411:
-    .asciz "글수"
-.Ls3412:
-    .asciz "모듈"
-.Ls3413:
-    .asciz ".Lhms"
-.Ls3414:
-    .asciz "글수"
-.Ls3415:
-    .asciz "자료들"
-.Ls3416:
-    .asciz ":"
-.Ls3417:
-    .asciz "자료들"
-.Ls3418:
-    .asciz "    .asciz \""
-.Ls3419:
-    .asciz "\""
-.Ls3420:
     .asciz ""
-.Ls3421:
-    .asciz "\""
-.Ls3422:
-    .asciz "\\\""
-.Ls3423:
-    .asciz "\\"
-.Ls3424:
-    .asciz "\\\\"
-.Ls3425:
-    .asciz "\\n"
-.Ls3426:
-    .asciz "\\t"
-.Ls3427:
+.Ls3405:
+    .asciz ""
+.Ls3406:
+    .asciz "    movq "
+.Ls3407:
+    .asciz ", "
+.Ls3408:
+    .asciz "    call "
+.Ls3409:
+    .asciz "조합들"
+.Ls3410:
+    .asciz "셈"
+.Ls3411:
+    .asciz "표지"
+.Ls3412:
     .asciz "글수"
-.Ls3428:
+.Ls3413:
     .asciz "글수"
-.Ls3429:
-    .asciz ".Ld"
-.Ls3430:
+.Ls3414:
+    .asciz ".Ls"
+.Ls3415:
     .asciz "글수"
-.Ls3431:
+.Ls3416:
     .asciz "모듈"
-.Ls3432:
-    .asciz ".Lhmd"
-.Ls3433:
+.Ls3417:
+    .asciz ".Lhms"
+.Ls3418:
     .asciz "글수"
-.Ls3434:
+.Ls3419:
     .asciz "자료들"
-.Ls3435:
-    .asciz "    .balign 8"
-.Ls3436:
-    .asciz "자료들"
-.Ls3437:
+.Ls3420:
     .asciz ":"
+.Ls3421:
+    .asciz "자료들"
+.Ls3422:
+    .asciz "    .asciz \""
+.Ls3423:
+    .asciz "\""
+.Ls3424:
+    .asciz ""
+.Ls3425:
+    .asciz "\""
+.Ls3426:
+    .asciz "\\\""
+.Ls3427:
+    .asciz "\\"
+.Ls3428:
+    .asciz "\\\\"
+.Ls3429:
+    .asciz "\\n"
+.Ls3430:
+    .asciz "\\t"
+.Ls3431:
+    .asciz "글수"
+.Ls3432:
+    .asciz "글수"
+.Ls3433:
+    .asciz ".Ld"
+.Ls3434:
+    .asciz "글수"
+.Ls3435:
+    .asciz "모듈"
+.Ls3436:
+    .asciz ".Lhmd"
+.Ls3437:
+    .asciz "글수"
 .Ls3438:
     .asciz "자료들"
 .Ls3439:
-    .asciz "    .double "
+    .asciz "    .balign 8"
 .Ls3440:
-    .asciz ""
+    .asciz "자료들"
 .Ls3441:
-    .asciz "    movq %rax, %rdi"
+    .asciz ":"
 .Ls3442:
-    .asciz "    movq "
+    .asciz "자료들"
 .Ls3443:
-    .asciz ", %rsi"
+    .asciz "    .double "
 .Ls3444:
     .asciz ""
 .Ls3445:
-    .asciz "    movq %rax, %rsi"
+    .asciz "    movq %rax, %rdi"
 .Ls3446:
     .asciz "    movq "
 .Ls3447:
-    .asciz ", %rdi"
+    .asciz ", %rsi"
 .Ls3448:
-    .asciz "    movq %rax, %rsi"
+    .asciz ""
 .Ls3449:
-    .asciz "%rdi"
+    .asciz "    movq %rax, %rsi"
 .Ls3450:
-    .asciz "    subq $16, %rsp"
-.Ls3451:
-    .asciz "    movq %rax, (%rsp)"
-.Ls3452:
-    .asciz "    movq (%rsp), "
-.Ls3453:
-    .asciz "    addq $16, %rsp"
-.Ls3454:
-    .asciz "%rcx"
-.Ls3455:
     .asciz "    movq "
+.Ls3451:
+    .asciz ", %rdi"
+.Ls3452:
+    .asciz "    movq %rax, %rsi"
+.Ls3453:
+    .asciz "%rdi"
+.Ls3454:
+    .asciz "    subq $16, %rsp"
+.Ls3455:
+    .asciz "    movq %rax, (%rsp)"
 .Ls3456:
-    .asciz ", %rcx"
+    .asciz "    movq (%rsp), "
 .Ls3457:
-    .asciz "    movq ("
+    .asciz "    addq $16, %rsp"
 .Ls3458:
-    .asciz ",%rdx,8), %rax"
+    .asciz "%rcx"
 .Ls3459:
     .asciz "    movq "
 .Ls3460:
-    .asciz ", %rax"
+    .asciz ", %rcx"
 .Ls3461:
-    .asciz "    movq (%rax,%rdx,8), %rax"
+    .asciz "    movq ("
 .Ls3462:
-    .asciz ""
+    .asciz ",%rdx,8), %rax"
 .Ls3463:
-    .asciz ""
-.Ls3464:
-    .asciz "    movq %rax, %rcx"
-.Ls3465:
     .asciz "    movq "
-.Ls3466:
+.Ls3464:
     .asciz ", %rax"
+.Ls3465:
+    .asciz "    movq (%rax,%rdx,8), %rax"
+.Ls3466:
+    .asciz ""
 .Ls3467:
-    .asciz "%rcx"
+    .asciz ""
 .Ls3468:
-    .asciz "임시깊이"
+    .asciz "    movq %rax, %rcx"
 .Ls3469:
-    .asciz "%r10"
+    .asciz "    movq "
 .Ls3470:
-    .asciz "%r11"
+    .asciz ", %rax"
 .Ls3471:
-    .asciz "임시깊이"
+    .asciz "%rcx"
 .Ls3472:
-    .asciz "    movq %rax, "
+    .asciz "임시깊이"
 .Ls3473:
-    .asciz "임시깊이"
+    .asciz "%r10"
 .Ls3474:
-    .asciz "임시깊이"
+    .asciz "%r11"
 .Ls3475:
     .asciz "임시깊이"
 .Ls3476:
-    .asciz "임시깊이"
+    .asciz "    movq %rax, "
 .Ls3477:
-    .asciz "    movq %rax, %rcx"
+    .asciz "임시깊이"
 .Ls3478:
-    .asciz "    movq "
+    .asciz "임시깊이"
 .Ls3479:
-    .asciz ", %rax"
+    .asciz "임시깊이"
 .Ls3480:
-    .asciz "%rcx"
+    .asciz "임시깊이"
 .Ls3481:
     .asciz "    movq %rax, %rcx"
 .Ls3482:
-    .asciz "%rax"
+    .asciz "    movq "
 .Ls3483:
-    .asciz "%rcx"
+    .asciz ", %rax"
 .Ls3484:
-    .asciz "꼴"
+    .asciz "%rcx"
 .Ls3485:
-    .asciz "num"
+    .asciz "    movq %rax, %rcx"
 .Ls3486:
-    .asciz "var"
+    .asciz "%rax"
 .Ls3487:
-    .asciz "none"
+    .asciz "%rcx"
 .Ls3488:
-    .asciz "str"
+    .asciz "꼴"
 .Ls3489:
-    .asciz "bin"
+    .asciz "num"
 .Ls3490:
-    .asciz "형"
+    .asciz "var"
 .Ls3491:
-    .asciz "이름"
+    .asciz "none"
 .Ls3492:
-    .asciz "/"
+    .asciz "str"
 .Ls3493:
-    .asciz "가지들"
+    .asciz "bin"
 .Ls3494:
     .asciz "형"
 .Ls3495:
-    .asciz "가지들"
+    .asciz "이름"
 .Ls3496:
-    .asciz "형"
+    .asciz "/"
 .Ls3497:
-    .asciz "un"
+    .asciz "가지들"
 .Ls3498:
     .asciz "형"
 .Ls3499:
-    .asciz "index"
-.Ls3500:
-    .asciz "len"
-.Ls3501:
     .asciz "가지들"
+.Ls3500:
+    .asciz "형"
+.Ls3501:
+    .asciz "un"
 .Ls3502:
     .asciz "형"
 .Ls3503:
-    .asciz "field"
+    .asciz "index"
 .Ls3504:
-    .asciz "memget"
+    .asciz "len"
 .Ls3505:
-    .asciz "cast"
+    .asciz "가지들"
 .Ls3506:
-    .asciz "builtin"
+    .asciz "형"
 .Ls3507:
-    .asciz "이름"
+    .asciz "field"
 .Ls3508:
-    .asciz "주소"
+    .asciz "memget"
 .Ls3509:
-    .asciz "가지들"
+    .asciz "cast"
 .Ls3510:
-    .asciz "가지들"
+    .asciz "builtin"
 .Ls3511:
-    .asciz "    cvtsi2sdq %rax, %xmm0"
+    .asciz "이름"
 .Ls3512:
-    .asciz "    movq %xmm0, %rax"
+    .asciz "주소"
 .Ls3513:
-    .asciz "이름"
+    .asciz "가지들"
 .Ls3514:
-    .asciz "    testq %rax, %rax"
+    .asciz "가지들"
 .Ls3515:
-    .asciz "    jne 1f"
+    .asciz "    cvtsi2sdq %rax, %xmm0"
 .Ls3516:
-    .asciz "    movq $"
+    .asciz "    movq %xmm0, %rax"
 .Ls3517:
-    .asciz "줄째"
-.Ls3518:
-    .asciz ", %rdi"
-.Ls3519:
-    .asciz "    leaq "
-.Ls3520:
-    .asciz "(%rip), %rsi"
-.Ls3521:
-    .asciz "    call __han_nonefield"
-.Ls3522:
-    .asciz "1:"
-.Ls3523:
-    .asciz "꼴"
-.Ls3524:
-    .asciz "call"
-.Ls3525:
-    .asciz "가지들"
-.Ls3526:
-    .asciz "가지들"
-.Ls3527:
     .asciz "이름"
-.Ls3528:
+.Ls3518:
+    .asciz "    testq %rax, %rax"
+.Ls3519:
+    .asciz "    jne 1f"
+.Ls3520:
+    .asciz "    movq $"
+.Ls3521:
     .asciz "줄째"
+.Ls3522:
+    .asciz ", %rdi"
+.Ls3523:
+    .asciz "    leaq "
+.Ls3524:
+    .asciz "(%rip), %rsi"
+.Ls3525:
+    .asciz "    call __han_nonefield"
+.Ls3526:
+    .asciz "1:"
+.Ls3527:
+    .asciz "꼴"
+.Ls3528:
+    .asciz "call"
 .Ls3529:
     .asciz "가지들"
 .Ls3530:
     .asciz "가지들"
 .Ls3531:
-    .asciz "&&"
+    .asciz "이름"
 .Ls3532:
-    .asciz "||"
+    .asciz "줄째"
 .Ls3533:
-    .asciz "    cmpq $0, %rax"
+    .asciz "가지들"
 .Ls3534:
-    .asciz "&&"
+    .asciz "가지들"
 .Ls3535:
-    .asciz "    je "
-.Ls3536:
-    .asciz ".L"
-.Ls3537:
-    .asciz "    jne "
-.Ls3538:
-    .asciz ".L"
-.Ls3539:
-    .asciz "    cmpq $0, %rax"
-.Ls3540:
-    .asciz "    setne %al"
-.Ls3541:
-    .asciz "    movzbq %al, %rax"
-.Ls3542:
-    .asciz "    jmp "
-.Ls3543:
-    .asciz ".L"
-.Ls3544:
-    .asciz ".L"
-.Ls3545:
-    .asciz ":"
-.Ls3546:
     .asciz "&&"
-.Ls3547:
-    .asciz "    movq $0, %rax"
-.Ls3548:
-    .asciz "    movq $1, %rax"
-.Ls3549:
+.Ls3536:
+    .asciz "||"
+.Ls3537:
+    .asciz "    cmpq $0, %rax"
+.Ls3538:
+    .asciz "&&"
+.Ls3539:
+    .asciz "    je "
+.Ls3540:
     .asciz ".L"
-.Ls3550:
-    .asciz ":"
-.Ls3551:
-    .asciz "+"
-.Ls3552:
-    .asciz "형"
-.Ls3553:
-    .asciz "    call __han_concat"
-.Ls3554:
-    .asciz "형"
-.Ls3555:
-    .asciz "=="
-.Ls3556:
-    .asciz "!="
-.Ls3557:
-    .asciz "<"
-.Ls3558:
-    .asciz ">"
-.Ls3559:
-    .asciz "<="
-.Ls3560:
-    .asciz ">="
-.Ls3561:
-    .asciz "    call strcmp"
-.Ls3562:
-    .asciz "    cmpl $0, %eax"
-.Ls3563:
-    .asciz "setne"
-.Ls3564:
-    .asciz "=="
-.Ls3565:
-    .asciz "sete"
-.Ls3566:
-    .asciz "<"
-.Ls3567:
-    .asciz "setl"
-.Ls3568:
-    .asciz ">"
-.Ls3569:
-    .asciz "setg"
-.Ls3570:
-    .asciz "<="
-.Ls3571:
-    .asciz "setle"
-.Ls3572:
-    .asciz ">="
-.Ls3573:
-    .asciz "setge"
-.Ls3574:
-    .asciz "    "
-.Ls3575:
-    .asciz " %al"
-.Ls3576:
+.Ls3541:
+    .asciz "    jne "
+.Ls3542:
+    .asciz ".L"
+.Ls3543:
+    .asciz "    cmpq $0, %rax"
+.Ls3544:
+    .asciz "    setne %al"
+.Ls3545:
     .asciz "    movzbq %al, %rax"
+.Ls3546:
+    .asciz "    jmp "
+.Ls3547:
+    .asciz ".L"
+.Ls3548:
+    .asciz ".L"
+.Ls3549:
+    .asciz ":"
+.Ls3550:
+    .asciz "&&"
+.Ls3551:
+    .asciz "    movq $0, %rax"
+.Ls3552:
+    .asciz "    movq $1, %rax"
+.Ls3553:
+    .asciz ".L"
+.Ls3554:
+    .asciz ":"
+.Ls3555:
+    .asciz "+"
+.Ls3556:
+    .asciz "형"
+.Ls3557:
+    .asciz "    call __han_concat"
+.Ls3558:
+    .asciz "형"
+.Ls3559:
+    .asciz "=="
+.Ls3560:
+    .asciz "!="
+.Ls3561:
+    .asciz "<"
+.Ls3562:
+    .asciz ">"
+.Ls3563:
+    .asciz "<="
+.Ls3564:
+    .asciz ">="
+.Ls3565:
+    .asciz "    call strcmp"
+.Ls3566:
+    .asciz "    cmpl $0, %eax"
+.Ls3567:
+    .asciz "setne"
+.Ls3568:
+    .asciz "=="
+.Ls3569:
+    .asciz "sete"
+.Ls3570:
+    .asciz "<"
+.Ls3571:
+    .asciz "setl"
+.Ls3572:
+    .asciz ">"
+.Ls3573:
+    .asciz "setg"
+.Ls3574:
+    .asciz "<="
+.Ls3575:
+    .asciz "setle"
+.Ls3576:
+    .asciz ">="
 .Ls3577:
-    .asciz "형"
+    .asciz "setge"
 .Ls3578:
-    .asciz "형"
+    .asciz "    "
 .Ls3579:
-    .asciz "/"
+    .asciz " %al"
 .Ls3580:
-    .asciz "형"
+    .asciz "    movzbq %al, %rax"
 .Ls3581:
     .asciz "형"
 .Ls3582:
-    .asciz "    movq %rax, %xmm1"
+    .asciz "형"
 .Ls3583:
-    .asciz "%rax"
+    .asciz "/"
 .Ls3584:
-    .asciz "    movq %rax, %xmm0"
+    .asciz "형"
 .Ls3585:
-    .asciz "/"
+    .asciz "형"
 .Ls3586:
-    .asciz "    pxor %xmm2, %xmm2"
+    .asciz "    movq %rax, %xmm1"
 .Ls3587:
-    .asciz "    ucomisd %xmm2, %xmm1"
+    .asciz "%rax"
 .Ls3588:
-    .asciz "    jp 1f"
+    .asciz "    movq %rax, %xmm0"
 .Ls3589:
-    .asciz "    jne 1f"
-.Ls3590:
-    .asciz "    movl $"
-.Ls3591:
-    .asciz ", %edi"
-.Ls3592:
-    .asciz "    call __han_div0"
-.Ls3593:
-    .asciz "1:"
-.Ls3594:
-    .asciz ""
-.Ls3595:
-    .asciz "+"
-.Ls3596:
-    .asciz "addsd"
-.Ls3597:
-    .asciz "-"
-.Ls3598:
-    .asciz "subsd"
-.Ls3599:
-    .asciz "*"
-.Ls3600:
-    .asciz "mulsd"
-.Ls3601:
     .asciz "/"
-.Ls3602:
-    .asciz "divsd"
-.Ls3603:
-    .asciz ""
-.Ls3604:
-    .asciz "    "
-.Ls3605:
-    .asciz " %xmm1, %xmm0"
-.Ls3606:
-    .asciz "    movq %xmm0, %rax"
-.Ls3607:
-    .asciz "setne"
-.Ls3608:
-    .asciz "<"
-.Ls3609:
-    .asciz "setb"
-.Ls3610:
-    .asciz ">"
-.Ls3611:
-    .asciz "seta"
-.Ls3612:
-    .asciz "<="
-.Ls3613:
-    .asciz "setbe"
-.Ls3614:
-    .asciz ">="
-.Ls3615:
-    .asciz "setae"
-.Ls3616:
-    .asciz "=="
-.Ls3617:
-    .asciz "sete"
-.Ls3618:
-    .asciz "    comisd %xmm1, %xmm0"
-.Ls3619:
-    .asciz "    "
-.Ls3620:
-    .asciz " %al"
-.Ls3621:
-    .asciz "    movzbq %al, %rax"
-.Ls3622:
-    .asciz "+"
-.Ls3623:
-    .asciz "*"
-.Ls3624:
-    .asciz "&"
-.Ls3625:
-    .asciz "|"
-.Ls3626:
-    .asciz "^"
-.Ls3627:
-    .asciz ""
-.Ls3628:
-    .asciz ""
-.Ls3629:
-    .asciz "+"
-.Ls3630:
-    .asciz "*"
-.Ls3631:
-    .asciz "&"
-.Ls3632:
-    .asciz "|"
-.Ls3633:
-    .asciz "^"
-.Ls3634:
-    .asciz "+"
-.Ls3635:
-    .asciz "    addq "
-.Ls3636:
-    .asciz ", %rax"
-.Ls3637:
-    .asciz "-"
-.Ls3638:
-    .asciz "    subq "
-.Ls3639:
-    .asciz ", %rax"
-.Ls3640:
-    .asciz "*"
-.Ls3641:
-    .asciz "    imulq "
-.Ls3642:
-    .asciz ", %rax"
-.Ls3643:
-    .asciz "&"
-.Ls3644:
-    .asciz "    andq "
-.Ls3645:
-    .asciz ", %rax"
-.Ls3646:
-    .asciz "|"
-.Ls3647:
-    .asciz "    orq "
-.Ls3648:
-    .asciz ", %rax"
-.Ls3649:
-    .asciz "^"
-.Ls3650:
-    .asciz "    xorq "
-.Ls3651:
-    .asciz ", %rax"
-.Ls3652:
-    .asciz "<<"
-.Ls3653:
-    .asciz ">>"
-.Ls3654:
-    .asciz "셈"
-.Ls3655:
-    .asciz "<<"
-.Ls3656:
-    .asciz "    shlq "
-.Ls3657:
-    .asciz ", %rax"
-.Ls3658:
-    .asciz "    sarq "
-.Ls3659:
-    .asciz ", %rax"
-.Ls3660:
-    .asciz "<<"
-.Ls3661:
-    .asciz ">>"
-.Ls3662:
-    .asciz "    cmpq $63, %rcx"
-.Ls3663:
-    .asciz "    jbe 1f"
-.Ls3664:
-    .asciz "    movl $"
-.Ls3665:
-    .asciz ", %edi"
-.Ls3666:
-    .asciz "    movq %rcx, %rsi"
-.Ls3667:
-    .asciz "    call __han_shift"
-.Ls3668:
-    .asciz "1:"
-.Ls3669:
-    .asciz "<<"
-.Ls3670:
-    .asciz "    shlq %cl, %rax"
-.Ls3671:
-    .asciz "    sarq %cl, %rax"
-.Ls3672:
-    .asciz "%"
-.Ls3673:
-    .asciz "~/"
-.Ls3674:
-    .asciz "$0"
-.Ls3675:
-    .asciz "    testq %rcx, %rcx"
-.Ls3676:
+.Ls3590:
+    .asciz "    pxor %xmm2, %xmm2"
+.Ls3591:
+    .asciz "    ucomisd %xmm2, %xmm1"
+.Ls3592:
+    .asciz "    jp 1f"
+.Ls3593:
     .asciz "    jne 1f"
-.Ls3677:
+.Ls3594:
     .asciz "    movl $"
-.Ls3678:
+.Ls3595:
     .asciz ", %edi"
-.Ls3679:
+.Ls3596:
     .asciz "    call __han_div0"
-.Ls3680:
+.Ls3597:
     .asciz "1:"
-.Ls3681:
-    .asciz "    cqto"
-.Ls3682:
-    .asciz "    idivq %rcx"
-.Ls3683:
-    .asciz "%"
-.Ls3684:
-    .asciz "    movq %rdx, %rax"
-.Ls3685:
-    .asciz "라벨수"
-.Ls3686:
-    .asciz "라벨수"
-.Ls3687:
-    .asciz "라벨수"
-.Ls3688:
-    .asciz ".L"
-.Ls3689:
+.Ls3598:
+    .asciz ""
+.Ls3599:
     .asciz "+"
-.Ls3690:
-    .asciz "    addq "
-.Ls3691:
-    .asciz ", %rax"
-.Ls3692:
+.Ls3600:
+    .asciz "addsd"
+.Ls3601:
+    .asciz "-"
+.Ls3602:
+    .asciz "subsd"
+.Ls3603:
     .asciz "*"
-.Ls3693:
+.Ls3604:
+    .asciz "mulsd"
+.Ls3605:
+    .asciz "/"
+.Ls3606:
+    .asciz "divsd"
+.Ls3607:
+    .asciz ""
+.Ls3608:
+    .asciz "    "
+.Ls3609:
+    .asciz " %xmm1, %xmm0"
+.Ls3610:
+    .asciz "    movq %xmm0, %rax"
+.Ls3611:
+    .asciz "setne"
+.Ls3612:
+    .asciz "<"
+.Ls3613:
+    .asciz "setb"
+.Ls3614:
+    .asciz ">"
+.Ls3615:
+    .asciz "seta"
+.Ls3616:
+    .asciz "<="
+.Ls3617:
+    .asciz "setbe"
+.Ls3618:
+    .asciz ">="
+.Ls3619:
+    .asciz "setae"
+.Ls3620:
+    .asciz "=="
+.Ls3621:
+    .asciz "sete"
+.Ls3622:
+    .asciz "    comisd %xmm1, %xmm0"
+.Ls3623:
+    .asciz "    "
+.Ls3624:
+    .asciz " %al"
+.Ls3625:
+    .asciz "    movzbq %al, %rax"
+.Ls3626:
+    .asciz "+"
+.Ls3627:
+    .asciz "*"
+.Ls3628:
+    .asciz "&"
+.Ls3629:
+    .asciz "|"
+.Ls3630:
+    .asciz "^"
+.Ls3631:
+    .asciz ""
+.Ls3632:
+    .asciz ""
+.Ls3633:
+    .asciz "+"
+.Ls3634:
+    .asciz "*"
+.Ls3635:
+    .asciz "&"
+.Ls3636:
+    .asciz "|"
+.Ls3637:
+    .asciz "^"
+.Ls3638:
+    .asciz "+"
+.Ls3639:
+    .asciz "    addq "
+.Ls3640:
+    .asciz ", %rax"
+.Ls3641:
+    .asciz "-"
+.Ls3642:
+    .asciz "    subq "
+.Ls3643:
+    .asciz ", %rax"
+.Ls3644:
+    .asciz "*"
+.Ls3645:
+    .asciz "    imulq "
+.Ls3646:
+    .asciz ", %rax"
+.Ls3647:
+    .asciz "&"
+.Ls3648:
+    .asciz "    andq "
+.Ls3649:
+    .asciz ", %rax"
+.Ls3650:
+    .asciz "|"
+.Ls3651:
+    .asciz "    orq "
+.Ls3652:
+    .asciz ", %rax"
+.Ls3653:
+    .asciz "^"
+.Ls3654:
+    .asciz "    xorq "
+.Ls3655:
+    .asciz ", %rax"
+.Ls3656:
+    .asciz "<<"
+.Ls3657:
+    .asciz ">>"
+.Ls3658:
     .asciz "셈"
+.Ls3659:
+    .asciz "<<"
+.Ls3660:
+    .asciz "    shlq "
+.Ls3661:
+    .asciz ", %rax"
+.Ls3662:
+    .asciz "    sarq "
+.Ls3663:
+    .asciz ", %rax"
+.Ls3664:
+    .asciz "<<"
+.Ls3665:
+    .asciz ">>"
+.Ls3666:
+    .asciz "    cmpq $63, %rcx"
+.Ls3667:
+    .asciz "    jbe 1f"
+.Ls3668:
+    .asciz "    movl $"
+.Ls3669:
+    .asciz ", %edi"
+.Ls3670:
+    .asciz "    movq %rcx, %rsi"
+.Ls3671:
+    .asciz "    call __han_shift"
+.Ls3672:
+    .asciz "1:"
+.Ls3673:
+    .asciz "<<"
+.Ls3674:
+    .asciz "    shlq %cl, %rax"
+.Ls3675:
+    .asciz "    sarq %cl, %rax"
+.Ls3676:
+    .asciz "%"
+.Ls3677:
+    .asciz "~/"
+.Ls3678:
+    .asciz "$0"
+.Ls3679:
+    .asciz "    testq %rcx, %rcx"
+.Ls3680:
+    .asciz "    jne 1f"
+.Ls3681:
+    .asciz "    movl $"
+.Ls3682:
+    .asciz ", %edi"
+.Ls3683:
+    .asciz "    call __han_div0"
+.Ls3684:
+    .asciz "1:"
+.Ls3685:
+    .asciz "    cqto"
+.Ls3686:
+    .asciz "    idivq %rcx"
+.Ls3687:
+    .asciz "%"
+.Ls3688:
+    .asciz "    movq %rdx, %rax"
+.Ls3689:
+    .asciz "라벨수"
+.Ls3690:
+    .asciz "라벨수"
+.Ls3691:
+    .asciz "라벨수"
+.Ls3692:
+    .asciz ".L"
+.Ls3693:
+    .asciz "+"
 .Ls3694:
-    .asciz "    shlq $"
+    .asciz "    addq "
 .Ls3695:
     .asciz ", %rax"
 .Ls3696:
-    .asciz "    imulq "
+    .asciz "*"
 .Ls3697:
-    .asciz ", %rax"
-.Ls3698:
-    .asciz "&"
-.Ls3699:
-    .asciz "    andq "
-.Ls3700:
-    .asciz ", %rax"
-.Ls3701:
-    .asciz "|"
-.Ls3702:
-    .asciz "    orq "
-.Ls3703:
-    .asciz ", %rax"
-.Ls3704:
-    .asciz "^"
-.Ls3705:
-    .asciz "    xorq "
-.Ls3706:
-    .asciz ", %rax"
-.Ls3707:
-    .asciz "setne"
-.Ls3708:
-    .asciz "=="
-.Ls3709:
-    .asciz "sete"
-.Ls3710:
-    .asciz "<"
-.Ls3711:
-    .asciz "setl"
-.Ls3712:
-    .asciz ">"
-.Ls3713:
-    .asciz "setg"
-.Ls3714:
-    .asciz "<="
-.Ls3715:
-    .asciz "setle"
-.Ls3716:
-    .asciz ">="
-.Ls3717:
-    .asciz "setge"
-.Ls3718:
-    .asciz "    cmpq "
-.Ls3719:
-    .asciz ", %rax"
-.Ls3720:
-    .asciz "    "
-.Ls3721:
-    .asciz " %al"
-.Ls3722:
-    .asciz "    movzbq %al, %rax"
-.Ls3723:
-    .asciz "열린파일칸들"
-.Ls3724:
-    .asciz "    movq "
-.Ls3725:
-    .asciz "열린파일칸들"
-.Ls3726:
-    .asciz "(%rbp), %rdi"
-.Ls3727:
-    .asciz "    movq $"
-.Ls3728:
-    .asciz "열린파일방식들"
-.Ls3729:
-    .asciz ", %rsi"
-.Ls3730:
-    .asciz "    call __han_fclose"
-.Ls3731:
-    .asciz "꼴"
-.Ls3732:
-    .asciz "num"
-.Ls3733:
     .asciz "셈"
+.Ls3698:
+    .asciz "    shlq $"
+.Ls3699:
+    .asciz ", %rax"
+.Ls3700:
+    .asciz "    imulq "
+.Ls3701:
+    .asciz ", %rax"
+.Ls3702:
+    .asciz "&"
+.Ls3703:
+    .asciz "    andq "
+.Ls3704:
+    .asciz ", %rax"
+.Ls3705:
+    .asciz "|"
+.Ls3706:
+    .asciz "    orq "
+.Ls3707:
+    .asciz ", %rax"
+.Ls3708:
+    .asciz "^"
+.Ls3709:
+    .asciz "    xorq "
+.Ls3710:
+    .asciz ", %rax"
+.Ls3711:
+    .asciz "setne"
+.Ls3712:
+    .asciz "=="
+.Ls3713:
+    .asciz "sete"
+.Ls3714:
+    .asciz "<"
+.Ls3715:
+    .asciz "setl"
+.Ls3716:
+    .asciz ">"
+.Ls3717:
+    .asciz "setg"
+.Ls3718:
+    .asciz "<="
+.Ls3719:
+    .asciz "setle"
+.Ls3720:
+    .asciz ">="
+.Ls3721:
+    .asciz "setge"
+.Ls3722:
+    .asciz "    cmpq "
+.Ls3723:
+    .asciz ", %rax"
+.Ls3724:
+    .asciz "    "
+.Ls3725:
+    .asciz " %al"
+.Ls3726:
+    .asciz "    movzbq %al, %rax"
+.Ls3727:
+    .asciz "열린파일칸들"
+.Ls3728:
+    .asciz "    movq "
+.Ls3729:
+    .asciz "열린파일칸들"
+.Ls3730:
+    .asciz "(%rbp), %rdi"
+.Ls3731:
+    .asciz "    movq $"
+.Ls3732:
+    .asciz "열린파일방식들"
+.Ls3733:
+    .asciz ", %rsi"
 .Ls3734:
-    .asciz "    jmp "
+    .asciz "    call __han_fclose"
 .Ls3735:
-    .asciz ".L"
+    .asciz "꼴"
 .Ls3736:
-    .asciz "un"
+    .asciz "num"
 .Ls3737:
-    .asciz "이름"
+    .asciz "셈"
 .Ls3738:
-    .asciz "!"
+    .asciz "    jmp "
 .Ls3739:
-    .asciz "가지들"
+    .asciz ".L"
 .Ls3740:
-    .asciz "bin"
+    .asciz "un"
 .Ls3741:
     .asciz "이름"
 .Ls3742:
-    .asciz "&&"
+    .asciz "!"
 .Ls3743:
-    .asciz "이름"
+    .asciz "가지들"
 .Ls3744:
-    .asciz "||"
+    .asciz "bin"
 .Ls3745:
     .asciz "이름"
 .Ls3746:
     .asciz "&&"
 .Ls3747:
-    .asciz "가지들"
+    .asciz "이름"
 .Ls3748:
-    .asciz "가지들"
+    .asciz "||"
 .Ls3749:
-    .asciz ".L"
+    .asciz "이름"
 .Ls3750:
-    .asciz ":"
+    .asciz "&&"
 .Ls3751:
     .asciz "가지들"
 .Ls3752:
     .asciz "가지들"
 .Ls3753:
-    .asciz "이름"
+    .asciz ".L"
 .Ls3754:
-    .asciz "가지들"
+    .asciz ":"
 .Ls3755:
     .asciz "가지들"
 .Ls3756:
-    .asciz ""
+    .asciz "가지들"
 .Ls3757:
-    .asciz ""
+    .asciz "이름"
 .Ls3758:
-    .asciz "    cmpq "
+    .asciz "가지들"
 .Ls3759:
-    .asciz ", "
+    .asciz "가지들"
 .Ls3760:
-    .asciz "가지들"
+    .asciz ""
 .Ls3761:
-    .asciz "가지들"
+    .asciz ""
 .Ls3762:
     .asciz "    cmpq "
 .Ls3763:
-    .asciz ", %rax"
+    .asciz ", "
 .Ls3764:
-    .asciz "=="
+    .asciz "가지들"
 .Ls3765:
-    .asciz "!="
+    .asciz "가지들"
 .Ls3766:
-    .asciz "<"
+    .asciz "    cmpq "
 .Ls3767:
-    .asciz ">"
-.Ls3768:
-    .asciz "<="
-.Ls3769:
-    .asciz ">="
-.Ls3770:
-    .asciz "je"
-.Ls3771:
-    .asciz "jne"
-.Ls3772:
-    .asciz "jl"
-.Ls3773:
-    .asciz "jg"
-.Ls3774:
-    .asciz "jle"
-.Ls3775:
-    .asciz "jge"
-.Ls3776:
-    .asciz "jne"
-.Ls3777:
-    .asciz "je"
-.Ls3778:
-    .asciz "jge"
-.Ls3779:
-    .asciz "jle"
-.Ls3780:
-    .asciz "jg"
-.Ls3781:
-    .asciz "jl"
-.Ls3782:
-    .asciz "    "
-.Ls3783:
-    .asciz " "
-.Ls3784:
-    .asciz ".L"
-.Ls3785:
-    .asciz "    "
-.Ls3786:
-    .asciz " "
-.Ls3787:
-    .asciz ".L"
-.Ls3788:
-    .asciz "    testq %rax, %rax"
-.Ls3789:
-    .asciz "    jne "
-.Ls3790:
-    .asciz ".L"
-.Ls3791:
-    .asciz "    je "
-.Ls3792:
-    .asciz ".L"
-.Ls3793:
-    .asciz "꼴"
-.Ls3794:
-    .asciz "bin"
-.Ls3795:
-    .asciz "이름"
-.Ls3796:
-    .asciz "=="
-.Ls3797:
-    .asciz "!="
-.Ls3798:
-    .asciz "<"
-.Ls3799:
-    .asciz ">"
-.Ls3800:
-    .asciz "<="
-.Ls3801:
-    .asciz ">="
-.Ls3802:
-    .asciz "가지들"
-.Ls3803:
-    .asciz "형"
-.Ls3804:
-    .asciz "가지들"
-.Ls3805:
-    .asciz "형"
-.Ls3806:
-    .asciz "꼴"
-.Ls3807:
-    .asciz "ret"
-.Ls3808:
-    .asciz "break"
-.Ls3809:
-    .asciz "continue"
-.Ls3810:
-    .asciz "exit"
-.Ls3811:
-    .asciz "block"
-.Ls3812:
-    .asciz "가지들"
-.Ls3813:
-    .asciz "가지들"
-.Ls3814:
-    .asciz "가지들"
-.Ls3815:
-    .asciz "끌어올림"
-.Ls3816:
-    .asciz "    xorl %ecx, %ecx"
-.Ls3817:
-    .asciz "    xorl %edx, %edx"
-.Ls3818:
-    .asciz "    movq "
-.Ls3819:
     .asciz ", %rax"
-.Ls3820:
+.Ls3768:
+    .asciz "=="
+.Ls3769:
+    .asciz "!="
+.Ls3770:
+    .asciz "<"
+.Ls3771:
+    .asciz ">"
+.Ls3772:
+    .asciz "<="
+.Ls3773:
+    .asciz ">="
+.Ls3774:
+    .asciz "je"
+.Ls3775:
+    .asciz "jne"
+.Ls3776:
+    .asciz "jl"
+.Ls3777:
+    .asciz "jg"
+.Ls3778:
+    .asciz "jle"
+.Ls3779:
+    .asciz "jge"
+.Ls3780:
+    .asciz "jne"
+.Ls3781:
+    .asciz "je"
+.Ls3782:
+    .asciz "jge"
+.Ls3783:
+    .asciz "jle"
+.Ls3784:
+    .asciz "jg"
+.Ls3785:
+    .asciz "jl"
+.Ls3786:
+    .asciz "    "
+.Ls3787:
+    .asciz " "
+.Ls3788:
+    .asciz ".L"
+.Ls3789:
+    .asciz "    "
+.Ls3790:
+    .asciz " "
+.Ls3791:
+    .asciz ".L"
+.Ls3792:
     .asciz "    testq %rax, %rax"
-.Ls3821:
-    .asciz "    je 1f"
-.Ls3822:
-    .asciz "    movq 16(%rax), %rcx"
-.Ls3823:
-    .asciz "    movq (%rax), %rdx"
-.Ls3824:
-    .asciz "1:"
-.Ls3825:
-    .asciz "    movq %rcx, "
-.Ls3826:
-    .asciz "@d:"
-.Ls3827:
-    .asciz "    movq %rdx, "
-.Ls3828:
-    .asciz "@n:"
-.Ls3829:
-    .asciz "끌어올린이름들"
-.Ls3830:
+.Ls3793:
+    .asciz "    jne "
+.Ls3794:
+    .asciz ".L"
+.Ls3795:
+    .asciz "    je "
+.Ls3796:
+    .asciz ".L"
+.Ls3797:
+    .asciz "꼴"
+.Ls3798:
+    .asciz "bin"
+.Ls3799:
+    .asciz "이름"
+.Ls3800:
+    .asciz "=="
+.Ls3801:
+    .asciz "!="
+.Ls3802:
+    .asciz "<"
+.Ls3803:
+    .asciz ">"
+.Ls3804:
+    .asciz "<="
+.Ls3805:
+    .asciz ">="
+.Ls3806:
+    .asciz "가지들"
+.Ls3807:
+    .asciz "형"
+.Ls3808:
+    .asciz "가지들"
+.Ls3809:
+    .asciz "형"
+.Ls3810:
+    .asciz "꼴"
+.Ls3811:
+    .asciz "ret"
+.Ls3812:
+    .asciz "break"
+.Ls3813:
+    .asciz "continue"
+.Ls3814:
+    .asciz "exit"
+.Ls3815:
+    .asciz "block"
+.Ls3816:
+    .asciz "가지들"
+.Ls3817:
+    .asciz "가지들"
+.Ls3818:
+    .asciz "가지들"
+.Ls3819:
     .asciz "끌어올림"
+.Ls3820:
+    .asciz "    xorl %ecx, %ecx"
+.Ls3821:
+    .asciz "    xorl %edx, %edx"
+.Ls3822:
+    .asciz "    movq "
+.Ls3823:
+    .asciz ", %rax"
+.Ls3824:
+    .asciz "    testq %rax, %rax"
+.Ls3825:
+    .asciz "    je 1f"
+.Ls3826:
+    .asciz "    movq 16(%rax), %rcx"
+.Ls3827:
+    .asciz "    movq (%rax), %rdx"
+.Ls3828:
+    .asciz "1:"
+.Ls3829:
+    .asciz "    movq %rcx, "
+.Ls3830:
+    .asciz "@d:"
 .Ls3831:
-    .asciz "멈출곳들"
+    .asciz "    movq %rdx, "
 .Ls3832:
-    .asciz "계속할곳들"
+    .asciz "@n:"
 .Ls3833:
-    .asciz "반복파일깊이들"
+    .asciz "끌어올린이름들"
 .Ls3834:
-    .asciz "열린파일칸들"
+    .asciz "끌어올림"
 .Ls3835:
     .asciz "멈출곳들"
 .Ls3836:
@@ -7674,328 +7674,340 @@
 .Ls3837:
     .asciz "반복파일깊이들"
 .Ls3838:
-    .asciz "    .section .rodata"
+    .asciz "열린파일칸들"
 .Ls3839:
-    .asciz "자료들"
+    .asciz "멈출곳들"
 .Ls3840:
-    .asciz "자료들"
+    .asciz "계속할곳들"
 .Ls3841:
-    .asciz "    .text"
+    .asciz "반복파일깊이들"
 .Ls3842:
-    .asciz "출력들"
+    .asciz "    .section .rodata"
 .Ls3843:
-    .asciz "출력들"
+    .asciz "자료들"
 .Ls3844:
-    .asciz "모듈"
+    .asciz "자료들"
 .Ls3845:
-    .asciz "창씀"
+    .asciz "    .text"
 .Ls3846:
-    .asciz "런타임폴더"
+    .asciz "출력들"
 .Ls3847:
-    .asciz "/runtime-window.s"
+    .asciz "출력들"
 .Ls3848:
-    .asciz "만약"
+    .asciz "모듈"
 .Ls3849:
-    .asciz "라면"
+    .asciz "창씀"
 .Ls3850:
-    .asciz "이라면"
+    .asciz "런타임폴더"
 .Ls3851:
-    .asciz "아니면"
+    .asciz "/runtime-window.s"
 .Ls3852:
-    .asciz "인"
+    .asciz "만약"
 .Ls3853:
-    .asciz "동안"
+    .asciz "라면"
 .Ls3854:
-    .asciz "번"
+    .asciz "이라면"
 .Ls3855:
-    .asciz "반복하다"
+    .asciz "아니면"
 .Ls3856:
-    .asciz "말하다"
+    .asciz "인"
 .Ls3857:
-    .asciz "돌려주다"
+    .asciz "동안"
 .Ls3858:
-    .asciz "란"
+    .asciz "번"
 .Ls3859:
-    .asciz "이란"
+    .asciz "반복하다"
 .Ls3860:
-    .asciz "이다"
+    .asciz "말하다"
 .Ls3861:
-    .asciz "듣다"
+    .asciz "돌려주다"
 .Ls3862:
-    .asciz "바꾸다"
+    .asciz "란"
 .Ls3863:
-    .asciz "정수"
+    .asciz "이란"
 .Ls3864:
-    .asciz "소수"
+    .asciz "이다"
 .Ls3865:
-    .asciz "문자"
+    .asciz "듣다"
 .Ls3866:
-    .asciz "참"
+    .asciz "바꾸다"
 .Ls3867:
-    .asciz "거짓"
+    .asciz "정수"
 .Ls3868:
-    .asciz "번째"
+    .asciz "소수"
 .Ls3869:
-    .asciz "넣다"
+    .asciz "문자"
 .Ls3870:
-    .asciz "행"
+    .asciz "참"
 .Ls3871:
-    .asciz "열"
+    .asciz "거짓"
 .Ls3872:
-    .asciz "채우다"
+    .asciz "번째"
 .Ls3873:
-    .asciz "멈추다"
+    .asciz "넣다"
 .Ls3874:
-    .asciz "계속하다"
+    .asciz "행"
 .Ls3875:
-    .asciz "묶음"
+    .asciz "열"
 .Ls3876:
-    .asciz "새"
+    .asciz "채우다"
 .Ls3877:
-    .asciz "빼다"
+    .asciz "멈추다"
 .Ls3878:
-    .asciz "없음"
+    .asciz "계속하다"
 .Ls3879:
-    .asciz "파일"
+    .asciz "묶음"
 .Ls3880:
-    .asciz "열다"
+    .asciz "새"
 .Ls3881:
-    .asciz "읽기"
+    .asciz "빼다"
 .Ls3882:
-    .asciz "쓰기"
+    .asciz "없음"
 .Ls3883:
-    .asciz "붙여쓰기"
+    .asciz "파일"
 .Ls3884:
-    .asciz "종료하다"
+    .asciz "열다"
 .Ls3885:
-    .asciz "빈"
+    .asciz "읽기"
 .Ls3886:
-    .asciz "있나"
+    .asciz "쓰기"
 .Ls3887:
-    .asciz "실행하다"
+    .asciz "붙여쓰기"
 .Ls3888:
-    .asciz "초"
+    .asciz "종료하다"
 .Ls3889:
-    .asciz "기다리다"
+    .asciz "빈"
 .Ls3890:
-    .asciz "맞추다"
+    .asciz "있나"
 .Ls3891:
-    .asciz "창"
+    .asciz "실행하다"
 .Ls3892:
-    .asciz "색칠하다"
+    .asciz "초"
 .Ls3893:
-    .asciz "사각형그리다"
+    .asciz "기다리다"
 .Ls3894:
-    .asciz "선긋다"
+    .asciz "맞추다"
 .Ls3895:
-    .asciz "점찍다"
+    .asciz "창"
 .Ls3896:
-    .asciz "글쓰다"
+    .asciz "색칠하다"
 .Ls3897:
-    .asciz "보여주다"
+    .asciz "사각형그리다"
 .Ls3898:
-    .asciz "키워드들"
+    .asciz "선긋다"
 .Ls3899:
-    .asciz "이라고"
+    .asciz "점찍다"
 .Ls3900:
-    .asciz "라고"
+    .asciz "글쓰다"
 .Ls3901:
-    .asciz "으로"
+    .asciz "보여주다"
 .Ls3902:
-    .asciz "에서"
+    .asciz "키워드들"
 .Ls3903:
-    .asciz "에게"
+    .asciz "이라고"
 .Ls3904:
-    .asciz "를"
+    .asciz "라고"
 .Ls3905:
-    .asciz "을"
+    .asciz "으로"
 .Ls3906:
-    .asciz "는"
+    .asciz "에서"
 .Ls3907:
-    .asciz "은"
+    .asciz "에게"
 .Ls3908:
-    .asciz "이"
+    .asciz "를"
 .Ls3909:
-    .asciz "가"
+    .asciz "을"
 .Ls3910:
-    .asciz "의"
+    .asciz "는"
 .Ls3911:
-    .asciz "에"
+    .asciz "은"
 .Ls3912:
-    .asciz "로"
+    .asciz "이"
 .Ls3913:
-    .asciz "와"
+    .asciz "가"
 .Ls3914:
-    .asciz "과"
+    .asciz "의"
 .Ls3915:
-    .asciz "조사들"
+    .asciz "에"
 .Ls3916:
-    .asciz "개수"
+    .asciz "로"
 .Ls3917:
-    .asciz "제곱근"
+    .asciz "와"
 .Ls3918:
-    .asciz "절댓값"
+    .asciz "과"
 .Ls3919:
-    .asciz "반올림"
+    .asciz "조사들"
 .Ls3920:
-    .asciz "올림"
+    .asciz "개수"
 .Ls3921:
-    .asciz "버림"
+    .asciz "제곱근"
 .Ls3922:
-    .asciz "무작위"
+    .asciz "절댓값"
 .Ls3923:
-    .asciz "코드"
+    .asciz "반올림"
 .Ls3924:
-    .asciz "글자"
+    .asciz "올림"
 .Ls3925:
-    .asciz "행수"
+    .asciz "버림"
 .Ls3926:
-    .asciz "열수"
+    .asciz "무작위"
 .Ls3927:
-    .asciz "입력끝"
+    .asciz "코드"
 .Ls3928:
-    .asciz "명령줄"
+    .asciz "글자"
 .Ls3929:
-    .asciz "오류"
+    .asciz "행수"
 .Ls3930:
-    .asciz "열쇠들"
+    .asciz "열수"
 .Ls3931:
-    .asciz "사전"
+    .asciz "입력끝"
 .Ls3932:
-    .asciz "환경값"
+    .asciz "명령줄"
 .Ls3933:
-    .asciz "실제경로"
+    .asciz "오류"
 .Ls3934:
-    .asciz "실행파일"
+    .asciz "열쇠들"
 .Ls3935:
-    .asciz "지금시각"
-.Ls3936:
-    .asciz "주소"
-.Ls3937:
-    .asciz "목록"
-.Ls3938:
     .asciz "사전"
+.Ls3936:
+    .asciz "환경값"
+.Ls3937:
+    .asciz "실제경로"
+.Ls3938:
+    .asciz "실행파일"
 .Ls3939:
-    .asciz "보다"
+    .asciz "지금시각"
 .Ls3940:
-    .asciz "아는말들"
+    .asciz "주소"
 .Ls3941:
-    .asciz "컴파일러폴더"
+    .asciz "목록"
 .Ls3942:
-    .asciz "컴파일러폴더"
+    .asciz "사전"
 .Ls3943:
-    .asciz "/runtime"
+    .asciz "보다"
 .Ls3944:
-    .asciz "런타임폴더"
+    .asciz "아는말들"
 .Ls3945:
-    .asciz "런타임폴더"
-.Ls3946:
-    .asciz "/runtime.s"
-.Ls3947:
     .asciz "컴파일러폴더"
+.Ls3946:
+    .asciz "컴파일러폴더"
+.Ls3947:
+    .asciz "/runtime"
 .Ls3948:
-    .asciz "/../lib/hanlang"
+    .asciz "런타임폴더"
 .Ls3949:
     .asciz "런타임폴더"
 .Ls3950:
-    .asciz "런타임폴더"
-.Ls3951:
     .asciz "/runtime.s"
+.Ls3951:
+    .asciz "컴파일러폴더"
 .Ls3952:
-    .asciz "--version"
+    .asciz "/../lib/hanlang"
 .Ls3953:
-    .asciz "-v"
+    .asciz "런타임폴더"
 .Ls3954:
-    .asciz "한랭 0.11"
+    .asciz "런타임폴더"
 .Ls3955:
-    .asciz "--help"
+    .asciz "/runtime.s"
 .Ls3956:
-    .asciz "-h"
+    .asciz "--version"
 .Ls3957:
-    .asciz "한랭 0.11"
+    .asciz "-v"
 .Ls3958:
-    .asciz ""
+    .asciz "한랭 0.11"
 .Ls3959:
-    .asciz "사용법:"
+    .asciz "--help"
 .Ls3960:
-    .asciz "  hanc  파일.han -o 실행파일   실행파일 만들기"
+    .asciz "-h"
 .Ls3961:
-    .asciz "  hanc  파일.han               어셈블리를 화면에 뿌리기"
+    .asciz "한랭 0.11"
 .Ls3962:
-    .asciz "  hanc  --runtime              런타임만 어셈블리로"
+    .asciz ""
 .Ls3963:
-    .asciz "  han   파일.han               한 번에 컴파일하고 실행"
+    .asciz "사용법:"
 .Ls3964:
-    .asciz ""
+    .asciz "  hanc  파일.han -o 실행파일   실행파일 만들기"
 .Ls3965:
-    .asciz "라이브러리는 부르는 파일 옆, $HAN_LIB, 설치 폴더 순으로 찾는다."
+    .asciz "  hanc  파일.han               어셈블리를 화면에 뿌리기"
 .Ls3966:
-    .asciz "--runtime"
+    .asciz "  hanc  --runtime              런타임만 어셈블리로"
 .Ls3967:
-    .asciz "사용법: hanc 파일.han [-o 실행파일]"
+    .asciz "  han   파일.han               한 번에 컴파일하고 실행"
 .Ls3968:
-    .asciz "       hanc --help"
+    .asciz ""
 .Ls3969:
-    .asciz "--모듈"
+    .asciz "라이브러리는 부르는 파일 옆, $HAN_LIB, 설치 폴더 순으로 찾는다."
 .Ls3970:
-    .asciz "모듈"
+    .asciz "--runtime"
 .Ls3971:
-    .asciz "라벨수"
+    .asciz "사용법: hanc 파일.han [-o 실행파일]"
 .Ls3972:
-    .asciz ""
+    .asciz "       hanc --help"
 .Ls3973:
-    .asciz "-o"
+    .asciz "--모듈"
 .Ls3974:
-    .asciz "불러온것들"
+    .asciz "모듈"
 .Ls3975:
-    .asciz "불러온번호들"
+    .asciz "라벨수"
 .Ls3976:
-    .asciz "토큰들"
-.Ls3977:
-    .asciz "끝"
-.Ls3978:
-    .asciz "<끝>"
-.Ls3979:
     .asciz ""
+.Ls3977:
+    .asciz "-o"
+.Ls3978:
+    .asciz "불러온것들"
+.Ls3979:
+    .asciz "불러온번호들"
 .Ls3980:
     .asciz "토큰들"
 .Ls3981:
-    .asciz "토큰들"
+    .asciz "끝"
 .Ls3982:
-    .asciz "토큰들"
+    .asciz "<끝>"
 .Ls3983:
-    .asciz "줄째"
+    .asciz ""
 .Ls3984:
-    .asciz "줄째"
-.Ls3985:
-    .asciz "파일째"
-.Ls3986:
-    .asciz "파일째"
-.Ls3987:
     .asciz "토큰들"
+.Ls3985:
+    .asciz "토큰들"
+.Ls3986:
+    .asciz "토큰들"
+.Ls3987:
+    .asciz "줄째"
 .Ls3988:
-    .asciz "자리"
+    .asciz "줄째"
 .Ls3989:
-    .asciz ""
+    .asciz "파일째"
 .Ls3990:
-    .asciz ".s"
+    .asciz "파일째"
 .Ls3991:
-    .asciz ""
+    .asciz "토큰들"
 .Ls3992:
-    .asciz "창씀"
+    .asciz "자리"
 .Ls3993:
-    .asciz " -lX11 -lXft"
+    .asciz ""
 .Ls3994:
-    .asciz "gcc -no-pie '"
+    .asciz ".s"
 .Ls3995:
-    .asciz "' -o '"
+    .asciz ""
 .Ls3996:
-    .asciz "' -lm"
+    .asciz "창씀"
 .Ls3997:
-    .asciz "gcc 실패"
+    .asciz " -lX11 -lXft"
 .Ls3998:
-    .asciz "rm -f '"
+    .asciz "컬씀"
 .Ls3999:
+    .asciz " -lcurl"
+.Ls4000:
+    .asciz "gcc -no-pie '"
+.Ls4001:
+    .asciz "' -o '"
+.Ls4002:
+    .asciz "' -lm"
+.Ls4003:
+    .asciz "gcc 실패"
+.Ls4004:
+    .asciz "rm -f '"
+.Ls4005:
     .asciz "'"
     .text
 
@@ -8023,7 +8035,7 @@ fn1:
     movq %r12, %rax
     movq %rax, %rdi
     movq %rbx, %rsi
-    movq $481, %rdx
+    movq $482, %rdx
     call __han_schar
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -8077,7 +8089,7 @@ fn2:
     movq %r13, %rax
     movq %rax, %rdi
     movq %rbx, %rsi
-    movq $182, %rdx
+    movq $183, %rdx
     call __han_schar
     movq %rax, %rsi
     movq %r12, %rdi
@@ -8113,7 +8125,7 @@ fn3:
     movq %r12, %rax
     movq %rax, %rdi
     movq $0, %rsi
-    movq $4784, %rdx
+    movq $4788, %rdx
     movq $1, %rcx
     call __han_fopen
     cmpq $-1, %rax
@@ -8139,7 +8151,7 @@ fn3:
     xorl %eax, %eax
     movq %rax, %rdi
     movq $1, %rsi
-    movq $4790, %rdx
+    movq $4794, %rdx
     movq $0, %rcx
     call __han_fopen
     movq %rax, -40(%rbp)
@@ -8254,7 +8266,7 @@ fn5:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $496, %rdi
+    movq $497, %rdi
     leaq .Ls8(%rip), %rsi
     call __han_nonefield
 1:
@@ -8264,7 +8276,7 @@ fn5:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $497, %rdi
+    movq $498, %rdi
     leaq .Ls9(%rip), %rsi
     call __han_nonefield
 1:
@@ -8278,7 +8290,7 @@ fn5:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $499, %rdi
+    movq $500, %rdi
     leaq .Ls10(%rip), %rsi
     call __han_nonefield
 1:
@@ -8289,7 +8301,7 @@ fn5:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $500, %rdi
+    movq $501, %rdi
     leaq .Ls11(%rip), %rsi
     call __han_nonefield
 1:
@@ -8298,7 +8310,7 @@ fn5:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $501, %rdi
+    movq $502, %rdi
     leaq .Ls12(%rip), %rsi
     call __han_nonefield
 1:
@@ -8307,7 +8319,7 @@ fn5:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $502, %rdi
+    movq $503, %rdi
     leaq .Ls13(%rip), %rsi
     call __han_nonefield
 1:
@@ -8323,7 +8335,7 @@ fn5:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $503, %rdi
+    movq $504, %rdi
     leaq .Ls14(%rip), %rsi
     call __han_nonefield
 1:
@@ -8337,7 +8349,7 @@ fn5:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $504, %rdi
+    movq $505, %rdi
     leaq .Ls15(%rip), %rsi
     call __han_nonefield
 1:
@@ -8351,7 +8363,7 @@ fn5:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $505, %rdi
+    movq $506, %rdi
     leaq .Ls16(%rip), %rsi
     call __han_nonefield
 1:
@@ -8360,7 +8372,7 @@ fn5:
     movq -16(%rbp), %rax
     movq %rax, %rdi
     movq $0, %rsi
-    movq $507, %rdx
+    movq $508, %rdx
     movq $1, %rcx
     call __han_fopen
     cmpq $-1, %rax
@@ -8392,7 +8404,7 @@ fn5:
     xorl %eax, %eax
     movq %rax, %rdi
     movq $1, %rsi
-    movq $515, %rdx
+    movq $516, %rdx
     movq $0, %rcx
     call __han_fopen
     movq %rax, -96(%rbp)
@@ -8413,7 +8425,7 @@ fn5:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $519, %rdi
+    movq $520, %rdi
     leaq .Ls18(%rip), %rsi
     call __han_nonefield
 1:
@@ -8433,7 +8445,7 @@ fn5:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $520, %rdi
+    movq $521, %rdi
     leaq .Ls20(%rip), %rsi
     call __han_nonefield
 1:
@@ -8443,7 +8455,7 @@ fn5:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $520, %rdi
+    movq $521, %rdi
     leaq .Ls21(%rip), %rsi
     call __han_nonefield
 1:
@@ -8460,7 +8472,7 @@ fn5:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $521, %rdi
+    movq $522, %rdi
     leaq .Ls23(%rip), %rsi
     call __han_nonefield
 1:
@@ -8485,7 +8497,7 @@ fn5:
     jb 1f
     movq %r12, %rdi
     movq %rcx, %rsi
-    movq $524, %rdx
+    movq $525, %rdx
     call __han_lget
 1:
     movq -128(%rbp), %rax
@@ -8498,7 +8510,7 @@ fn5:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $524, %rdi
+    movq $525, %rdi
     leaq .Ls24(%rip), %rsi
     call __han_nonefield
 1:
@@ -8520,7 +8532,7 @@ fn5:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $527, %rdi
+    movq $528, %rdi
     leaq .Ls25(%rip), %rsi
     call __han_nonefield
 1:
@@ -8534,7 +8546,7 @@ fn5:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $528, %rdi
+    movq $529, %rdi
     leaq .Ls26(%rip), %rsi
     call __han_nonefield
 1:
@@ -8548,7 +8560,7 @@ fn5:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $529, %rdi
+    movq $530, %rdi
     leaq .Ls27(%rip), %rsi
     call __han_nonefield
 1:
@@ -8564,14 +8576,14 @@ fn5:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $531, %rdx
+    movq $532, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $531, %rdi
+    movq $532, %rdi
     leaq .Ls28(%rip), %rsi
     call __han_nonefield
 1:
@@ -8595,14 +8607,14 @@ fn5:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $531, %rdx
+    movq $532, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $531, %rdi
+    movq $532, %rdi
     leaq .Ls30(%rip), %rsi
     call __han_nonefield
 1:
@@ -8626,14 +8638,14 @@ fn5:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $531, %rdx
+    movq $532, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $531, %rdi
+    movq $532, %rdi
     leaq .Ls32(%rip), %rsi
     call __han_nonefield
 1:
@@ -8658,14 +8670,14 @@ fn5:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $532, %rdx
+    movq $533, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $532, %rdi
+    movq $533, %rdi
     leaq .Ls34(%rip), %rsi
     call __han_nonefield
 1:
@@ -8689,14 +8701,14 @@ fn5:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $532, %rdx
+    movq $533, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $532, %rdi
+    movq $533, %rdi
     leaq .Ls36(%rip), %rsi
     call __han_nonefield
 1:
@@ -8716,7 +8728,7 @@ fn5:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $533, %rdi
+    movq $534, %rdi
     leaq .Ls38(%rip), %rsi
     call __han_nonefield
 1:
@@ -8732,7 +8744,7 @@ fn5:
     movq %r12, %rax
     movq %rax, %rdi
     movq $1, %rsi
-    movq $534, %rdx
+    movq $535, %rdx
     call __han_lremove
 .L40:
     decq -120(%rbp)
@@ -8749,14 +8761,14 @@ fn5:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $538, %rdx
+    movq $539, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $538, %rdi
+    movq $539, %rdi
     leaq .Ls39(%rip), %rsi
     call __han_nonefield
 1:
@@ -8780,14 +8792,14 @@ fn5:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $538, %rdx
+    movq $539, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $538, %rdi
+    movq $539, %rdi
     leaq .Ls41(%rip), %rsi
     call __han_nonefield
 1:
@@ -8811,14 +8823,14 @@ fn5:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $538, %rdx
+    movq $539, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $538, %rdi
+    movq $539, %rdi
     leaq .Ls43(%rip), %rsi
     call __han_nonefield
 1:
@@ -8843,7 +8855,7 @@ fn5:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $539, %rdx
+    movq $540, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -8930,7 +8942,7 @@ fn6:
     movq -16(%rbp), %rax
     movq %rax, %rdi
     movq -48(%rbp), %rsi
-    movq $385, %rdx
+    movq $386, %rdx
     call __han_schar
     movq %rax, %rsi
     movq %r12, %rdi
@@ -8949,7 +8961,7 @@ fn6:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $390, %rdi
+    movq $391, %rdi
     leaq .Ls47(%rip), %rsi
     call __han_nonefield
 1:
@@ -8978,7 +8990,7 @@ fn6:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $395, %rdx
+    movq $396, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -8992,7 +9004,7 @@ fn6:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $396, %rdx
+    movq $397, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -9005,7 +9017,7 @@ fn6:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $398, %rdi
+    movq $399, %rdi
     leaq .Ls48(%rip), %rsi
     call __han_nonefield
 1:
@@ -9030,7 +9042,7 @@ fn6:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $400, %rdi
+    movq $401, %rdi
     leaq .Ls50(%rip), %rsi
     call __han_nonefield
 1:
@@ -9093,7 +9105,7 @@ fn6:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $413, %rdi
+    movq $414, %rdi
     leaq .Ls55(%rip), %rsi
     call __han_nonefield
 1:
@@ -9107,7 +9119,7 @@ fn6:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $414, %rdi
+    movq $415, %rdi
     leaq .Ls56(%rip), %rsi
     call __han_nonefield
 1:
@@ -9133,13 +9145,13 @@ fn6:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $421, %rdx
+    movq $422, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     movq %rax, %rdi
-    movq $421, %rsi
+    movq $422, %rsi
     call __han_ord
     subq $48, %rax
     movq %rax, %rcx
@@ -9156,7 +9168,7 @@ fn6:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $420, %rdx
+    movq $421, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -9173,7 +9185,7 @@ fn6:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $426, %rdx
+    movq $427, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -9198,7 +9210,7 @@ fn6:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $426, %rdx
+    movq $427, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -9219,7 +9231,7 @@ fn6:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $428, %rdx
+    movq $429, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -9250,7 +9262,7 @@ fn6:
     jb 1f
     movq %r12, %rdi
     movq %rcx, %rsi
-    movq $432, %rdx
+    movq $433, %rdx
     call __han_lget
 1:
     movq -128(%rbp), %rax
@@ -9267,7 +9279,7 @@ fn6:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $435, %rdi
+    movq $436, %rdi
     leaq .Ls59(%rip), %rsi
     call __han_nonefield
 1:
@@ -9339,7 +9351,7 @@ fn6:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $439, %rdi
+    movq $440, %rdi
     leaq .Ls64(%rip), %rsi
     call __han_nonefield
 1:
@@ -9347,7 +9359,7 @@ fn6:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $440, %rdi
+    movq $441, %rdi
     leaq .Ls65(%rip), %rsi
     call __han_nonefield
 1:
@@ -9375,7 +9387,7 @@ fn6:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $444, %rdi
+    movq $445, %rdi
     leaq .Ls68(%rip), %rsi
     call __han_nonefield
 1:
@@ -9390,7 +9402,7 @@ fn6:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $445, %rdi
+    movq $446, %rdi
     leaq .Ls69(%rip), %rsi
     call __han_nonefield
 1:
@@ -9404,7 +9416,7 @@ fn6:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $446, %rdi
+    movq $447, %rdi
     leaq .Ls70(%rip), %rsi
     call __han_nonefield
 1:
@@ -9418,7 +9430,7 @@ fn6:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $447, %rdi
+    movq $448, %rdi
     leaq .Ls71(%rip), %rsi
     call __han_nonefield
 1:
@@ -9452,7 +9464,7 @@ fn6:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $455, %rdx
+    movq $456, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -9470,7 +9482,7 @@ fn6:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $454, %rdx
+    movq $455, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -9483,7 +9495,7 @@ fn6:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $458, %rdi
+    movq $459, %rdi
     leaq .Ls73(%rip), %rsi
     call __han_nonefield
 1:
@@ -9525,7 +9537,7 @@ fn6:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $462, %rdi
+    movq $463, %rdi
     leaq .Ls76(%rip), %rsi
     call __han_nonefield
 1:
@@ -9563,7 +9575,7 @@ fn6:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $467, %rdi
+    movq $468, %rdi
     leaq .Ls79(%rip), %rsi
     call __han_nonefield
 1:
@@ -9647,7 +9659,7 @@ fn7:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $344, %rdx
+    movq $345, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -9668,7 +9680,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $346, %rdi
+    movq $347, %rdi
     leaq .Ls84(%rip), %rsi
     call __han_nonefield
 1:
@@ -9679,7 +9691,7 @@ fn7:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $346, %rdi
+    movq $347, %rdi
     leaq .Ls85(%rip), %rsi
     call __han_nonefield
 1:
@@ -9687,7 +9699,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $347, %rdi
+    movq $348, %rdi
     leaq .Ls86(%rip), %rsi
     call __han_nonefield
 1:
@@ -9700,7 +9712,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $347, %rdi
+    movq $348, %rdi
     leaq .Ls88(%rip), %rsi
     call __han_nonefield
 1:
@@ -9713,7 +9725,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $347, %rdi
+    movq $348, %rdi
     leaq .Ls90(%rip), %rsi
     call __han_nonefield
 1:
@@ -9723,7 +9735,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $347, %rdi
+    movq $348, %rdi
     leaq .Ls91(%rip), %rsi
     call __han_nonefield
 1:
@@ -9752,7 +9764,7 @@ fn7:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $348, %rdi
+    movq $349, %rdi
     leaq .Ls92(%rip), %rsi
     call __han_nonefield
 1:
@@ -9777,7 +9789,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $353, %rdi
+    movq $354, %rdi
     leaq .Ls94(%rip), %rsi
     call __han_nonefield
 1:
@@ -9786,7 +9798,7 @@ fn7:
     movq %rax, (%rsp)
     movq $10, %rax
     movq %rax, %rdi
-    movq $353, %rsi
+    movq $354, %rsi
     call __han_chr
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -9797,7 +9809,7 @@ fn7:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $353, %rdi
+    movq $354, %rdi
     leaq .Ls95(%rip), %rsi
     call __han_nonefield
 1:
@@ -9808,7 +9820,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $354, %rdi
+    movq $355, %rdi
     leaq .Ls96(%rip), %rsi
     call __han_nonefield
 1:
@@ -9819,7 +9831,7 @@ fn7:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $354, %rdi
+    movq $355, %rdi
     leaq .Ls97(%rip), %rsi
     call __han_nonefield
 1:
@@ -9835,7 +9847,7 @@ fn7:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $358, %rdx
+    movq $359, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -9856,7 +9868,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $360, %rdi
+    movq $361, %rdi
     leaq .Ls99(%rip), %rsi
     call __han_nonefield
 1:
@@ -9865,7 +9877,7 @@ fn7:
     movq %rax, (%rsp)
     movq $10, %rax
     movq %rax, %rdi
-    movq $360, %rsi
+    movq $361, %rsi
     call __han_chr
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -9876,7 +9888,7 @@ fn7:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $360, %rdi
+    movq $361, %rdi
     leaq .Ls100(%rip), %rsi
     call __han_nonefield
 1:
@@ -9898,7 +9910,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $363, %rdi
+    movq $364, %rdi
     leaq .Ls102(%rip), %rsi
     call __han_nonefield
 1:
@@ -9907,7 +9919,7 @@ fn7:
     movq %rax, (%rsp)
     movq $9, %rax
     movq %rax, %rdi
-    movq $363, %rsi
+    movq $364, %rsi
     call __han_chr
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -9918,7 +9930,7 @@ fn7:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $363, %rdi
+    movq $364, %rdi
     leaq .Ls103(%rip), %rsi
     call __han_nonefield
 1:
@@ -9931,7 +9943,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $365, %rdi
+    movq $366, %rdi
     leaq .Ls104(%rip), %rsi
     call __han_nonefield
 1:
@@ -9944,7 +9956,7 @@ fn7:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $365, %rdi
+    movq $366, %rdi
     leaq .Ls105(%rip), %rsi
     call __han_nonefield
 1:
@@ -9957,7 +9969,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $368, %rdi
+    movq $369, %rdi
     leaq .Ls106(%rip), %rsi
     call __han_nonefield
 1:
@@ -9968,7 +9980,7 @@ fn7:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $368, %rdi
+    movq $369, %rdi
     leaq .Ls107(%rip), %rsi
     call __han_nonefield
 1:
@@ -9981,7 +9993,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $370, %rdi
+    movq $371, %rdi
     leaq .Ls108(%rip), %rsi
     call __han_nonefield
 1:
@@ -9994,7 +10006,7 @@ fn7:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $370, %rdi
+    movq $371, %rdi
     leaq .Ls109(%rip), %rsi
     call __han_nonefield
 1:
@@ -10005,7 +10017,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $371, %rdi
+    movq $372, %rdi
     leaq .Ls110(%rip), %rsi
     call __han_nonefield
 1:
@@ -10016,7 +10028,7 @@ fn7:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $371, %rdi
+    movq $372, %rdi
     leaq .Ls111(%rip), %rsi
     call __han_nonefield
 1:
@@ -10033,7 +10045,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $375, %rdi
+    movq $376, %rdi
     leaq .Ls112(%rip), %rsi
     call __han_nonefield
 1:
@@ -10042,7 +10054,7 @@ fn7:
     movq %rax, (%rsp)
     movq $10, %rax
     movq %rax, %rdi
-    movq $375, %rsi
+    movq $376, %rsi
     call __han_chr
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -10053,7 +10065,7 @@ fn7:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $375, %rdi
+    movq $376, %rdi
     leaq .Ls113(%rip), %rsi
     call __han_nonefield
 1:
@@ -10064,7 +10076,7 @@ fn7:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $376, %rdi
+    movq $377, %rdi
     leaq .Ls114(%rip), %rsi
     call __han_nonefield
 1:
@@ -10075,7 +10087,7 @@ fn7:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $376, %rdi
+    movq $377, %rdi
     leaq .Ls115(%rip), %rsi
     call __han_nonefield
 1:
@@ -10126,7 +10138,7 @@ fn8:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $218, %rdi
+    movq $219, %rdi
     leaq .Ls116(%rip), %rsi
     call __han_nonefield
 1:
@@ -10140,7 +10152,7 @@ fn8:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $219, %rdi
+    movq $220, %rdi
     leaq .Ls117(%rip), %rsi
     call __han_nonefield
 1:
@@ -10154,7 +10166,7 @@ fn8:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $220, %rdi
+    movq $221, %rdi
     leaq .Ls118(%rip), %rsi
     call __han_nonefield
 1:
@@ -10168,7 +10180,7 @@ fn8:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $221, %rdi
+    movq $222, %rdi
     leaq .Ls119(%rip), %rsi
     call __han_nonefield
 1:
@@ -10182,7 +10194,7 @@ fn8:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $222, %rdi
+    movq $223, %rdi
     leaq .Ls120(%rip), %rsi
     call __han_nonefield
 1:
@@ -10196,7 +10208,7 @@ fn8:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $223, %rdi
+    movq $224, %rdi
     leaq .Ls121(%rip), %rsi
     call __han_nonefield
 1:
@@ -10224,7 +10236,7 @@ fn9:
     xorl %ebx, %ebx
     movq %r12, %rax
     movq %rax, %rdi
-    movq $189, %rsi
+    movq $190, %rsi
     call __han_ord
     movq %rax, %rbx
     cmpq $48, %rax
@@ -10262,7 +10274,7 @@ fn10:
     xorl %ebx, %ebx
     movq %r12, %rax
     movq %rax, %rdi
-    movq $194, %rsi
+    movq $195, %rsi
     call __han_ord
     movq %rax, %rbx
     cmpq $44032, %rbx
@@ -10496,7 +10508,7 @@ fn14:
     jb 1f
     movq %r15, %rdi
     movq %rcx, %rsi
-    movq $155, %rdx
+    movq $156, %rdx
     call __han_lget
 1:
     movq (%r14,%rdx,8), %rax
@@ -10661,7 +10673,7 @@ fn16:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $334, %rdi
+    movq $335, %rdi
     leaq .Ls152(%rip), %rsi
     call __han_nonefield
 1:
@@ -10680,7 +10692,7 @@ fn16:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $335, %rdi
+    movq $336, %rdi
     leaq .Ls153(%rip), %rsi
     call __han_nonefield
 1:
@@ -10740,7 +10752,7 @@ fn17:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $263, %rdi
+    movq $264, %rdi
     leaq .Ls157(%rip), %rsi
     call __han_nonefield
 1:
@@ -10773,7 +10785,7 @@ fn18:
     xorl %eax, %eax
     movq %rax, %rdi
     movq $1, %rsi
-    movq $311, %rdx
+    movq $312, %rdx
     movq $0, %rcx
     call __han_fopen
     movq %rax, -32(%rbp)
@@ -10786,7 +10798,7 @@ fn18:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $313, %rdi
+    movq $314, %rdi
     leaq .Ls159(%rip), %rsi
     call __han_nonefield
 1:
@@ -10798,7 +10810,7 @@ fn18:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $315, %rdi
+    movq $316, %rdi
     leaq .Ls160(%rip), %rsi
     call __han_nonefield
 1:
@@ -10809,7 +10821,7 @@ fn18:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $315, %rdx
+    movq $316, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -10860,7 +10872,7 @@ fn19:
     movq -24(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $271, %rdi
+    movq $272, %rdi
     leaq .Ls161(%rip), %rsi
     call __han_nonefield
 1:
@@ -10869,7 +10881,7 @@ fn19:
     movq -24(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $272, %rdi
+    movq $273, %rdi
     leaq .Ls162(%rip), %rsi
     call __han_nonefield
 1:
@@ -10878,7 +10890,7 @@ fn19:
     movq -24(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $273, %rdi
+    movq $274, %rdi
     leaq .Ls163(%rip), %rsi
     call __han_nonefield
 1:
@@ -10887,7 +10899,7 @@ fn19:
     movq -24(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $274, %rdi
+    movq $275, %rdi
     leaq .Ls164(%rip), %rsi
     call __han_nonefield
 1:
@@ -10899,7 +10911,7 @@ fn19:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $276, %rdi
+    movq $277, %rdi
     leaq .Ls166(%rip), %rsi
     call __han_nonefield
 1:
@@ -10910,7 +10922,7 @@ fn19:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $276, %rdi
+    movq $277, %rdi
     leaq .Ls167(%rip), %rsi
     call __han_nonefield
 1:
@@ -10923,7 +10935,7 @@ fn19:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $277, %rdi
+    movq $278, %rdi
     leaq .Ls168(%rip), %rsi
     call __han_nonefield
 1:
@@ -10934,7 +10946,7 @@ fn19:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $277, %rdx
+    movq $278, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -10977,7 +10989,7 @@ fn19:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $280, %rdi
+    movq $281, %rdi
     leaq .Ls171(%rip), %rsi
     call __han_nonefield
 1:
@@ -10993,7 +11005,7 @@ fn19:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $281, %rdi
+    movq $282, %rdi
     leaq .Ls172(%rip), %rsi
     call __han_nonefield
 1:
@@ -11004,7 +11016,7 @@ fn19:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $281, %rdx
+    movq $282, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -11027,7 +11039,7 @@ fn19:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $283, %rdx
+    movq $284, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -11083,7 +11095,7 @@ fn19:
     movq %r13, %rax
     movq %rax, %rdi
     movq %r12, %rsi
-    movq $291, %rdx
+    movq $292, %rdx
     call __han_schar
     movq %rax, %rdi
     call fn20
@@ -11141,7 +11153,7 @@ fn19:
     movq %r13, %rax
     movq %rax, %rdi
     movq %r12, %rsi
-    movq $300, %rdx
+    movq $301, %rdx
     call __han_schar
     movq %rax, %rdi
     call fn20
@@ -11200,7 +11212,7 @@ fn20:
     xorl %ebx, %ebx
     movq %r12, %rax
     movq %rax, %rdi
-    movq $254, %rsi
+    movq $255, %rsi
     call __han_ord
     movq %rax, %rbx
     cmpq $44032, %rbx
@@ -11244,7 +11256,7 @@ fn21:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $330, %rdi
+    movq $331, %rdi
     leaq .Ls181(%rip), %rsi
     call __han_nonefield
 1:
@@ -11330,7 +11342,7 @@ fn22:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $550, %rdx
+    movq $551, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -11338,7 +11350,7 @@ fn22:
     movq %rax, -48(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $551, %rdi
+    movq $552, %rdi
     leaq .Ls182(%rip), %rsi
     call __han_nonefield
 1:
@@ -11358,7 +11370,7 @@ fn22:
     movq -48(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $551, %rdi
+    movq $552, %rdi
     leaq .Ls184(%rip), %rsi
     call __han_nonefield
 1:
@@ -11398,14 +11410,14 @@ fn22:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $560, %rdx
+    movq $561, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $560, %rdi
+    movq $561, %rdi
     leaq .Ls186(%rip), %rsi
     call __han_nonefield
 1:
@@ -11454,14 +11466,14 @@ fn22:
     jb 1f
     movq -16(%rbp), %rdi
     movq %rcx, %rsi
-    movq $564, %rdx
+    movq $565, %rdx
     call __han_lget
 1:
     movq -272(%rbp), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $564, %rdi
+    movq $565, %rdi
     leaq .Ls189(%rip), %rsi
     call __han_nonefield
 1:
@@ -11491,14 +11503,14 @@ fn22:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $566, %rdx
+    movq $567, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $566, %rdi
+    movq $567, %rdi
     leaq .Ls192(%rip), %rsi
     call __han_nonefield
 1:
@@ -11542,14 +11554,14 @@ fn22:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $572, %rdx
+    movq $573, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $572, %rdi
+    movq $573, %rdi
     leaq .Ls194(%rip), %rsi
     call __han_nonefield
 1:
@@ -11570,7 +11582,7 @@ fn22:
     jle .L187
     movq -32(%rbp), %rax
     movq %rax, %rdi
-    movq $575, %rsi
+    movq $576, %rsi
     call __han_lpop
 .L188:
     decq -88(%rbp)
@@ -11583,7 +11595,7 @@ fn22:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $576, %rdx
+    movq $577, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -11603,7 +11615,7 @@ fn22:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $581, %rdx
+    movq $582, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -11642,7 +11654,7 @@ fn22:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $585, %rdx
+    movq $586, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -11717,7 +11729,7 @@ fn22:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $598, %rdx
+    movq $599, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -11769,7 +11781,7 @@ fn22:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $604, %rdx
+    movq $605, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -11812,7 +11824,7 @@ fn22:
     movq -96(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $614, %rdi
+    movq $615, %rdi
     leaq .Ls205(%rip), %rsi
     call __han_nonefield
 1:
@@ -11867,7 +11879,7 @@ fn22:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $619, %rdi
+    movq $620, %rdi
     leaq .Ls210(%rip), %rsi
     call __han_nonefield
 1:
@@ -11888,7 +11900,7 @@ fn22:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $620, %rdi
+    movq $621, %rdi
     leaq .Ls212(%rip), %rsi
     call __han_nonefield
 1:
@@ -11932,14 +11944,14 @@ fn22:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $626, %rdx
+    movq $627, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     movq %rax, %rdi
     movq $0, %rsi
-    movq $626, %rdx
+    movq $627, %rdx
     movq $1, %rcx
     call __han_fopen
     cmpq $-1, %rax
@@ -11952,7 +11964,7 @@ fn22:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $627, %rdx
+    movq $628, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -12014,7 +12026,7 @@ fn22:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $635, %rdi
+    movq $636, %rdi
     leaq .Ls221(%rip), %rsi
     call __han_nonefield
 1:
@@ -12029,7 +12041,7 @@ fn22:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $638, %rdi
+    movq $639, %rdi
     leaq .Ls222(%rip), %rsi
     call __han_nonefield
 1:
@@ -12040,7 +12052,7 @@ fn22:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $638, %rdx
+    movq $639, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -12051,7 +12063,7 @@ fn22:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $640, %rdi
+    movq $641, %rdi
     leaq .Ls223(%rip), %rsi
     call __han_nonefield
 1:
@@ -12061,7 +12073,7 @@ fn22:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $641, %rdi
+    movq $642, %rdi
     leaq .Ls224(%rip), %rsi
     call __han_nonefield
 1:
@@ -12072,7 +12084,7 @@ fn22:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $642, %rdi
+    movq $643, %rdi
     leaq .Ls225(%rip), %rsi
     call __han_nonefield
 1:
@@ -12095,7 +12107,7 @@ fn22:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $646, %rdx
+    movq $647, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -12178,14 +12190,14 @@ fn23:
     addq %rbx, %rax
     movq %rax, %rsi
     movq %r13, %rdi
-    movq $172, %rdx
+    movq $173, %rdx
     call __han_schar
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r14, %rax
     movq %rax, %rdi
     movq %rbx, %rsi
-    movq $172, %rdx
+    movq $173, %rdx
     call __han_schar
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -12238,7 +12250,7 @@ fn24:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $678, %rdi
+    movq $679, %rdi
     leaq .Ls226(%rip), %rsi
     call __han_nonefield
 1:
@@ -12258,7 +12270,7 @@ fn24:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $680, %rdi
+    movq $681, %rdi
     leaq .Ls228(%rip), %rsi
     call __han_nonefield
 1:
@@ -12284,7 +12296,7 @@ fn24:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $682, %rdi
+    movq $683, %rdi
     leaq .Ls231(%rip), %rsi
     call __han_nonefield
 1:
@@ -12305,7 +12317,7 @@ fn24:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $682, %rdi
+    movq $683, %rdi
     leaq .Ls233(%rip), %rsi
     call __han_nonefield
 1:
@@ -12332,7 +12344,7 @@ fn24:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $687, %rdi
+    movq $688, %rdi
     leaq .Ls235(%rip), %rsi
     call __han_nonefield
 1:
@@ -12343,7 +12355,7 @@ fn24:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $687, %rdx
+    movq $688, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -12351,7 +12363,7 @@ fn24:
     movq %rax, %r13
     testq %rax, %rax
     jne 1f
-    movq $688, %rdi
+    movq $689, %rdi
     leaq .Ls236(%rip), %rsi
     call __han_nonefield
 1:
@@ -12370,7 +12382,7 @@ fn24:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $688, %rdi
+    movq $689, %rdi
     leaq .Ls238(%rip), %rsi
     call __han_nonefield
 1:
@@ -12386,7 +12398,7 @@ fn24:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $689, %rdi
+    movq $690, %rdi
     leaq .Ls239(%rip), %rsi
     call __han_nonefield
 1:
@@ -12409,7 +12421,7 @@ fn24:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $690, %rdi
+    movq $691, %rdi
     leaq .Ls242(%rip), %rsi
     call __han_nonefield
 1:
@@ -12418,7 +12430,7 @@ fn24:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $690, %rdi
+    movq $691, %rdi
     leaq .Ls243(%rip), %rsi
     call __han_nonefield
 1:
@@ -12431,7 +12443,7 @@ fn24:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $690, %rdx
+    movq $691, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -12463,7 +12475,7 @@ fn24:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $692, %rdi
+    movq $693, %rdi
     leaq .Ls245(%rip), %rsi
     call __han_nonefield
 1:
@@ -12475,7 +12487,7 @@ fn24:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $695, %rdi
+    movq $696, %rdi
     leaq .Ls246(%rip), %rsi
     call __han_nonefield
 1:
@@ -12489,7 +12501,7 @@ fn24:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $695, %rdx
+    movq $696, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -12515,7 +12527,7 @@ fn24:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $686, %rdi
+    movq $687, %rdi
     leaq .Ls247(%rip), %rsi
     call __han_nonefield
 1:
@@ -12547,7 +12559,7 @@ fn24:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $703, %rdi
+    movq $704, %rdi
     leaq .Ls248(%rip), %rsi
     call __han_nonefield
 1:
@@ -12561,7 +12573,7 @@ fn24:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $704, %rdi
+    movq $705, %rdi
     leaq .Ls249(%rip), %rsi
     call __han_nonefield
 1:
@@ -12575,7 +12587,7 @@ fn24:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $705, %rdi
+    movq $706, %rdi
     leaq .Ls250(%rip), %rsi
     call __han_nonefield
 1:
@@ -12589,7 +12601,7 @@ fn24:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $706, %rdi
+    movq $707, %rdi
     leaq .Ls251(%rip), %rsi
     call __han_nonefield
 1:
@@ -12603,7 +12615,7 @@ fn24:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $707, %rdi
+    movq $708, %rdi
     leaq .Ls252(%rip), %rsi
     call __han_nonefield
 1:
@@ -12617,7 +12629,7 @@ fn24:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $708, %rdi
+    movq $709, %rdi
     leaq .Ls253(%rip), %rsi
     call __han_nonefield
 1:
@@ -12625,7 +12637,7 @@ fn24:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $709, %rdi
+    movq $710, %rdi
     leaq .Ls254(%rip), %rsi
     call __han_nonefield
 1:
@@ -12645,7 +12657,7 @@ fn24:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $711, %rdi
+    movq $712, %rdi
     leaq .Ls256(%rip), %rsi
     call __han_nonefield
 1:
@@ -12656,7 +12668,7 @@ fn24:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $712, %rdi
+    movq $713, %rdi
     leaq .Ls257(%rip), %rsi
     call __han_nonefield
 1:
@@ -12699,7 +12711,7 @@ fn25:
     movq %r12, %rax
     movq %rax, %rdi
     movq %rbx, %rsi
-    movq $660, %rdx
+    movq $661, %rdx
     call __han_schar
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -12746,7 +12758,7 @@ fn25:
     movq %r12, %rax
     movq %rax, %rdi
     movq %rbx, %rsi
-    movq $668, %rdx
+    movq $669, %rdx
     call __han_schar
     movq %rax, %rdi
     call fn11
@@ -12758,7 +12770,7 @@ fn25:
     movq %r12, %rax
     movq %rax, %rdi
     movq %rbx, %rsi
-    movq $669, %rdx
+    movq $670, %rdx
     call __han_schar
     movq %rax, %rsi
     movq %r13, %rdi
@@ -12784,7 +12796,7 @@ fn25:
     movq %r13, %rax
     movq %rax, %rdi
     movq $1, %rsi
-    movq $673, %rdx
+    movq $674, %rdx
     call __han_schar
     movq %rax, %rdi
     call fn10
@@ -12823,7 +12835,7 @@ fn26:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $958, %rdi
+    movq $959, %rdi
     leaq .Ls265(%rip), %rsi
     call __han_nonefield
 1:
@@ -12843,7 +12855,7 @@ fn26:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $959, %rdi
+    movq $960, %rdi
     leaq .Ls266(%rip), %rsi
     call __han_nonefield
 1:
@@ -12858,7 +12870,7 @@ fn26:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $962, %rdx
+    movq $963, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -12866,7 +12878,7 @@ fn26:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $963, %rdi
+    movq $964, %rdi
     leaq .Ls267(%rip), %rsi
     call __han_nonefield
 1:
@@ -12891,7 +12903,7 @@ fn26:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $966, %rdi
+    movq $967, %rdi
     leaq .Ls269(%rip), %rsi
     call __han_nonefield
 1:
@@ -12937,7 +12949,7 @@ fn27:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $740, %rdi
+    movq $741, %rdi
     leaq .Ls270(%rip), %rsi
     call __han_nonefield
 1:
@@ -12953,7 +12965,7 @@ fn27:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $743, %rdx
+    movq $744, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -12966,7 +12978,7 @@ fn27:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $744, %rdx
+    movq $745, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -12987,7 +12999,7 @@ fn27:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $745, %rdx
+    movq $746, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -12997,7 +13009,7 @@ fn27:
     movq -32(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $747, %rdi
+    movq $748, %rdi
     leaq .Ls271(%rip), %rsi
     call __han_nonefield
 1:
@@ -13017,7 +13029,7 @@ fn27:
     movq -32(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $747, %rdi
+    movq $748, %rdi
     leaq .Ls273(%rip), %rsi
     call __han_nonefield
 1:
@@ -13037,7 +13049,7 @@ fn27:
     movq -32(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $747, %rdi
+    movq $748, %rdi
     leaq .Ls275(%rip), %rsi
     call __han_nonefield
 1:
@@ -13058,7 +13070,7 @@ fn27:
     movq -40(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $748, %rdi
+    movq $749, %rdi
     leaq .Ls277(%rip), %rsi
     call __han_nonefield
 1:
@@ -13090,7 +13102,7 @@ fn27:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $750, %rdx
+    movq $751, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -13118,14 +13130,14 @@ fn27:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $756, %rdx
+    movq $757, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $756, %rdi
+    movq $757, %rdi
     leaq .Ls279(%rip), %rsi
     call __han_nonefield
 1:
@@ -13149,14 +13161,14 @@ fn27:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $757, %rdx
+    movq $758, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $757, %rdi
+    movq $758, %rdi
     leaq .Ls281(%rip), %rsi
     call __han_nonefield
 1:
@@ -13177,7 +13189,7 @@ fn27:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $762, %rdi
+    movq $763, %rdi
     leaq .Ls282(%rip), %rsi
     call __han_nonefield
 1:
@@ -13193,7 +13205,7 @@ fn27:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $762, %rdx
+    movq $763, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -13208,7 +13220,7 @@ fn27:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $765, %rdi
+    movq $766, %rdi
     leaq .Ls283(%rip), %rsi
     call __han_nonefield
 1:
@@ -13222,7 +13234,7 @@ fn27:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $765, %rdx
+    movq $766, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -13275,7 +13287,7 @@ fn28:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $732, %rdi
+    movq $733, %rdi
     leaq .Ls284(%rip), %rsi
     call __han_nonefield
 1:
@@ -13298,7 +13310,7 @@ fn28:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $733, %rdi
+    movq $734, %rdi
     leaq .Ls286(%rip), %rsi
     call __han_nonefield
 1:
@@ -13321,7 +13333,7 @@ fn28:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $734, %rdi
+    movq $735, %rdi
     leaq .Ls288(%rip), %rsi
     call __han_nonefield
 1:
@@ -13341,7 +13353,7 @@ fn28:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $734, %rdi
+    movq $735, %rdi
     leaq .Ls290(%rip), %rsi
     call __han_nonefield
 1:
@@ -13368,7 +13380,7 @@ fn28:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $734, %rdi
+    movq $735, %rdi
     leaq .Ls292(%rip), %rsi
     call __han_nonefield
 1:
@@ -13413,7 +13425,7 @@ fn29:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $720, %rdi
+    movq $721, %rdi
     leaq .Ls294(%rip), %rsi
     call __han_nonefield
 1:
@@ -13429,7 +13441,7 @@ fn29:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $723, %rdx
+    movq $724, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -13451,7 +13463,7 @@ fn29:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $724, %rdx
+    movq $725, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -13507,7 +13519,7 @@ fn30:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $787, %rdi
+    movq $788, %rdi
     leaq .Ls295(%rip), %rsi
     call __han_nonefield
 1:
@@ -13516,7 +13528,7 @@ fn30:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $788, %rdi
+    movq $789, %rdi
     leaq .Ls296(%rip), %rsi
     call __han_nonefield
 1:
@@ -13525,7 +13537,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $789, %rdi
+    movq $790, %rdi
     leaq .Ls297(%rip), %rsi
     call __han_nonefield
 1:
@@ -13534,7 +13546,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $790, %rdi
+    movq $791, %rdi
     leaq .Ls298(%rip), %rsi
     call __han_nonefield
 1:
@@ -13563,7 +13575,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $795, %rdi
+    movq $796, %rdi
     leaq .Ls301(%rip), %rsi
     call __han_nonefield
 1:
@@ -13576,7 +13588,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $795, %rdi
+    movq $796, %rdi
     leaq .Ls302(%rip), %rsi
     call __han_nonefield
 1:
@@ -13632,7 +13644,7 @@ fn30:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $805, %rdx
+    movq $806, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -13662,7 +13674,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $808, %rdi
+    movq $809, %rdi
     leaq .Ls307(%rip), %rsi
     call __han_nonefield
 1:
@@ -13683,7 +13695,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $810, %rdi
+    movq $811, %rdi
     leaq .Ls309(%rip), %rsi
     call __han_nonefield
 1:
@@ -13696,7 +13708,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $811, %rdi
+    movq $812, %rdi
     leaq .Ls310(%rip), %rsi
     call __han_nonefield
 1:
@@ -13707,7 +13719,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $812, %rdi
+    movq $813, %rdi
     leaq .Ls311(%rip), %rsi
     call __han_nonefield
 1:
@@ -13717,7 +13729,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $812, %rdi
+    movq $813, %rdi
     leaq .Ls312(%rip), %rsi
     call __han_nonefield
 1:
@@ -13726,7 +13738,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $812, %rdi
+    movq $813, %rdi
     leaq .Ls313(%rip), %rsi
     call __han_nonefield
 1:
@@ -13739,7 +13751,7 @@ fn30:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $812, %rdx
+    movq $813, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -13772,7 +13784,7 @@ fn30:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $821, %rdx
+    movq $822, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -13850,7 +13862,7 @@ fn30:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $834, %rdx
+    movq $835, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -13872,7 +13884,7 @@ fn30:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $835, %rdx
+    movq $836, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -13890,7 +13902,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $836, %rdi
+    movq $837, %rdi
     leaq .Ls317(%rip), %rsi
     call __han_nonefield
 1:
@@ -13956,7 +13968,7 @@ fn30:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $849, %rdx
+    movq $850, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -14095,7 +14107,7 @@ fn30:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $875, %rdx
+    movq $876, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -14114,7 +14126,7 @@ fn30:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $880, %rdx
+    movq $881, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -14176,7 +14188,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $893, %rdi
+    movq $894, %rdi
     leaq .Ls335(%rip), %rsi
     call __han_nonefield
 1:
@@ -14246,7 +14258,7 @@ fn30:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $904, %rdx
+    movq $905, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -14268,7 +14280,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $907, %rdi
+    movq $908, %rdi
     leaq .Ls341(%rip), %rsi
     call __han_nonefield
 1:
@@ -14327,7 +14339,7 @@ fn30:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $917, %rdx
+    movq $918, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -14349,7 +14361,7 @@ fn30:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $918, %rdx
+    movq $919, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -14450,7 +14462,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $931, %rdi
+    movq $932, %rdi
     leaq .Ls355(%rip), %rsi
     call __han_nonefield
 1:
@@ -14466,7 +14478,7 @@ fn30:
     call __han_slen
     movq %rax, %rsi
     movq %r12, %rdi
-    movq $932, %rdx
+    movq $933, %rdx
     call __han_schar
     movq %rax, %r8
     movq (%rsp), %rdx
@@ -14479,7 +14491,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $933, %rdi
+    movq $934, %rdi
     leaq .Ls357(%rip), %rsi
     call __han_nonefield
 1:
@@ -14488,7 +14500,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $933, %rdi
+    movq $934, %rdi
     leaq .Ls358(%rip), %rsi
     call __han_nonefield
 1:
@@ -14501,7 +14513,7 @@ fn30:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $933, %rdx
+    movq $934, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -14516,7 +14528,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $936, %rdi
+    movq $937, %rdi
     leaq .Ls359(%rip), %rsi
     call __han_nonefield
 1:
@@ -14539,7 +14551,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $938, %rdi
+    movq $939, %rdi
     leaq .Ls362(%rip), %rsi
     call __han_nonefield
 1:
@@ -14548,7 +14560,7 @@ fn30:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $938, %rdi
+    movq $939, %rdi
     leaq .Ls363(%rip), %rsi
     call __han_nonefield
 1:
@@ -14561,7 +14573,7 @@ fn30:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $938, %rdx
+    movq $939, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -14607,7 +14619,7 @@ fn31:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $778, %rdi
+    movq $779, %rdi
     leaq .Ls364(%rip), %rsi
     call __han_nonefield
 1:
@@ -14621,7 +14633,7 @@ fn31:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $780, %rdi
+    movq $781, %rdi
     leaq .Ls365(%rip), %rsi
     call __han_nonefield
 1:
@@ -14631,7 +14643,7 @@ fn31:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $780, %rdi
+    movq $781, %rdi
     leaq .Ls366(%rip), %rsi
     call __han_nonefield
 1:
@@ -14651,7 +14663,7 @@ fn31:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $781, %rdi
+    movq $782, %rdi
     leaq .Ls367(%rip), %rsi
     call __han_nonefield
 1:
@@ -14661,7 +14673,7 @@ fn31:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $781, %rdi
+    movq $782, %rdi
     leaq .Ls368(%rip), %rsi
     call __han_nonefield
 1:
@@ -14669,7 +14681,7 @@ fn31:
     movq -8(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $782, %rdi
+    movq $783, %rdi
     leaq .Ls369(%rip), %rsi
     call __han_nonefield
 1:
@@ -14706,7 +14718,7 @@ fn32:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $945, %rdi
+    movq $946, %rdi
     leaq .Ls370(%rip), %rsi
     call __han_nonefield
 1:
@@ -14723,7 +14735,7 @@ fn32:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $947, %rdi
+    movq $948, %rdi
     leaq .Ls371(%rip), %rsi
     call __han_nonefield
 1:
@@ -14734,7 +14746,7 @@ fn32:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $947, %rdx
+    movq $948, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -14745,7 +14757,7 @@ fn32:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $949, %rdi
+    movq $950, %rdi
     leaq .Ls373(%rip), %rsi
     call __han_nonefield
 1:
@@ -14754,7 +14766,7 @@ fn32:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $949, %rdi
+    movq $950, %rdi
     leaq .Ls374(%rip), %rsi
     call __han_nonefield
 1:
@@ -14766,7 +14778,7 @@ fn32:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $949, %rdi
+    movq $950, %rdi
     leaq .Ls375(%rip), %rsi
     call __han_nonefield
 1:
@@ -14775,7 +14787,7 @@ fn32:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $949, %rdi
+    movq $950, %rdi
     leaq .Ls376(%rip), %rsi
     call __han_nonefield
 1:
@@ -14788,7 +14800,7 @@ fn32:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $949, %rdx
+    movq $950, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -14821,7 +14833,7 @@ fn32:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $950, %rdi
+    movq $951, %rdi
     leaq .Ls380(%rip), %rsi
     call __han_nonefield
 1:
@@ -14844,7 +14856,7 @@ fn32:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $950, %rdi
+    movq $951, %rdi
     leaq .Ls382(%rip), %rsi
     call __han_nonefield
 1:
@@ -14865,7 +14877,7 @@ fn32:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $950, %rdi
+    movq $951, %rdi
     leaq .Ls384(%rip), %rsi
     call __han_nonefield
 1:
@@ -14898,26 +14910,26 @@ fn32:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $951, %rdi
+    movq $952, %rdi
     leaq .Ls387(%rip), %rsi
     call __han_nonefield
 1:
     movq 80(%rax), %rax
     movq %rax, %rdi
     movq %r13, %rsi
-    movq $951, %rdx
+    movq $952, %rdx
     call __han_lremove
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $952, %rdi
+    movq $953, %rdi
     leaq .Ls388(%rip), %rsi
     call __han_nonefield
 1:
     movq 88(%rax), %rax
     movq %rax, %rdi
     movq %r13, %rsi
-    movq $952, %rdx
+    movq $953, %rdx
     call __han_lremove
     movq $0, %rax
 .Lret_fn32:
@@ -14945,7 +14957,7 @@ fn33:
     xorl %eax, %eax
     movq %rax, %rdi
     movq $1, %rsi
-    movq $324, %rdx
+    movq $325, %rdx
     movq $0, %rcx
     call __han_fopen
     movq %rax, -32(%rbp)
@@ -14989,7 +15001,7 @@ fn34:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls392(%rip), %rsi
     call __han_nonefield
 1:
@@ -14998,7 +15010,7 @@ fn34:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls393(%rip), %rsi
     call __han_nonefield
 1:
@@ -15010,7 +15022,7 @@ fn34:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -15049,7 +15061,7 @@ fn34:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2012, %rdi
+    movq $2013, %rdi
     leaq .Ls394(%rip), %rsi
     call __han_nonefield
 1:
@@ -15069,7 +15081,7 @@ fn34:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls395(%rip), %rsi
     call __han_nonefield
 1:
@@ -15078,7 +15090,7 @@ fn34:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls396(%rip), %rsi
     call __han_nonefield
 1:
@@ -15090,14 +15102,14 @@ fn34:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2001, %rdi
+    movq $2002, %rdi
     leaq .Ls397(%rip), %rsi
     call __han_nonefield
 1:
@@ -15143,7 +15155,7 @@ fn35:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $1824, %rdi
+    movq $1825, %rdi
     leaq .Ls399(%rip), %rsi
     call __han_nonefield
 1:
@@ -15158,7 +15170,7 @@ fn35:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $1825, %rdi
+    movq $1826, %rdi
     leaq .Ls401(%rip), %rsi
     call __han_nonefield
 1:
@@ -15173,7 +15185,7 @@ fn35:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $1826, %rdi
+    movq $1827, %rdi
     leaq .Ls403(%rip), %rsi
     call __han_nonefield
 1:
@@ -15189,7 +15201,7 @@ fn35:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1829, %rdx
+    movq $1830, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -15197,7 +15209,7 @@ fn35:
     movq %rax, -32(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $1830, %rdi
+    movq $1831, %rdi
     leaq .Ls404(%rip), %rsi
     call __han_nonefield
 1:
@@ -15217,7 +15229,7 @@ fn35:
     movq -32(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1830, %rdi
+    movq $1831, %rdi
     leaq .Ls406(%rip), %rsi
     call __han_nonefield
 1:
@@ -15237,7 +15249,7 @@ fn35:
     movq -32(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1830, %rdi
+    movq $1831, %rdi
     leaq .Ls408(%rip), %rsi
     call __han_nonefield
 1:
@@ -15263,14 +15275,14 @@ fn35:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1831, %rdx
+    movq $1832, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1831, %rdi
+    movq $1832, %rdi
     leaq .Ls410(%rip), %rsi
     call __han_nonefield
 1:
@@ -15297,7 +15309,7 @@ fn35:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1832, %rdx
+    movq $1833, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -15305,7 +15317,7 @@ fn35:
     movq %rax, -40(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $1833, %rdi
+    movq $1834, %rdi
     leaq .Ls412(%rip), %rsi
     call __han_nonefield
 1:
@@ -15321,7 +15333,7 @@ fn35:
     movq -40(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1834, %rdi
+    movq $1835, %rdi
     leaq .Ls414(%rip), %rsi
     call __han_nonefield
 1:
@@ -15364,7 +15376,7 @@ fn35:
     movq -40(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1837, %rdi
+    movq $1838, %rdi
     leaq .Ls416(%rip), %rsi
     call __han_nonefield
 1:
@@ -15374,7 +15386,7 @@ fn35:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1837, %rdi
+    movq $1838, %rdi
     leaq .Ls417(%rip), %rsi
     call __han_nonefield
 1:
@@ -15385,7 +15397,7 @@ fn35:
     movq -40(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1838, %rdi
+    movq $1839, %rdi
     leaq .Ls418(%rip), %rsi
     call __han_nonefield
 1:
@@ -15395,7 +15407,7 @@ fn35:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1838, %rdi
+    movq $1839, %rdi
     leaq .Ls419(%rip), %rsi
     call __han_nonefield
 1:
@@ -15403,7 +15415,7 @@ fn35:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $1839, %rdi
+    movq $1840, %rdi
     leaq .Ls420(%rip), %rsi
     call __han_nonefield
 1:
@@ -15422,7 +15434,7 @@ fn35:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1842, %rdx
+    movq $1843, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -15430,7 +15442,7 @@ fn35:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1843, %rdi
+    movq $1844, %rdi
     leaq .Ls421(%rip), %rsi
     call __han_nonefield
 1:
@@ -15450,7 +15462,7 @@ fn35:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1843, %rdi
+    movq $1844, %rdi
     leaq .Ls423(%rip), %rsi
     call __han_nonefield
 1:
@@ -15470,7 +15482,7 @@ fn35:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1843, %rdi
+    movq $1844, %rdi
     leaq .Ls425(%rip), %rsi
     call __han_nonefield
 1:
@@ -15491,7 +15503,7 @@ fn35:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $1844, %rdi
+    movq $1845, %rdi
     leaq .Ls427(%rip), %rsi
     call __han_nonefield
 1:
@@ -15501,7 +15513,7 @@ fn35:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1844, %rdi
+    movq $1845, %rdi
     leaq .Ls428(%rip), %rsi
     call __han_nonefield
 1:
@@ -15526,14 +15538,14 @@ fn35:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1841, %rdx
+    movq $1842, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1841, %rdi
+    movq $1842, %rdi
     leaq .Ls429(%rip), %rsi
     call __han_nonefield
 1:
@@ -15557,14 +15569,14 @@ fn35:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1841, %rdx
+    movq $1842, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1841, %rdi
+    movq $1842, %rdi
     leaq .Ls431(%rip), %rsi
     call __han_nonefield
 1:
@@ -15628,7 +15640,7 @@ fn36:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1815, %rdi
+    movq $1816, %rdi
     leaq .Ls433(%rip), %rsi
     call __han_nonefield
 1:
@@ -15639,14 +15651,14 @@ fn36:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1815, %rdx
+    movq $1816, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1815, %rdi
+    movq $1816, %rdi
     leaq .Ls434(%rip), %rsi
     call __han_nonefield
 1:
@@ -15667,7 +15679,7 @@ fn36:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1814, %rdi
+    movq $1815, %rdi
     leaq .Ls435(%rip), %rsi
     call __han_nonefield
 1:
@@ -15698,7 +15710,7 @@ fn37:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls436(%rip), %rsi
     call __han_nonefield
 1:
@@ -15707,7 +15719,7 @@ fn37:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls437(%rip), %rsi
     call __han_nonefield
 1:
@@ -15719,7 +15731,7 @@ fn37:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -15775,7 +15787,7 @@ fn38:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $230, %rdi
+    movq $231, %rdi
     leaq .Ls438(%rip), %rsi
     call __han_nonefield
 1:
@@ -15789,7 +15801,7 @@ fn38:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $231, %rdi
+    movq $232, %rdi
     leaq .Ls439(%rip), %rsi
     call __han_nonefield
 1:
@@ -15803,7 +15815,7 @@ fn38:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $232, %rdi
+    movq $233, %rdi
     leaq .Ls440(%rip), %rsi
     call __han_nonefield
 1:
@@ -15814,7 +15826,7 @@ fn38:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $233, %rdi
+    movq $234, %rdi
     leaq .Ls441(%rip), %rsi
     call __han_nonefield
 1:
@@ -15824,7 +15836,7 @@ fn38:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $233, %rdi
+    movq $234, %rdi
     leaq .Ls442(%rip), %rsi
     call __han_nonefield
 1:
@@ -15835,7 +15847,7 @@ fn38:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $234, %rdi
+    movq $235, %rdi
     leaq .Ls443(%rip), %rsi
     call __han_nonefield
 1:
@@ -15845,7 +15857,7 @@ fn38:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $234, %rdi
+    movq $235, %rdi
     leaq .Ls444(%rip), %rsi
     call __han_nonefield
 1:
@@ -15856,7 +15868,7 @@ fn38:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $235, %rdi
+    movq $236, %rdi
     leaq .Ls445(%rip), %rsi
     call __han_nonefield
 1:
@@ -15866,7 +15878,7 @@ fn38:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $235, %rdi
+    movq $236, %rdi
     leaq .Ls446(%rip), %rsi
     call __han_nonefield
 1:
@@ -15877,7 +15889,7 @@ fn38:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $236, %rdi
+    movq $237, %rdi
     leaq .Ls447(%rip), %rsi
     call __han_nonefield
 1:
@@ -15887,7 +15899,7 @@ fn38:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $236, %rdi
+    movq $237, %rdi
     leaq .Ls448(%rip), %rsi
     call __han_nonefield
 1:
@@ -15920,7 +15932,7 @@ fn39:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $1797, %rdi
+    movq $1798, %rdi
     leaq .Ls449(%rip), %rsi
     call __han_nonefield
 1:
@@ -15929,7 +15941,7 @@ fn39:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $1798, %rdi
+    movq $1799, %rdi
     leaq .Ls450(%rip), %rsi
     call __han_nonefield
 1:
@@ -15944,7 +15956,7 @@ fn39:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1800, %rdx
+    movq $1801, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -15952,7 +15964,7 @@ fn39:
     movq %rax, %r13
     testq %rax, %rax
     jne 1f
-    movq $1801, %rdi
+    movq $1802, %rdi
     leaq .Ls451(%rip), %rsi
     call __han_nonefield
 1:
@@ -15972,7 +15984,7 @@ fn39:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1801, %rdi
+    movq $1802, %rdi
     leaq .Ls453(%rip), %rsi
     call __han_nonefield
 1:
@@ -15992,7 +16004,7 @@ fn39:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1801, %rdi
+    movq $1802, %rdi
     leaq .Ls455(%rip), %rsi
     call __han_nonefield
 1:
@@ -16024,14 +16036,14 @@ fn39:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1802, %rdx
+    movq $1803, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1802, %rdi
+    movq $1803, %rdi
     leaq .Ls457(%rip), %rsi
     call __han_nonefield
 1:
@@ -16065,14 +16077,14 @@ fn39:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1803, %rdx
+    movq $1804, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1803, %rdi
+    movq $1804, %rdi
     leaq .Ls459(%rip), %rsi
     call __han_nonefield
 1:
@@ -16140,7 +16152,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls461(%rip), %rsi
     call __han_nonefield
 1:
@@ -16149,7 +16161,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls462(%rip), %rsi
     call __han_nonefield
 1:
@@ -16161,7 +16173,7 @@ fn40:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -16183,7 +16195,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1859, %rdi
+    movq $1860, %rdi
     leaq .Ls465(%rip), %rsi
     call __han_nonefield
 1:
@@ -16193,7 +16205,7 @@ fn40:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1859, %rdi
+    movq $1860, %rdi
     leaq .Ls466(%rip), %rsi
     call __han_nonefield
 1:
@@ -16209,7 +16221,7 @@ fn40:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1859, %rdx
+    movq $1860, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -16229,7 +16241,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls469(%rip), %rsi
     call __han_nonefield
 1:
@@ -16238,7 +16250,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls470(%rip), %rsi
     call __han_nonefield
 1:
@@ -16250,7 +16262,7 @@ fn40:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -16258,7 +16270,7 @@ fn40:
     movq %rax, %r13
     testq %rax, %rax
     jne 1f
-    movq $1863, %rdi
+    movq $1864, %rdi
     leaq .Ls471(%rip), %rsi
     call __han_nonefield
 1:
@@ -16284,7 +16296,7 @@ fn40:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1864, %rdi
+    movq $1865, %rdi
     leaq .Ls474(%rip), %rsi
     call __han_nonefield
 1:
@@ -16304,7 +16316,7 @@ fn40:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1864, %rdi
+    movq $1865, %rdi
     leaq .Ls476(%rip), %rsi
     call __han_nonefield
 1:
@@ -16324,7 +16336,7 @@ fn40:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1864, %rdi
+    movq $1865, %rdi
     leaq .Ls478(%rip), %rsi
     call __han_nonefield
 1:
@@ -16353,7 +16365,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls481(%rip), %rsi
     call __han_nonefield
 1:
@@ -16362,7 +16374,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls482(%rip), %rsi
     call __han_nonefield
 1:
@@ -16374,7 +16386,7 @@ fn40:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -16410,7 +16422,7 @@ fn40:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $1874, %rdi
+    movq $1875, %rdi
     leaq .Ls486(%rip), %rsi
     call __han_nonefield
 1:
@@ -16430,7 +16442,7 @@ fn40:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $1874, %rdi
+    movq $1875, %rdi
     leaq .Ls488(%rip), %rsi
     call __han_nonefield
 1:
@@ -16450,7 +16462,7 @@ fn40:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $1875, %rdi
+    movq $1876, %rdi
     leaq .Ls490(%rip), %rsi
     call __han_nonefield
 1:
@@ -16481,7 +16493,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls492(%rip), %rsi
     call __han_nonefield
 1:
@@ -16490,7 +16502,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls493(%rip), %rsi
     call __han_nonefield
 1:
@@ -16502,14 +16514,14 @@ fn40:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1883, %rdi
+    movq $1884, %rdi
     leaq .Ls494(%rip), %rsi
     call __han_nonefield
 1:
@@ -16540,7 +16552,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls496(%rip), %rsi
     call __han_nonefield
 1:
@@ -16549,7 +16561,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls497(%rip), %rsi
     call __han_nonefield
 1:
@@ -16561,14 +16573,14 @@ fn40:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1882, %rdi
+    movq $1883, %rdi
     leaq .Ls498(%rip), %rsi
     call __han_nonefield
 1:
@@ -16588,7 +16600,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls500(%rip), %rsi
     call __han_nonefield
 1:
@@ -16597,7 +16609,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls501(%rip), %rsi
     call __han_nonefield
 1:
@@ -16609,14 +16621,14 @@ fn40:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1882, %rdi
+    movq $1883, %rdi
     leaq .Ls502(%rip), %rsi
     call __han_nonefield
 1:
@@ -16636,7 +16648,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls504(%rip), %rsi
     call __han_nonefield
 1:
@@ -16645,7 +16657,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls505(%rip), %rsi
     call __han_nonefield
 1:
@@ -16657,14 +16669,14 @@ fn40:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1882, %rdi
+    movq $1883, %rdi
     leaq .Ls506(%rip), %rsi
     call __han_nonefield
 1:
@@ -16685,7 +16697,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls508(%rip), %rsi
     call __han_nonefield
 1:
@@ -16694,7 +16706,7 @@ fn40:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls509(%rip), %rsi
     call __han_nonefield
 1:
@@ -16706,14 +16718,14 @@ fn40:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1882, %rdi
+    movq $1883, %rdi
     leaq .Ls510(%rip), %rsi
     call __han_nonefield
 1:
@@ -16744,7 +16756,7 @@ fn40:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $1887, %rdi
+    movq $1888, %rdi
     leaq .Ls514(%rip), %rsi
     call __han_nonefield
 1:
@@ -16754,7 +16766,7 @@ fn40:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1887, %rdi
+    movq $1888, %rdi
     leaq .Ls515(%rip), %rsi
     call __han_nonefield
 1:
@@ -16771,7 +16783,7 @@ fn40:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1888, %rdi
+    movq $1889, %rdi
     leaq .Ls517(%rip), %rsi
     call __han_nonefield
 1:
@@ -16795,7 +16807,7 @@ fn40:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $1890, %rdi
+    movq $1891, %rdi
     leaq .Ls519(%rip), %rsi
     call __han_nonefield
 1:
@@ -16805,7 +16817,7 @@ fn40:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1890, %rdi
+    movq $1891, %rdi
     leaq .Ls520(%rip), %rsi
     call __han_nonefield
 1:
@@ -16817,7 +16829,7 @@ fn40:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $1891, %rdi
+    movq $1892, %rdi
     leaq .Ls521(%rip), %rsi
     call __han_nonefield
 1:
@@ -16845,7 +16857,7 @@ fn40:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $1894, %rdi
+    movq $1895, %rdi
     leaq .Ls525(%rip), %rsi
     call __han_nonefield
 1:
@@ -16859,7 +16871,7 @@ fn40:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1895, %rdi
+    movq $1896, %rdi
     leaq .Ls527(%rip), %rsi
     call __han_nonefield
 1:
@@ -16901,7 +16913,7 @@ fn41:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $985, %rdi
+    movq $986, %rdi
     leaq .Ls529(%rip), %rsi
     call __han_nonefield
 1:
@@ -16910,7 +16922,7 @@ fn41:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $985, %rdi
+    movq $986, %rdi
     leaq .Ls530(%rip), %rsi
     call __han_nonefield
 1:
@@ -16926,7 +16938,7 @@ fn41:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $986, %rdi
+    movq $987, %rdi
     leaq .Ls531(%rip), %rsi
     call __han_nonefield
 1:
@@ -16937,7 +16949,7 @@ fn41:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $986, %rdi
+    movq $987, %rdi
     leaq .Ls532(%rip), %rsi
     call __han_nonefield
 1:
@@ -16982,7 +16994,7 @@ fn42:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls534(%rip), %rsi
     call __han_nonefield
 1:
@@ -16991,7 +17003,7 @@ fn42:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls535(%rip), %rsi
     call __han_nonefield
 1:
@@ -17003,7 +17015,7 @@ fn42:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -17026,7 +17038,7 @@ fn42:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls538(%rip), %rsi
     call __han_nonefield
 1:
@@ -17035,7 +17047,7 @@ fn42:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls539(%rip), %rsi
     call __han_nonefield
 1:
@@ -17047,14 +17059,14 @@ fn42:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1044, %rdi
+    movq $1045, %rdi
     leaq .Ls540(%rip), %rsi
     call __han_nonefield
 1:
@@ -17079,7 +17091,7 @@ fn42:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls542(%rip), %rsi
     call __han_nonefield
 1:
@@ -17088,7 +17100,7 @@ fn42:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls543(%rip), %rsi
     call __han_nonefield
 1:
@@ -17100,7 +17112,7 @@ fn42:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -17133,7 +17145,7 @@ fn43:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls544(%rip), %rsi
     call __han_nonefield
 1:
@@ -17142,7 +17154,7 @@ fn43:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls545(%rip), %rsi
     call __han_nonefield
 1:
@@ -17154,7 +17166,7 @@ fn43:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -17162,7 +17174,7 @@ fn43:
     movq %rax, %rbx
     testq %rax, %rax
     jne 1f
-    movq $997, %rdi
+    movq $998, %rdi
     leaq .Ls546(%rip), %rsi
     call __han_nonefield
 1:
@@ -17182,7 +17194,7 @@ fn43:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $997, %rdi
+    movq $998, %rdi
     leaq .Ls548(%rip), %rsi
     call __han_nonefield
 1:
@@ -17241,7 +17253,7 @@ fn44:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls550(%rip), %rsi
     call __han_nonefield
 1:
@@ -17250,7 +17262,7 @@ fn44:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls551(%rip), %rsi
     call __han_nonefield
 1:
@@ -17262,7 +17274,7 @@ fn44:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -17285,7 +17297,7 @@ fn44:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls554(%rip), %rsi
     call __han_nonefield
 1:
@@ -17294,7 +17306,7 @@ fn44:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls555(%rip), %rsi
     call __han_nonefield
 1:
@@ -17306,14 +17318,14 @@ fn44:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1032, %rdi
+    movq $1033, %rdi
     leaq .Ls556(%rip), %rsi
     call __han_nonefield
 1:
@@ -17338,7 +17350,7 @@ fn44:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls558(%rip), %rsi
     call __han_nonefield
 1:
@@ -17347,7 +17359,7 @@ fn44:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls559(%rip), %rsi
     call __han_nonefield
 1:
@@ -17359,7 +17371,7 @@ fn44:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -17392,7 +17404,7 @@ fn45:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls560(%rip), %rsi
     call __han_nonefield
 1:
@@ -17401,7 +17413,7 @@ fn45:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls561(%rip), %rsi
     call __han_nonefield
 1:
@@ -17413,7 +17425,7 @@ fn45:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -17421,7 +17433,7 @@ fn45:
     movq %rax, %rbx
     testq %rax, %rax
     jne 1f
-    movq $992, %rdi
+    movq $993, %rdi
     leaq .Ls562(%rip), %rsi
     call __han_nonefield
 1:
@@ -17441,7 +17453,7 @@ fn45:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $992, %rdi
+    movq $993, %rdi
     leaq .Ls564(%rip), %rsi
     call __han_nonefield
 1:
@@ -17482,7 +17494,7 @@ fn46:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2030, %rdi
+    movq $2031, %rdi
     leaq .Ls565(%rip), %rsi
     call __han_nonefield
 1:
@@ -17496,7 +17508,7 @@ fn46:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2032, %rdi
+    movq $2033, %rdi
     leaq .Ls566(%rip), %rsi
     call __han_nonefield
 1:
@@ -17507,7 +17519,7 @@ fn46:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2033, %rdi
+    movq $2034, %rdi
     leaq .Ls567(%rip), %rsi
     call __han_nonefield
 1:
@@ -17563,7 +17575,7 @@ fn47:
     jb 1f
     movq %r15, %rdi
     movq %rcx, %rsi
-    movq $155, %rdx
+    movq $156, %rdx
     call __han_lget
 1:
     movq (%r14,%rdx,8), %rax
@@ -17610,7 +17622,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls568(%rip), %rsi
     call __han_nonefield
 1:
@@ -17619,7 +17631,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls569(%rip), %rsi
     call __han_nonefield
 1:
@@ -17631,7 +17643,7 @@ fn48:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -17645,7 +17657,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls570(%rip), %rsi
     call __han_nonefield
 1:
@@ -17654,7 +17666,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls571(%rip), %rsi
     call __han_nonefield
 1:
@@ -17666,14 +17678,14 @@ fn48:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1942, %rdi
+    movq $1943, %rdi
     leaq .Ls572(%rip), %rsi
     call __han_nonefield
 1:
@@ -17699,7 +17711,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls575(%rip), %rsi
     call __han_nonefield
 1:
@@ -17708,7 +17720,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls576(%rip), %rsi
     call __han_nonefield
 1:
@@ -17720,14 +17732,14 @@ fn48:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1943, %rdi
+    movq $1944, %rdi
     leaq .Ls577(%rip), %rsi
     call __han_nonefield
 1:
@@ -17757,7 +17769,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1947, %rdi
+    movq $1948, %rdi
     leaq .Ls580(%rip), %rsi
     call __han_nonefield
 1:
@@ -17767,7 +17779,7 @@ fn48:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1947, %rdi
+    movq $1948, %rdi
     leaq .Ls581(%rip), %rsi
     call __han_nonefield
 1:
@@ -17781,7 +17793,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls582(%rip), %rsi
     call __han_nonefield
 1:
@@ -17790,7 +17802,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls583(%rip), %rsi
     call __han_nonefield
 1:
@@ -17802,7 +17814,7 @@ fn48:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -17821,7 +17833,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls585(%rip), %rsi
     call __han_nonefield
 1:
@@ -17830,7 +17842,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls586(%rip), %rsi
     call __han_nonefield
 1:
@@ -17842,14 +17854,14 @@ fn48:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1951, %rdi
+    movq $1952, %rdi
     leaq .Ls587(%rip), %rsi
     call __han_nonefield
 1:
@@ -17869,7 +17881,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls589(%rip), %rsi
     call __han_nonefield
 1:
@@ -17878,7 +17890,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls590(%rip), %rsi
     call __han_nonefield
 1:
@@ -17890,7 +17902,7 @@ fn48:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -17927,14 +17939,14 @@ fn48:
     movq %rax, (%rsp)
     movq -24(%rbp), %rax
     movq %rax, %rdi
-    movq $1954, %rsi
+    movq $1955, %rsi
     call __han_lpop
     movq %rax, %rdx
     movq (%rsp), %rax
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1954, %rdi
+    movq $1955, %rdi
     leaq .Ls592(%rip), %rsi
     call __han_nonefield
 1:
@@ -17948,7 +17960,7 @@ fn48:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1955, %rdi
+    movq $1956, %rdi
     leaq .Ls593(%rip), %rsi
     call __han_nonefield
 1:
@@ -17959,7 +17971,7 @@ fn48:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1956, %rdi
+    movq $1957, %rdi
     leaq .Ls594(%rip), %rsi
     call __han_nonefield
 1:
@@ -17969,7 +17981,7 @@ fn48:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1956, %rdi
+    movq $1957, %rdi
     leaq .Ls595(%rip), %rsi
     call __han_nonefield
 1:
@@ -17980,7 +17992,7 @@ fn48:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1957, %rdi
+    movq $1958, %rdi
     leaq .Ls596(%rip), %rsi
     call __han_nonefield
 1:
@@ -17990,7 +18002,7 @@ fn48:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1957, %rdi
+    movq $1958, %rdi
     leaq .Ls597(%rip), %rsi
     call __han_nonefield
 1:
@@ -18004,7 +18016,7 @@ fn48:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1958, %rdi
+    movq $1959, %rdi
     leaq .Ls598(%rip), %rsi
     call __han_nonefield
 1:
@@ -18018,7 +18030,7 @@ fn48:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1959, %rdi
+    movq $1960, %rdi
     leaq .Ls599(%rip), %rsi
     call __han_nonefield
 1:
@@ -18043,7 +18055,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls602(%rip), %rsi
     call __han_nonefield
 1:
@@ -18052,7 +18064,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls603(%rip), %rsi
     call __han_nonefield
 1:
@@ -18064,7 +18076,7 @@ fn48:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -18072,7 +18084,7 @@ fn48:
     movq %rax, %r13
     testq %rax, %rax
     jne 1f
-    movq $1965, %rdi
+    movq $1966, %rdi
     leaq .Ls604(%rip), %rsi
     call __han_nonefield
 1:
@@ -18092,7 +18104,7 @@ fn48:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1965, %rdi
+    movq $1966, %rdi
     leaq .Ls606(%rip), %rsi
     call __han_nonefield
 1:
@@ -18112,7 +18124,7 @@ fn48:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1965, %rdi
+    movq $1966, %rdi
     leaq .Ls608(%rip), %rsi
     call __han_nonefield
 1:
@@ -18141,7 +18153,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls611(%rip), %rsi
     call __han_nonefield
 1:
@@ -18150,7 +18162,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls612(%rip), %rsi
     call __han_nonefield
 1:
@@ -18162,7 +18174,7 @@ fn48:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -18172,7 +18184,7 @@ fn48:
     movq -64(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1971, %rdi
+    movq $1972, %rdi
     leaq .Ls613(%rip), %rsi
     call __han_nonefield
 1:
@@ -18192,7 +18204,7 @@ fn48:
     movq -64(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1971, %rdi
+    movq $1972, %rdi
     leaq .Ls615(%rip), %rsi
     call __han_nonefield
 1:
@@ -18215,7 +18227,7 @@ fn48:
     movq -64(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1972, %rdi
+    movq $1973, %rdi
     leaq .Ls617(%rip), %rsi
     call __han_nonefield
 1:
@@ -18237,7 +18249,7 @@ fn48:
     movq -64(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1973, %rdi
+    movq $1974, %rdi
     leaq .Ls619(%rip), %rsi
     call __han_nonefield
 1:
@@ -18257,7 +18269,7 @@ fn48:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1973, %rdi
+    movq $1974, %rdi
     leaq .Ls621(%rip), %rsi
     call __han_nonefield
 1:
@@ -18298,7 +18310,7 @@ fn48:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1977, %rdi
+    movq $1978, %rdi
     leaq .Ls626(%rip), %rsi
     call __han_nonefield
 1:
@@ -18324,7 +18336,7 @@ fn48:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1978, %rdi
+    movq $1979, %rdi
     leaq .Ls628(%rip), %rsi
     call __han_nonefield
 1:
@@ -18334,7 +18346,7 @@ fn48:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1980, %rdi
+    movq $1981, %rdi
     leaq .Ls629(%rip), %rsi
     call __han_nonefield
 1:
@@ -18370,7 +18382,7 @@ fn48:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1987, %rdi
+    movq $1988, %rdi
     leaq .Ls633(%rip), %rsi
     call __han_nonefield
 1:
@@ -18381,7 +18393,7 @@ fn48:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1987, %rdx
+    movq $1988, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -18398,7 +18410,7 @@ fn48:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1989, %rdi
+    movq $1990, %rdi
     leaq .Ls635(%rip), %rsi
     call __han_nonefield
 1:
@@ -18419,7 +18431,7 @@ fn48:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1989, %rdi
+    movq $1990, %rdi
     leaq .Ls637(%rip), %rsi
     call __han_nonefield
 1:
@@ -18430,7 +18442,7 @@ fn48:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1989, %rdx
+    movq $1990, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -18451,7 +18463,7 @@ fn48:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1989, %rdi
+    movq $1990, %rdi
     leaq .Ls639(%rip), %rsi
     call __han_nonefield
 1:
@@ -18462,7 +18474,7 @@ fn48:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1989, %rdx
+    movq $1990, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -18486,7 +18498,7 @@ fn48:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1991, %rdi
+    movq $1992, %rdi
     leaq .Ls641(%rip), %rsi
     call __han_nonefield
 1:
@@ -18500,7 +18512,7 @@ fn48:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1991, %rdx
+    movq $1992, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -18514,7 +18526,7 @@ fn48:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1986, %rdi
+    movq $1987, %rdi
     leaq .Ls642(%rip), %rsi
     call __han_nonefield
 1:
@@ -18528,7 +18540,7 @@ fn48:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1994, %rdi
+    movq $1995, %rdi
     leaq .Ls643(%rip), %rsi
     call __han_nonefield
 1:
@@ -18545,7 +18557,7 @@ fn48:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1995, %rdi
+    movq $1996, %rdi
     leaq .Ls645(%rip), %rsi
     call __han_nonefield
 1:
@@ -18605,7 +18617,7 @@ fn50:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls646(%rip), %rsi
     call __han_nonefield
 1:
@@ -18614,7 +18626,7 @@ fn50:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls647(%rip), %rsi
     call __han_nonefield
 1:
@@ -18626,7 +18638,7 @@ fn50:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -18634,7 +18646,7 @@ fn50:
     movq %rax, -16(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $1901, %rdi
+    movq $1902, %rdi
     leaq .Ls648(%rip), %rsi
     call __han_nonefield
 1:
@@ -18648,7 +18660,7 @@ fn50:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls649(%rip), %rsi
     call __han_nonefield
 1:
@@ -18657,7 +18669,7 @@ fn50:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls650(%rip), %rsi
     call __han_nonefield
 1:
@@ -18669,7 +18681,7 @@ fn50:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -18677,7 +18689,7 @@ fn50:
     movq %rax, %r15
     testq %rax, %rax
     jne 1f
-    movq $1905, %rdi
+    movq $1906, %rdi
     leaq .Ls651(%rip), %rsi
     call __han_nonefield
 1:
@@ -18703,7 +18715,7 @@ fn50:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $1908, %rdi
+    movq $1909, %rdi
     leaq .Ls654(%rip), %rsi
     call __han_nonefield
 1:
@@ -18761,14 +18773,14 @@ fn50:
     movq %rax, (%rsp)
     movq -32(%rbp), %rax
     movq %rax, %rdi
-    movq $1916, %rsi
+    movq $1917, %rsi
     call __han_lpop
     movq %rax, %rdx
     movq (%rsp), %rax
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1916, %rdi
+    movq $1917, %rdi
     leaq .Ls658(%rip), %rsi
     call __han_nonefield
 1:
@@ -18782,7 +18794,7 @@ fn50:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1917, %rdi
+    movq $1918, %rdi
     leaq .Ls659(%rip), %rsi
     call __han_nonefield
 1:
@@ -18796,7 +18808,7 @@ fn50:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1918, %rdi
+    movq $1919, %rdi
     leaq .Ls660(%rip), %rsi
     call __han_nonefield
 1:
@@ -18807,7 +18819,7 @@ fn50:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1919, %rdi
+    movq $1920, %rdi
     leaq .Ls661(%rip), %rsi
     call __han_nonefield
 1:
@@ -18817,7 +18829,7 @@ fn50:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1919, %rdi
+    movq $1920, %rdi
     leaq .Ls662(%rip), %rsi
     call __han_nonefield
 1:
@@ -18832,7 +18844,7 @@ fn50:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1920, %rdi
+    movq $1921, %rdi
     leaq .Ls663(%rip), %rsi
     call __han_nonefield
 1:
@@ -18843,7 +18855,7 @@ fn50:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1924, %rdi
+    movq $1925, %rdi
     leaq .Ls664(%rip), %rsi
     call __han_nonefield
 1:
@@ -18854,7 +18866,7 @@ fn50:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1924, %rdx
+    movq $1925, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -18862,7 +18874,7 @@ fn50:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1925, %rdi
+    movq $1926, %rdi
     leaq .Ls665(%rip), %rsi
     call __han_nonefield
 1:
@@ -18872,7 +18884,7 @@ fn50:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1925, %rdi
+    movq $1926, %rdi
     leaq .Ls666(%rip), %rsi
     call __han_nonefield
 1:
@@ -18889,7 +18901,7 @@ fn50:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1925, %rdi
+    movq $1926, %rdi
     leaq .Ls667(%rip), %rsi
     call __han_nonefield
 1:
@@ -18898,7 +18910,7 @@ fn50:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1925, %rdi
+    movq $1926, %rdi
     leaq .Ls668(%rip), %rsi
     call __han_nonefield
 1:
@@ -18912,7 +18924,7 @@ fn50:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1927, %rdi
+    movq $1928, %rdi
     leaq .Ls670(%rip), %rsi
     call __han_nonefield
 1:
@@ -18921,7 +18933,7 @@ fn50:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1927, %rdi
+    movq $1928, %rdi
     leaq .Ls671(%rip), %rsi
     call __han_nonefield
 1:
@@ -18933,7 +18945,7 @@ fn50:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1928, %rdi
+    movq $1929, %rdi
     leaq .Ls672(%rip), %rsi
     call __han_nonefield
 1:
@@ -18942,7 +18954,7 @@ fn50:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1928, %rdi
+    movq $1929, %rdi
     leaq .Ls673(%rip), %rsi
     call __han_nonefield
 1:
@@ -18955,7 +18967,7 @@ fn50:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1928, %rdx
+    movq $1929, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -18972,7 +18984,7 @@ fn50:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1930, %rdi
+    movq $1931, %rdi
     leaq .Ls675(%rip), %rsi
     call __han_nonefield
 1:
@@ -18990,7 +19002,7 @@ fn50:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1930, %rdi
+    movq $1931, %rdi
     leaq .Ls677(%rip), %rsi
     call __han_nonefield
 1:
@@ -19014,7 +19026,7 @@ fn50:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1930, %rdi
+    movq $1931, %rdi
     leaq .Ls679(%rip), %rsi
     call __han_nonefield
 1:
@@ -19043,7 +19055,7 @@ fn50:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1923, %rdi
+    movq $1924, %rdi
     leaq .Ls681(%rip), %rsi
     call __han_nonefield
 1:
@@ -19057,7 +19069,7 @@ fn50:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1934, %rdi
+    movq $1935, %rdi
     leaq .Ls682(%rip), %rsi
     call __han_nonefield
 1:
@@ -19088,7 +19100,7 @@ fn51:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1500, %rdi
+    movq $1501, %rdi
     leaq .Ls683(%rip), %rsi
     call __han_nonefield
 1:
@@ -19135,7 +19147,7 @@ fn51:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls688(%rip), %rsi
     call __han_nonefield
 1:
@@ -19144,7 +19156,7 @@ fn51:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls689(%rip), %rsi
     call __han_nonefield
 1:
@@ -19156,7 +19168,7 @@ fn51:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -19174,7 +19186,7 @@ fn51:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls690(%rip), %rsi
     call __han_nonefield
 1:
@@ -19183,7 +19195,7 @@ fn51:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls691(%rip), %rsi
     call __han_nonefield
 1:
@@ -19195,14 +19207,14 @@ fn51:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1504, %rdi
+    movq $1505, %rdi
     leaq .Ls692(%rip), %rsi
     call __han_nonefield
 1:
@@ -19222,7 +19234,7 @@ fn51:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls694(%rip), %rsi
     call __han_nonefield
 1:
@@ -19231,7 +19243,7 @@ fn51:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls695(%rip), %rsi
     call __han_nonefield
 1:
@@ -19243,7 +19255,7 @@ fn51:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -19260,7 +19272,7 @@ fn51:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1507, %rdi
+    movq $1508, %rdi
     leaq .Ls697(%rip), %rsi
     call __han_nonefield
 1:
@@ -19317,7 +19329,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1534, %rdi
+    movq $1535, %rdi
     leaq .Ls701(%rip), %rsi
     call __han_nonefield
 1:
@@ -19349,7 +19361,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls702(%rip), %rsi
     call __han_nonefield
 1:
@@ -19358,7 +19370,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls703(%rip), %rsi
     call __han_nonefield
 1:
@@ -19370,7 +19382,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -19378,7 +19390,7 @@ fn52:
     movq %rax, %r15
     testq %rax, %rax
     jne 1f
-    movq $1536, %rdi
+    movq $1537, %rdi
     leaq .Ls704(%rip), %rsi
     call __han_nonefield
 1:
@@ -19414,7 +19426,7 @@ fn52:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1542, %rdi
+    movq $1543, %rdi
     leaq .Ls710(%rip), %rsi
     call __han_nonefield
 1:
@@ -19456,7 +19468,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls715(%rip), %rsi
     call __han_nonefield
 1:
@@ -19465,7 +19477,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls716(%rip), %rsi
     call __han_nonefield
 1:
@@ -19477,7 +19489,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -19494,7 +19506,7 @@ fn52:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1549, %rdi
+    movq $1550, %rdi
     leaq .Ls718(%rip), %rsi
     call __han_nonefield
 1:
@@ -19518,7 +19530,7 @@ fn52:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1552, %rdi
+    movq $1553, %rdi
     leaq .Ls720(%rip), %rsi
     call __han_nonefield
 1:
@@ -19556,7 +19568,7 @@ fn52:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1560, %rdi
+    movq $1561, %rdi
     leaq .Ls724(%rip), %rsi
     call __han_nonefield
 1:
@@ -19572,7 +19584,7 @@ fn52:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1561, %rdi
+    movq $1562, %rdi
     leaq .Ls725(%rip), %rsi
     call __han_nonefield
 1:
@@ -19613,7 +19625,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1570, %rdi
+    movq $1571, %rdi
     leaq .Ls729(%rip), %rsi
     call __han_nonefield
 1:
@@ -19633,7 +19645,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1570, %rdi
+    movq $1571, %rdi
     leaq .Ls731(%rip), %rsi
     call __han_nonefield
 1:
@@ -19653,7 +19665,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls733(%rip), %rsi
     call __han_nonefield
 1:
@@ -19662,7 +19674,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls734(%rip), %rsi
     call __han_nonefield
 1:
@@ -19674,7 +19686,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -19691,7 +19703,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls736(%rip), %rsi
     call __han_nonefield
 1:
@@ -19700,7 +19712,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls737(%rip), %rsi
     call __han_nonefield
 1:
@@ -19712,7 +19724,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -19748,7 +19760,7 @@ fn52:
     movq -48(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1578, %rdi
+    movq $1579, %rdi
     leaq .Ls741(%rip), %rsi
     call __han_nonefield
 1:
@@ -19768,7 +19780,7 @@ fn52:
     movq -48(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1578, %rdi
+    movq $1579, %rdi
     leaq .Ls743(%rip), %rsi
     call __han_nonefield
 1:
@@ -19816,7 +19828,7 @@ fn52:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1584, %rdi
+    movq $1585, %rdi
     leaq .Ls750(%rip), %rsi
     call __han_nonefield
 1:
@@ -19827,7 +19839,7 @@ fn52:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1585, %rdi
+    movq $1586, %rdi
     leaq .Ls751(%rip), %rsi
     call __han_nonefield
 1:
@@ -19843,7 +19855,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls752(%rip), %rsi
     call __han_nonefield
 1:
@@ -19852,7 +19864,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls753(%rip), %rsi
     call __han_nonefield
 1:
@@ -19864,7 +19876,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -19872,7 +19884,7 @@ fn52:
     movq %rax, -64(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $1588, %rdi
+    movq $1589, %rdi
     leaq .Ls754(%rip), %rsi
     call __han_nonefield
 1:
@@ -19892,7 +19904,7 @@ fn52:
     movq -64(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1588, %rdi
+    movq $1589, %rdi
     leaq .Ls756(%rip), %rsi
     call __han_nonefield
 1:
@@ -19912,7 +19924,7 @@ fn52:
     movq -64(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1588, %rdi
+    movq $1589, %rdi
     leaq .Ls758(%rip), %rsi
     call __han_nonefield
 1:
@@ -19933,7 +19945,7 @@ fn52:
     call fn57
     testq %rax, %rax
     jne 1f
-    movq $1589, %rdi
+    movq $1590, %rdi
     leaq .Ls760(%rip), %rsi
     call __han_nonefield
 1:
@@ -19954,7 +19966,7 @@ fn52:
     call fn57
     testq %rax, %rax
     jne 1f
-    movq $1589, %rdi
+    movq $1590, %rdi
     leaq .Ls762(%rip), %rsi
     call __han_nonefield
 1:
@@ -19978,7 +19990,7 @@ fn52:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1592, %rdi
+    movq $1593, %rdi
     leaq .Ls764(%rip), %rsi
     call __han_nonefield
 1:
@@ -20013,7 +20025,7 @@ fn52:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $1598, %rdi
+    movq $1599, %rdi
     leaq .Ls768(%rip), %rsi
     call __han_nonefield
 1:
@@ -20048,7 +20060,7 @@ fn52:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $1604, %rdi
+    movq $1605, %rdi
     leaq .Ls772(%rip), %rsi
     call __han_nonefield
 1:
@@ -20068,7 +20080,7 @@ fn52:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $1604, %rdi
+    movq $1605, %rdi
     leaq .Ls774(%rip), %rsi
     call __han_nonefield
 1:
@@ -20088,7 +20100,7 @@ fn52:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $1604, %rdi
+    movq $1605, %rdi
     leaq .Ls776(%rip), %rsi
     call __han_nonefield
 1:
@@ -20114,7 +20126,7 @@ fn52:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $1606, %rdi
+    movq $1607, %rdi
     leaq .Ls779(%rip), %rsi
     call __han_nonefield
 1:
@@ -20128,7 +20140,7 @@ fn52:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1607, %rdi
+    movq $1608, %rdi
     leaq .Ls780(%rip), %rsi
     call __han_nonefield
 1:
@@ -20165,7 +20177,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls782(%rip), %rsi
     call __han_nonefield
 1:
@@ -20174,7 +20186,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls783(%rip), %rsi
     call __han_nonefield
 1:
@@ -20186,7 +20198,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -20194,7 +20206,7 @@ fn52:
     movq %rax, -112(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $1619, %rdi
+    movq $1620, %rdi
     leaq .Ls784(%rip), %rsi
     call __han_nonefield
 1:
@@ -20214,7 +20226,7 @@ fn52:
     movq -112(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1619, %rdi
+    movq $1620, %rdi
     leaq .Ls786(%rip), %rsi
     call __han_nonefield
 1:
@@ -20234,7 +20246,7 @@ fn52:
     movq -112(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1619, %rdi
+    movq $1620, %rdi
     leaq .Ls788(%rip), %rsi
     call __han_nonefield
 1:
@@ -20255,7 +20267,7 @@ fn52:
     call fn57
     testq %rax, %rax
     jne 1f
-    movq $1620, %rdi
+    movq $1621, %rdi
     leaq .Ls790(%rip), %rsi
     call __han_nonefield
 1:
@@ -20284,7 +20296,7 @@ fn52:
     call fn57
     testq %rax, %rax
     jne 1f
-    movq $1622, %rdi
+    movq $1623, %rdi
     leaq .Ls793(%rip), %rsi
     call __han_nonefield
 1:
@@ -20309,7 +20321,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1630, %rdi
+    movq $1631, %rdi
     leaq .Ls794(%rip), %rsi
     call __han_nonefield
 1:
@@ -20329,7 +20341,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1630, %rdi
+    movq $1631, %rdi
     leaq .Ls796(%rip), %rsi
     call __han_nonefield
 1:
@@ -20354,7 +20366,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1631, %rdx
+    movq $1632, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -20362,7 +20374,7 @@ fn52:
     movq %rax, %r13
     testq %rax, %rax
     jne 1f
-    movq $1632, %rdi
+    movq $1633, %rdi
     leaq .Ls798(%rip), %rsi
     call __han_nonefield
 1:
@@ -20385,7 +20397,7 @@ fn52:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1633, %rdi
+    movq $1634, %rdi
     leaq .Ls801(%rip), %rsi
     call __han_nonefield
 1:
@@ -20399,7 +20411,7 @@ fn52:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1634, %rdi
+    movq $1635, %rdi
     leaq .Ls802(%rip), %rsi
     call __han_nonefield
 1:
@@ -20409,7 +20421,7 @@ fn52:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1634, %rdi
+    movq $1635, %rdi
     leaq .Ls803(%rip), %rsi
     call __han_nonefield
 1:
@@ -20420,7 +20432,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1634, %rdx
+    movq $1635, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -20432,7 +20444,7 @@ fn52:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1635, %rdi
+    movq $1636, %rdi
     leaq .Ls804(%rip), %rsi
     call __han_nonefield
 1:
@@ -20454,7 +20466,7 @@ fn52:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1639, %rdi
+    movq $1640, %rdi
     leaq .Ls805(%rip), %rsi
     call __han_nonefield
 1:
@@ -20474,7 +20486,7 @@ fn52:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1639, %rdi
+    movq $1640, %rdi
     leaq .Ls807(%rip), %rsi
     call __han_nonefield
 1:
@@ -20494,7 +20506,7 @@ fn52:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1639, %rdi
+    movq $1640, %rdi
     leaq .Ls809(%rip), %rsi
     call __han_nonefield
 1:
@@ -20517,7 +20529,7 @@ fn52:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1641, %rdi
+    movq $1642, %rdi
     leaq .Ls812(%rip), %rsi
     call __han_nonefield
 1:
@@ -20540,7 +20552,7 @@ fn52:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1642, %rdi
+    movq $1643, %rdi
     leaq .Ls815(%rip), %rsi
     call __han_nonefield
 1:
@@ -20569,7 +20581,7 @@ fn52:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1644, %rdi
+    movq $1645, %rdi
     leaq .Ls819(%rip), %rsi
     call __han_nonefield
 1:
@@ -20579,45 +20591,12 @@ fn52:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1644, %rdi
+    movq $1645, %rdi
     leaq .Ls820(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
     movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $1644, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_lpush
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $1645, %rdi
-    leaq .Ls821(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq %r13, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $1645, %rdi
-    leaq .Ls822(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $2, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -20632,10 +20611,43 @@ fn52:
     movq (%rsp), %rdi
     addq $16, %rsp
     call __han_lpush
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $1646, %rdi
+    leaq .Ls821(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
     movq $1646, %rdi
+    leaq .Ls822(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $2, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $1646, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_lpush
+    movq %r13, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $1647, %rdi
     leaq .Ls823(%rip), %rsi
     call __han_nonefield
 1:
@@ -20655,7 +20667,7 @@ fn52:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1646, %rdi
+    movq $1647, %rdi
     leaq .Ls825(%rip), %rsi
     call __han_nonefield
 1:
@@ -20665,7 +20677,7 @@ fn52:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1646, %rdi
+    movq $1647, %rdi
     leaq .Ls826(%rip), %rsi
     call __han_nonefield
 1:
@@ -20676,7 +20688,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1646, %rdx
+    movq $1647, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -20689,7 +20701,7 @@ fn52:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1647, %rdi
+    movq $1648, %rdi
     leaq .Ls827(%rip), %rsi
     call __han_nonefield
 1:
@@ -20711,7 +20723,7 @@ fn52:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1651, %rdi
+    movq $1652, %rdi
     leaq .Ls828(%rip), %rsi
     call __han_nonefield
 1:
@@ -20738,7 +20750,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1655, %rdi
+    movq $1656, %rdi
     leaq .Ls831(%rip), %rsi
     call __han_nonefield
 1:
@@ -20762,7 +20774,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls834(%rip), %rsi
     call __han_nonefield
 1:
@@ -20771,7 +20783,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls835(%rip), %rsi
     call __han_nonefield
 1:
@@ -20783,14 +20795,14 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1657, %rdi
+    movq $1658, %rdi
     leaq .Ls836(%rip), %rsi
     call __han_nonefield
 1:
@@ -20807,7 +20819,7 @@ fn52:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1659, %rdi
+    movq $1660, %rdi
     leaq .Ls837(%rip), %rsi
     call __han_nonefield
 1:
@@ -20824,7 +20836,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1660, %rcx
+    movq $1661, %rcx
     call __han_lset
 1:
     movq 16(%rax), %rax
@@ -20833,7 +20845,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1662, %rdi
+    movq $1663, %rdi
     leaq .Ls838(%rip), %rsi
     call __han_nonefield
 1:
@@ -20857,7 +20869,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls840(%rip), %rsi
     call __han_nonefield
 1:
@@ -20866,7 +20878,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls841(%rip), %rsi
     call __han_nonefield
 1:
@@ -20878,7 +20890,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -20911,7 +20923,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls844(%rip), %rsi
     call __han_nonefield
 1:
@@ -20920,7 +20932,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls845(%rip), %rsi
     call __han_nonefield
 1:
@@ -20932,7 +20944,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -20955,7 +20967,7 @@ fn52:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1671, %rdi
+    movq $1672, %rdi
     leaq .Ls848(%rip), %rsi
     call __han_nonefield
 1:
@@ -20990,7 +21002,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls852(%rip), %rsi
     call __han_nonefield
 1:
@@ -20999,7 +21011,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls853(%rip), %rsi
     call __han_nonefield
 1:
@@ -21011,7 +21023,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21044,7 +21056,7 @@ fn52:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1682, %rdi
+    movq $1683, %rdi
     leaq .Ls857(%rip), %rsi
     call __han_nonefield
 1:
@@ -21058,7 +21070,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1682, %rdx
+    movq $1683, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21083,7 +21095,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls859(%rip), %rsi
     call __han_nonefield
 1:
@@ -21092,7 +21104,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls860(%rip), %rsi
     call __han_nonefield
 1:
@@ -21104,7 +21116,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21125,7 +21137,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1689, %rdx
+    movq $1690, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21168,7 +21180,7 @@ fn52:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1693, %rdi
+    movq $1694, %rdi
     leaq .Ls865(%rip), %rsi
     call __han_nonefield
 1:
@@ -21210,7 +21222,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls872(%rip), %rsi
     call __han_nonefield
 1:
@@ -21219,7 +21231,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls873(%rip), %rsi
     call __han_nonefield
 1:
@@ -21231,14 +21243,14 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1698, %rdi
+    movq $1699, %rdi
     leaq .Ls874(%rip), %rsi
     call __han_nonefield
 1:
@@ -21258,7 +21270,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls876(%rip), %rsi
     call __han_nonefield
 1:
@@ -21267,7 +21279,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls877(%rip), %rsi
     call __han_nonefield
 1:
@@ -21279,14 +21291,14 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1698, %rdi
+    movq $1699, %rdi
     leaq .Ls878(%rip), %rsi
     call __han_nonefield
 1:
@@ -21299,7 +21311,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls879(%rip), %rsi
     call __han_nonefield
 1:
@@ -21308,7 +21320,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls880(%rip), %rsi
     call __han_nonefield
 1:
@@ -21320,7 +21332,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21336,7 +21348,7 @@ fn52:
     movq -160(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1702, %rdi
+    movq $1703, %rdi
     leaq .Ls882(%rip), %rsi
     call __han_nonefield
 1:
@@ -21356,7 +21368,7 @@ fn52:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1703, %rdi
+    movq $1704, %rdi
     leaq .Ls883(%rip), %rsi
     call __han_nonefield
 1:
@@ -21373,7 +21385,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls885(%rip), %rsi
     call __han_nonefield
 1:
@@ -21382,7 +21394,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls886(%rip), %rsi
     call __han_nonefield
 1:
@@ -21394,7 +21406,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21427,7 +21439,7 @@ fn52:
     movq %rax, -176(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $1712, %rdi
+    movq $1713, %rdi
     leaq .Ls890(%rip), %rsi
     call __han_nonefield
 1:
@@ -21441,7 +21453,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1712, %rdx
+    movq $1713, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21463,7 +21475,7 @@ fn52:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1714, %rdi
+    movq $1715, %rdi
     leaq .Ls893(%rip), %rsi
     call __han_nonefield
 1:
@@ -21483,7 +21495,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls895(%rip), %rsi
     call __han_nonefield
 1:
@@ -21492,7 +21504,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls896(%rip), %rsi
     call __han_nonefield
 1:
@@ -21504,7 +21516,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21532,7 +21544,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1723, %rdx
+    movq $1724, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21558,7 +21570,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1724, %rdx
+    movq $1725, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21598,7 +21610,7 @@ fn52:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1729, %rdi
+    movq $1730, %rdi
     leaq .Ls903(%rip), %rsi
     call __han_nonefield
 1:
@@ -21612,7 +21624,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1729, %rdx
+    movq $1730, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21624,7 +21636,7 @@ fn52:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1730, %rdi
+    movq $1731, %rdi
     leaq .Ls904(%rip), %rsi
     call __han_nonefield
 1:
@@ -21640,7 +21652,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1730, %rdx
+    movq $1731, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21687,7 +21699,7 @@ fn52:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1738, %rdi
+    movq $1739, %rdi
     leaq .Ls908(%rip), %rsi
     call __han_nonefield
 1:
@@ -21712,7 +21724,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls911(%rip), %rsi
     call __han_nonefield
 1:
@@ -21721,7 +21733,7 @@ fn52:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls912(%rip), %rsi
     call __han_nonefield
 1:
@@ -21733,7 +21745,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21764,7 +21776,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1751, %rdx
+    movq $1752, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21788,7 +21800,7 @@ fn52:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1751, %rdx
+    movq $1752, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -21830,7 +21842,7 @@ fn52:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1755, %rdi
+    movq $1756, %rdi
     leaq .Ls919(%rip), %rsi
     call __han_nonefield
 1:
@@ -21877,7 +21889,7 @@ fn52:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1763, %rdi
+    movq $1764, %rdi
     leaq .Ls924(%rip), %rsi
     call __han_nonefield
 1:
@@ -21922,7 +21934,7 @@ fn52:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1770, %rdi
+    movq $1771, %rdi
     leaq .Ls929(%rip), %rsi
     call __han_nonefield
 1:
@@ -21930,7 +21942,7 @@ fn52:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1771, %rdi
+    movq $1772, %rdi
     leaq .Ls930(%rip), %rsi
     call __han_nonefield
 1:
@@ -21992,7 +22004,7 @@ fn52:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1779, %rdi
+    movq $1780, %rdi
     leaq .Ls937(%rip), %rsi
     call __han_nonefield
 1:
@@ -22000,7 +22012,7 @@ fn52:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1780, %rdi
+    movq $1781, %rdi
     leaq .Ls938(%rip), %rsi
     call __han_nonefield
 1:
@@ -22036,7 +22048,7 @@ fn52:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1785, %rdi
+    movq $1786, %rdi
     leaq .Ls939(%rip), %rsi
     call __han_nonefield
 1:
@@ -22056,7 +22068,7 @@ fn52:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1788, %rdi
+    movq $1789, %rdi
     leaq .Ls942(%rip), %rsi
     call __han_nonefield
 1:
@@ -22137,7 +22149,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1356, %rdi
+    movq $1357, %rdi
     leaq .Ls944(%rip), %rsi
     call __han_nonefield
 1:
@@ -22184,7 +22196,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1361, %rdi
+    movq $1362, %rdi
     leaq .Ls945(%rip), %rsi
     call __han_nonefield
 1:
@@ -22207,7 +22219,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls947(%rip), %rsi
     call __han_nonefield
 1:
@@ -22216,7 +22228,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls948(%rip), %rsi
     call __han_nonefield
 1:
@@ -22228,7 +22240,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -22254,7 +22266,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1369, %rdx
+    movq $1370, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -22280,7 +22292,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1370, %rdx
+    movq $1371, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -22316,7 +22328,7 @@ fn53:
     movq %rax, %r13
     testq %rax, %rax
     jne 1f
-    movq $1374, %rdi
+    movq $1375, %rdi
     leaq .Ls955(%rip), %rsi
     call __han_nonefield
 1:
@@ -22330,7 +22342,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1374, %rdx
+    movq $1375, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -22342,7 +22354,7 @@ fn53:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1375, %rdi
+    movq $1376, %rdi
     leaq .Ls956(%rip), %rsi
     call __han_nonefield
 1:
@@ -22358,7 +22370,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1375, %rdx
+    movq $1376, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -22376,7 +22388,7 @@ fn53:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1376, %rdi
+    movq $1377, %rdi
     leaq .Ls958(%rip), %rsi
     call __han_nonefield
 1:
@@ -22393,7 +22405,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls960(%rip), %rsi
     call __han_nonefield
 1:
@@ -22402,7 +22414,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls961(%rip), %rsi
     call __han_nonefield
 1:
@@ -22414,7 +22426,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -22445,7 +22457,7 @@ fn53:
     movq %rax, %r13
     testq %rax, %rax
     jne 1f
-    movq $1384, %rdi
+    movq $1385, %rdi
     leaq .Ls965(%rip), %rsi
     call __han_nonefield
 1:
@@ -22462,7 +22474,7 @@ fn53:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1385, %rdi
+    movq $1386, %rdi
     leaq .Ls967(%rip), %rsi
     call __han_nonefield
 1:
@@ -22479,7 +22491,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls969(%rip), %rsi
     call __han_nonefield
 1:
@@ -22488,7 +22500,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls970(%rip), %rsi
     call __han_nonefield
 1:
@@ -22500,7 +22512,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -22527,7 +22539,7 @@ fn53:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1392, %rdi
+    movq $1393, %rdi
     leaq .Ls973(%rip), %rsi
     call __han_nonefield
 1:
@@ -22559,7 +22571,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls977(%rip), %rsi
     call __han_nonefield
 1:
@@ -22568,7 +22580,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls978(%rip), %rsi
     call __han_nonefield
 1:
@@ -22580,7 +22592,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -22597,7 +22609,7 @@ fn53:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1398, %rdi
+    movq $1399, %rdi
     leaq .Ls980(%rip), %rsi
     call __han_nonefield
 1:
@@ -22636,7 +22648,7 @@ fn53:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1403, %rdi
+    movq $1404, %rdi
     leaq .Ls983(%rip), %rsi
     call __han_nonefield
 1:
@@ -22650,7 +22662,7 @@ fn53:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1404, %rdi
+    movq $1405, %rdi
     leaq .Ls985(%rip), %rsi
     call __han_nonefield
 1:
@@ -22667,7 +22679,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls987(%rip), %rsi
     call __han_nonefield
 1:
@@ -22676,7 +22688,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls988(%rip), %rsi
     call __han_nonefield
 1:
@@ -22688,7 +22700,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -22715,7 +22727,7 @@ fn53:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1413, %rdi
+    movq $1414, %rdi
     leaq .Ls991(%rip), %rsi
     call __han_nonefield
 1:
@@ -22735,7 +22747,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls993(%rip), %rsi
     call __han_nonefield
 1:
@@ -22744,7 +22756,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls994(%rip), %rsi
     call __han_nonefield
 1:
@@ -22756,7 +22768,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -22784,14 +22796,14 @@ fn53:
     jb 1f
     movq %r15, %rdi
     movq %rcx, %rsi
-    movq $1422, %rdx
+    movq $1423, %rdx
     call __han_lget
 1:
     movq -128(%rbp), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1422, %rdi
+    movq $1423, %rdi
     leaq .Ls995(%rip), %rsi
     call __han_nonefield
 1:
@@ -22844,7 +22856,7 @@ fn53:
     movq %rax, %r13
     testq %rax, %rax
     jne 1f
-    movq $1429, %rdi
+    movq $1430, %rdi
     leaq .Ls1000(%rip), %rsi
     call __han_nonefield
 1:
@@ -22858,7 +22870,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1429, %rdx
+    movq $1430, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -22870,7 +22882,7 @@ fn53:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1430, %rdi
+    movq $1431, %rdi
     leaq .Ls1001(%rip), %rsi
     call __han_nonefield
 1:
@@ -22886,7 +22898,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1430, %rdx
+    movq $1431, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -22904,7 +22916,7 @@ fn53:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1431, %rdi
+    movq $1432, %rdi
     leaq .Ls1003(%rip), %rsi
     call __han_nonefield
 1:
@@ -22934,7 +22946,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1007(%rip), %rsi
     call __han_nonefield
 1:
@@ -22943,7 +22955,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1008(%rip), %rsi
     call __han_nonefield
 1:
@@ -22955,7 +22967,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -22966,7 +22978,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1009(%rip), %rsi
     call __han_nonefield
 1:
@@ -22975,7 +22987,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1010(%rip), %rsi
     call __han_nonefield
 1:
@@ -22987,14 +22999,14 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1437, %rdi
+    movq $1438, %rdi
     leaq .Ls1011(%rip), %rsi
     call __han_nonefield
 1:
@@ -23014,7 +23026,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1013(%rip), %rsi
     call __han_nonefield
 1:
@@ -23023,7 +23035,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1014(%rip), %rsi
     call __han_nonefield
 1:
@@ -23035,14 +23047,14 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1437, %rdi
+    movq $1438, %rdi
     leaq .Ls1015(%rip), %rsi
     call __han_nonefield
 1:
@@ -23062,7 +23074,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1017(%rip), %rsi
     call __han_nonefield
 1:
@@ -23071,7 +23083,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1018(%rip), %rsi
     call __han_nonefield
 1:
@@ -23083,14 +23095,14 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1437, %rdi
+    movq $1438, %rdi
     leaq .Ls1019(%rip), %rsi
     call __han_nonefield
 1:
@@ -23124,7 +23136,7 @@ fn53:
     movq -120(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1440, %rdi
+    movq $1441, %rdi
     leaq .Ls1023(%rip), %rsi
     call __han_nonefield
 1:
@@ -23161,7 +23173,7 @@ fn53:
     movq -120(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1442, %rdi
+    movq $1443, %rdi
     leaq .Ls1027(%rip), %rsi
     call __han_nonefield
 1:
@@ -23175,7 +23187,7 @@ fn53:
     movq %rax, %r13
     testq %rax, %rax
     jne 1f
-    movq $1443, %rdi
+    movq $1444, %rdi
     leaq .Ls1028(%rip), %rsi
     call __han_nonefield
 1:
@@ -23192,7 +23204,7 @@ fn53:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1444, %rdi
+    movq $1445, %rdi
     leaq .Ls1030(%rip), %rsi
     call __han_nonefield
 1:
@@ -23222,7 +23234,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1033(%rip), %rsi
     call __han_nonefield
 1:
@@ -23231,7 +23243,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1034(%rip), %rsi
     call __han_nonefield
 1:
@@ -23243,14 +23255,14 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1448, %rdi
+    movq $1449, %rdi
     leaq .Ls1035(%rip), %rsi
     call __han_nonefield
 1:
@@ -23270,7 +23282,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1037(%rip), %rsi
     call __han_nonefield
 1:
@@ -23279,7 +23291,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1038(%rip), %rsi
     call __han_nonefield
 1:
@@ -23291,14 +23303,14 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1449, %rdi
+    movq $1450, %rdi
     leaq .Ls1039(%rip), %rsi
     call __han_nonefield
 1:
@@ -23311,7 +23323,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1040(%rip), %rsi
     call __han_nonefield
 1:
@@ -23320,7 +23332,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1041(%rip), %rsi
     call __han_nonefield
 1:
@@ -23332,7 +23344,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -23367,7 +23379,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1043(%rip), %rsi
     call __han_nonefield
 1:
@@ -23376,7 +23388,7 @@ fn53:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1044(%rip), %rsi
     call __han_nonefield
 1:
@@ -23388,7 +23400,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -23411,7 +23423,7 @@ fn53:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1459, %rdi
+    movq $1460, %rdi
     leaq .Ls1047(%rip), %rsi
     call __han_nonefield
 1:
@@ -23423,7 +23435,7 @@ fn53:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1460, %rdx
+    movq $1461, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -23449,7 +23461,7 @@ fn54:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1087, %rdi
+    movq $1088, %rdi
     leaq .Ls1048(%rip), %rsi
     call __han_nonefield
 1:
@@ -23487,7 +23499,7 @@ fn54:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1088, %rdi
+    movq $1089, %rdi
     leaq .Ls1050(%rip), %rsi
     call __han_nonefield
 1:
@@ -23521,7 +23533,7 @@ fn55:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1093, %rdi
+    movq $1094, %rdi
     leaq .Ls1051(%rip), %rsi
     call __han_nonefield
 1:
@@ -23570,7 +23582,7 @@ fn55:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1098, %rdi
+    movq $1099, %rdi
     leaq .Ls1052(%rip), %rsi
     call __han_nonefield
 1:
@@ -23592,7 +23604,7 @@ fn55:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1054(%rip), %rsi
     call __han_nonefield
 1:
@@ -23601,7 +23613,7 @@ fn55:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1055(%rip), %rsi
     call __han_nonefield
 1:
@@ -23613,7 +23625,7 @@ fn55:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -23621,7 +23633,7 @@ fn55:
     movq %rax, %rbx
     testq %rax, %rax
     jne 1f
-    movq $1100, %rdi
+    movq $1101, %rdi
     leaq .Ls1056(%rip), %rsi
     call __han_nonefield
 1:
@@ -23641,7 +23653,7 @@ fn55:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1100, %rdi
+    movq $1101, %rdi
     leaq .Ls1058(%rip), %rsi
     call __han_nonefield
 1:
@@ -23668,7 +23680,7 @@ fn55:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1103, %rdi
+    movq $1104, %rdi
     leaq .Ls1060(%rip), %rsi
     call __han_nonefield
 1:
@@ -23682,7 +23694,7 @@ fn55:
     movq %rax, %r13
     testq %rax, %rax
     jne 1f
-    movq $1104, %rdi
+    movq $1105, %rdi
     leaq .Ls1061(%rip), %rsi
     call __han_nonefield
 1:
@@ -23693,7 +23705,7 @@ fn55:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1105, %rdi
+    movq $1106, %rdi
     leaq .Ls1062(%rip), %rsi
     call __han_nonefield
 1:
@@ -23735,7 +23747,7 @@ fn56:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1112, %rdi
+    movq $1113, %rdi
     leaq .Ls1063(%rip), %rsi
     call __han_nonefield
 1:
@@ -23767,7 +23779,7 @@ fn56:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1064(%rip), %rsi
     call __han_nonefield
 1:
@@ -23776,7 +23788,7 @@ fn56:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1065(%rip), %rsi
     call __han_nonefield
 1:
@@ -23788,7 +23800,7 @@ fn56:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -23796,7 +23808,7 @@ fn56:
     movq %rax, %r15
     testq %rax, %rax
     jne 1f
-    movq $1114, %rdi
+    movq $1115, %rdi
     leaq .Ls1066(%rip), %rsi
     call __han_nonefield
 1:
@@ -23805,7 +23817,7 @@ fn56:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $1115, %rdi
+    movq $1116, %rdi
     leaq .Ls1067(%rip), %rsi
     call __han_nonefield
 1:
@@ -23865,7 +23877,7 @@ fn56:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1118, %rdi
+    movq $1119, %rdi
     leaq .Ls1073(%rip), %rsi
     call __han_nonefield
 1:
@@ -23885,7 +23897,7 @@ fn56:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1118, %rdi
+    movq $1119, %rdi
     leaq .Ls1075(%rip), %rsi
     call __han_nonefield
 1:
@@ -23916,7 +23928,7 @@ fn56:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1121, %rdi
+    movq $1122, %rdi
     leaq .Ls1079(%rip), %rsi
     call __han_nonefield
 1:
@@ -23935,7 +23947,7 @@ fn56:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1122, %rdi
+    movq $1123, %rdi
     leaq .Ls1080(%rip), %rsi
     call __han_nonefield
 1:
@@ -23961,7 +23973,7 @@ fn56:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1123, %rdi
+    movq $1124, %rdi
     leaq .Ls1084(%rip), %rsi
     call __han_nonefield
 1:
@@ -23991,7 +24003,7 @@ fn56:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1127, %rdi
+    movq $1128, %rdi
     leaq .Ls1086(%rip), %rsi
     call __han_nonefield
 1:
@@ -24004,7 +24016,7 @@ fn56:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1126, %rdi
+    movq $1127, %rdi
     leaq .Ls1087(%rip), %rsi
     call __han_nonefield
 1:
@@ -24036,7 +24048,7 @@ fn56:
     movq %rax, -48(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $1134, %rdi
+    movq $1135, %rdi
     leaq .Ls1090(%rip), %rsi
     call __han_nonefield
 1:
@@ -24058,7 +24070,7 @@ fn56:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1139, %rdi
+    movq $1140, %rdi
     leaq .Ls1091(%rip), %rsi
     call __han_nonefield
 1:
@@ -24068,7 +24080,7 @@ fn56:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1139, %rdi
+    movq $1140, %rdi
     leaq .Ls1092(%rip), %rsi
     call __han_nonefield
 1:
@@ -24105,7 +24117,7 @@ fn56:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1096(%rip), %rsi
     call __han_nonefield
 1:
@@ -24114,7 +24126,7 @@ fn56:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1097(%rip), %rsi
     call __han_nonefield
 1:
@@ -24126,7 +24138,7 @@ fn56:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -24143,7 +24155,7 @@ fn56:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1099(%rip), %rsi
     call __han_nonefield
 1:
@@ -24152,7 +24164,7 @@ fn56:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1100(%rip), %rsi
     call __han_nonefield
 1:
@@ -24164,7 +24176,7 @@ fn56:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -24187,7 +24199,7 @@ fn56:
     movq -72(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1146, %rdi
+    movq $1147, %rdi
     leaq .Ls1103(%rip), %rsi
     call __han_nonefield
 1:
@@ -24198,7 +24210,7 @@ fn56:
     movq -72(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1147, %rdi
+    movq $1148, %rdi
     leaq .Ls1104(%rip), %rsi
     call __han_nonefield
 1:
@@ -24219,7 +24231,7 @@ fn56:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1151, %rdi
+    movq $1152, %rdi
     leaq .Ls1106(%rip), %rsi
     call __han_nonefield
 1:
@@ -24232,7 +24244,7 @@ fn56:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1150, %rdi
+    movq $1151, %rdi
     leaq .Ls1107(%rip), %rsi
     call __han_nonefield
 1:
@@ -24272,7 +24284,7 @@ fn57:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $978, %rdi
+    movq $979, %rdi
     leaq .Ls1109(%rip), %rsi
     call __han_nonefield
 1:
@@ -24281,7 +24293,7 @@ fn57:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $978, %rdi
+    movq $979, %rdi
     leaq .Ls1110(%rip), %rsi
     call __han_nonefield
 1:
@@ -24294,7 +24306,7 @@ fn57:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $979, %rdi
+    movq $980, %rdi
     leaq .Ls1111(%rip), %rsi
     call __han_nonefield
 1:
@@ -24303,7 +24315,7 @@ fn57:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $979, %rdi
+    movq $980, %rdi
     leaq .Ls1112(%rip), %rsi
     call __han_nonefield
 1:
@@ -24316,7 +24328,7 @@ fn57:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $979, %rdx
+    movq $980, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -24326,7 +24338,7 @@ fn57:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1113(%rip), %rsi
     call __han_nonefield
 1:
@@ -24335,7 +24347,7 @@ fn57:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1114(%rip), %rsi
     call __han_nonefield
 1:
@@ -24347,7 +24359,7 @@ fn57:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -24371,7 +24383,7 @@ fn58:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1115(%rip), %rsi
     call __han_nonefield
 1:
@@ -24380,7 +24392,7 @@ fn58:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1116(%rip), %rsi
     call __han_nonefield
 1:
@@ -24392,7 +24404,7 @@ fn58:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -24400,7 +24412,7 @@ fn58:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1056, %rdi
+    movq $1057, %rdi
     leaq .Ls1117(%rip), %rsi
     call __han_nonefield
 1:
@@ -24423,7 +24435,7 @@ fn58:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1057, %rdi
+    movq $1058, %rdi
     leaq .Ls1119(%rip), %rsi
     call __han_nonefield
 1:
@@ -24433,7 +24445,7 @@ fn58:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1057, %rdi
+    movq $1058, %rdi
     leaq .Ls1120(%rip), %rsi
     call __han_nonefield
 1:
@@ -24467,7 +24479,7 @@ fn59:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1163, %rdi
+    movq $1164, %rdi
     leaq .Ls1121(%rip), %rsi
     call __han_nonefield
 1:
@@ -24499,7 +24511,7 @@ fn59:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1122(%rip), %rsi
     call __han_nonefield
 1:
@@ -24508,7 +24520,7 @@ fn59:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1123(%rip), %rsi
     call __han_nonefield
 1:
@@ -24520,7 +24532,7 @@ fn59:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -24528,7 +24540,7 @@ fn59:
     movq %rax, %r13
     testq %rax, %rax
     jne 1f
-    movq $1165, %rdi
+    movq $1166, %rdi
     leaq .Ls1124(%rip), %rsi
     call __han_nonefield
 1:
@@ -24537,7 +24549,7 @@ fn59:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1167, %rdi
+    movq $1168, %rdi
     leaq .Ls1125(%rip), %rsi
     call __han_nonefield
 1:
@@ -24557,7 +24569,7 @@ fn59:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1167, %rdi
+    movq $1168, %rdi
     leaq .Ls1127(%rip), %rsi
     call __han_nonefield
 1:
@@ -24575,7 +24587,7 @@ fn59:
     call fn57
     testq %rax, %rax
     jne 1f
-    movq $1169, %rdi
+    movq $1170, %rdi
     leaq .Ls1128(%rip), %rsi
     call __han_nonefield
 1:
@@ -24596,7 +24608,7 @@ fn59:
     call fn57
     testq %rax, %rax
     jne 1f
-    movq $1169, %rdi
+    movq $1170, %rdi
     leaq .Ls1130(%rip), %rsi
     call __han_nonefield
 1:
@@ -24648,7 +24660,7 @@ fn59:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1173, %rdi
+    movq $1174, %rdi
     leaq .Ls1136(%rip), %rsi
     call __han_nonefield
 1:
@@ -24665,7 +24677,7 @@ fn59:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1177, %rdi
+    movq $1178, %rdi
     leaq .Ls1137(%rip), %rsi
     call __han_nonefield
 1:
@@ -24704,7 +24716,7 @@ fn59:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1179, %rdi
+    movq $1180, %rdi
     leaq .Ls1142(%rip), %rsi
     call __han_nonefield
 1:
@@ -24721,7 +24733,7 @@ fn59:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1183, %rdi
+    movq $1184, %rdi
     leaq .Ls1143(%rip), %rsi
     call __han_nonefield
 1:
@@ -24788,7 +24800,7 @@ fn59:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1189, %rdi
+    movq $1190, %rdi
     leaq .Ls1152(%rip), %rsi
     call __han_nonefield
 1:
@@ -24825,7 +24837,7 @@ fn59:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1155(%rip), %rsi
     call __han_nonefield
 1:
@@ -24834,7 +24846,7 @@ fn59:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1156(%rip), %rsi
     call __han_nonefield
 1:
@@ -24846,7 +24858,7 @@ fn59:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -24863,7 +24875,7 @@ fn59:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1158(%rip), %rsi
     call __han_nonefield
 1:
@@ -24872,7 +24884,7 @@ fn59:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1159(%rip), %rsi
     call __han_nonefield
 1:
@@ -24884,7 +24896,7 @@ fn59:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -24903,7 +24915,7 @@ fn59:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1200, %rdi
+    movq $1201, %rdi
     leaq .Ls1162(%rip), %rsi
     call __han_nonefield
 1:
@@ -24914,7 +24926,7 @@ fn59:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1201, %rdi
+    movq $1202, %rdi
     leaq .Ls1163(%rip), %rsi
     call __han_nonefield
 1:
@@ -24925,7 +24937,7 @@ fn59:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1202, %rdi
+    movq $1203, %rdi
     leaq .Ls1164(%rip), %rsi
     call __han_nonefield
 1:
@@ -24958,7 +24970,7 @@ fn59:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1208, %rdi
+    movq $1209, %rdi
     leaq .Ls1168(%rip), %rsi
     call __han_nonefield
 1:
@@ -24969,7 +24981,7 @@ fn59:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1209, %rdi
+    movq $1210, %rdi
     leaq .Ls1169(%rip), %rsi
     call __han_nonefield
 1:
@@ -24983,7 +24995,7 @@ fn59:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1170(%rip), %rsi
     call __han_nonefield
 1:
@@ -24992,7 +25004,7 @@ fn59:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1171(%rip), %rsi
     call __han_nonefield
 1:
@@ -25004,7 +25016,7 @@ fn59:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -25023,7 +25035,7 @@ fn59:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1214, %rdi
+    movq $1215, %rdi
     leaq .Ls1174(%rip), %rsi
     call __han_nonefield
 1:
@@ -25034,7 +25046,7 @@ fn59:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1215, %rdi
+    movq $1216, %rdi
     leaq .Ls1175(%rip), %rsi
     call __han_nonefield
 1:
@@ -25155,7 +25167,7 @@ fn61:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1064, %rdi
+    movq $1065, %rdi
     leaq .Ls1191(%rip), %rsi
     call __han_nonefield
 1:
@@ -25165,7 +25177,7 @@ fn61:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1064, %rdi
+    movq $1065, %rdi
     leaq .Ls1192(%rip), %rsi
     call __han_nonefield
 1:
@@ -25175,7 +25187,7 @@ fn61:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1066, %rdi
+    movq $1067, %rdi
     leaq .Ls1193(%rip), %rsi
     call __han_nonefield
 1:
@@ -25217,7 +25229,7 @@ fn62:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1222, %rdi
+    movq $1223, %rdi
     leaq .Ls1195(%rip), %rsi
     call __han_nonefield
 1:
@@ -25249,7 +25261,7 @@ fn62:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1223, %rdi
+    movq $1224, %rdi
     leaq .Ls1196(%rip), %rsi
     call __han_nonefield
 1:
@@ -25264,7 +25276,7 @@ fn62:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1224, %rdi
+    movq $1225, %rdi
     leaq .Ls1197(%rip), %rsi
     call __han_nonefield
 1:
@@ -25281,7 +25293,7 @@ fn62:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1226, %rdi
+    movq $1227, %rdi
     leaq .Ls1198(%rip), %rsi
     call __han_nonefield
 1:
@@ -25340,7 +25352,7 @@ fn63:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $243, %rdi
+    movq $244, %rdi
     leaq .Ls1199(%rip), %rsi
     call __han_nonefield
 1:
@@ -25354,7 +25366,7 @@ fn63:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $244, %rdi
+    movq $245, %rdi
     leaq .Ls1200(%rip), %rsi
     call __han_nonefield
 1:
@@ -25368,7 +25380,7 @@ fn63:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $245, %rdi
+    movq $246, %rdi
     leaq .Ls1201(%rip), %rsi
     call __han_nonefield
 1:
@@ -25379,7 +25391,7 @@ fn63:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $246, %rdi
+    movq $247, %rdi
     leaq .Ls1202(%rip), %rsi
     call __han_nonefield
 1:
@@ -25389,7 +25401,7 @@ fn63:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $246, %rdi
+    movq $247, %rdi
     leaq .Ls1203(%rip), %rsi
     call __han_nonefield
 1:
@@ -25400,7 +25412,7 @@ fn63:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $247, %rdi
+    movq $248, %rdi
     leaq .Ls1204(%rip), %rsi
     call __han_nonefield
 1:
@@ -25410,7 +25422,7 @@ fn63:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $247, %rdi
+    movq $248, %rdi
     leaq .Ls1205(%rip), %rsi
     call __han_nonefield
 1:
@@ -25421,7 +25433,7 @@ fn63:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $248, %rdi
+    movq $249, %rdi
     leaq .Ls1206(%rip), %rsi
     call __han_nonefield
 1:
@@ -25431,7 +25443,7 @@ fn63:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $248, %rdi
+    movq $249, %rdi
     leaq .Ls1207(%rip), %rsi
     call __han_nonefield
 1:
@@ -25442,7 +25454,7 @@ fn63:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $249, %rdi
+    movq $250, %rdi
     leaq .Ls1208(%rip), %rsi
     call __han_nonefield
 1:
@@ -25452,7 +25464,7 @@ fn63:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $249, %rdi
+    movq $250, %rdi
     leaq .Ls1209(%rip), %rsi
     call __han_nonefield
 1:
@@ -25487,7 +25499,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1231, %rdi
+    movq $1232, %rdi
     leaq .Ls1210(%rip), %rsi
     call __han_nonefield
 1:
@@ -25519,7 +25531,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1211(%rip), %rsi
     call __han_nonefield
 1:
@@ -25528,7 +25540,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1212(%rip), %rsi
     call __han_nonefield
 1:
@@ -25540,7 +25552,7 @@ fn64:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -25548,7 +25560,7 @@ fn64:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1233, %rdi
+    movq $1234, %rdi
     leaq .Ls1213(%rip), %rsi
     call __han_nonefield
 1:
@@ -25557,7 +25569,7 @@ fn64:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1234, %rdi
+    movq $1235, %rdi
     leaq .Ls1214(%rip), %rsi
     call __han_nonefield
 1:
@@ -25583,7 +25595,7 @@ fn64:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1237, %rdi
+    movq $1238, %rdi
     leaq .Ls1218(%rip), %rsi
     call __han_nonefield
 1:
@@ -25618,7 +25630,7 @@ fn64:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1243, %rdi
+    movq $1244, %rdi
     leaq .Ls1221(%rip), %rsi
     call __han_nonefield
 1:
@@ -25652,7 +25664,7 @@ fn64:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1249, %rdi
+    movq $1250, %rdi
     leaq .Ls1224(%rip), %rsi
     call __han_nonefield
 1:
@@ -25681,7 +25693,7 @@ fn64:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1253, %rdi
+    movq $1254, %rdi
     leaq .Ls1226(%rip), %rsi
     call __han_nonefield
 1:
@@ -25701,7 +25713,7 @@ fn64:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1253, %rdi
+    movq $1254, %rdi
     leaq .Ls1228(%rip), %rsi
     call __han_nonefield
 1:
@@ -25723,7 +25735,7 @@ fn64:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1255, %rdi
+    movq $1256, %rdi
     leaq .Ls1230(%rip), %rsi
     call __han_nonefield
 1:
@@ -25771,7 +25783,7 @@ fn64:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1260, %rdi
+    movq $1261, %rdi
     leaq .Ls1235(%rip), %rsi
     call __han_nonefield
 1:
@@ -25817,7 +25829,7 @@ fn64:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1265, %rdi
+    movq $1266, %rdi
     leaq .Ls1240(%rip), %rsi
     call __han_nonefield
 1:
@@ -25839,7 +25851,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1242(%rip), %rsi
     call __han_nonefield
 1:
@@ -25848,7 +25860,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1243(%rip), %rsi
     call __han_nonefield
 1:
@@ -25860,7 +25872,7 @@ fn64:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -25901,7 +25913,7 @@ fn64:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1269, %rdi
+    movq $1270, %rdi
     leaq .Ls1247(%rip), %rsi
     call __han_nonefield
 1:
@@ -25921,7 +25933,7 @@ fn64:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1269, %rdi
+    movq $1270, %rdi
     leaq .Ls1249(%rip), %rsi
     call __han_nonefield
 1:
@@ -25956,7 +25968,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1253(%rip), %rsi
     call __han_nonefield
 1:
@@ -25965,7 +25977,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1254(%rip), %rsi
     call __han_nonefield
 1:
@@ -25977,14 +25989,14 @@ fn64:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1277, %rdi
+    movq $1278, %rdi
     leaq .Ls1255(%rip), %rsi
     call __han_nonefield
 1:
@@ -26005,7 +26017,7 @@ fn64:
     movq %r13, %rcx
     cmpq $63, %rcx
     jbe 1f
-    movl $1277, %edi
+    movl $1278, %edi
     movq %rcx, %rsi
     call __han_shift
 1:
@@ -26017,7 +26029,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1257(%rip), %rsi
     call __han_nonefield
 1:
@@ -26026,7 +26038,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1258(%rip), %rsi
     call __han_nonefield
 1:
@@ -26038,14 +26050,14 @@ fn64:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1279, %rdi
+    movq $1280, %rdi
     leaq .Ls1259(%rip), %rsi
     call __han_nonefield
 1:
@@ -26057,7 +26069,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1260(%rip), %rsi
     call __han_nonefield
 1:
@@ -26066,7 +26078,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1261(%rip), %rsi
     call __han_nonefield
 1:
@@ -26078,14 +26090,14 @@ fn64:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1276, %rdi
+    movq $1277, %rdi
     leaq .Ls1262(%rip), %rsi
     call __han_nonefield
 1:
@@ -26105,7 +26117,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1264(%rip), %rsi
     call __han_nonefield
 1:
@@ -26114,7 +26126,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1265(%rip), %rsi
     call __han_nonefield
 1:
@@ -26126,14 +26138,14 @@ fn64:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1276, %rdi
+    movq $1277, %rdi
     leaq .Ls1266(%rip), %rsi
     call __han_nonefield
 1:
@@ -26153,7 +26165,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1268(%rip), %rsi
     call __han_nonefield
 1:
@@ -26162,7 +26174,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1269(%rip), %rsi
     call __han_nonefield
 1:
@@ -26174,14 +26186,14 @@ fn64:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1276, %rdi
+    movq $1277, %rdi
     leaq .Ls1270(%rip), %rsi
     call __han_nonefield
 1:
@@ -26215,7 +26227,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1273(%rip), %rsi
     call __han_nonefield
 1:
@@ -26224,7 +26236,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1274(%rip), %rsi
     call __han_nonefield
 1:
@@ -26236,7 +26248,7 @@ fn64:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -26249,7 +26261,7 @@ fn64:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1283, %rdi
+    movq $1284, %rdi
     leaq .Ls1276(%rip), %rsi
     call __han_nonefield
 1:
@@ -26270,7 +26282,7 @@ fn64:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1283, %rdi
+    movq $1284, %rdi
     leaq .Ls1278(%rip), %rsi
     call __han_nonefield
 1:
@@ -26298,7 +26310,7 @@ fn64:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1285, %rdi
+    movq $1286, %rdi
     leaq .Ls1281(%rip), %rsi
     call __han_nonefield
 1:
@@ -26325,7 +26337,7 @@ fn64:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1286, %rdi
+    movq $1287, %rdi
     leaq .Ls1282(%rip), %rsi
     call __han_nonefield
 1:
@@ -26357,7 +26369,7 @@ fn64:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1290, %rdi
+    movq $1291, %rdi
     leaq .Ls1285(%rip), %rsi
     call __han_nonefield
 1:
@@ -26379,7 +26391,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1287(%rip), %rsi
     call __han_nonefield
 1:
@@ -26388,7 +26400,7 @@ fn64:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1288(%rip), %rsi
     call __han_nonefield
 1:
@@ -26400,7 +26412,7 @@ fn64:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -26408,7 +26420,7 @@ fn64:
     movq %rax, -88(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $1293, %rdi
+    movq $1294, %rdi
     leaq .Ls1289(%rip), %rsi
     call __han_nonefield
 1:
@@ -26437,7 +26449,7 @@ fn64:
     movq -88(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $1296, %rdi
+    movq $1297, %rdi
     leaq .Ls1293(%rip), %rsi
     call __han_nonefield
 1:
@@ -26475,7 +26487,7 @@ fn64:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1303, %rdi
+    movq $1304, %rdi
     leaq .Ls1296(%rip), %rsi
     call __han_nonefield
 1:
@@ -26502,7 +26514,7 @@ fn64:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1305, %rdi
+    movq $1306, %rdi
     leaq .Ls1299(%rip), %rsi
     call __han_nonefield
 1:
@@ -26520,7 +26532,7 @@ fn64:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1306, %rdi
+    movq $1307, %rdi
     leaq .Ls1300(%rip), %rsi
     call __han_nonefield
 1:
@@ -26530,7 +26542,7 @@ fn64:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1306, %rdi
+    movq $1307, %rdi
     leaq .Ls1301(%rip), %rsi
     call __han_nonefield
 1:
@@ -26595,7 +26607,7 @@ fn64:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $1322, %rdi
+    movq $1323, %rdi
     leaq .Ls1309(%rip), %rsi
     call __han_nonefield
 1:
@@ -26633,7 +26645,7 @@ fn64:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1330, %rdi
+    movq $1331, %rdi
     leaq .Ls1312(%rip), %rsi
     call __han_nonefield
 1:
@@ -26700,7 +26712,7 @@ fn65:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1316(%rip), %rsi
     call __han_nonefield
 1:
@@ -26709,7 +26721,7 @@ fn65:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1317(%rip), %rsi
     call __han_nonefield
 1:
@@ -26721,7 +26733,7 @@ fn65:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -26729,7 +26741,7 @@ fn65:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $1002, %rdi
+    movq $1003, %rdi
     leaq .Ls1318(%rip), %rsi
     call __han_nonefield
 1:
@@ -26749,7 +26761,7 @@ fn65:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1002, %rdi
+    movq $1003, %rdi
     leaq .Ls1320(%rip), %rsi
     call __han_nonefield
 1:
@@ -26759,7 +26771,7 @@ fn65:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1002, %rdi
+    movq $1003, %rdi
     leaq .Ls1321(%rip), %rsi
     call __han_nonefield
 1:
@@ -26995,7 +27007,7 @@ fn67:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1343, %rdx
+    movq $1344, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -27017,7 +27029,7 @@ fn67:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1344, %rdx
+    movq $1345, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -27064,7 +27076,7 @@ fn67:
     movq %rax, %r13
     testq %rax, %rax
     jne 1f
-    movq $1350, %rdi
+    movq $1351, %rdi
     leaq .Ls1345(%rip), %rsi
     call __han_nonefield
 1:
@@ -27078,7 +27090,7 @@ fn67:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1350, %rdx
+    movq $1351, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -27090,7 +27102,7 @@ fn67:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1351, %rdi
+    movq $1352, %rdi
     leaq .Ls1346(%rip), %rsi
     call __han_nonefield
 1:
@@ -27106,7 +27118,7 @@ fn67:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1351, %rdx
+    movq $1352, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -27141,7 +27153,7 @@ fn68:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1347(%rip), %rsi
     call __han_nonefield
 1:
@@ -27150,7 +27162,7 @@ fn68:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1348(%rip), %rsi
     call __han_nonefield
 1:
@@ -27162,7 +27174,7 @@ fn68:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -27174,7 +27186,7 @@ fn68:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1009, %rdi
+    movq $1010, %rdi
     leaq .Ls1349(%rip), %rsi
     call __han_nonefield
 1:
@@ -27194,7 +27206,7 @@ fn68:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1009, %rdi
+    movq $1010, %rdi
     leaq .Ls1351(%rip), %rsi
     call __han_nonefield
 1:
@@ -27221,7 +27233,7 @@ fn68:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1009, %rdi
+    movq $1010, %rdi
     leaq .Ls1353(%rip), %rsi
     call __han_nonefield
 1:
@@ -27231,7 +27243,7 @@ fn68:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1009, %rdi
+    movq $1010, %rdi
     leaq .Ls1354(%rip), %rsi
     call __han_nonefield
 1:
@@ -27252,7 +27264,7 @@ fn68:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1010, %rdi
+    movq $1011, %rdi
     leaq .Ls1355(%rip), %rsi
     call __han_nonefield
 1:
@@ -27272,7 +27284,7 @@ fn68:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1010, %rdi
+    movq $1011, %rdi
     leaq .Ls1357(%rip), %rsi
     call __han_nonefield
 1:
@@ -27282,7 +27294,7 @@ fn68:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $1010, %rdi
+    movq $1011, %rdi
     leaq .Ls1358(%rip), %rsi
     call __han_nonefield
 1:
@@ -27334,7 +27346,7 @@ fn69:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1360(%rip), %rsi
     call __han_nonefield
 1:
@@ -27343,7 +27355,7 @@ fn69:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1361(%rip), %rsi
     call __han_nonefield
 1:
@@ -27355,14 +27367,14 @@ fn69:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1017, %rdi
+    movq $1018, %rdi
     leaq .Ls1362(%rip), %rsi
     call __han_nonefield
 1:
@@ -27377,7 +27389,7 @@ fn69:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1364(%rip), %rsi
     call __han_nonefield
 1:
@@ -27386,7 +27398,7 @@ fn69:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1365(%rip), %rsi
     call __han_nonefield
 1:
@@ -27398,14 +27410,14 @@ fn69:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1020, %rdi
+    movq $1021, %rdi
     leaq .Ls1366(%rip), %rsi
     call __han_nonefield
 1:
@@ -27415,7 +27427,7 @@ fn69:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1367(%rip), %rsi
     call __han_nonefield
 1:
@@ -27424,7 +27436,7 @@ fn69:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1368(%rip), %rsi
     call __han_nonefield
 1:
@@ -27436,7 +27448,7 @@ fn69:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -27457,7 +27469,7 @@ fn69:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1021, %rdi
+    movq $1022, %rdi
     leaq .Ls1369(%rip), %rsi
     call __han_nonefield
 1:
@@ -27490,7 +27502,7 @@ fn70:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1487, %rdi
+    movq $1488, %rdi
     leaq .Ls1370(%rip), %rsi
     call __han_nonefield
 1:
@@ -27520,7 +27532,7 @@ fn70:
     movq %rax, %rbx
     testq %rax, %rax
     jne 1f
-    movq $1489, %rdi
+    movq $1490, %rdi
     leaq .Ls1374(%rip), %rsi
     call __han_nonefield
 1:
@@ -27530,7 +27542,7 @@ fn70:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1489, %rdi
+    movq $1490, %rdi
     leaq .Ls1375(%rip), %rsi
     call __han_nonefield
 1:
@@ -27541,7 +27553,7 @@ fn70:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1489, %rdx
+    movq $1490, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -27553,7 +27565,7 @@ fn70:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $1490, %rdi
+    movq $1491, %rdi
     leaq .Ls1376(%rip), %rsi
     call __han_nonefield
 1:
@@ -27563,7 +27575,7 @@ fn70:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $1490, %rdi
+    movq $1491, %rdi
     leaq .Ls1377(%rip), %rsi
     call __han_nonefield
 1:
@@ -27574,7 +27586,7 @@ fn70:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $1490, %rdx
+    movq $1491, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -27599,7 +27611,7 @@ fn70:
     movq %rax, %rbx
     testq %rax, %rax
     jne 1f
-    movq $1494, %rdi
+    movq $1495, %rdi
     leaq .Ls1380(%rip), %rsi
     call __han_nonefield
 1:
@@ -27639,7 +27651,7 @@ fn71:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $1467, %rdi
+    movq $1468, %rdi
     leaq .Ls1381(%rip), %rsi
     call __han_nonefield
 1:
@@ -27650,7 +27662,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1382(%rip), %rsi
     call __han_nonefield
 1:
@@ -27659,7 +27671,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1383(%rip), %rsi
     call __han_nonefield
 1:
@@ -27671,14 +27683,14 @@ fn71:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1469, %rdi
+    movq $1470, %rdi
     leaq .Ls1384(%rip), %rsi
     call __han_nonefield
 1:
@@ -27699,7 +27711,7 @@ fn71:
     movq %r12, %rcx
     cmpq $63, %rcx
     jbe 1f
-    movl $1469, %edi
+    movl $1470, %edi
     movq %rcx, %rsi
     call __han_shift
 1:
@@ -27711,7 +27723,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1386(%rip), %rsi
     call __han_nonefield
 1:
@@ -27720,7 +27732,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1387(%rip), %rsi
     call __han_nonefield
 1:
@@ -27732,14 +27744,14 @@ fn71:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1471, %rdi
+    movq $1472, %rdi
     leaq .Ls1388(%rip), %rsi
     call __han_nonefield
 1:
@@ -27760,7 +27772,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1390(%rip), %rsi
     call __han_nonefield
 1:
@@ -27769,7 +27781,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1391(%rip), %rsi
     call __han_nonefield
 1:
@@ -27781,14 +27793,14 @@ fn71:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1468, %rdi
+    movq $1469, %rdi
     leaq .Ls1392(%rip), %rsi
     call __han_nonefield
 1:
@@ -27808,7 +27820,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1394(%rip), %rsi
     call __han_nonefield
 1:
@@ -27817,7 +27829,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1395(%rip), %rsi
     call __han_nonefield
 1:
@@ -27829,14 +27841,14 @@ fn71:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1468, %rdi
+    movq $1469, %rdi
     leaq .Ls1396(%rip), %rsi
     call __han_nonefield
 1:
@@ -27858,7 +27870,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1398(%rip), %rsi
     call __han_nonefield
 1:
@@ -27867,7 +27879,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1399(%rip), %rsi
     call __han_nonefield
 1:
@@ -27879,14 +27891,14 @@ fn71:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1475, %rdi
+    movq $1476, %rdi
     leaq .Ls1400(%rip), %rsi
     call __han_nonefield
 1:
@@ -27906,7 +27918,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1402(%rip), %rsi
     call __han_nonefield
 1:
@@ -27915,7 +27927,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1403(%rip), %rsi
     call __han_nonefield
 1:
@@ -27927,14 +27939,14 @@ fn71:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $1475, %rdi
+    movq $1476, %rdi
     leaq .Ls1404(%rip), %rsi
     call __han_nonefield
 1:
@@ -27955,7 +27967,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1406(%rip), %rsi
     call __han_nonefield
 1:
@@ -27964,7 +27976,7 @@ fn71:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1407(%rip), %rsi
     call __han_nonefield
 1:
@@ -27976,7 +27988,7 @@ fn71:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -27998,7 +28010,7 @@ fn71:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $1479, %rdi
+    movq $1480, %rdi
     leaq .Ls1410(%rip), %rsi
     call __han_nonefield
 1:
@@ -28018,7 +28030,7 @@ fn71:
     movq %rax, -56(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $1480, %rdi
+    movq $1481, %rdi
     leaq .Ls1411(%rip), %rsi
     call __han_nonefield
 1:
@@ -28035,7 +28047,7 @@ fn71:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $1481, %rdi
+    movq $1482, %rdi
     leaq .Ls1413(%rip), %rsi
     call __han_nonefield
 1:
@@ -28103,7 +28115,7 @@ fn73:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1419(%rip), %rsi
     call __han_nonefield
 1:
@@ -28112,7 +28124,7 @@ fn73:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $974, %rdi
+    movq $975, %rdi
     leaq .Ls1420(%rip), %rsi
     call __han_nonefield
 1:
@@ -28124,7 +28136,7 @@ fn73:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $974, %rdx
+    movq $975, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -28314,7 +28326,7 @@ fn75:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2314, %rdi
+    movq $2315, %rdi
     leaq .Ls1438(%rip), %rsi
     call __han_nonefield
 1:
@@ -28324,7 +28336,7 @@ fn75:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2314, %rdi
+    movq $2315, %rdi
     leaq .Ls1439(%rip), %rsi
     call __han_nonefield
 1:
@@ -28334,7 +28346,7 @@ fn75:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2314, %rdi
+    movq $2315, %rdi
     leaq .Ls1440(%rip), %rsi
     call __han_nonefield
 1:
@@ -28352,7 +28364,7 @@ fn75:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2315, %rdi
+    movq $2316, %rdi
     leaq .Ls1441(%rip), %rsi
     call __han_nonefield
 1:
@@ -28362,7 +28374,7 @@ fn75:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2315, %rdi
+    movq $2316, %rdi
     leaq .Ls1442(%rip), %rsi
     call __han_nonefield
 1:
@@ -28403,7 +28415,7 @@ fn76:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3052, %rdi
+    movq $3053, %rdi
     leaq .Ls1443(%rip), %rsi
     call __han_nonefield
 1:
@@ -28414,7 +28426,7 @@ fn76:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3052, %rdx
+    movq $3053, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -28426,7 +28438,7 @@ fn76:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3055, %rdi
+    movq $3056, %rdi
     leaq .Ls1444(%rip), %rsi
     call __han_nonefield
 1:
@@ -28437,7 +28449,7 @@ fn76:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3055, %rdx
+    movq $3056, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -28446,7 +28458,7 @@ fn76:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3056, %rdi
+    movq $3057, %rdi
     leaq .Ls1445(%rip), %rsi
     call __han_nonefield
 1:
@@ -28460,7 +28472,7 @@ fn76:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3057, %rdi
+    movq $3058, %rdi
     leaq .Ls1446(%rip), %rsi
     call __han_nonefield
 1:
@@ -28473,7 +28485,7 @@ fn76:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3057, %rdi
+    movq $3058, %rdi
     leaq .Ls1448(%rip), %rsi
     call __han_nonefield
 1:
@@ -28513,7 +28525,7 @@ fn76:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3054, %rdi
+    movq $3055, %rdi
     leaq .Ls1451(%rip), %rsi
     call __han_nonefield
 1:
@@ -28529,7 +28541,7 @@ fn76:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3051, %rdi
+    movq $3052, %rdi
     leaq .Ls1452(%rip), %rsi
     call __han_nonefield
 1:
@@ -28549,7 +28561,7 @@ fn76:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3067, %rdi
+    movq $3068, %rdi
     leaq .Ls1453(%rip), %rsi
     call __han_nonefield
 1:
@@ -28560,7 +28572,7 @@ fn76:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3067, %rdx
+    movq $3068, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -28573,7 +28585,7 @@ fn76:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3071, %rdi
+    movq $3072, %rdi
     leaq .Ls1454(%rip), %rsi
     call __han_nonefield
 1:
@@ -28584,14 +28596,14 @@ fn76:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3071, %rdx
+    movq $3072, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $3071, %rdi
+    movq $3072, %rdi
     leaq .Ls1455(%rip), %rsi
     call __han_nonefield
 1:
@@ -28605,7 +28617,7 @@ fn76:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3070, %rdi
+    movq $3071, %rdi
     leaq .Ls1456(%rip), %rsi
     call __han_nonefield
 1:
@@ -28621,7 +28633,7 @@ fn76:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3074, %rdi
+    movq $3075, %rdi
     leaq .Ls1457(%rip), %rsi
     call __han_nonefield
 1:
@@ -28631,7 +28643,7 @@ fn76:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3074, %rdi
+    movq $3075, %rdi
     leaq .Ls1458(%rip), %rsi
     call __han_nonefield
 1:
@@ -28644,7 +28656,7 @@ fn76:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3076, %rdi
+    movq $3077, %rdi
     leaq .Ls1459(%rip), %rsi
     call __han_nonefield
 1:
@@ -28693,7 +28705,7 @@ fn76:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3066, %rdi
+    movq $3067, %rdi
     leaq .Ls1460(%rip), %rsi
     call __han_nonefield
 1:
@@ -28736,7 +28748,7 @@ fn77:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2162, %rdi
+    movq $2163, %rdi
     leaq .Ls1461(%rip), %rsi
     call __han_nonefield
 1:
@@ -28747,7 +28759,7 @@ fn77:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2162, %rdx
+    movq $2163, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -28755,7 +28767,7 @@ fn77:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $2163, %rdi
+    movq $2164, %rdi
     leaq .Ls1462(%rip), %rsi
     call __han_nonefield
 1:
@@ -28771,7 +28783,7 @@ fn77:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2163, %rdi
+    movq $2164, %rdi
     leaq .Ls1463(%rip), %rsi
     call __han_nonefield
 1:
@@ -28786,7 +28798,7 @@ fn77:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2161, %rdi
+    movq $2162, %rdi
     leaq .Ls1464(%rip), %rsi
     call __han_nonefield
 1:
@@ -28821,7 +28833,7 @@ fn78:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2170, %rdi
+    movq $2171, %rdi
     leaq .Ls1465(%rip), %rsi
     call __han_nonefield
 1:
@@ -28835,7 +28847,7 @@ fn78:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2170, %rdx
+    movq $2171, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -28866,7 +28878,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2800, %rdi
+    movq $2801, %rdi
     leaq .Ls1466(%rip), %rsi
     call __han_nonefield
 1:
@@ -28887,7 +28899,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2804, %rdi
+    movq $2805, %rdi
     leaq .Ls1468(%rip), %rsi
     call __han_nonefield
 1:
@@ -28898,7 +28910,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2804, %rdx
+    movq $2805, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -28911,7 +28923,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2803, %rdi
+    movq $2804, %rdi
     leaq .Ls1469(%rip), %rsi
     call __han_nonefield
 1:
@@ -28937,7 +28949,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2810, %rdi
+    movq $2811, %rdi
     leaq .Ls1471(%rip), %rsi
     call __han_nonefield
 1:
@@ -28948,7 +28960,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2810, %rdx
+    movq $2811, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -28960,7 +28972,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2812, %rdi
+    movq $2813, %rdi
     leaq .Ls1472(%rip), %rsi
     call __han_nonefield
 1:
@@ -28969,7 +28981,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2813, %rdi
+    movq $2814, %rdi
     leaq .Ls1473(%rip), %rsi
     call __han_nonefield
 1:
@@ -28983,7 +28995,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2815, %rdi
+    movq $2816, %rdi
     leaq .Ls1474(%rip), %rsi
     call __han_nonefield
 1:
@@ -29018,7 +29030,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2818, %rdi
+    movq $2819, %rdi
     leaq .Ls1475(%rip), %rsi
     call __han_nonefield
 1:
@@ -29053,7 +29065,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2821, %rdi
+    movq $2822, %rdi
     leaq .Ls1476(%rip), %rsi
     call __han_nonefield
 1:
@@ -29107,7 +29119,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2825, %rdi
+    movq $2826, %rdi
     leaq .Ls1478(%rip), %rsi
     call __han_nonefield
 1:
@@ -29184,7 +29196,7 @@ fn79:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2833, %rdi
+    movq $2834, %rdi
     leaq .Ls1483(%rip), %rsi
     call __han_nonefield
 1:
@@ -29219,7 +29231,7 @@ fn79:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2841, %rdi
+    movq $2842, %rdi
     leaq .Ls1486(%rip), %rsi
     call __han_nonefield
 1:
@@ -29231,7 +29243,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2842, %rdi
+    movq $2843, %rdi
     leaq .Ls1487(%rip), %rsi
     call __han_nonefield
 1:
@@ -29242,7 +29254,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2842, %rdx
+    movq $2843, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -29252,7 +29264,7 @@ fn79:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2842, %rdi
+    movq $2843, %rdi
     leaq .Ls1488(%rip), %rsi
     call __han_nonefield
 1:
@@ -29260,7 +29272,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2843, %rdi
+    movq $2844, %rdi
     leaq .Ls1489(%rip), %rsi
     call __han_nonefield
 1:
@@ -29271,7 +29283,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2843, %rdx
+    movq $2844, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -29288,7 +29300,7 @@ fn79:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2844, %rdi
+    movq $2845, %rdi
     leaq .Ls1490(%rip), %rsi
     call __han_nonefield
 1:
@@ -29308,7 +29320,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2848, %rdi
+    movq $2849, %rdi
     leaq .Ls1492(%rip), %rsi
     call __han_nonefield
 1:
@@ -29319,7 +29331,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2848, %rdx
+    movq $2849, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -29331,7 +29343,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2850, %rdi
+    movq $2851, %rdi
     leaq .Ls1493(%rip), %rsi
     call __han_nonefield
 1:
@@ -29349,7 +29361,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2851, %rdi
+    movq $2852, %rdi
     leaq .Ls1495(%rip), %rsi
     call __han_nonefield
 1:
@@ -29367,7 +29379,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2852, %rdi
+    movq $2853, %rdi
     leaq .Ls1497(%rip), %rsi
     call __han_nonefield
 1:
@@ -29383,7 +29395,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2853, %rdi
+    movq $2854, %rdi
     leaq .Ls1499(%rip), %rsi
     call __han_nonefield
 1:
@@ -29413,30 +29425,8 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2857, %rdi
-    leaq .Ls1502(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $2857, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn80
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
     movq $2858, %rdi
-    leaq .Ls1503(%rip), %rsi
+    leaq .Ls1502(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -29451,9 +29441,31 @@ fn79:
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn80
+    movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2858, %rdi
+    movq $2859, %rdi
+    leaq .Ls1503(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $1, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $2859, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2859, %rdi
     leaq .Ls1504(%rip), %rsi
     call __han_nonefield
 1:
@@ -29466,7 +29478,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2860, %rdi
+    movq $2861, %rdi
     leaq .Ls1505(%rip), %rsi
     call __han_nonefield
 1:
@@ -29477,7 +29489,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2860, %rdx
+    movq $2861, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -29547,7 +29559,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2869, %rdi
+    movq $2870, %rdi
     leaq .Ls1511(%rip), %rsi
     call __han_nonefield
 1:
@@ -29558,30 +29570,8 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2870, %rdi
-    leaq .Ls1512(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $2870, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn80
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
     movq $2871, %rdi
-    leaq .Ls1513(%rip), %rsi
+    leaq .Ls1512(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -29596,20 +29586,14 @@ fn79:
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $2871, %rdi
-    leaq .Ls1514(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $0, %rax
-    je .L973
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn80
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
     movq $2872, %rdi
-    leaq .Ls1515(%rip), %rsi
+    leaq .Ls1513(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -29620,6 +29604,34 @@ fn79:
     movq %rax, %rdi
     movq %rcx, %rsi
     movq $2872, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2872, %rdi
+    leaq .Ls1514(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $0, %rax
+    je .L973
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2873, %rdi
+    leaq .Ls1515(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $1, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $2873, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -29632,7 +29644,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2872, %rdi
+    movq $2873, %rdi
     leaq .Ls1517(%rip), %rsi
     call __han_nonefield
 1:
@@ -29643,14 +29655,14 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2872, %rdx
+    movq $2873, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2872, %rdi
+    movq $2873, %rdi
     leaq .Ls1518(%rip), %rsi
     call __han_nonefield
 1:
@@ -29691,7 +29703,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2878, %rdi
+    movq $2879, %rdi
     leaq .Ls1521(%rip), %rsi
     call __han_nonefield
 1:
@@ -29702,7 +29714,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2878, %rdx
+    movq $2879, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -29710,7 +29722,7 @@ fn79:
     movq %rax, -88(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $2880, %rdi
+    movq $2881, %rdi
     leaq .Ls1522(%rip), %rsi
     call __han_nonefield
 1:
@@ -29730,7 +29742,7 @@ fn79:
     movq -88(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2880, %rdi
+    movq $2881, %rdi
     leaq .Ls1524(%rip), %rsi
     call __han_nonefield
 1:
@@ -29756,7 +29768,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2881, %rdi
+    movq $2882, %rdi
     leaq .Ls1527(%rip), %rsi
     call __han_nonefield
 1:
@@ -29778,7 +29790,7 @@ fn79:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2882, %rdi
+    movq $2883, %rdi
     leaq .Ls1530(%rip), %rsi
     call __han_nonefield
 1:
@@ -29792,7 +29804,7 @@ fn79:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2883, %rdi
+    movq $2884, %rdi
     leaq .Ls1531(%rip), %rsi
     call __han_nonefield
 1:
@@ -29805,7 +29817,7 @@ fn79:
     movq -88(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2886, %rdi
+    movq $2887, %rdi
     leaq .Ls1532(%rip), %rsi
     call __han_nonefield
 1:
@@ -29818,7 +29830,7 @@ fn79:
     movq -88(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2887, %rdi
+    movq $2888, %rdi
     leaq .Ls1534(%rip), %rsi
     call __han_nonefield
 1:
@@ -29846,7 +29858,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2890, %rdi
+    movq $2891, %rdi
     leaq .Ls1536(%rip), %rsi
     call __han_nonefield
 1:
@@ -29857,7 +29869,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2890, %rdx
+    movq $2891, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -29868,7 +29880,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2891, %rdi
+    movq $2892, %rdi
     leaq .Ls1537(%rip), %rsi
     call __han_nonefield
 1:
@@ -29879,7 +29891,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2891, %rdi
+    movq $2892, %rdi
     leaq .Ls1538(%rip), %rsi
     call __han_nonefield
 1:
@@ -29890,7 +29902,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2891, %rdx
+    movq $2892, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -29914,7 +29926,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2895, %rdi
+    movq $2896, %rdi
     leaq .Ls1540(%rip), %rsi
     call __han_nonefield
 1:
@@ -29925,7 +29937,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2895, %rdx
+    movq $2896, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -29934,7 +29946,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2896, %rdi
+    movq $2897, %rdi
     leaq .Ls1541(%rip), %rsi
     call __han_nonefield
 1:
@@ -29945,7 +29957,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2896, %rdx
+    movq $2897, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -29960,7 +29972,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2900, %rdi
+    movq $2901, %rdi
     leaq .Ls1542(%rip), %rsi
     call __han_nonefield
 1:
@@ -29970,7 +29982,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2900, %rdi
+    movq $2901, %rdi
     leaq .Ls1543(%rip), %rsi
     call __han_nonefield
 1:
@@ -29990,7 +30002,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2900, %rdi
+    movq $2901, %rdi
     leaq .Ls1545(%rip), %rsi
     call __han_nonefield
 1:
@@ -30014,7 +30026,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2901, %rdi
+    movq $2902, %rdi
     leaq .Ls1548(%rip), %rsi
     call __han_nonefield
 1:
@@ -30030,7 +30042,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2902, %rdi
+    movq $2903, %rdi
     leaq .Ls1549(%rip), %rsi
     call __han_nonefield
 1:
@@ -30040,7 +30052,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2902, %rdi
+    movq $2903, %rdi
     leaq .Ls1550(%rip), %rsi
     call __han_nonefield
 1:
@@ -30060,7 +30072,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2902, %rdi
+    movq $2903, %rdi
     leaq .Ls1552(%rip), %rsi
     call __han_nonefield
 1:
@@ -30074,7 +30086,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2903, %rdi
+    movq $2904, %rdi
     leaq .Ls1554(%rip), %rsi
     call __han_nonefield
 1:
@@ -30095,7 +30107,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2903, %rdi
+    movq $2904, %rdi
     leaq .Ls1556(%rip), %rsi
     call __han_nonefield
 1:
@@ -30128,7 +30140,7 @@ fn79:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2905, %rdi
+    movq $2906, %rdi
     leaq .Ls1559(%rip), %rsi
     call __han_nonefield
 1:
@@ -30139,7 +30151,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2908, %rdi
+    movq $2909, %rdi
     leaq .Ls1560(%rip), %rsi
     call __han_nonefield
 1:
@@ -30155,7 +30167,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2909, %rdi
+    movq $2910, %rdi
     leaq .Ls1562(%rip), %rsi
     call __han_nonefield
 1:
@@ -30170,7 +30182,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2910, %rdi
+    movq $2911, %rdi
     leaq .Ls1564(%rip), %rsi
     call __han_nonefield
 1:
@@ -30191,7 +30203,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2910, %rdi
+    movq $2911, %rdi
     leaq .Ls1566(%rip), %rsi
     call __han_nonefield
 1:
@@ -30218,7 +30230,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2912, %rdi
+    movq $2913, %rdi
     leaq .Ls1568(%rip), %rsi
     call __han_nonefield
 1:
@@ -30228,7 +30240,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2912, %rdi
+    movq $2913, %rdi
     leaq .Ls1569(%rip), %rsi
     call __han_nonefield
 1:
@@ -30247,7 +30259,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2914, %rdi
+    movq $2915, %rdi
     leaq .Ls1571(%rip), %rsi
     call __han_nonefield
 1:
@@ -30271,7 +30283,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2914, %rdi
+    movq $2915, %rdi
     leaq .Ls1573(%rip), %rsi
     call __han_nonefield
 1:
@@ -30295,7 +30307,7 @@ fn79:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2916, %rdi
+    movq $2917, %rdi
     leaq .Ls1575(%rip), %rsi
     call __han_nonefield
 1:
@@ -30304,7 +30316,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2916, %rdi
+    movq $2917, %rdi
     leaq .Ls1576(%rip), %rsi
     call __han_nonefield
 1:
@@ -30317,14 +30329,14 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2916, %rdx
+    movq $2917, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2916, %rdi
+    movq $2917, %rdi
     leaq .Ls1577(%rip), %rsi
     call __han_nonefield
 1:
@@ -30335,7 +30347,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2916, %rdx
+    movq $2917, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -30344,7 +30356,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2917, %rdi
+    movq $2918, %rdi
     leaq .Ls1578(%rip), %rsi
     call __han_nonefield
 1:
@@ -30360,7 +30372,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2918, %rdi
+    movq $2919, %rdi
     leaq .Ls1580(%rip), %rsi
     call __han_nonefield
 1:
@@ -30397,7 +30409,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2918, %rdi
+    movq $2919, %rdi
     leaq .Ls1583(%rip), %rsi
     call __han_nonefield
 1:
@@ -30430,7 +30442,7 @@ fn79:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2920, %rdi
+    movq $2921, %rdi
     leaq .Ls1585(%rip), %rsi
     call __han_nonefield
 1:
@@ -30450,7 +30462,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2924, %rdi
+    movq $2925, %rdi
     leaq .Ls1587(%rip), %rsi
     call __han_nonefield
 1:
@@ -30461,7 +30473,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2924, %rdx
+    movq $2925, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -30470,7 +30482,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2925, %rdi
+    movq $2926, %rdi
     leaq .Ls1588(%rip), %rsi
     call __han_nonefield
 1:
@@ -30481,7 +30493,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2925, %rdx
+    movq $2926, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -30493,34 +30505,12 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2927, %rdi
+    movq $2928, %rdi
     leaq .Ls1589(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
     movq $2, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $2927, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn80
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $2928, %rdi
-    leaq .Ls1590(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $3, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -30534,13 +30524,35 @@ fn79:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn80
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2929, %rdi
+    leaq .Ls1590(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $3, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $2929, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn80
     movq %rbx, %rdi
     movq %r13, %rsi
     call fn80
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2930, %rdi
+    movq $2931, %rdi
     leaq .Ls1591(%rip), %rsi
     call __han_nonefield
 1:
@@ -30555,7 +30567,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2931, %rdi
+    movq $2932, %rdi
     leaq .Ls1593(%rip), %rsi
     call __han_nonefield
 1:
@@ -30582,7 +30594,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2933, %rdi
+    movq $2934, %rdi
     leaq .Ls1595(%rip), %rsi
     call __han_nonefield
 1:
@@ -30593,14 +30605,14 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2933, %rdx
+    movq $2934, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2933, %rdi
+    movq $2934, %rdi
     leaq .Ls1596(%rip), %rsi
     call __han_nonefield
 1:
@@ -30610,7 +30622,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2933, %rdi
+    movq $2934, %rdi
     leaq .Ls1597(%rip), %rsi
     call __han_nonefield
 1:
@@ -30621,7 +30633,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2933, %rdx
+    movq $2934, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -30638,7 +30650,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2934, %rdi
+    movq $2935, %rdi
     leaq .Ls1599(%rip), %rsi
     call __han_nonefield
 1:
@@ -30649,14 +30661,14 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2934, %rdx
+    movq $2935, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2934, %rdi
+    movq $2935, %rdi
     leaq .Ls1600(%rip), %rsi
     call __han_nonefield
 1:
@@ -30666,7 +30678,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2934, %rdi
+    movq $2935, %rdi
     leaq .Ls1601(%rip), %rsi
     call __han_nonefield
 1:
@@ -30677,7 +30689,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2934, %rdx
+    movq $2935, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -30694,7 +30706,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2935, %rdi
+    movq $2936, %rdi
     leaq .Ls1603(%rip), %rsi
     call __han_nonefield
 1:
@@ -30712,7 +30724,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2936, %rdi
+    movq $2937, %rdi
     leaq .Ls1605(%rip), %rsi
     call __han_nonefield
 1:
@@ -30722,7 +30734,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2937, %rdi
+    movq $2938, %rdi
     leaq .Ls1606(%rip), %rsi
     call __han_nonefield
 1:
@@ -30748,7 +30760,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2938, %rdi
+    movq $2939, %rdi
     leaq .Ls1609(%rip), %rsi
     call __han_nonefield
 1:
@@ -30758,7 +30770,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2938, %rdi
+    movq $2939, %rdi
     leaq .Ls1610(%rip), %rsi
     call __han_nonefield
 1:
@@ -30775,7 +30787,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2939, %rdi
+    movq $2940, %rdi
     leaq .Ls1611(%rip), %rsi
     call __han_nonefield
 1:
@@ -30786,7 +30798,7 @@ fn79:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2939, %rdi
+    movq $2940, %rdi
     leaq .Ls1612(%rip), %rsi
     call __han_nonefield
 1:
@@ -30795,7 +30807,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2941, %rdi
+    movq $2942, %rdi
     leaq .Ls1613(%rip), %rsi
     call __han_nonefield
 1:
@@ -30804,7 +30816,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2941, %rdi
+    movq $2942, %rdi
     leaq .Ls1614(%rip), %rsi
     call __han_nonefield
 1:
@@ -30820,7 +30832,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2942, %rdi
+    movq $2943, %rdi
     leaq .Ls1616(%rip), %rsi
     call __han_nonefield
 1:
@@ -30845,7 +30857,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2942, %rdi
+    movq $2943, %rdi
     leaq .Ls1618(%rip), %rsi
     call __han_nonefield
 1:
@@ -30894,7 +30906,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2947, %rdi
+    movq $2948, %rdi
     leaq .Ls1622(%rip), %rsi
     call __han_nonefield
 1:
@@ -30905,7 +30917,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2947, %rdx
+    movq $2948, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -30914,7 +30926,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2948, %rdi
+    movq $2949, %rdi
     leaq .Ls1623(%rip), %rsi
     call __han_nonefield
 1:
@@ -30923,7 +30935,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2948, %rdi
+    movq $2949, %rdi
     leaq .Ls1624(%rip), %rsi
     call __han_nonefield
 1:
@@ -30936,7 +30948,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2948, %rdx
+    movq $2949, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -30957,7 +30969,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2951, %rdi
+    movq $2952, %rdi
     leaq .Ls1626(%rip), %rsi
     call __han_nonefield
 1:
@@ -30968,7 +30980,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2951, %rdx
+    movq $2952, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -30979,7 +30991,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2952, %rdi
+    movq $2953, %rdi
     leaq .Ls1627(%rip), %rsi
     call __han_nonefield
 1:
@@ -30990,14 +31002,14 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2952, %rdx
+    movq $2953, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2952, %rdi
+    movq $2953, %rdi
     leaq .Ls1628(%rip), %rsi
     call __han_nonefield
 1:
@@ -31007,7 +31019,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2952, %rdi
+    movq $2953, %rdi
     leaq .Ls1629(%rip), %rsi
     call __han_nonefield
 1:
@@ -31018,7 +31030,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2952, %rdx
+    movq $2953, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -31039,7 +31051,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2955, %rdi
+    movq $2956, %rdi
     leaq .Ls1631(%rip), %rsi
     call __han_nonefield
 1:
@@ -31071,7 +31083,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2958, %rdi
+    movq $2959, %rdi
     leaq .Ls1636(%rip), %rsi
     call __han_nonefield
 1:
@@ -31098,7 +31110,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2960, %rdi
+    movq $2961, %rdi
     leaq .Ls1638(%rip), %rsi
     call __han_nonefield
 1:
@@ -31108,7 +31120,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2961, %rdi
+    movq $2962, %rdi
     leaq .Ls1639(%rip), %rsi
     call __han_nonefield
 1:
@@ -31118,7 +31130,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2961, %rdi
+    movq $2962, %rdi
     leaq .Ls1640(%rip), %rsi
     call __han_nonefield
 1:
@@ -31132,7 +31144,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2962, %rdi
+    movq $2963, %rdi
     leaq .Ls1642(%rip), %rsi
     call __han_nonefield
 1:
@@ -31159,7 +31171,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2964, %rdi
+    movq $2965, %rdi
     leaq .Ls1644(%rip), %rsi
     call __han_nonefield
 1:
@@ -31185,7 +31197,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2965, %rdi
+    movq $2966, %rdi
     leaq .Ls1647(%rip), %rsi
     call __han_nonefield
 1:
@@ -31195,7 +31207,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2965, %rdi
+    movq $2966, %rdi
     leaq .Ls1648(%rip), %rsi
     call __han_nonefield
 1:
@@ -31212,7 +31224,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2966, %rdi
+    movq $2967, %rdi
     leaq .Ls1649(%rip), %rsi
     call __han_nonefield
 1:
@@ -31223,7 +31235,7 @@ fn79:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2966, %rdi
+    movq $2967, %rdi
     leaq .Ls1650(%rip), %rsi
     call __han_nonefield
 1:
@@ -31232,7 +31244,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2968, %rdi
+    movq $2969, %rdi
     leaq .Ls1651(%rip), %rsi
     call __han_nonefield
 1:
@@ -31243,7 +31255,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2968, %rdi
+    movq $2969, %rdi
     leaq .Ls1652(%rip), %rsi
     call __han_nonefield
 1:
@@ -31260,7 +31272,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2969, %rdi
+    movq $2970, %rdi
     leaq .Ls1654(%rip), %rsi
     call __han_nonefield
 1:
@@ -31284,7 +31296,7 @@ fn79:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2969, %rdi
+    movq $2970, %rdi
     leaq .Ls1656(%rip), %rsi
     call __han_nonefield
 1:
@@ -31309,7 +31321,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2969, %rdi
+    movq $2970, %rdi
     leaq .Ls1658(%rip), %rsi
     call __han_nonefield
 1:
@@ -31348,7 +31360,7 @@ fn79:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2974, %rdi
+    movq $2975, %rdi
     leaq .Ls1661(%rip), %rsi
     call __han_nonefield
 1:
@@ -31364,7 +31376,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2975, %rdi
+    movq $2976, %rdi
     leaq .Ls1663(%rip), %rsi
     call __han_nonefield
 1:
@@ -31375,7 +31387,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2975, %rdx
+    movq $2976, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -31387,7 +31399,7 @@ fn79:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2977, %rdi
+    movq $2978, %rdi
     leaq .Ls1664(%rip), %rsi
     call __han_nonefield
 1:
@@ -31396,7 +31408,7 @@ fn79:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2977, %rdi
+    movq $2978, %rdi
     leaq .Ls1665(%rip), %rsi
     call __han_nonefield
 1:
@@ -31408,7 +31420,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2977, %rdx
+    movq $2978, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -31417,7 +31429,7 @@ fn79:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2978, %rdi
+    movq $2979, %rdi
     leaq .Ls1666(%rip), %rsi
     call __han_nonefield
 1:
@@ -31426,7 +31438,7 @@ fn79:
     movq -128(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2979, %rdi
+    movq $2980, %rdi
     leaq .Ls1667(%rip), %rsi
     call __han_nonefield
 1:
@@ -31442,7 +31454,7 @@ fn79:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2980, %rdi
+    movq $2981, %rdi
     leaq .Ls1668(%rip), %rsi
     call __han_nonefield
 1:
@@ -31452,7 +31464,7 @@ fn79:
     movq -128(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2982, %rdi
+    movq $2983, %rdi
     leaq .Ls1669(%rip), %rsi
     call __han_nonefield
 1:
@@ -31487,7 +31499,7 @@ fn79:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2983, %rdi
+    movq $2984, %rdi
     leaq .Ls1670(%rip), %rsi
     call __han_nonefield
 1:
@@ -31497,7 +31509,7 @@ fn79:
     movq -128(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2985, %rdi
+    movq $2986, %rdi
     leaq .Ls1671(%rip), %rsi
     call __han_nonefield
 1:
@@ -31513,7 +31525,7 @@ fn79:
     movq -128(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2986, %rdi
+    movq $2987, %rdi
     leaq .Ls1673(%rip), %rsi
     call __han_nonefield
 1:
@@ -31534,7 +31546,7 @@ fn79:
     movq -128(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2986, %rdi
+    movq $2987, %rdi
     leaq .Ls1675(%rip), %rsi
     call __han_nonefield
 1:
@@ -31601,7 +31613,7 @@ fn79:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2993, %rdi
+    movq $2994, %rdi
     leaq .Ls1680(%rip), %rsi
     call __han_nonefield
 1:
@@ -31672,7 +31684,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3001, %rdi
+    movq $3002, %rdi
     leaq .Ls1689(%rip), %rsi
     call __han_nonefield
 1:
@@ -31683,7 +31695,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3001, %rdx
+    movq $3002, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -31695,7 +31707,7 @@ fn79:
     movq -144(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3003, %rdi
+    movq $3004, %rdi
     leaq .Ls1690(%rip), %rsi
     call __han_nonefield
 1:
@@ -31738,7 +31750,7 @@ fn79:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3007, %rdi
+    movq $3008, %rdi
     leaq .Ls1695(%rip), %rsi
     call __han_nonefield
 1:
@@ -31749,7 +31761,7 @@ fn79:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3007, %rdi
+    movq $3008, %rdi
     leaq .Ls1696(%rip), %rsi
     call __han_nonefield
 1:
@@ -31758,7 +31770,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3008, %rdi
+    movq $3009, %rdi
     leaq .Ls1697(%rip), %rsi
     call __han_nonefield
 1:
@@ -31769,7 +31781,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3008, %rdx
+    movq $3009, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -31792,7 +31804,7 @@ fn79:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3009, %rdi
+    movq $3010, %rdi
     leaq .Ls1699(%rip), %rsi
     call __han_nonefield
 1:
@@ -31803,7 +31815,7 @@ fn79:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3009, %rdi
+    movq $3010, %rdi
     leaq .Ls1700(%rip), %rsi
     call __han_nonefield
 1:
@@ -31812,7 +31824,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3010, %rdi
+    movq $3011, %rdi
     leaq .Ls1701(%rip), %rsi
     call __han_nonefield
 1:
@@ -31823,7 +31835,7 @@ fn79:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3010, %rdi
+    movq $3011, %rdi
     leaq .Ls1702(%rip), %rsi
     call __han_nonefield
 1:
@@ -31834,7 +31846,7 @@ fn79:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3010, %rdx
+    movq $3011, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -31880,7 +31892,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2320, %rdi
+    movq $2321, %rdi
     leaq .Ls1704(%rip), %rsi
     call __han_nonefield
 1:
@@ -31914,7 +31926,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2321, %rdi
+    movq $2322, %rdi
     leaq .Ls1707(%rip), %rsi
     call __han_nonefield
 1:
@@ -31940,7 +31952,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2322, %rdi
+    movq $2323, %rdi
     leaq .Ls1709(%rip), %rsi
     call __han_nonefield
 1:
@@ -31976,7 +31988,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2323, %rdi
+    movq $2324, %rdi
     leaq .Ls1712(%rip), %rsi
     call __han_nonefield
 1:
@@ -32002,7 +32014,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2324, %rdi
+    movq $2325, %rdi
     leaq .Ls1714(%rip), %rsi
     call __han_nonefield
 1:
@@ -32028,7 +32040,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2325, %rdi
+    movq $2326, %rdi
     leaq .Ls1716(%rip), %rsi
     call __han_nonefield
 1:
@@ -32054,7 +32066,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2326, %rdi
+    movq $2327, %rdi
     leaq .Ls1718(%rip), %rsi
     call __han_nonefield
 1:
@@ -32080,7 +32092,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2327, %rdi
+    movq $2328, %rdi
     leaq .Ls1720(%rip), %rsi
     call __han_nonefield
 1:
@@ -32100,34 +32112,12 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2329, %rdi
+    movq $2330, %rdi
     leaq .Ls1722(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
     movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $2329, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn80
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $2330, %rdi
-    leaq .Ls1723(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $2, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -32145,11 +32135,11 @@ fn80:
     testq %rax, %rax
     jne 1f
     movq $2331, %rdi
-    leaq .Ls1724(%rip), %rsi
+    leaq .Ls1723(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
-    movq $1, %rcx
+    movq $2, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -32160,20 +32150,14 @@ fn80:
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $2331, %rdi
-    leaq .Ls1725(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $1, %rax
-    je .L1087
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn80
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
     movq $2332, %rdi
-    leaq .Ls1726(%rip), %rsi
+    leaq .Ls1724(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -32184,6 +32168,34 @@ fn80:
     movq %rax, %rdi
     movq %rcx, %rsi
     movq $2332, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2332, %rdi
+    leaq .Ls1725(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $1, %rax
+    je .L1087
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2333, %rdi
+    leaq .Ls1726(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $1, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $2333, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -32196,7 +32208,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2332, %rdi
+    movq $2333, %rdi
     leaq .Ls1728(%rip), %rsi
     call __han_nonefield
 1:
@@ -32207,14 +32219,14 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2332, %rdx
+    movq $2333, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2332, %rdi
+    movq $2333, %rdi
     leaq .Ls1729(%rip), %rsi
     call __han_nonefield
 1:
@@ -32242,7 +32254,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2334, %rdi
+    movq $2335, %rdi
     leaq .Ls1731(%rip), %rsi
     call __han_nonefield
 1:
@@ -32253,14 +32265,14 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2334, %rdx
+    movq $2335, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2334, %rdi
+    movq $2335, %rdi
     leaq .Ls1732(%rip), %rsi
     call __han_nonefield
 1:
@@ -32270,7 +32282,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2335, %rdi
+    movq $2336, %rdi
     leaq .Ls1733(%rip), %rsi
     call __han_nonefield
 1:
@@ -32281,7 +32293,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2335, %rdx
+    movq $2336, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -32294,7 +32306,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2335, %rdi
+    movq $2336, %rdi
     leaq .Ls1735(%rip), %rsi
     call __han_nonefield
 1:
@@ -32305,14 +32317,14 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2335, %rdx
+    movq $2336, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2335, %rdi
+    movq $2336, %rdi
     leaq .Ls1736(%rip), %rsi
     call __han_nonefield
 1:
@@ -32346,7 +32358,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2337, %rdi
+    movq $2338, %rdi
     leaq .Ls1738(%rip), %rsi
     call __han_nonefield
 1:
@@ -32366,30 +32378,8 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2341, %rdi
-    leaq .Ls1740(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $2341, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn80
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
     movq $2342, %rdi
-    leaq .Ls1741(%rip), %rsi
+    leaq .Ls1740(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -32404,20 +32394,14 @@ fn80:
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $2342, %rdi
-    leaq .Ls1742(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $1, %rax
-    je .L1093
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn80
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
     movq $2343, %rdi
-    leaq .Ls1743(%rip), %rsi
+    leaq .Ls1741(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -32428,6 +32412,34 @@ fn80:
     movq %rax, %rdi
     movq %rcx, %rsi
     movq $2343, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2343, %rdi
+    leaq .Ls1742(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $1, %rax
+    je .L1093
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2344, %rdi
+    leaq .Ls1743(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $1, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $2344, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -32440,7 +32452,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2343, %rdi
+    movq $2344, %rdi
     leaq .Ls1745(%rip), %rsi
     call __han_nonefield
 1:
@@ -32451,14 +32463,14 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2343, %rdx
+    movq $2344, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2343, %rdi
+    movq $2344, %rdi
     leaq .Ls1746(%rip), %rsi
     call __han_nonefield
 1:
@@ -32492,7 +32504,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2345, %rdi
+    movq $2346, %rdi
     leaq .Ls1748(%rip), %rsi
     call __han_nonefield
 1:
@@ -32517,30 +32529,8 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2350, %rdi
-    leaq .Ls1751(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $2350, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn80
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
     movq $2351, %rdi
-    leaq .Ls1752(%rip), %rsi
+    leaq .Ls1751(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -32555,20 +32545,14 @@ fn80:
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $2351, %rdi
-    leaq .Ls1753(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $0, %rax
-    je .L1097
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn80
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
     movq $2352, %rdi
-    leaq .Ls1754(%rip), %rsi
+    leaq .Ls1752(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -32579,6 +32563,34 @@ fn80:
     movq %rax, %rdi
     movq %rcx, %rsi
     movq $2352, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2352, %rdi
+    leaq .Ls1753(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $0, %rax
+    je .L1097
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2353, %rdi
+    leaq .Ls1754(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $1, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $2353, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -32603,7 +32615,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2354, %rdi
+    movq $2355, %rdi
     leaq .Ls1756(%rip), %rsi
     call __han_nonefield
 1:
@@ -32631,7 +32643,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2358, %rdi
+    movq $2359, %rdi
     leaq .Ls1758(%rip), %rsi
     call __han_nonefield
 1:
@@ -32652,7 +32664,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2363, %rdi
+    movq $2364, %rdi
     leaq .Ls1760(%rip), %rsi
     call __han_nonefield
 1:
@@ -32674,7 +32686,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2364, %rdi
+    movq $2365, %rdi
     leaq .Ls1762(%rip), %rsi
     call __han_nonefield
 1:
@@ -32696,7 +32708,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2365, %rdi
+    movq $2366, %rdi
     leaq .Ls1764(%rip), %rsi
     call __han_nonefield
 1:
@@ -32720,7 +32732,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2367, %rdi
+    movq $2368, %rdi
     leaq .Ls1766(%rip), %rsi
     call __han_nonefield
 1:
@@ -32737,7 +32749,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2368, %rdi
+    movq $2369, %rdi
     leaq .Ls1768(%rip), %rsi
     call __han_nonefield
 1:
@@ -32765,7 +32777,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2371, %rdi
+    movq $2372, %rdi
     leaq .Ls1770(%rip), %rsi
     call __han_nonefield
 1:
@@ -32778,7 +32790,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2374, %rdi
+    movq $2375, %rdi
     leaq .Ls1771(%rip), %rsi
     call __han_nonefield
 1:
@@ -32786,7 +32798,7 @@ fn80:
     movq -56(%rbp), %rcx
     cmpq $63, %rcx
     jbe 1f
-    movl $2374, %edi
+    movl $2375, %edi
     movq %rcx, %rsi
     call __han_shift
 1:
@@ -32817,7 +32829,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2377, %rdi
+    movq $2378, %rdi
     leaq .Ls1772(%rip), %rsi
     call __han_nonefield
 1:
@@ -32837,7 +32849,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2381, %rdi
+    movq $2382, %rdi
     leaq .Ls1774(%rip), %rsi
     call __han_nonefield
 1:
@@ -32851,7 +32863,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2383, %rdi
+    movq $2384, %rdi
     leaq .Ls1775(%rip), %rsi
     call __han_nonefield
 1:
@@ -32877,7 +32889,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2384, %rdi
+    movq $2385, %rdi
     leaq .Ls1778(%rip), %rsi
     call __han_nonefield
 1:
@@ -32891,7 +32903,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2385, %rdi
+    movq $2386, %rdi
     leaq .Ls1779(%rip), %rsi
     call __han_nonefield
 1:
@@ -32904,7 +32916,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2388, %rdi
+    movq $2389, %rdi
     leaq .Ls1780(%rip), %rsi
     call __han_nonefield
 1:
@@ -32930,7 +32942,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2389, %rdi
+    movq $2390, %rdi
     leaq .Ls1783(%rip), %rsi
     call __han_nonefield
 1:
@@ -32944,7 +32956,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2390, %rdi
+    movq $2391, %rdi
     leaq .Ls1784(%rip), %rsi
     call __han_nonefield
 1:
@@ -32957,7 +32969,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2393, %rdi
+    movq $2394, %rdi
     leaq .Ls1785(%rip), %rsi
     call __han_nonefield
 1:
@@ -32983,7 +32995,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2394, %rdi
+    movq $2395, %rdi
     leaq .Ls1788(%rip), %rsi
     call __han_nonefield
 1:
@@ -32997,7 +33009,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2395, %rdi
+    movq $2396, %rdi
     leaq .Ls1789(%rip), %rsi
     call __han_nonefield
 1:
@@ -33010,7 +33022,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2398, %rdi
+    movq $2399, %rdi
     leaq .Ls1790(%rip), %rsi
     call __han_nonefield
 1:
@@ -33036,7 +33048,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2399, %rdi
+    movq $2400, %rdi
     leaq .Ls1793(%rip), %rsi
     call __han_nonefield
 1:
@@ -33050,7 +33062,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2400, %rdi
+    movq $2401, %rdi
     leaq .Ls1794(%rip), %rsi
     call __han_nonefield
 1:
@@ -33066,7 +33078,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2403, %rdi
+    movq $2404, %rdi
     leaq .Ls1796(%rip), %rsi
     call __han_nonefield
 1:
@@ -33096,7 +33108,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2404, %rdi
+    movq $2405, %rdi
     leaq .Ls1798(%rip), %rsi
     call __han_nonefield
 1:
@@ -33116,7 +33128,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2408, %rdi
+    movq $2409, %rdi
     leaq .Ls1800(%rip), %rsi
     call __han_nonefield
 1:
@@ -33127,7 +33139,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2408, %rdx
+    movq $2409, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -33139,7 +33151,7 @@ fn80:
     movq -72(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2410, %rdi
+    movq $2411, %rdi
     leaq .Ls1801(%rip), %rsi
     call __han_nonefield
 1:
@@ -33157,7 +33169,7 @@ fn80:
     movq -72(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2411, %rdi
+    movq $2412, %rdi
     leaq .Ls1803(%rip), %rsi
     call __han_nonefield
 1:
@@ -33175,7 +33187,7 @@ fn80:
     movq -72(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2412, %rdi
+    movq $2413, %rdi
     leaq .Ls1805(%rip), %rsi
     call __han_nonefield
 1:
@@ -33199,7 +33211,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2413, %rdi
+    movq $2414, %rdi
     leaq .Ls1807(%rip), %rsi
     call __han_nonefield
 1:
@@ -33207,7 +33219,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2414, %rdi
+    movq $2415, %rdi
     leaq .Ls1808(%rip), %rsi
     call __han_nonefield
 1:
@@ -33233,7 +33245,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2414, %rdi
+    movq $2415, %rdi
     leaq .Ls1810(%rip), %rsi
     call __han_nonefield
 1:
@@ -33242,7 +33254,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2415, %rdi
+    movq $2416, %rdi
     leaq .Ls1811(%rip), %rsi
     call __han_nonefield
 1:
@@ -33268,7 +33280,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2415, %rdi
+    movq $2416, %rdi
     leaq .Ls1813(%rip), %rsi
     call __han_nonefield
 1:
@@ -33289,7 +33301,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2419, %rdi
+    movq $2420, %rdi
     leaq .Ls1815(%rip), %rsi
     call __han_nonefield
 1:
@@ -33306,7 +33318,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2419, %rdi
+    movq $2420, %rdi
     leaq .Ls1816(%rip), %rsi
     call __han_nonefield
 1:
@@ -33320,7 +33332,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2422, %rdi
+    movq $2423, %rdi
     leaq .Ls1817(%rip), %rsi
     call __han_nonefield
 1:
@@ -33331,7 +33343,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2422, %rdx
+    movq $2423, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -33344,7 +33356,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2421, %rdi
+    movq $2422, %rdi
     leaq .Ls1818(%rip), %rsi
     call __han_nonefield
 1:
@@ -33363,7 +33375,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2427, %rdi
+    movq $2428, %rdi
     leaq .Ls1819(%rip), %rsi
     call __han_nonefield
 1:
@@ -33376,7 +33388,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2427, %rdi
+    movq $2428, %rdi
     leaq .Ls1820(%rip), %rsi
     call __han_nonefield
 1:
@@ -33387,14 +33399,14 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2427, %rdx
+    movq $2428, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2427, %rdi
+    movq $2428, %rdi
     leaq .Ls1821(%rip), %rsi
     call __han_nonefield
 1:
@@ -33404,7 +33416,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2427, %rdi
+    movq $2428, %rdi
     leaq .Ls1822(%rip), %rsi
     call __han_nonefield
 1:
@@ -33415,14 +33427,14 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2427, %rdx
+    movq $2428, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2427, %rdi
+    movq $2428, %rdi
     leaq .Ls1823(%rip), %rsi
     call __han_nonefield
 1:
@@ -33434,7 +33446,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2430, %rdi
+    movq $2431, %rdi
     leaq .Ls1824(%rip), %rsi
     call __han_nonefield
 1:
@@ -33453,7 +33465,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2433, %rdi
+    movq $2434, %rdi
     leaq .Ls1826(%rip), %rsi
     call __han_nonefield
 1:
@@ -33464,14 +33476,14 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2433, %rdx
+    movq $2434, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2433, %rdi
+    movq $2434, %rdi
     leaq .Ls1827(%rip), %rsi
     call __han_nonefield
 1:
@@ -33483,7 +33495,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2436, %rdi
+    movq $2437, %rdi
     leaq .Ls1828(%rip), %rsi
     call __han_nonefield
 1:
@@ -33494,7 +33506,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2436, %rdx
+    movq $2437, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -33502,7 +33514,7 @@ fn80:
     movq %rax, -104(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $2437, %rdi
+    movq $2438, %rdi
     leaq .Ls1829(%rip), %rsi
     call __han_nonefield
 1:
@@ -33550,7 +33562,7 @@ fn80:
     movq -104(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2438, %rdi
+    movq $2439, %rdi
     leaq .Ls1833(%rip), %rsi
     call __han_nonefield
 1:
@@ -33572,7 +33584,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2435, %rdi
+    movq $2436, %rdi
     leaq .Ls1834(%rip), %rsi
     call __han_nonefield
 1:
@@ -33593,7 +33605,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2442, %rdi
+    movq $2443, %rdi
     leaq .Ls1835(%rip), %rsi
     call __han_nonefield
 1:
@@ -33613,7 +33625,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2446, %rdi
+    movq $2447, %rdi
     leaq .Ls1837(%rip), %rsi
     call __han_nonefield
 1:
@@ -33624,7 +33636,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2446, %rdx
+    movq $2447, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -33633,7 +33645,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2447, %rdi
+    movq $2448, %rdi
     leaq .Ls1838(%rip), %rsi
     call __han_nonefield
 1:
@@ -33644,7 +33656,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2447, %rdx
+    movq $2448, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -33659,7 +33671,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2450, %rdi
+    movq $2451, %rdi
     leaq .Ls1839(%rip), %rsi
     call __han_nonefield
 1:
@@ -33671,7 +33683,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2450, %rdi
+    movq $2451, %rdi
     leaq .Ls1840(%rip), %rsi
     call __han_nonefield
 1:
@@ -33684,7 +33696,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2451, %rdi
+    movq $2452, %rdi
     leaq .Ls1842(%rip), %rsi
     call __han_nonefield
 1:
@@ -33711,7 +33723,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2453, %rdi
+    movq $2454, %rdi
     leaq .Ls1844(%rip), %rsi
     call __han_nonefield
 1:
@@ -33727,7 +33739,7 @@ fn80:
     movq -120(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2454, %rdi
+    movq $2455, %rdi
     leaq .Ls1846(%rip), %rsi
     call __han_nonefield
 1:
@@ -33739,7 +33751,7 @@ fn80:
     movq -120(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2456, %rdi
+    movq $2457, %rdi
     leaq .Ls1848(%rip), %rsi
     call __han_nonefield
 1:
@@ -33766,7 +33778,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2459, %rdi
+    movq $2460, %rdi
     leaq .Ls1850(%rip), %rsi
     call __han_nonefield
 1:
@@ -33774,7 +33786,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2460, %rdi
+    movq $2461, %rdi
     leaq .Ls1851(%rip), %rsi
     call __han_nonefield
 1:
@@ -33787,7 +33799,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2460, %rdi
+    movq $2461, %rdi
     leaq .Ls1852(%rip), %rsi
     call __han_nonefield
 1:
@@ -33798,7 +33810,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2460, %rdi
+    movq $2461, %rdi
     leaq .Ls1853(%rip), %rsi
     call __han_nonefield
 1:
@@ -33829,7 +33841,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2464, %rdi
+    movq $2465, %rdi
     leaq .Ls1856(%rip), %rsi
     call __han_nonefield
 1:
@@ -33840,7 +33852,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2464, %rdx
+    movq $2465, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -33852,7 +33864,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2466, %rdi
+    movq $2467, %rdi
     leaq .Ls1857(%rip), %rsi
     call __han_nonefield
 1:
@@ -33867,7 +33879,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2467, %rdi
+    movq $2468, %rdi
     leaq .Ls1859(%rip), %rsi
     call __han_nonefield
 1:
@@ -33894,7 +33906,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2469, %rdi
+    movq $2470, %rdi
     leaq .Ls1861(%rip), %rsi
     call __han_nonefield
 1:
@@ -33919,7 +33931,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2471, %rdi
+    movq $2472, %rdi
     leaq .Ls1864(%rip), %rsi
     call __han_nonefield
 1:
@@ -33930,7 +33942,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2471, %rdx
+    movq $2472, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -33941,7 +33953,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2472, %rdi
+    movq $2473, %rdi
     leaq .Ls1865(%rip), %rsi
     call __han_nonefield
 1:
@@ -33952,14 +33964,14 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2472, %rdx
+    movq $2473, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2472, %rdi
+    movq $2473, %rdi
     leaq .Ls1866(%rip), %rsi
     call __han_nonefield
 1:
@@ -33969,7 +33981,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2472, %rdi
+    movq $2473, %rdi
     leaq .Ls1867(%rip), %rsi
     call __han_nonefield
 1:
@@ -33980,7 +33992,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2472, %rdx
+    movq $2473, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -34001,7 +34013,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2474, %rdi
+    movq $2475, %rdi
     leaq .Ls1869(%rip), %rsi
     call __han_nonefield
 1:
@@ -34012,7 +34024,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2474, %rdi
+    movq $2475, %rdi
     leaq .Ls1870(%rip), %rsi
     call __han_nonefield
 1:
@@ -34069,7 +34081,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2478, %rdi
+    movq $2479, %rdi
     leaq .Ls1876(%rip), %rsi
     call __han_nonefield
 1:
@@ -34080,7 +34092,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2478, %rdx
+    movq $2479, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -34092,7 +34104,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2480, %rdi
+    movq $2481, %rdi
     leaq .Ls1877(%rip), %rsi
     call __han_nonefield
 1:
@@ -34126,7 +34138,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2482, %rdi
+    movq $2483, %rdi
     leaq .Ls1881(%rip), %rsi
     call __han_nonefield
 1:
@@ -34149,7 +34161,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2483, %rdi
+    movq $2484, %rdi
     leaq .Ls1883(%rip), %rsi
     call __han_nonefield
 1:
@@ -34161,7 +34173,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2483, %rdi
+    movq $2484, %rdi
     leaq .Ls1884(%rip), %rsi
     call __han_nonefield
 1:
@@ -34178,7 +34190,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2484, %rdi
+    movq $2485, %rdi
     leaq .Ls1886(%rip), %rsi
     call __han_nonefield
 1:
@@ -34204,7 +34216,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2487, %rdi
+    movq $2488, %rdi
     leaq .Ls1889(%rip), %rsi
     call __han_nonefield
 1:
@@ -34231,7 +34243,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2489, %rdi
+    movq $2490, %rdi
     leaq .Ls1891(%rip), %rsi
     call __han_nonefield
 1:
@@ -34252,7 +34264,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2491, %rdi
+    movq $2492, %rdi
     leaq .Ls1893(%rip), %rsi
     call __han_nonefield
 1:
@@ -34263,7 +34275,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2491, %rdx
+    movq $2492, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -34275,7 +34287,7 @@ fn80:
     movq -144(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2493, %rdi
+    movq $2494, %rdi
     leaq .Ls1894(%rip), %rsi
     call __han_nonefield
 1:
@@ -34288,7 +34300,7 @@ fn80:
     movq -144(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2494, %rdi
+    movq $2495, %rdi
     leaq .Ls1896(%rip), %rsi
     call __han_nonefield
 1:
@@ -34311,7 +34323,7 @@ fn80:
     movq -144(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2495, %rdi
+    movq $2496, %rdi
     leaq .Ls1898(%rip), %rsi
     call __han_nonefield
 1:
@@ -34342,7 +34354,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2500, %rdi
+    movq $2501, %rdi
     leaq .Ls1901(%rip), %rsi
     call __han_nonefield
 1:
@@ -34353,7 +34365,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2500, %rdx
+    movq $2501, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -34365,7 +34377,7 @@ fn80:
     movq -152(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2502, %rdi
+    movq $2503, %rdi
     leaq .Ls1902(%rip), %rsi
     call __han_nonefield
 1:
@@ -34381,7 +34393,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2503, %rdi
+    movq $2504, %rdi
     leaq .Ls1904(%rip), %rsi
     call __han_nonefield
 1:
@@ -34421,7 +34433,7 @@ fn80:
     movq -152(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2503, %rdi
+    movq $2504, %rdi
     leaq .Ls1907(%rip), %rsi
     call __han_nonefield
 1:
@@ -34455,7 +34467,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2506, %rdi
+    movq $2507, %rdi
     leaq .Ls1909(%rip), %rsi
     call __han_nonefield
 1:
@@ -34478,7 +34490,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2507, %rdi
+    movq $2508, %rdi
     leaq .Ls1911(%rip), %rsi
     call __han_nonefield
 1:
@@ -34502,7 +34514,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2508, %rdi
+    movq $2509, %rdi
     leaq .Ls1913(%rip), %rsi
     call __han_nonefield
 1:
@@ -34523,7 +34535,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2512, %rdi
+    movq $2513, %rdi
     leaq .Ls1915(%rip), %rsi
     call __han_nonefield
 1:
@@ -34534,7 +34546,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2512, %rdx
+    movq $2513, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -34546,7 +34558,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2514, %rdi
+    movq $2515, %rdi
     leaq .Ls1916(%rip), %rsi
     call __han_nonefield
 1:
@@ -34558,7 +34570,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2514, %rdi
+    movq $2515, %rdi
     leaq .Ls1917(%rip), %rsi
     call __han_nonefield
 1:
@@ -34568,7 +34580,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2514, %rdi
+    movq $2515, %rdi
     leaq .Ls1918(%rip), %rsi
     call __han_nonefield
 1:
@@ -34583,7 +34595,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2515, %rdi
+    movq $2516, %rdi
     leaq .Ls1920(%rip), %rsi
     call __han_nonefield
 1:
@@ -34616,7 +34628,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2517, %rdi
+    movq $2518, %rdi
     leaq .Ls1922(%rip), %rsi
     call __han_nonefield
 1:
@@ -34636,7 +34648,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2521, %rdi
+    movq $2522, %rdi
     leaq .Ls1924(%rip), %rsi
     call __han_nonefield
 1:
@@ -34653,7 +34665,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2522, %rdi
+    movq $2523, %rdi
     leaq .Ls1926(%rip), %rsi
     call __han_nonefield
 1:
@@ -34684,7 +34696,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2523, %rdi
+    movq $2524, %rdi
     leaq .Ls1928(%rip), %rsi
     call __han_nonefield
 1:
@@ -34698,7 +34710,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2524, %rdi
+    movq $2525, %rdi
     leaq .Ls1929(%rip), %rsi
     call __han_nonefield
 1:
@@ -34718,7 +34730,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2528, %rdi
+    movq $2529, %rdi
     leaq .Ls1931(%rip), %rsi
     call __han_nonefield
 1:
@@ -34729,7 +34741,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2528, %rdx
+    movq $2529, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -34741,7 +34753,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2531, %rdi
+    movq $2532, %rdi
     leaq .Ls1932(%rip), %rsi
     call __han_nonefield
 1:
@@ -34751,7 +34763,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2531, %rdi
+    movq $2532, %rdi
     leaq .Ls1933(%rip), %rsi
     call __han_nonefield
 1:
@@ -34771,7 +34783,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2531, %rdi
+    movq $2532, %rdi
     leaq .Ls1935(%rip), %rsi
     call __han_nonefield
 1:
@@ -34795,7 +34807,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2532, %rdi
+    movq $2533, %rdi
     leaq .Ls1938(%rip), %rsi
     call __han_nonefield
 1:
@@ -34817,7 +34829,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2533, %rdi
+    movq $2534, %rdi
     leaq .Ls1940(%rip), %rsi
     call __han_nonefield
 1:
@@ -34831,7 +34843,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2534, %rdi
+    movq $2535, %rdi
     leaq .Ls1941(%rip), %rsi
     call __han_nonefield
 1:
@@ -34842,7 +34854,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2537, %rdi
+    movq $2538, %rdi
     leaq .Ls1942(%rip), %rsi
     call __han_nonefield
 1:
@@ -34858,7 +34870,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2538, %rdi
+    movq $2539, %rdi
     leaq .Ls1944(%rip), %rsi
     call __han_nonefield
 1:
@@ -34873,7 +34885,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2539, %rdi
+    movq $2540, %rdi
     leaq .Ls1946(%rip), %rsi
     call __han_nonefield
 1:
@@ -34894,7 +34906,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2539, %rdi
+    movq $2540, %rdi
     leaq .Ls1948(%rip), %rsi
     call __han_nonefield
 1:
@@ -34921,7 +34933,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2541, %rdi
+    movq $2542, %rdi
     leaq .Ls1950(%rip), %rsi
     call __han_nonefield
 1:
@@ -34931,7 +34943,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2541, %rdi
+    movq $2542, %rdi
     leaq .Ls1951(%rip), %rsi
     call __han_nonefield
 1:
@@ -34950,7 +34962,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2543, %rdi
+    movq $2544, %rdi
     leaq .Ls1953(%rip), %rsi
     call __han_nonefield
 1:
@@ -34974,7 +34986,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2543, %rdi
+    movq $2544, %rdi
     leaq .Ls1955(%rip), %rsi
     call __han_nonefield
 1:
@@ -35004,7 +35016,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2545, %rdi
+    movq $2546, %rdi
     leaq .Ls1957(%rip), %rsi
     call __han_nonefield
 1:
@@ -35015,7 +35027,7 @@ fn80:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2546, %rdi
+    movq $2547, %rdi
     leaq .Ls1958(%rip), %rsi
     call __han_nonefield
 1:
@@ -35024,7 +35036,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2546, %rdi
+    movq $2547, %rdi
     leaq .Ls1959(%rip), %rsi
     call __han_nonefield
 1:
@@ -35037,14 +35049,14 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2546, %rdx
+    movq $2547, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2546, %rdi
+    movq $2547, %rdi
     leaq .Ls1960(%rip), %rsi
     call __han_nonefield
 1:
@@ -35055,7 +35067,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2546, %rdx
+    movq $2547, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -35065,7 +35077,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2546, %rdi
+    movq $2547, %rdi
     leaq .Ls1961(%rip), %rsi
     call __han_nonefield
 1:
@@ -35085,34 +35097,12 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2550, %rdi
+    movq $2551, %rdi
     leaq .Ls1963(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
     movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $2550, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn80
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $2551, %rdi
-    leaq .Ls1964(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $2, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -35130,35 +35120,7 @@ fn80:
     testq %rax, %rax
     jne 1f
     movq $2552, %rdi
-    leaq .Ls1965(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $2552, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $2552, %rdi
-    leaq .Ls1966(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $0, %rax
-    jne .L1233
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $2552, %rdi
-    leaq .Ls1967(%rip), %rsi
+    leaq .Ls1964(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -35173,9 +35135,59 @@ fn80:
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn80
+    movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2552, %rdi
+    movq $2553, %rdi
+    leaq .Ls1965(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $1, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $2553, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2553, %rdi
+    leaq .Ls1966(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $0, %rax
+    jne .L1233
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2553, %rdi
+    leaq .Ls1967(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $2, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $2553, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2553, %rdi
     leaq .Ls1968(%rip), %rsi
     call __han_nonefield
 1:
@@ -35198,7 +35210,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2555, %rdi
+    movq $2556, %rdi
     leaq .Ls1970(%rip), %rsi
     call __han_nonefield
 1:
@@ -35218,7 +35230,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2559, %rdi
+    movq $2560, %rdi
     leaq .Ls1972(%rip), %rsi
     call __han_nonefield
 1:
@@ -35229,7 +35241,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2559, %rdx
+    movq $2560, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -35240,7 +35252,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2560, %rdi
+    movq $2561, %rdi
     leaq .Ls1973(%rip), %rsi
     call __han_nonefield
 1:
@@ -35251,7 +35263,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2560, %rdx
+    movq $2561, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -35263,7 +35275,7 @@ fn80:
     movq -168(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2562, %rdi
+    movq $2563, %rdi
     leaq .Ls1974(%rip), %rsi
     call __han_nonefield
 1:
@@ -35284,7 +35296,7 @@ fn80:
     movq -168(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2563, %rdi
+    movq $2564, %rdi
     leaq .Ls1976(%rip), %rsi
     call __han_nonefield
 1:
@@ -35295,7 +35307,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2563, %rdi
+    movq $2564, %rdi
     leaq .Ls1977(%rip), %rsi
     call __han_nonefield
 1:
@@ -35315,7 +35327,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2567, %rdi
+    movq $2568, %rdi
     leaq .Ls1979(%rip), %rsi
     call __han_nonefield
 1:
@@ -35326,7 +35338,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2567, %rdx
+    movq $2568, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -35338,34 +35350,12 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2569, %rdi
+    movq $2570, %rdi
     leaq .Ls1980(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
     movq $2, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $2569, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn80
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $2570, %rdi
-    leaq .Ls1981(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $3, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -35379,10 +35369,32 @@ fn80:
     movq %rax, %rsi
     movq %r12, %rdi
     call fn80
-    movq %r14, %rax
+    movq %rbx, %rax
     testq %rax, %rax
     jne 1f
     movq $2571, %rdi
+    leaq .Ls1981(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $3, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $2571, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn80
+    movq %r14, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2572, %rdi
     leaq .Ls1982(%rip), %rsi
     call __han_nonefield
 1:
@@ -35397,7 +35409,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2572, %rdi
+    movq $2573, %rdi
     leaq .Ls1984(%rip), %rsi
     call __han_nonefield
 1:
@@ -35424,7 +35436,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2574, %rdi
+    movq $2575, %rdi
     leaq .Ls1986(%rip), %rsi
     call __han_nonefield
 1:
@@ -35440,7 +35452,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2575, %rdi
+    movq $2576, %rdi
     leaq .Ls1988(%rip), %rsi
     call __han_nonefield
 1:
@@ -35451,14 +35463,14 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2575, %rdx
+    movq $2576, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2575, %rdi
+    movq $2576, %rdi
     leaq .Ls1989(%rip), %rsi
     call __han_nonefield
 1:
@@ -35468,7 +35480,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2575, %rdi
+    movq $2576, %rdi
     leaq .Ls1990(%rip), %rsi
     call __han_nonefield
 1:
@@ -35479,7 +35491,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2575, %rdx
+    movq $2576, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -35496,7 +35508,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2576, %rdi
+    movq $2577, %rdi
     leaq .Ls1992(%rip), %rsi
     call __han_nonefield
 1:
@@ -35507,14 +35519,14 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2576, %rdx
+    movq $2577, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2576, %rdi
+    movq $2577, %rdi
     leaq .Ls1993(%rip), %rsi
     call __han_nonefield
 1:
@@ -35524,7 +35536,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2576, %rdi
+    movq $2577, %rdi
     leaq .Ls1994(%rip), %rsi
     call __han_nonefield
 1:
@@ -35535,7 +35547,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2576, %rdx
+    movq $2577, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -35555,7 +35567,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2577, %rdi
+    movq $2578, %rdi
     leaq .Ls1996(%rip), %rsi
     call __han_nonefield
 1:
@@ -35566,7 +35578,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2577, %rdi
+    movq $2578, %rdi
     leaq .Ls1997(%rip), %rsi
     call __han_nonefield
 1:
@@ -35596,7 +35608,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2581, %rdi
+    movq $2582, %rdi
     leaq .Ls2000(%rip), %rsi
     call __han_nonefield
 1:
@@ -35607,7 +35619,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2581, %rdx
+    movq $2582, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -35619,7 +35631,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2583, %rdi
+    movq $2584, %rdi
     leaq .Ls2001(%rip), %rsi
     call __han_nonefield
 1:
@@ -35634,7 +35646,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2584, %rdi
+    movq $2585, %rdi
     leaq .Ls2003(%rip), %rsi
     call __han_nonefield
 1:
@@ -35655,7 +35667,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2584, %rdi
+    movq $2585, %rdi
     leaq .Ls2005(%rip), %rsi
     call __han_nonefield
 1:
@@ -35688,7 +35700,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2586, %rdi
+    movq $2587, %rdi
     leaq .Ls2007(%rip), %rsi
     call __han_nonefield
 1:
@@ -35708,7 +35720,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2590, %rdi
+    movq $2591, %rdi
     leaq .Ls2009(%rip), %rsi
     call __han_nonefield
 1:
@@ -35719,7 +35731,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2590, %rdx
+    movq $2591, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -35731,7 +35743,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2592, %rdi
+    movq $2593, %rdi
     leaq .Ls2010(%rip), %rsi
     call __han_nonefield
 1:
@@ -35756,7 +35768,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2594, %rdi
+    movq $2595, %rdi
     leaq .Ls2013(%rip), %rsi
     call __han_nonefield
 1:
@@ -35769,7 +35781,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2594, %rdi
+    movq $2595, %rdi
     leaq .Ls2014(%rip), %rsi
     call __han_nonefield
 1:
@@ -35788,7 +35800,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2594, %rdi
+    movq $2595, %rdi
     leaq .Ls2015(%rip), %rsi
     call __han_nonefield
 1:
@@ -35807,7 +35819,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2594, %rdi
+    movq $2595, %rdi
     leaq .Ls2016(%rip), %rsi
     call __han_nonefield
 1:
@@ -35829,7 +35841,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2595, %rdi
+    movq $2596, %rdi
     leaq .Ls2018(%rip), %rsi
     call __han_nonefield
 1:
@@ -35862,7 +35874,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2597, %rdi
+    movq $2598, %rdi
     leaq .Ls2020(%rip), %rsi
     call __han_nonefield
 1:
@@ -35873,7 +35885,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2600, %rdi
+    movq $2601, %rdi
     leaq .Ls2021(%rip), %rsi
     call __han_nonefield
 1:
@@ -35893,7 +35905,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2600, %rdi
+    movq $2601, %rdi
     leaq .Ls2023(%rip), %rsi
     call __han_nonefield
 1:
@@ -35914,7 +35926,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2601, %rdi
+    movq $2602, %rdi
     leaq .Ls2025(%rip), %rsi
     call __han_nonefield
 1:
@@ -35927,7 +35939,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2601, %rdi
+    movq $2602, %rdi
     leaq .Ls2027(%rip), %rsi
     call __han_nonefield
 1:
@@ -35948,7 +35960,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2601, %rdi
+    movq $2602, %rdi
     leaq .Ls2029(%rip), %rsi
     call __han_nonefield
 1:
@@ -35981,7 +35993,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2602, %rdi
+    movq $2603, %rdi
     leaq .Ls2031(%rip), %rsi
     call __han_nonefield
 1:
@@ -35992,7 +36004,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2605, %rdi
+    movq $2606, %rdi
     leaq .Ls2032(%rip), %rsi
     call __han_nonefield
 1:
@@ -36012,7 +36024,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2606, %rdi
+    movq $2607, %rdi
     leaq .Ls2034(%rip), %rsi
     call __han_nonefield
 1:
@@ -36025,7 +36037,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2606, %rdi
+    movq $2607, %rdi
     leaq .Ls2036(%rip), %rsi
     call __han_nonefield
 1:
@@ -36058,7 +36070,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2607, %rdi
+    movq $2608, %rdi
     leaq .Ls2038(%rip), %rsi
     call __han_nonefield
 1:
@@ -36069,7 +36081,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2610, %rdi
+    movq $2611, %rdi
     leaq .Ls2039(%rip), %rsi
     call __han_nonefield
 1:
@@ -36089,7 +36101,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2611, %rdi
+    movq $2612, %rdi
     leaq .Ls2041(%rip), %rsi
     call __han_nonefield
 1:
@@ -36102,7 +36114,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2611, %rdi
+    movq $2612, %rdi
     leaq .Ls2043(%rip), %rsi
     call __han_nonefield
 1:
@@ -36135,7 +36147,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2612, %rdi
+    movq $2613, %rdi
     leaq .Ls2045(%rip), %rsi
     call __han_nonefield
 1:
@@ -36146,7 +36158,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2615, %rdi
+    movq $2616, %rdi
     leaq .Ls2046(%rip), %rsi
     call __han_nonefield
 1:
@@ -36156,7 +36168,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2615, %rdi
+    movq $2616, %rdi
     leaq .Ls2047(%rip), %rsi
     call __han_nonefield
 1:
@@ -36168,7 +36180,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2615, %rdi
+    movq $2616, %rdi
     leaq .Ls2048(%rip), %rsi
     call __han_nonefield
 1:
@@ -36180,7 +36192,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2615, %rdi
+    movq $2616, %rdi
     leaq .Ls2049(%rip), %rsi
     call __han_nonefield
 1:
@@ -36196,7 +36208,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2616, %rdi
+    movq $2617, %rdi
     leaq .Ls2051(%rip), %rsi
     call __han_nonefield
 1:
@@ -36217,7 +36229,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2616, %rdi
+    movq $2617, %rdi
     leaq .Ls2053(%rip), %rsi
     call __han_nonefield
 1:
@@ -36250,7 +36262,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2618, %rdi
+    movq $2619, %rdi
     leaq .Ls2055(%rip), %rsi
     call __han_nonefield
 1:
@@ -36258,7 +36270,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2619, %rdi
+    movq $2620, %rdi
     leaq .Ls2056(%rip), %rsi
     call __han_nonefield
 1:
@@ -36284,7 +36296,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2619, %rdi
+    movq $2620, %rdi
     leaq .Ls2058(%rip), %rsi
     call __han_nonefield
 1:
@@ -36293,7 +36305,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2620, %rdi
+    movq $2621, %rdi
     leaq .Ls2059(%rip), %rsi
     call __han_nonefield
 1:
@@ -36316,7 +36328,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2620, %rdi
+    movq $2621, %rdi
     leaq .Ls2061(%rip), %rsi
     call __han_nonefield
 1:
@@ -36326,7 +36338,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2620, %rdi
+    movq $2621, %rdi
     leaq .Ls2062(%rip), %rsi
     call __han_nonefield
 1:
@@ -36335,7 +36347,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2621, %rdi
+    movq $2622, %rdi
     leaq .Ls2063(%rip), %rsi
     call __han_nonefield
 1:
@@ -36355,7 +36367,7 @@ fn80:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2621, %rdi
+    movq $2622, %rdi
     leaq .Ls2065(%rip), %rsi
     call __han_nonefield
 1:
@@ -36383,7 +36395,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2627, %rdi
+    movq $2628, %rdi
     leaq .Ls2068(%rip), %rsi
     call __han_nonefield
 1:
@@ -36394,7 +36406,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2627, %rdx
+    movq $2628, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -36406,7 +36418,7 @@ fn80:
     movq -72(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2629, %rdi
+    movq $2630, %rdi
     leaq .Ls2069(%rip), %rsi
     call __han_nonefield
 1:
@@ -36436,7 +36448,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2630, %rdi
+    movq $2631, %rdi
     leaq .Ls2071(%rip), %rsi
     call __han_nonefield
 1:
@@ -36467,7 +36479,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2631, %rdi
+    movq $2632, %rdi
     leaq .Ls2074(%rip), %rsi
     call __han_nonefield
 1:
@@ -36513,7 +36525,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2632, %rdi
+    movq $2633, %rdi
     leaq .Ls2077(%rip), %rsi
     call __han_nonefield
 1:
@@ -36537,7 +36549,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2633, %rdi
+    movq $2634, %rdi
     leaq .Ls2079(%rip), %rsi
     call __han_nonefield
 1:
@@ -36565,7 +36577,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2634, %rdi
+    movq $2635, %rdi
     leaq .Ls2082(%rip), %rsi
     call __han_nonefield
 1:
@@ -36593,7 +36605,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2635, %rdi
+    movq $2636, %rdi
     leaq .Ls2085(%rip), %rsi
     call __han_nonefield
 1:
@@ -36627,7 +36639,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2636, %rdi
+    movq $2637, %rdi
     leaq .Ls2088(%rip), %rsi
     call __han_nonefield
 1:
@@ -36651,7 +36663,7 @@ fn80:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2641, %rdi
+    movq $2642, %rdi
     leaq .Ls2090(%rip), %rsi
     call __han_nonefield
 1:
@@ -36662,14 +36674,14 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2641, %rdx
+    movq $2642, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2641, %rdi
+    movq $2642, %rdi
     leaq .Ls2091(%rip), %rsi
     call __han_nonefield
 1:
@@ -36692,30 +36704,8 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2648, %rdi
-    leaq .Ls2092(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq %r13, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $2648, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn80
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
     movq $2649, %rdi
-    leaq .Ls2093(%rip), %rsi
+    leaq .Ls2092(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -36730,9 +36720,31 @@ fn80:
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn80
+    movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2649, %rdi
+    movq $2650, %rdi
+    leaq .Ls2093(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq %r13, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $2650, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $2650, %rdi
     leaq .Ls2094(%rip), %rsi
     call __han_nonefield
 1:
@@ -36745,7 +36757,7 @@ fn80:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2647, %rdi
+    movq $2648, %rdi
     leaq .Ls2095(%rip), %rsi
     call __han_nonefield
 1:
@@ -36759,7 +36771,7 @@ fn80:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2653, %rdi
+    movq $2654, %rdi
     leaq .Ls2096(%rip), %rsi
     call __han_nonefield
 1:
@@ -36770,7 +36782,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2653, %rdx
+    movq $2654, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -36786,7 +36798,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2656, %rdx
+    movq $2657, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -36805,7 +36817,7 @@ fn80:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2657, %rcx
+    movq $2658, %rcx
     call __han_lset
 1:
     movq 16(%rax), %rax
@@ -36822,7 +36834,7 @@ fn80:
     movq -200(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2655, %rdi
+    movq $2656, %rdi
     leaq .Ls2097(%rip), %rsi
     call __han_nonefield
 1:
@@ -36847,7 +36859,7 @@ fn80:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2661, %rdi
+    movq $2662, %rdi
     leaq .Ls2098(%rip), %rsi
     call __han_nonefield
 1:
@@ -36942,7 +36954,7 @@ fn81:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2055, %rdi
+    movq $2056, %rdi
     leaq .Ls2106(%rip), %rsi
     call __han_nonefield
 1:
@@ -36956,14 +36968,14 @@ fn81:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2055, %rdx
+    movq $2056, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2055, %rdi
+    movq $2056, %rdi
     leaq .Ls2107(%rip), %rsi
     call __han_nonefield
 1:
@@ -36992,7 +37004,7 @@ fn81:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2037, %rdi
+    movq $2038, %rdi
     leaq .Ls2108(%rip), %rsi
     call __han_nonefield
 1:
@@ -37006,7 +37018,7 @@ fn81:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2037, %rdx
+    movq $2038, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -37121,7 +37133,7 @@ fn84:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2037, %rdi
+    movq $2038, %rdi
     leaq .Ls2112(%rip), %rsi
     call __han_nonefield
 1:
@@ -37135,7 +37147,7 @@ fn84:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2037, %rdx
+    movq $2038, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -37162,7 +37174,7 @@ fn85:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2693, %rdi
+    movq $2694, %rdi
     leaq .Ls2113(%rip), %rsi
     call __han_nonefield
 1:
@@ -37172,7 +37184,7 @@ fn85:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2693, %rdi
+    movq $2694, %rdi
     leaq .Ls2114(%rip), %rsi
     call __han_nonefield
 1:
@@ -37227,7 +37239,7 @@ fn86:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2674, %rdi
+    movq $2675, %rdi
     leaq .Ls2117(%rip), %rsi
     call __han_nonefield
 1:
@@ -37249,7 +37261,7 @@ fn86:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2675, %rdi
+    movq $2676, %rdi
     leaq .Ls2119(%rip), %rsi
     call __han_nonefield
 1:
@@ -37271,7 +37283,7 @@ fn86:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2676, %rdi
+    movq $2677, %rdi
     leaq .Ls2121(%rip), %rsi
     call __han_nonefield
 1:
@@ -37295,7 +37307,7 @@ fn86:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2678, %rdi
+    movq $2679, %rdi
     leaq .Ls2123(%rip), %rsi
     call __han_nonefield
 1:
@@ -37312,7 +37324,7 @@ fn86:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2679, %rdi
+    movq $2680, %rdi
     leaq .Ls2125(%rip), %rsi
     call __han_nonefield
 1:
@@ -37340,7 +37352,7 @@ fn86:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2682, %rdi
+    movq $2683, %rdi
     leaq .Ls2127(%rip), %rsi
     call __han_nonefield
 1:
@@ -37353,7 +37365,7 @@ fn86:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2685, %rdi
+    movq $2686, %rdi
     leaq .Ls2128(%rip), %rsi
     call __han_nonefield
 1:
@@ -37361,7 +37373,7 @@ fn86:
     movq %r12, %rcx
     cmpq $63, %rcx
     jbe 1f
-    movl $2685, %edi
+    movl $2686, %edi
     movq %rcx, %rsi
     call __han_shift
 1:
@@ -37408,7 +37420,7 @@ fn87:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2098, %rdi
+    movq $2099, %rdi
     leaq .Ls2129(%rip), %rsi
     call __han_nonefield
 1:
@@ -37425,7 +37437,7 @@ fn87:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2100, %rdi
+    movq $2101, %rdi
     leaq .Ls2130(%rip), %rsi
     call __han_nonefield
 1:
@@ -37436,7 +37448,7 @@ fn87:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2100, %rdx
+    movq $2101, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -37615,7 +37627,7 @@ fn91:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2115, %rdi
+    movq $2116, %rdi
     leaq .Ls2131(%rip), %rsi
     call __han_nonefield
 1:
@@ -37629,14 +37641,14 @@ fn91:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2115, %rdx
+    movq $2116, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $2115, %rdi
+    movq $2116, %rdi
     leaq .Ls2132(%rip), %rsi
     call __han_nonefield
 1:
@@ -37672,7 +37684,7 @@ fn92:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2177, %rdi
+    movq $2178, %rdi
     leaq .Ls2133(%rip), %rsi
     call __han_nonefield
 1:
@@ -37681,7 +37693,7 @@ fn92:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2178, %rdi
+    movq $2179, %rdi
     leaq .Ls2134(%rip), %rsi
     call __han_nonefield
 1:
@@ -37690,7 +37702,7 @@ fn92:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2179, %rdi
+    movq $2180, %rdi
     leaq .Ls2135(%rip), %rsi
     call __han_nonefield
 1:
@@ -37699,7 +37711,7 @@ fn92:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2180, %rdi
+    movq $2181, %rdi
     leaq .Ls2136(%rip), %rsi
     call __han_nonefield
 1:
@@ -37726,7 +37738,7 @@ fn92:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2183, %rdx
+    movq $2184, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -37734,7 +37746,7 @@ fn92:
     movq %rax, %rbx
     testq %rax, %rax
     jne 1f
-    movq $2184, %rdi
+    movq $2185, %rdi
     leaq .Ls2138(%rip), %rsi
     call __han_nonefield
 1:
@@ -37744,7 +37756,7 @@ fn92:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2184, %rdi
+    movq $2185, %rdi
     leaq .Ls2139(%rip), %rsi
     call __han_nonefield
 1:
@@ -37754,7 +37766,7 @@ fn92:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2184, %rdi
+    movq $2185, %rdi
     leaq .Ls2140(%rip), %rsi
     call __han_nonefield
 1:
@@ -37771,7 +37783,7 @@ fn92:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2185, %rdi
+    movq $2186, %rdi
     leaq .Ls2141(%rip), %rsi
     call __han_nonefield
 1:
@@ -37789,7 +37801,7 @@ fn92:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2187, %rdi
+    movq $2188, %rdi
     leaq .Ls2143(%rip), %rsi
     call __han_nonefield
 1:
@@ -37841,7 +37853,7 @@ fn92:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2193, %rdi
+    movq $2194, %rdi
     leaq .Ls2147(%rip), %rsi
     call __han_nonefield
 1:
@@ -37886,7 +37898,7 @@ fn92:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2202, %rdx
+    movq $2203, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -37894,7 +37906,7 @@ fn92:
     movq %rax, %rbx
     testq %rax, %rax
     jne 1f
-    movq $2203, %rdi
+    movq $2204, %rdi
     leaq .Ls2150(%rip), %rsi
     call __han_nonefield
 1:
@@ -37904,7 +37916,7 @@ fn92:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2203, %rdi
+    movq $2204, %rdi
     leaq .Ls2151(%rip), %rsi
     call __han_nonefield
 1:
@@ -37917,7 +37929,7 @@ fn92:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2204, %rdi
+    movq $2205, %rdi
     leaq .Ls2152(%rip), %rsi
     call __han_nonefield
 1:
@@ -37953,7 +37965,7 @@ fn92:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2209, %rdi
+    movq $2210, %rdi
     leaq .Ls2155(%rip), %rsi
     call __han_nonefield
 1:
@@ -38026,7 +38038,7 @@ fn92:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2221, %rdx
+    movq $2222, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -38034,7 +38046,7 @@ fn92:
     movq %rax, %rbx
     testq %rax, %rax
     jne 1f
-    movq $2222, %rdi
+    movq $2223, %rdi
     leaq .Ls2160(%rip), %rsi
     call __han_nonefield
 1:
@@ -38044,7 +38056,7 @@ fn92:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2222, %rdi
+    movq $2223, %rdi
     leaq .Ls2161(%rip), %rsi
     call __han_nonefield
 1:
@@ -38071,7 +38083,7 @@ fn92:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2223, %rdi
+    movq $2224, %rdi
     leaq .Ls2164(%rip), %rsi
     call __han_nonefield
 1:
@@ -38095,7 +38107,7 @@ fn92:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2223, %rdi
+    movq $2224, %rdi
     leaq .Ls2166(%rip), %rsi
     call __han_nonefield
 1:
@@ -38181,7 +38193,7 @@ fn93:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2700, %rdi
+    movq $2701, %rdi
     leaq .Ls2171(%rip), %rsi
     call __han_nonefield
 1:
@@ -38192,7 +38204,7 @@ fn93:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2700, %rdx
+    movq $2701, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -38204,7 +38216,7 @@ fn93:
     movq -32(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2701, %rdi
+    movq $2702, %rdi
     leaq .Ls2173(%rip), %rsi
     call __han_nonefield
 1:
@@ -38220,7 +38232,7 @@ fn93:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $2702, %rdi
+    movq $2703, %rdi
     leaq .Ls2174(%rip), %rsi
     call __han_nonefield
 1:
@@ -38230,7 +38242,7 @@ fn93:
     movq -32(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2702, %rdi
+    movq $2703, %rdi
     leaq .Ls2175(%rip), %rsi
     call __han_nonefield
 1:
@@ -38246,7 +38258,7 @@ fn93:
     movq -32(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2703, %rdi
+    movq $2704, %rdi
     leaq .Ls2177(%rip), %rsi
     call __han_nonefield
 1:
@@ -38267,7 +38279,7 @@ fn93:
     movq -32(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2703, %rdi
+    movq $2704, %rdi
     leaq .Ls2179(%rip), %rsi
     call __han_nonefield
 1:
@@ -38291,7 +38303,7 @@ fn93:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $2703, %rdi
+    movq $2704, %rdi
     leaq .Ls2181(%rip), %rsi
     call __han_nonefield
 1:
@@ -38321,7 +38333,7 @@ fn93:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $2707, %rdi
+    movq $2708, %rdi
     leaq .Ls2183(%rip), %rsi
     call __han_nonefield
 1:
@@ -38332,7 +38344,7 @@ fn93:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2707, %rdx
+    movq $2708, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -38344,7 +38356,7 @@ fn93:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2709, %rdi
+    movq $2710, %rdi
     leaq .Ls2184(%rip), %rsi
     call __han_nonefield
 1:
@@ -38353,7 +38365,7 @@ fn93:
     movq -32(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2710, %rdi
+    movq $2711, %rdi
     leaq .Ls2185(%rip), %rsi
     call __han_nonefield
 1:
@@ -38364,7 +38376,7 @@ fn93:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2710, %rdx
+    movq $2711, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -38413,7 +38425,7 @@ fn93:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $2706, %rdi
+    movq $2707, %rdi
     leaq .Ls2189(%rip), %rsi
     call __han_nonefield
 1:
@@ -38433,7 +38445,7 @@ fn93:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2717, %rdi
+    movq $2718, %rdi
     leaq .Ls2191(%rip), %rsi
     call __han_nonefield
 1:
@@ -38447,7 +38459,7 @@ fn93:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2718, %rdi
+    movq $2719, %rdi
     leaq .Ls2192(%rip), %rsi
     call __han_nonefield
 1:
@@ -38461,7 +38473,7 @@ fn93:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2719, %rdi
+    movq $2720, %rdi
     leaq .Ls2193(%rip), %rsi
     call __han_nonefield
 1:
@@ -38469,7 +38481,7 @@ fn93:
     movq -32(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2720, %rdi
+    movq $2721, %rdi
     leaq .Ls2194(%rip), %rsi
     call __han_nonefield
 1:
@@ -38485,7 +38497,7 @@ fn93:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2720, %rdi
+    movq $2721, %rdi
     leaq .Ls2195(%rip), %rsi
     call __han_nonefield
 1:
@@ -38525,7 +38537,7 @@ fn94:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2136, %rdi
+    movq $2137, %rdi
     leaq .Ls2196(%rip), %rsi
     call __han_nonefield
 1:
@@ -38535,7 +38547,7 @@ fn94:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2136, %rdi
+    movq $2137, %rdi
     leaq .Ls2197(%rip), %rsi
     call __han_nonefield
 1:
@@ -38546,7 +38558,7 @@ fn94:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2136, %rdx
+    movq $2137, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -38583,7 +38595,7 @@ fn94:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2145, %rdx
+    movq $2146, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -38619,7 +38631,7 @@ fn94:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $2141, %rdi
+    movq $2142, %rdi
     leaq .Ls2198(%rip), %rsi
     call __han_nonefield
 1:
@@ -38665,7 +38677,7 @@ fn95:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2120, %rdi
+    movq $2121, %rdi
     leaq .Ls2199(%rip), %rsi
     call __han_nonefield
 1:
@@ -38685,7 +38697,7 @@ fn95:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2120, %rdi
+    movq $2121, %rdi
     leaq .Ls2201(%rip), %rsi
     call __han_nonefield
 1:
@@ -38706,7 +38718,7 @@ fn95:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2120, %rdi
+    movq $2121, %rdi
     leaq .Ls2203(%rip), %rsi
     call __han_nonefield
 1:
@@ -38717,7 +38729,7 @@ fn95:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2121, %rdi
+    movq $2122, %rdi
     leaq .Ls2204(%rip), %rsi
     call __han_nonefield
 1:
@@ -38728,7 +38740,7 @@ fn95:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2121, %rdx
+    movq $2122, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -38736,7 +38748,7 @@ fn95:
     movq %rax, %r15
     testq %rax, %rax
     jne 1f
-    movq $2122, %rdi
+    movq $2123, %rdi
     leaq .Ls2205(%rip), %rsi
     call __han_nonefield
 1:
@@ -38756,7 +38768,7 @@ fn95:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $2122, %rdi
+    movq $2123, %rdi
     leaq .Ls2207(%rip), %rsi
     call __han_nonefield
 1:
@@ -38772,7 +38784,7 @@ fn95:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2122, %rdi
+    movq $2123, %rdi
     leaq .Ls2208(%rip), %rsi
     call __han_nonefield
 1:
@@ -38785,7 +38797,7 @@ fn95:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2123, %rdi
+    movq $2124, %rdi
     leaq .Ls2209(%rip), %rsi
     call __han_nonefield
 1:
@@ -38801,7 +38813,7 @@ fn95:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2128, %rdi
+    movq $2129, %rdi
     leaq .Ls2210(%rip), %rsi
     call __han_nonefield
 1:
@@ -38812,7 +38824,7 @@ fn95:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2128, %rdx
+    movq $2129, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -38826,7 +38838,7 @@ fn95:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2127, %rdi
+    movq $2128, %rdi
     leaq .Ls2211(%rip), %rsi
     call __han_nonefield
 1:
@@ -38867,7 +38879,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2234, %rdi
+    movq $2235, %rdi
     leaq .Ls2212(%rip), %rsi
     call __han_nonefield
 1:
@@ -38878,7 +38890,7 @@ fn96:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2234, %rdx
+    movq $2235, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -38886,7 +38898,7 @@ fn96:
     movq %rax, -40(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $2235, %rdi
+    movq $2236, %rdi
     leaq .Ls2213(%rip), %rsi
     call __han_nonefield
 1:
@@ -38895,7 +38907,7 @@ fn96:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2236, %rdi
+    movq $2237, %rdi
     leaq .Ls2214(%rip), %rsi
     call __han_nonefield
 1:
@@ -38914,7 +38926,7 @@ fn96:
     movq -40(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2237, %rdi
+    movq $2238, %rdi
     leaq .Ls2216(%rip), %rsi
     call __han_nonefield
 1:
@@ -38943,7 +38955,7 @@ fn96:
     movq -40(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2238, %rdi
+    movq $2239, %rdi
     leaq .Ls2219(%rip), %rsi
     call __han_nonefield
 1:
@@ -38991,7 +39003,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2243, %rdi
+    movq $2244, %rdi
     leaq .Ls2222(%rip), %rsi
     call __han_nonefield
 1:
@@ -39002,7 +39014,7 @@ fn96:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2243, %rdx
+    movq $2244, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -39010,7 +39022,7 @@ fn96:
     movq %rax, %r13
     testq %rax, %rax
     jne 1f
-    movq $2244, %rdi
+    movq $2245, %rdi
     leaq .Ls2223(%rip), %rsi
     call __han_nonefield
 1:
@@ -39021,7 +39033,7 @@ fn96:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2246, %rdi
+    movq $2247, %rdi
     leaq .Ls2224(%rip), %rsi
     call __han_nonefield
 1:
@@ -39034,7 +39046,7 @@ fn96:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2247, %rdi
+    movq $2248, %rdi
     leaq .Ls2225(%rip), %rsi
     call __han_nonefield
 1:
@@ -39044,7 +39056,7 @@ fn96:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2247, %rdi
+    movq $2248, %rdi
     leaq .Ls2226(%rip), %rsi
     call __han_nonefield
 1:
@@ -39054,7 +39066,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2249, %rdi
+    movq $2250, %rdi
     leaq .Ls2227(%rip), %rsi
     call __han_nonefield
 1:
@@ -39072,7 +39084,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2250, %rdi
+    movq $2251, %rdi
     leaq .Ls2228(%rip), %rsi
     call __han_nonefield
 1:
@@ -39095,7 +39107,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2255, %rdi
+    movq $2256, %rdi
     leaq .Ls2230(%rip), %rsi
     call __han_nonefield
 1:
@@ -39103,7 +39115,7 @@ fn96:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2256, %rdi
+    movq $2257, %rdi
     leaq .Ls2231(%rip), %rsi
     call __han_nonefield
 1:
@@ -39116,7 +39128,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2242, %rdi
+    movq $2243, %rdi
     leaq .Ls2232(%rip), %rsi
     call __han_nonefield
 1:
@@ -39168,7 +39180,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2265, %rdi
+    movq $2266, %rdi
     leaq .Ls2235(%rip), %rsi
     call __han_nonefield
 1:
@@ -39182,7 +39194,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2266, %rdi
+    movq $2267, %rdi
     leaq .Ls2236(%rip), %rsi
     call __han_nonefield
 1:
@@ -39196,7 +39208,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2267, %rdi
+    movq $2268, %rdi
     leaq .Ls2237(%rip), %rsi
     call __han_nonefield
 1:
@@ -39210,7 +39222,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2268, %rdi
+    movq $2269, %rdi
     leaq .Ls2238(%rip), %rsi
     call __han_nonefield
 1:
@@ -39224,7 +39236,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2269, %rdi
+    movq $2270, %rdi
     leaq .Ls2239(%rip), %rsi
     call __han_nonefield
 1:
@@ -39235,7 +39247,7 @@ fn96:
     movq -40(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2270, %rdi
+    movq $2271, %rdi
     leaq .Ls2240(%rip), %rsi
     call __han_nonefield
 1:
@@ -39247,7 +39259,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2270, %rdi
+    movq $2271, %rdi
     leaq .Ls2241(%rip), %rsi
     call __han_nonefield
 1:
@@ -39255,7 +39267,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2271, %rdi
+    movq $2272, %rdi
     leaq .Ls2242(%rip), %rsi
     call __han_nonefield
 1:
@@ -39266,7 +39278,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2272, %rdi
+    movq $2273, %rdi
     leaq .Ls2243(%rip), %rsi
     call __han_nonefield
 1:
@@ -39291,7 +39303,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2273, %rdi
+    movq $2274, %rdi
     leaq .Ls2245(%rip), %rsi
     call __han_nonefield
 1:
@@ -39299,11 +39311,11 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2275, %rdi
+    movq $2276, %rdi
     leaq .Ls2246(%rip), %rsi
     call __han_nonefield
 1:
-    movq 432(%rax), %rax
+    movq 440(%rax), %rax
     cmpq $1, %rax
     jne .L1460
     movq -88(%rbp), %rax
@@ -39315,7 +39327,7 @@ fn96:
     movq -88(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2276, %rdi
+    movq $2277, %rdi
     leaq .Ls2248(%rip), %rsi
     call __han_nonefield
 1:
@@ -39329,7 +39341,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2276, %rdi
+    movq $2277, %rdi
     leaq .Ls2249(%rip), %rsi
     call __han_nonefield
 1:
@@ -39368,7 +39380,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2278, %rdi
+    movq $2279, %rdi
     leaq .Ls2251(%rip), %rsi
     call __han_nonefield
 1:
@@ -39384,7 +39396,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2281, %rdi
+    movq $2282, %rdi
     leaq .Ls2252(%rip), %rsi
     call __han_nonefield
 1:
@@ -39397,7 +39409,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2285, %rdi
+    movq $2286, %rdi
     leaq .Ls2254(%rip), %rsi
     call __han_nonefield
 1:
@@ -39408,7 +39420,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2285, %rdi
+    movq $2286, %rdi
     leaq .Ls2255(%rip), %rsi
     call __han_nonefield
 1:
@@ -39417,7 +39429,7 @@ fn96:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2285, %rdi
+    movq $2286, %rdi
     leaq .Ls2256(%rip), %rsi
     call __han_nonefield
 1:
@@ -39430,7 +39442,7 @@ fn96:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2285, %rdx
+    movq $2286, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -39447,7 +39459,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2286, %rdi
+    movq $2287, %rdi
     leaq .Ls2258(%rip), %rsi
     call __han_nonefield
 1:
@@ -39473,7 +39485,7 @@ fn96:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $2286, %rdi
+    movq $2287, %rdi
     leaq .Ls2261(%rip), %rsi
     call __han_nonefield
 1:
@@ -39515,7 +39527,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2288, %rdi
+    movq $2289, %rdi
     leaq .Ls2264(%rip), %rsi
     call __han_nonefield
 1:
@@ -39524,7 +39536,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2289, %rdi
+    movq $2290, %rdi
     leaq .Ls2265(%rip), %rsi
     call __han_nonefield
 1:
@@ -39533,7 +39545,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2290, %rdi
+    movq $2291, %rdi
     leaq .Ls2266(%rip), %rsi
     call __han_nonefield
 1:
@@ -39542,7 +39554,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2291, %rdi
+    movq $2292, %rdi
     leaq .Ls2267(%rip), %rsi
     call __han_nonefield
 1:
@@ -39558,7 +39570,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2292, %rdi
+    movq $2293, %rdi
     leaq .Ls2268(%rip), %rsi
     call __han_nonefield
 1:
@@ -39573,7 +39585,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2293, %rdi
+    movq $2294, %rdi
     leaq .Ls2269(%rip), %rsi
     call __han_nonefield
 1:
@@ -39584,7 +39596,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2296, %rdi
+    movq $2297, %rdi
     leaq .Ls2270(%rip), %rsi
     call __han_nonefield
 1:
@@ -39594,7 +39606,7 @@ fn96:
     movq -40(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2296, %rdi
+    movq $2297, %rdi
     leaq .Ls2271(%rip), %rsi
     call __han_nonefield
 1:
@@ -39605,7 +39617,7 @@ fn96:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2296, %rdx
+    movq $2297, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -39617,7 +39629,7 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2297, %rdi
+    movq $2298, %rdi
     leaq .Ls2272(%rip), %rsi
     call __han_nonefield
 1:
@@ -39631,7 +39643,7 @@ fn96:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2297, %rdx
+    movq $2298, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -39658,7 +39670,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2300, %rdi
+    movq $2301, %rdi
     leaq .Ls2273(%rip), %rsi
     call __han_nonefield
 1:
@@ -39672,7 +39684,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2301, %rdi
+    movq $2302, %rdi
     leaq .Ls2274(%rip), %rsi
     call __han_nonefield
 1:
@@ -39680,7 +39692,7 @@ fn96:
     movq -88(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2302, %rdi
+    movq $2303, %rdi
     leaq .Ls2275(%rip), %rsi
     call __han_nonefield
 1:
@@ -39697,7 +39709,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2303, %rdi
+    movq $2304, %rdi
     leaq .Ls2276(%rip), %rsi
     call __han_nonefield
 1:
@@ -39705,7 +39717,7 @@ fn96:
     movq -88(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2304, %rdi
+    movq $2305, %rdi
     leaq .Ls2277(%rip), %rsi
     call __han_nonefield
 1:
@@ -39721,7 +39733,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2304, %rdi
+    movq $2305, %rdi
     leaq .Ls2278(%rip), %rsi
     call __han_nonefield
 1:
@@ -39736,7 +39748,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2305, %rdi
+    movq $2306, %rdi
     leaq .Ls2279(%rip), %rsi
     call __han_nonefield
 1:
@@ -39750,7 +39762,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2306, %rdi
+    movq $2307, %rdi
     leaq .Ls2280(%rip), %rsi
     call __han_nonefield
 1:
@@ -39764,7 +39776,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2307, %rdi
+    movq $2308, %rdi
     leaq .Ls2281(%rip), %rsi
     call __han_nonefield
 1:
@@ -39778,7 +39790,7 @@ fn96:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2308, %rdi
+    movq $2309, %rdi
     leaq .Ls2282(%rip), %rsi
     call __han_nonefield
 1:
@@ -39789,19 +39801,19 @@ fn96:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2309, %rdi
+    movq $2310, %rdi
     leaq .Ls2283(%rip), %rsi
     call __han_nonefield
 1:
     movq 288(%rax), %rax
     movq %rax, %rdi
-    movq $2309, %rsi
+    movq $2310, %rsi
     call __han_lpop
 .L1473:
     movq -88(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2310, %rdi
+    movq $2311, %rdi
     leaq .Ls2284(%rip), %rsi
     call __han_nonefield
 1:
@@ -39880,7 +39892,7 @@ fn97:
     jb 1f
     movq -8(%rbp), %rdi
     movq %rcx, %rsi
-    movq $2077, %rdx
+    movq $2078, %rdx
     call __han_lget
 1:
     movq (%r13,%rdx,8), %rax
@@ -39891,7 +39903,7 @@ fn97:
     jb 1f
     movq -16(%rbp), %rdi
     movq %rcx, %rsi
-    movq $2077, %rdx
+    movq $2078, %rdx
     call __han_lget
 1:
     movq (%r15,%rdx,8), %rax
@@ -39941,7 +39953,7 @@ fn98:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2085, %rdi
+    movq $2086, %rdi
     leaq .Ls2285(%rip), %rsi
     call __han_nonefield
 1:
@@ -39951,7 +39963,7 @@ fn98:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2085, %rdi
+    movq $2086, %rdi
     leaq .Ls2286(%rip), %rsi
     call __han_nonefield
 1:
@@ -39961,7 +39973,7 @@ fn98:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2085, %rdi
+    movq $2086, %rdi
     leaq .Ls2287(%rip), %rsi
     call __han_nonefield
 1:
@@ -39979,7 +39991,7 @@ fn98:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2086, %rdi
+    movq $2087, %rdi
     leaq .Ls2288(%rip), %rsi
     call __han_nonefield
 1:
@@ -39989,7 +40001,7 @@ fn98:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2086, %rdi
+    movq $2087, %rdi
     leaq .Ls2289(%rip), %rsi
     call __han_nonefield
 1:
@@ -40000,7 +40012,7 @@ fn98:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2087, %rdi
+    movq $2088, %rdi
     leaq .Ls2290(%rip), %rsi
     call __han_nonefield
 1:
@@ -40010,7 +40022,7 @@ fn98:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2087, %rdi
+    movq $2088, %rdi
     leaq .Ls2291(%rip), %rsi
     call __han_nonefield
 1:
@@ -40021,7 +40033,7 @@ fn98:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2088, %rdi
+    movq $2089, %rdi
     leaq .Ls2292(%rip), %rsi
     call __han_nonefield
 1:
@@ -40031,7 +40043,7 @@ fn98:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2088, %rdi
+    movq $2089, %rdi
     leaq .Ls2293(%rip), %rsi
     call __han_nonefield
 1:
@@ -40042,7 +40054,7 @@ fn98:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $2091, %rdi
+    movq $2092, %rdi
     leaq .Ls2294(%rip), %rsi
     call __han_nonefield
 1:
@@ -40052,7 +40064,7 @@ fn98:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2091, %rdi
+    movq $2092, %rdi
     leaq .Ls2295(%rip), %rsi
     call __han_nonefield
 1:
@@ -40063,7 +40075,7 @@ fn98:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2091, %rdx
+    movq $2092, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -40079,7 +40091,7 @@ fn98:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2090, %rdi
+    movq $2091, %rdi
     leaq .Ls2296(%rip), %rsi
     call __han_nonefield
 1:
@@ -40117,7 +40129,7 @@ fn99:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3104, %rdi
+    movq $3105, %rdi
     leaq .Ls2297(%rip), %rsi
     call __han_nonefield
 1:
@@ -40128,14 +40140,14 @@ fn99:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3104, %rdx
+    movq $3105, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $3104, %rdi
+    movq $3105, %rdi
     leaq .Ls2298(%rip), %rsi
     call __han_nonefield
 1:
@@ -40156,7 +40168,7 @@ fn99:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3103, %rdi
+    movq $3104, %rdi
     leaq .Ls2299(%rip), %rsi
     call __han_nonefield
 1:
@@ -40210,7 +40222,7 @@ fn100:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2066, %rdx
+    movq $2067, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -40272,7 +40284,7 @@ fn101:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2724, %rdi
+    movq $2725, %rdi
     leaq .Ls2304(%rip), %rsi
     call __han_nonefield
 1:
@@ -40283,7 +40295,7 @@ fn101:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2724, %rdx
+    movq $2725, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -40292,7 +40304,7 @@ fn101:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2725, %rdi
+    movq $2726, %rdi
     leaq .Ls2305(%rip), %rsi
     call __han_nonefield
 1:
@@ -40303,7 +40315,7 @@ fn101:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2725, %rdx
+    movq $2726, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -40318,7 +40330,7 @@ fn101:
     movq -24(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2728, %rdi
+    movq $2729, %rdi
     leaq .Ls2306(%rip), %rsi
     call __han_nonefield
 1:
@@ -40327,7 +40339,7 @@ fn101:
     movq -32(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $2729, %rdi
+    movq $2730, %rdi
     leaq .Ls2307(%rip), %rsi
     call __han_nonefield
 1:
@@ -40336,7 +40348,7 @@ fn101:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $2730, %rdi
+    movq $2731, %rdi
     leaq .Ls2308(%rip), %rsi
     call __han_nonefield
 1:
@@ -40351,7 +40363,7 @@ fn101:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2731, %rdi
+    movq $2732, %rdi
     leaq .Ls2309(%rip), %rsi
     call __han_nonefield
 1:
@@ -40645,7 +40657,7 @@ fn101:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2754, %rdi
+    movq $2755, %rdi
     leaq .Ls2321(%rip), %rsi
     call __han_nonefield
 1:
@@ -40668,7 +40680,7 @@ fn101:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2756, %rdi
+    movq $2757, %rdi
     leaq .Ls2322(%rip), %rsi
     call __han_nonefield
 1:
@@ -40773,7 +40785,7 @@ fn101:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2767, %rdi
+    movq $2768, %rdi
     leaq .Ls2331(%rip), %rsi
     call __han_nonefield
 1:
@@ -40808,7 +40820,7 @@ fn101:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $2772, %rdi
+    movq $2773, %rdi
     leaq .Ls2334(%rip), %rsi
     call __han_nonefield
 1:
@@ -41060,7 +41072,7 @@ fn102:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2104, %rdi
+    movq $2105, %rdi
     leaq .Ls2357(%rip), %rsi
     call __han_nonefield
 1:
@@ -41074,7 +41086,7 @@ fn102:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2106, %rdi
+    movq $2107, %rdi
     leaq .Ls2358(%rip), %rsi
     call __han_nonefield
 1:
@@ -41085,7 +41097,7 @@ fn102:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2107, %rdi
+    movq $2108, %rdi
     leaq .Ls2359(%rip), %rsi
     call __han_nonefield
 1:
@@ -41098,7 +41110,7 @@ fn102:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $2109, %rdi
+    movq $2110, %rdi
     leaq .Ls2360(%rip), %rsi
     call __han_nonefield
 1:
@@ -41119,7 +41131,7 @@ fn102:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $2109, %rcx
+    movq $2110, %rcx
     call __han_lset
 1:
     movq 16(%rax), %rax
@@ -41154,7 +41166,7 @@ fn103:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3018, %rdi
+    movq $3019, %rdi
     leaq .Ls2361(%rip), %rsi
     call __han_nonefield
 1:
@@ -41163,7 +41175,7 @@ fn103:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3019, %rdi
+    movq $3020, %rdi
     leaq .Ls2362(%rip), %rsi
     call __han_nonefield
 1:
@@ -41330,7 +41342,7 @@ fn103:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3026, %rdi
+    movq $3027, %rdi
     leaq .Ls2379(%rip), %rsi
     call __han_nonefield
 1:
@@ -41344,7 +41356,7 @@ fn103:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3027, %rdx
+    movq $3028, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -41373,7 +41385,7 @@ fn103:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3028, %rdx
+    movq $3029, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -41416,7 +41428,7 @@ fn103:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3028, %rdx
+    movq $3029, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -41443,7 +41455,7 @@ fn103:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3032, %rdi
+    movq $3033, %rdi
     leaq .Ls2385(%rip), %rsi
     call __han_nonefield
 1:
@@ -41454,7 +41466,7 @@ fn103:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3032, %rdx
+    movq $3033, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -41466,7 +41478,7 @@ fn103:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $3034, %rdi
+    movq $3035, %rdi
     leaq .Ls2386(%rip), %rsi
     call __han_nonefield
 1:
@@ -41479,7 +41491,7 @@ fn103:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3035, %rdx
+    movq $3036, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -41598,7 +41610,7 @@ fn104:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4772, %rdi
+    movq $4776, %rdi
     leaq .Ls2393(%rip), %rsi
     call __han_nonefield
 1:
@@ -41609,7 +41621,7 @@ fn104:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4772, %rdx
+    movq $4776, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -41618,7 +41630,7 @@ fn104:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4773, %rdi
+    movq $4777, %rdi
     leaq .Ls2394(%rip), %rsi
     call __han_nonefield
 1:
@@ -41627,7 +41639,7 @@ fn104:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4773, %rdi
+    movq $4777, %rdi
     leaq .Ls2395(%rip), %rsi
     call __han_nonefield
 1:
@@ -41639,7 +41651,7 @@ fn104:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4773, %rdx
+    movq $4777, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -41655,7 +41667,7 @@ fn104:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $4775, %rdi
+    movq $4779, %rdi
     leaq .Ls2398(%rip), %rsi
     call __han_nonefield
 1:
@@ -41676,7 +41688,7 @@ fn104:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4775, %rdi
+    movq $4779, %rdi
     leaq .Ls2400(%rip), %rsi
     call __han_nonefield
 1:
@@ -41701,7 +41713,7 @@ fn104:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4776, %rdi
+    movq $4780, %rdi
     leaq .Ls2402(%rip), %rsi
     call __han_nonefield
 1:
@@ -41711,7 +41723,7 @@ fn104:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $4776, %rdi
+    movq $4780, %rdi
     leaq .Ls2403(%rip), %rsi
     call __han_nonefield
 1:
@@ -41721,7 +41733,7 @@ fn104:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4776, %rdi
+    movq $4780, %rdi
     leaq .Ls2404(%rip), %rsi
     call __han_nonefield
 1:
@@ -41739,7 +41751,7 @@ fn104:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4771, %rdi
+    movq $4775, %rdi
     leaq .Ls2405(%rip), %rsi
     call __han_nonefield
 1:
@@ -41756,11 +41768,11 @@ fn104:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4780, %rdi
+    movq $4784, %rdi
     leaq .Ls2406(%rip), %rsi
     call __han_nonefield
 1:
-    movq 432(%rax), %rax
+    movq 440(%rax), %rax
     cmpq $0, %rax
     jne .L1600
     leaq .Ls2407(%rip), %rax
@@ -41794,7 +41806,7 @@ fn105:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3088, %rdi
+    movq $3089, %rdi
     leaq .Ls2408(%rip), %rsi
     call __han_nonefield
 1:
@@ -41839,22 +41851,22 @@ fn106:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4650, %rdi
+    movq $4654, %rdi
     leaq .Ls2409(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 320(%rax)
+    movq %rdx, 328(%rax)
     movq $1, %rbx
     jmp .L1603
 .L1602:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4653, %rdi
+    movq $4657, %rdi
     leaq .Ls2410(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq -24(%rbp), %rax
@@ -41864,7 +41876,7 @@ fn106:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4653, %rdx
+    movq $4657, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -41905,11 +41917,11 @@ fn106:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4660, %rdi
+    movq $4664, %rdi
     leaq .Ls2412(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 384(%rax)
+    movq %rdx, 392(%rax)
     movq %r12, %rax
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -41919,11 +41931,11 @@ fn106:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4661, %rdi
+    movq $4665, %rdi
     leaq .Ls2413(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 392(%rax)
+    movq %rdx, 400(%rax)
     movq %r12, %rdi
     movq -32(%rbp), %rsi
     call fn109
@@ -41937,11 +41949,11 @@ fn106:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4665, %rdi
+    movq $4669, %rdi
     leaq .Ls2414(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 360(%rax)
+    movq %rdx, 368(%rax)
     movq %r12, %rax
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -41952,11 +41964,11 @@ fn106:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4666, %rdi
+    movq $4670, %rdi
     leaq .Ls2415(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 368(%rax)
+    movq %rdx, 376(%rax)
     movq $1, %rbx
     jmp .L1608
 .L1607:
@@ -41967,7 +41979,7 @@ fn106:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4669, %rdx
+    movq $4673, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -41999,11 +42011,11 @@ fn106:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4673, %rdi
+    movq $4677, %rdi
     leaq .Ls2416(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 344(%rax)
+    movq %rdx, 352(%rax)
     movq %r12, %rax
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -42014,11 +42026,11 @@ fn106:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4674, %rdi
+    movq $4678, %rdi
     leaq .Ls2417(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 352(%rax)
+    movq %rdx, 360(%rax)
     movl $5, %edi
     call __han_lnew
     subq $16, %rsp
@@ -42055,18 +42067,18 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4680, %rdi
+    movq $4684, %rdi
     leaq .Ls2423(%rip), %rsi
     call __han_nonefield
 1:
-    movq 360(%rax), %rax
+    movq 368(%rax), %rax
     movq %rbx, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4680, %rdx
+    movq $4684, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42075,11 +42087,11 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4681, %rdi
+    movq $4685, %rdi
     leaq .Ls2424(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     movq %rax, %rdi
     movq %r13, %rsi
     call fn13
@@ -42088,11 +42100,11 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4681, %rdi
+    movq $4685, %rdi
     leaq .Ls2425(%rip), %rsi
     call __han_nonefield
 1:
-    movq 344(%rax), %rax
+    movq 352(%rax), %rax
     movq %rax, %rdi
     movq %r13, %rsi
     call fn13
@@ -42140,18 +42152,18 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4686, %rdi
+    movq $4690, %rdi
     leaq .Ls2427(%rip), %rsi
     call __han_nonefield
 1:
-    movq 368(%rax), %rax
+    movq 376(%rax), %rax
     movq %rbx, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4686, %rdx
+    movq $4690, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42160,18 +42172,18 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4686, %rdi
+    movq $4690, %rdi
     leaq .Ls2428(%rip), %rsi
     call __han_nonefield
 1:
-    movq 368(%rax), %rax
+    movq 376(%rax), %rax
     movq %r15, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4686, %rdx
+    movq $4690, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42189,11 +42201,11 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4679, %rdi
+    movq $4683, %rdi
     leaq .Ls2429(%rip), %rsi
     call __han_nonefield
 1:
-    movq 360(%rax), %rax
+    movq 368(%rax), %rax
     movq (%rax), %rax
     movq %rax, %rcx
     movq %rbx, %rax
@@ -42207,28 +42219,28 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4691, %rdi
+    movq $4695, %rdi
     leaq .Ls2430(%rip), %rsi
     call __han_nonefield
 1:
-    movq 344(%rax), %rax
+    movq 352(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4691, %rdi
+    movq $4695, %rdi
     leaq .Ls2431(%rip), %rsi
     call __han_nonefield
 1:
-    movq 360(%rax), %rax
+    movq 368(%rax), %rax
     movq %r15, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4691, %rdx
+    movq $4695, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42240,21 +42252,21 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4692, %rdi
+    movq $4696, %rdi
     leaq .Ls2432(%rip), %rsi
     call __han_nonefield
 1:
-    movq 352(%rax), %rax
+    movq 360(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4692, %rdi
+    movq $4696, %rdi
     leaq .Ls2433(%rip), %rsi
     call __han_nonefield
 1:
-    movq 344(%rax), %rax
+    movq 352(%rax), %rax
     movq (%rax), %rax
     movq %rax, %rcx
     movq -56(%rbp), %rax
@@ -42263,7 +42275,7 @@ fn106:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4692, %rdx
+    movq $4696, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42276,11 +42288,11 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4676, %rdi
+    movq $4680, %rdi
     leaq .Ls2434(%rip), %rsi
     call __han_nonefield
 1:
-    movq 344(%rax), %rax
+    movq 352(%rax), %rax
     movq (%rax), %rax
     cmpq $5, %rax
     jl .L1610
@@ -42294,11 +42306,11 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4697, %rdi
+    movq $4701, %rdi
     leaq .Ls2435(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     leaq .Ls2436(%rip), %rax
@@ -42318,11 +42330,11 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4698, %rdi
+    movq $4702, %rdi
     leaq .Ls2437(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     movq (%rax), %rax
     shlq $3, %rax
     movq %rax, %rcx
@@ -42345,11 +42357,11 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4696, %rdi
+    movq $4700, %rdi
     leaq .Ls2439(%rip), %rsi
     call __han_nonefield
 1:
-    movq 352(%rax), %rax
+    movq 360(%rax), %rax
     movq (%rax), %rax
     movq %rax, %rcx
     movq %rbx, %rax
@@ -42359,11 +42371,11 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4701, %rdi
+    movq $4705, %rdi
     leaq .Ls2440(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     movq (%rax), %rax
     shlq $3, %rax
     addq $15, %rax
@@ -42384,11 +42396,11 @@ fn106:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4702, %rdi
+    movq $4706, %rdi
     leaq .Ls2442(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 440(%rax)
+    movq %rdx, 448(%rax)
     leaq .Ls2443(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
@@ -42463,18 +42475,18 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4717, %rdi
+    movq $4721, %rdi
     leaq .Ls2454(%rip), %rsi
     call __han_nonefield
 1:
-    movq 352(%rax), %rax
+    movq 360(%rax), %rax
     movq %rbx, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4717, %rdx
+    movq $4721, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42499,7 +42511,7 @@ fn106:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4717, %rdx
+    movq $4721, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42564,7 +42576,7 @@ fn106:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4723, %rdx
+    movq $4727, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42589,7 +42601,7 @@ fn106:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4723, %rdx
+    movq $4727, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42616,11 +42628,11 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4728, %rdi
+    movq $4732, %rdi
     leaq .Ls2464(%rip), %rsi
     call __han_nonefield
 1:
-    movq 392(%rax), %rax
+    movq 400(%rax), %rax
     cmpq $1, %rax
     jne .L1642
     movq -24(%rbp), %rax
@@ -42678,11 +42690,11 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4730, %rdi
+    movq $4734, %rdi
     leaq .Ls2468(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     movq (%rax), %rax
     movq %rax, %rcx
     movq %rbx, %rax
@@ -42696,18 +42708,18 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4740, %rdi
+    movq $4744, %rdi
     leaq .Ls2469(%rip), %rsi
     call __han_nonefield
 1:
-    movq 344(%rax), %rax
+    movq 352(%rax), %rax
     movq %rbx, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4740, %rdx
+    movq $4744, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42723,18 +42735,18 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4741, %rdi
+    movq $4745, %rdi
     leaq .Ls2471(%rip), %rsi
     call __han_nonefield
 1:
-    movq 352(%rax), %rax
+    movq 360(%rax), %rax
     movq %rbx, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4741, %rdx
+    movq $4745, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42757,18 +42769,18 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4741, %rdi
+    movq $4745, %rdi
     leaq .Ls2473(%rip), %rsi
     call __han_nonefield
 1:
-    movq 352(%rax), %rax
+    movq 360(%rax), %rax
     movq %rbx, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4741, %rdx
+    movq $4745, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42788,11 +42800,11 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4739, %rdi
+    movq $4743, %rdi
     leaq .Ls2474(%rip), %rsi
     call __han_nonefield
 1:
-    movq 344(%rax), %rax
+    movq 352(%rax), %rax
     movq (%rax), %rax
     movq %rax, %rcx
     movq %rbx, %rax
@@ -42813,7 +42825,7 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4748, %rdi
+    movq $4752, %rdi
     leaq .Ls2476(%rip), %rsi
     call __han_nonefield
 1:
@@ -42825,7 +42837,7 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4749, %rdi
+    movq $4753, %rdi
     leaq .Ls2477(%rip), %rsi
     call __han_nonefield
 1:
@@ -42836,7 +42848,7 @@ fn106:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4749, %rdx
+    movq $4753, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42859,13 +42871,13 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4750, %rdi
+    movq $4754, %rdi
     leaq .Ls2479(%rip), %rsi
     call __han_nonefield
 1:
     movq 296(%rax), %rax
     movq %rax, %rdi
-    movq $4750, %rsi
+    movq $4754, %rsi
     call __han_lpop
     movq %r12, %rax
     subq $16, %rsp
@@ -42876,11 +42888,11 @@ fn106:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4751, %rdi
+    movq $4755, %rdi
     leaq .Ls2480(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 424(%rax)
+    movq %rdx, 432(%rax)
 .L1656:
     leaq .Ls2481(%rip), %rax
     movq %rax, %rdi
@@ -42909,7 +42921,7 @@ fn106:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4756, %rdx
+    movq $4760, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42930,18 +42942,18 @@ fn106:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4756, %rdi
+    movq $4760, %rdi
     leaq .Ls2485(%rip), %rsi
     call __han_nonefield
 1:
-    movq 352(%rax), %rax
+    movq 360(%rax), %rax
     movq %rbx, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4756, %rdx
+    movq $4760, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -42995,7 +43007,7 @@ fn107:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3585, %rdi
+    movq $3586, %rdi
     leaq .Ls2488(%rip), %rsi
     call __han_nonefield
 1:
@@ -43015,17 +43027,17 @@ fn107:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3585, %rdi
+    movq $3586, %rdi
     leaq .Ls2490(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3585, %rdi
+    movq $3586, %rdi
     leaq .Ls2491(%rip), %rsi
     call __han_nonefield
 1:
@@ -43039,17 +43051,17 @@ fn107:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3586, %rdi
+    movq $3587, %rdi
     leaq .Ls2492(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3586, %rdi
+    movq $3587, %rdi
     leaq .Ls2493(%rip), %rsi
     call __han_nonefield
 1:
@@ -43062,7 +43074,7 @@ fn107:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3588, %rdi
+    movq $3589, %rdi
     leaq .Ls2494(%rip), %rsi
     call __han_nonefield
 1:
@@ -43082,7 +43094,7 @@ fn107:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3588, %rdi
+    movq $3589, %rdi
     leaq .Ls2496(%rip), %rsi
     call __han_nonefield
 1:
@@ -43110,7 +43122,7 @@ fn107:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3589, %rdi
+    movq $3590, %rdi
     leaq .Ls2498(%rip), %rsi
     call __han_nonefield
 1:
@@ -43118,7 +43130,7 @@ fn107:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3590, %rdi
+    movq $3591, %rdi
     leaq .Ls2499(%rip), %rsi
     call __han_nonefield
 1:
@@ -43138,21 +43150,21 @@ fn107:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3591, %rdi
+    movq $3592, %rdi
     leaq .Ls2501(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3591, %rdi
+    movq $3592, %rdi
     leaq .Ls2502(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     movq (%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -43162,11 +43174,11 @@ fn107:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3591, %rdi
+    movq $3592, %rdi
     leaq .Ls2504(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     movq (%rax), %rax
     movq %rax, %rdi
     call __han_tostr
@@ -43184,7 +43196,7 @@ fn107:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3591, %rcx
+    movq $3592, %rcx
     call __han_lset
 1:
     movq 16(%rax), %rax
@@ -43197,7 +43209,7 @@ fn107:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3596, %rdi
+    movq $3597, %rdi
     leaq .Ls2505(%rip), %rsi
     call __han_nonefield
 1:
@@ -43208,7 +43220,7 @@ fn107:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3596, %rdx
+    movq $3597, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -43221,7 +43233,7 @@ fn107:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3595, %rdi
+    movq $3596, %rdi
     leaq .Ls2506(%rip), %rsi
     call __han_nonefield
 1:
@@ -43251,11 +43263,11 @@ fn108:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3580, %rdi
+    movq $3581, %rdi
     leaq .Ls2507(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     leaq .Ls2508(%rip), %rax
@@ -43264,11 +43276,11 @@ fn108:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3580, %rdi
+    movq $3581, %rdi
     leaq .Ls2509(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     movq (%rax), %rax
     movq %rax, %rdi
     call __han_tostr
@@ -43283,11 +43295,11 @@ fn108:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3581, %rdi
+    movq $3582, %rdi
     leaq .Ls2510(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     movq (%rax), %rax
     shlq $3, %rax
     movq %rax, %rcx
@@ -43318,7 +43330,7 @@ fn109:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $3480, %rdi
+    movq $3481, %rdi
     leaq .Ls2511(%rip), %rsi
     call __han_nonefield
 1:
@@ -43338,7 +43350,7 @@ fn109:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $3480, %rdi
+    movq $3481, %rdi
     leaq .Ls2513(%rip), %rsi
     call __han_nonefield
 1:
@@ -43382,7 +43394,7 @@ fn109:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3487, %rdx
+    movq $3488, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -43391,11 +43403,11 @@ fn109:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3488, %rdi
+    movq $3489, %rdi
     leaq .Ls2515(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     movq %rax, %rdi
     movq %r12, %rsi
     call fn13
@@ -43409,7 +43421,7 @@ fn109:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $3489, %rdi
+    movq $3490, %rdi
     leaq .Ls2516(%rip), %rsi
     call __han_nonefield
 1:
@@ -43420,11 +43432,11 @@ fn109:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3490, %rdi
+    movq $3491, %rdi
     leaq .Ls2517(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     leaq .Ls2518(%rip), %rax
@@ -43440,11 +43452,11 @@ fn109:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3491, %rdi
+    movq $3492, %rdi
     leaq .Ls2519(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     leaq .Ls2520(%rip), %rax
@@ -43458,11 +43470,11 @@ fn109:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3492, %rdi
+    movq $3493, %rdi
     leaq .Ls2521(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     leaq .Ls2522(%rip), %rax
@@ -43483,11 +43495,11 @@ fn109:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3494, %rdi
+    movq $3495, %rdi
     leaq .Ls2523(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 392(%rax)
+    movq %rdx, 400(%rax)
 .L1677:
     addq $1, %rbx
 .L1675:
@@ -43507,7 +43519,7 @@ fn109:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $3502, %rdi
+    movq $3503, %rdi
     leaq .Ls2524(%rip), %rsi
     call __han_nonefield
 1:
@@ -43518,7 +43530,7 @@ fn109:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3502, %rdx
+    movq $3503, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -43531,7 +43543,7 @@ fn109:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $3501, %rdi
+    movq $3502, %rdi
     leaq .Ls2525(%rip), %rsi
     call __han_nonefield
 1:
@@ -43690,7 +43702,7 @@ fn110:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3441, %rdi
+    movq $3442, %rdi
     leaq .Ls2555(%rip), %rsi
     call __han_nonefield
 1:
@@ -43709,7 +43721,7 @@ fn110:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3444, %rdi
+    movq $3445, %rdi
     leaq .Ls2556(%rip), %rsi
     call __han_nonefield
 1:
@@ -43720,7 +43732,7 @@ fn110:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3444, %rdx
+    movq $3445, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -43737,7 +43749,7 @@ fn110:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3443, %rdi
+    movq $3444, %rdi
     leaq .Ls2557(%rip), %rsi
     call __han_nonefield
 1:
@@ -43778,7 +43790,7 @@ fn111:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3459, %rdi
+    movq $3460, %rdi
     leaq .Ls2558(%rip), %rsi
     call __han_nonefield
 1:
@@ -43789,14 +43801,14 @@ fn111:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3459, %rdx
+    movq $3460, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $3459, %rdi
+    movq $3460, %rdi
     leaq .Ls2559(%rip), %rsi
     call __han_nonefield
 1:
@@ -43819,7 +43831,7 @@ fn111:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3464, %rdi
+    movq $3465, %rdi
     leaq .Ls2560(%rip), %rsi
     call __han_nonefield
 1:
@@ -43830,7 +43842,7 @@ fn111:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3464, %rdx
+    movq $3465, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -43843,7 +43855,7 @@ fn111:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3463, %rdi
+    movq $3464, %rdi
     leaq .Ls2561(%rip), %rsi
     call __han_nonefield
 1:
@@ -43876,7 +43888,7 @@ fn112:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3452, %rdi
+    movq $3453, %rdi
     leaq .Ls2562(%rip), %rsi
     call __han_nonefield
 1:
@@ -43896,7 +43908,7 @@ fn112:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3452, %rdi
+    movq $3453, %rdi
     leaq .Ls2564(%rip), %rsi
     call __han_nonefield
 1:
@@ -43923,7 +43935,7 @@ fn112:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3452, %rdi
+    movq $3453, %rdi
     leaq .Ls2566(%rip), %rsi
     call __han_nonefield
 1:
@@ -43953,7 +43965,7 @@ fn112:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3453, %rdi
+    movq $3454, %rdi
     leaq .Ls2568(%rip), %rsi
     call __han_nonefield
 1:
@@ -43964,7 +43976,7 @@ fn112:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3453, %rdx
+    movq $3454, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -43972,7 +43984,7 @@ fn112:
     movq %rax, %r12
     testq %rax, %rax
     jne 1f
-    movq $3454, %rdi
+    movq $3455, %rdi
     leaq .Ls2569(%rip), %rsi
     call __han_nonefield
 1:
@@ -43992,7 +44004,7 @@ fn112:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3454, %rdi
+    movq $3455, %rdi
     leaq .Ls2571(%rip), %rsi
     call __han_nonefield
 1:
@@ -44029,7 +44041,7 @@ fn113:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3470, %rdi
+    movq $3471, %rdi
     leaq .Ls2572(%rip), %rsi
     call __han_nonefield
 1:
@@ -44049,7 +44061,7 @@ fn113:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3470, %rdi
+    movq $3471, %rdi
     leaq .Ls2574(%rip), %rsi
     call __han_nonefield
 1:
@@ -44064,7 +44076,7 @@ fn113:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3473, %rdi
+    movq $3474, %rdi
     leaq .Ls2575(%rip), %rsi
     call __han_nonefield
 1:
@@ -44075,7 +44087,7 @@ fn113:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3473, %rdx
+    movq $3474, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -44088,7 +44100,7 @@ fn113:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3472, %rdi
+    movq $3473, %rdi
     leaq .Ls2576(%rip), %rsi
     call __han_nonefield
 1:
@@ -44124,11 +44136,11 @@ fn114:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3540, %rdi
+    movq $3541, %rdi
     leaq .Ls2577(%rip), %rsi
     call __han_nonefield
 1:
-    movq 360(%rax), %rax
+    movq 368(%rax), %rax
     movq %rax, %rdi
     movq %r13, %rsi
     call fn14
@@ -44138,22 +44150,22 @@ fn114:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3542, %rdi
+    movq $3543, %rdi
     leaq .Ls2578(%rip), %rsi
     call __han_nonefield
 1:
-    movq 360(%rax), %rax
+    movq 368(%rax), %rax
     movq %rax, %rdi
     movq %r13, %rsi
     call __han_lpush
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3543, %rdi
+    movq $3544, %rdi
     leaq .Ls2579(%rip), %rsi
     call __han_nonefield
 1:
-    movq 368(%rax), %rax
+    movq 376(%rax), %rax
     movq %rax, %rdi
     movq %r14, %rsi
     call __han_lpush
@@ -44162,11 +44174,11 @@ fn114:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3545, %rdi
+    movq $3546, %rdi
     leaq .Ls2580(%rip), %rsi
     call __han_nonefield
 1:
-    movq 368(%rax), %rax
+    movq 376(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r12, %rax
@@ -44175,18 +44187,18 @@ fn114:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3545, %rdi
+    movq $3546, %rdi
     leaq .Ls2581(%rip), %rsi
     call __han_nonefield
 1:
-    movq 368(%rax), %rax
+    movq 376(%rax), %rax
     movq %r12, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3545, %rdx
+    movq $3546, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -44202,7 +44214,7 @@ fn114:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3545, %rcx
+    movq $3546, %rcx
     call __han_lset
 1:
     movq 16(%rax), %rax
@@ -44236,7 +44248,7 @@ fn115:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3550, %rdi
+    movq $3551, %rdi
     leaq .Ls2582(%rip), %rsi
     call __han_nonefield
 1:
@@ -44264,7 +44276,7 @@ fn115:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3551, %rdi
+    movq $3552, %rdi
     leaq .Ls2585(%rip), %rsi
     call __han_nonefield
 1:
@@ -44312,16 +44324,16 @@ fn115:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3555, %rdi
+    movq $3556, %rdi
     leaq .Ls2589(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     movq %rax, %r10
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3555, %rdi
+    movq $3556, %rdi
     leaq .Ls2590(%rip), %rsi
     call __han_nonefield
 1:
@@ -44339,7 +44351,7 @@ fn115:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3555, %rdx
+    movq $3556, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -44358,7 +44370,7 @@ fn115:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3560, %rdi
+    movq $3561, %rdi
     leaq .Ls2591(%rip), %rsi
     call __han_nonefield
 1:
@@ -44369,14 +44381,14 @@ fn115:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3560, %rdx
+    movq $3561, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $3560, %rdi
+    movq $3561, %rdi
     leaq .Ls2592(%rip), %rsi
     call __han_nonefield
 1:
@@ -44416,17 +44428,17 @@ fn115:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3567, %rdi
+    movq $3568, %rdi
     leaq .Ls2596(%rip), %rsi
     call __han_nonefield
 1:
-    movq 384(%rax), %rax
+    movq 392(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3567, %rdi
+    movq $3568, %rdi
     leaq .Ls2597(%rip), %rsi
     call __han_nonefield
 1:
@@ -44437,7 +44449,7 @@ fn115:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3567, %rdx
+    movq $3568, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -44451,7 +44463,7 @@ fn115:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3566, %rdi
+    movq $3567, %rdi
     leaq .Ls2598(%rip), %rsi
     call __han_nonefield
 1:
@@ -44468,7 +44480,7 @@ fn115:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3572, %rdi
+    movq $3573, %rdi
     leaq .Ls2599(%rip), %rsi
     call __han_nonefield
 1:
@@ -44479,7 +44491,7 @@ fn115:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3572, %rdx
+    movq $3573, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -44493,7 +44505,7 @@ fn115:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3571, %rdi
+    movq $3572, %rdi
     leaq .Ls2600(%rip), %rsi
     call __han_nonefield
 1:
@@ -44537,17 +44549,17 @@ fn116:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3535, %rdi
+    movq $3536, %rdi
     leaq .Ls2601(%rip), %rsi
     call __han_nonefield
 1:
-    movq 384(%rax), %rax
+    movq 392(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3535, %rdi
+    movq $3536, %rdi
     leaq .Ls2602(%rip), %rsi
     call __han_nonefield
 1:
@@ -44558,14 +44570,14 @@ fn116:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3535, %rdx
+    movq $3536, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $3535, %rdi
+    movq $3536, %rdi
     leaq .Ls2603(%rip), %rsi
     call __han_nonefield
 1:
@@ -44596,7 +44608,7 @@ fn117:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3529, %rdi
+    movq $3530, %rdi
     leaq .Ls2604(%rip), %rsi
     call __han_nonefield
 1:
@@ -44609,13 +44621,13 @@ fn117:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3529, %rdi
+    movq $3530, %rdi
     leaq .Ls2605(%rip), %rsi
     call __han_nonefield
 1:
-    movq 384(%rax), %rax
+    movq 392(%rax), %rax
     movq %rax, %rdi
-    movq $3529, %rsi
+    movq $3530, %rsi
     call __han_lpop
 .L1735:
     decq %r13
@@ -44667,11 +44679,11 @@ fn119:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3176, %rdi
+    movq $3177, %rdi
     leaq .Ls2606(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     movq %rax, %rdi
     movq %r12, %rsi
     call fn14
@@ -44705,11 +44717,11 @@ fn120:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3182, %rdi
+    movq $3183, %rdi
     leaq .Ls2607(%rip), %rsi
     call __han_nonefield
 1:
-    movq 320(%rax), %rax
+    movq 328(%rax), %rax
     movq %rax, %r10
     movq $0, %rax
     subq %r12, %rax
@@ -44723,7 +44735,7 @@ fn120:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3182, %rdx
+    movq $3183, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -44732,11 +44744,11 @@ fn120:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3183, %rdi
+    movq $3184, %rdi
     leaq .Ls2608(%rip), %rsi
     call __han_nonefield
 1:
-    movq 344(%rax), %rax
+    movq 352(%rax), %rax
     movq %rax, %rdi
     movq %r14, %rsi
     call fn14
@@ -44746,18 +44758,18 @@ fn120:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3184, %rdi
+    movq $3185, %rdi
     leaq .Ls2609(%rip), %rsi
     call __han_nonefield
 1:
-    movq 352(%rax), %rax
+    movq 360(%rax), %rax
     movq %r13, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3184, %rdx
+    movq $3185, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -44832,7 +44844,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4280, %rdi
+    movq $4284, %rdi
     leaq .Ls2614(%rip), %rsi
     call __han_nonefield
 1:
@@ -44841,7 +44853,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4281, %rdi
+    movq $4285, %rdi
     leaq .Ls2615(%rip), %rsi
     call __han_nonefield
 1:
@@ -44864,7 +44876,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4285, %rdi
+    movq $4289, %rdi
     leaq .Ls2617(%rip), %rsi
     call __han_nonefield
 1:
@@ -44875,7 +44887,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4285, %rdx
+    movq $4289, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -44888,7 +44900,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4284, %rdi
+    movq $4288, %rdi
     leaq .Ls2618(%rip), %rsi
     call __han_nonefield
 1:
@@ -44914,7 +44926,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4291, %rdi
+    movq $4295, %rdi
     leaq .Ls2620(%rip), %rsi
     call __han_nonefield
 1:
@@ -44926,7 +44938,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4292, %rdi
+    movq $4296, %rdi
     leaq .Ls2621(%rip), %rsi
     call __han_nonefield
 1:
@@ -44937,7 +44949,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4292, %rdx
+    movq $4296, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -44945,7 +44957,7 @@ fn122:
     movq %rax, -56(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $4294, %rdi
+    movq $4298, %rdi
     leaq .Ls2622(%rip), %rsi
     call __han_nonefield
 1:
@@ -44965,7 +44977,7 @@ fn122:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4294, %rdi
+    movq $4298, %rdi
     leaq .Ls2624(%rip), %rsi
     call __han_nonefield
 1:
@@ -44975,7 +44987,7 @@ fn122:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4294, %rdi
+    movq $4298, %rdi
     leaq .Ls2625(%rip), %rsi
     call __han_nonefield
 1:
@@ -44995,7 +45007,7 @@ fn122:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4294, %rdi
+    movq $4298, %rdi
     leaq .Ls2627(%rip), %rsi
     call __han_nonefield
 1:
@@ -45016,7 +45028,7 @@ fn122:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4295, %rdi
+    movq $4299, %rdi
     leaq .Ls2629(%rip), %rsi
     call __han_nonefield
 1:
@@ -45027,7 +45039,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4295, %rdx
+    movq $4299, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45036,7 +45048,7 @@ fn122:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4296, %rdi
+    movq $4300, %rdi
     leaq .Ls2630(%rip), %rsi
     call __han_nonefield
 1:
@@ -45047,7 +45059,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4296, %rdx
+    movq $4300, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45059,7 +45071,7 @@ fn122:
     movq -64(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4297, %rdi
+    movq $4301, %rdi
     leaq .Ls2631(%rip), %rsi
     call __han_nonefield
 1:
@@ -45079,7 +45091,7 @@ fn122:
     movq -64(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4297, %rdi
+    movq $4301, %rdi
     leaq .Ls2633(%rip), %rsi
     call __han_nonefield
 1:
@@ -45089,7 +45101,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4297, %rdi
+    movq $4301, %rdi
     leaq .Ls2634(%rip), %rsi
     call __han_nonefield
 1:
@@ -45110,7 +45122,7 @@ fn122:
     movq -56(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4298, %rdi
+    movq $4302, %rdi
     leaq .Ls2635(%rip), %rsi
     call __han_nonefield
 1:
@@ -45233,18 +45245,18 @@ fn122:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4309, %rdi
+    movq $4313, %rdi
     leaq .Ls2645(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 416(%rax)
+    movq %rdx, 424(%rax)
     movq %rbx, %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4310, %rdi
+    movq $4314, %rdi
     leaq .Ls2646(%rip), %rsi
     call __han_nonefield
 1:
@@ -45255,11 +45267,11 @@ fn122:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4310, %rdi
+    movq $4314, %rdi
     leaq .Ls2647(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 424(%rax)
+    movq %rdx, 432(%rax)
     movq $0, %rax
     jmp .Lret_fn122
 .L1745:
@@ -45275,7 +45287,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4314, %rdi
+    movq $4318, %rdi
     leaq .Ls2649(%rip), %rsi
     call __han_nonefield
 1:
@@ -45286,7 +45298,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4314, %rdx
+    movq $4318, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45314,7 +45326,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4319, %rdi
+    movq $4323, %rdi
     leaq .Ls2651(%rip), %rsi
     call __han_nonefield
 1:
@@ -45325,14 +45337,14 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4319, %rdx
+    movq $4323, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $4319, %rdi
+    movq $4323, %rdi
     leaq .Ls2652(%rip), %rsi
     call __han_nonefield
 1:
@@ -45341,7 +45353,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4320, %rdi
+    movq $4324, %rdi
     leaq .Ls2653(%rip), %rsi
     call __han_nonefield
 1:
@@ -45352,7 +45364,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4320, %rdx
+    movq $4324, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45373,7 +45385,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4322, %rdi
+    movq $4326, %rdi
     leaq .Ls2655(%rip), %rsi
     call __han_nonefield
 1:
@@ -45384,7 +45396,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4322, %rdx
+    movq $4326, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45415,17 +45427,17 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4326, %rdi
+    movq $4330, %rdi
     leaq .Ls2659(%rip), %rsi
     call __han_nonefield
 1:
-    movq 376(%rax), %rax
+    movq 384(%rax), %rax
     cmpq $2, %rax
     jge .L1763
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4326, %rdi
+    movq $4330, %rdi
     leaq .Ls2660(%rip), %rsi
     call __han_nonefield
 1:
@@ -45436,7 +45448,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4326, %rdx
+    movq $4330, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45464,11 +45476,11 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4327, %rdi
+    movq $4331, %rdi
     leaq .Ls2663(%rip), %rsi
     call __han_nonefield
 1:
-    movq 376(%rax), %rax
+    movq 384(%rax), %rax
     addq $1, %rax
     movq %rax, %rcx
     movq %r10, %rax
@@ -45477,7 +45489,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4327, %rdx
+    movq $4331, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45486,7 +45498,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4328, %rdi
+    movq $4332, %rdi
     leaq .Ls2664(%rip), %rsi
     call __han_nonefield
 1:
@@ -45497,7 +45509,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4328, %rdx
+    movq $4332, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45518,26 +45530,26 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4330, %rdi
+    movq $4334, %rdi
     leaq .Ls2666(%rip), %rsi
     call __han_nonefield
 1:
-    movq 376(%rax), %rax
+    movq 384(%rax), %rax
     addq $1, %rax
     movq %rax, %rdx
     movq (%rsp), %rax
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4330, %rdi
+    movq $4334, %rdi
     leaq .Ls2667(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 376(%rax)
+    movq %rdx, 384(%rax)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4331, %rdi
+    movq $4335, %rdi
     leaq .Ls2668(%rip), %rsi
     call __han_nonefield
 1:
@@ -45548,7 +45560,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4331, %rdx
+    movq $4335, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45562,22 +45574,22 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4332, %rdi
+    movq $4336, %rdi
     leaq .Ls2669(%rip), %rsi
     call __han_nonefield
 1:
-    movq 376(%rax), %rax
+    movq 384(%rax), %rax
     subq $1, %rax
     movq %rax, %rdx
     movq (%rsp), %rax
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4332, %rdi
+    movq $4336, %rdi
     leaq .Ls2670(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 376(%rax)
+    movq %rdx, 384(%rax)
     leaq .Ls2671(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
@@ -45601,7 +45613,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4336, %rdi
+    movq $4340, %rdi
     leaq .Ls2674(%rip), %rsi
     call __han_nonefield
 1:
@@ -45612,7 +45624,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4336, %rdx
+    movq $4340, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45625,7 +45637,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4338, %rdi
+    movq $4342, %rdi
     leaq .Ls2675(%rip), %rsi
     call __han_nonefield
 1:
@@ -45636,7 +45648,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4338, %rdx
+    movq $4342, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45794,7 +45806,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4362, %rdi
+    movq $4366, %rdi
     leaq .Ls2697(%rip), %rsi
     call __han_nonefield
 1:
@@ -45805,7 +45817,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4362, %rdx
+    movq $4366, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45817,7 +45829,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4363, %rdi
+    movq $4367, %rdi
     leaq .Ls2698(%rip), %rsi
     call __han_nonefield
 1:
@@ -45828,7 +45840,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4363, %rdx
+    movq $4367, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45858,7 +45870,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4365, %rdi
+    movq $4369, %rdi
     leaq .Ls2701(%rip), %rsi
     call __han_nonefield
 1:
@@ -45869,7 +45881,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4365, %rdx
+    movq $4369, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45923,17 +45935,17 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4370, %rdi
+    movq $4374, %rdi
     leaq .Ls2708(%rip), %rsi
     call __han_nonefield
 1:
-    movq 376(%rax), %rax
+    movq 384(%rax), %rax
     cmpq $2, %rax
     jge .L1771
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4370, %rdi
+    movq $4374, %rdi
     leaq .Ls2709(%rip), %rsi
     call __han_nonefield
 1:
@@ -45944,7 +45956,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4370, %rdx
+    movq $4374, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45972,11 +45984,11 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4371, %rdi
+    movq $4375, %rdi
     leaq .Ls2712(%rip), %rsi
     call __han_nonefield
 1:
-    movq 376(%rax), %rax
+    movq 384(%rax), %rax
     addq $1, %rax
     movq %rax, %rcx
     movq %r10, %rax
@@ -45985,7 +45997,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4371, %rdx
+    movq $4375, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -45994,7 +46006,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4372, %rdi
+    movq $4376, %rdi
     leaq .Ls2713(%rip), %rsi
     call __han_nonefield
 1:
@@ -46005,7 +46017,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4372, %rdx
+    movq $4376, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46026,26 +46038,26 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4374, %rdi
+    movq $4378, %rdi
     leaq .Ls2715(%rip), %rsi
     call __han_nonefield
 1:
-    movq 376(%rax), %rax
+    movq 384(%rax), %rax
     addq $1, %rax
     movq %rax, %rdx
     movq (%rsp), %rax
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4374, %rdi
+    movq $4378, %rdi
     leaq .Ls2716(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 376(%rax)
+    movq %rdx, 384(%rax)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4375, %rdi
+    movq $4379, %rdi
     leaq .Ls2717(%rip), %rsi
     call __han_nonefield
 1:
@@ -46056,7 +46068,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4375, %rdx
+    movq $4379, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46070,22 +46082,22 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4376, %rdi
+    movq $4380, %rdi
     leaq .Ls2718(%rip), %rsi
     call __han_nonefield
 1:
-    movq 376(%rax), %rax
+    movq 384(%rax), %rax
     subq $1, %rax
     movq %rax, %rdx
     movq (%rsp), %rax
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4376, %rdi
+    movq $4380, %rdi
     leaq .Ls2719(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 376(%rax)
+    movq %rdx, 384(%rax)
     leaq .Ls2720(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
@@ -46123,7 +46135,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4381, %rdi
+    movq $4385, %rdi
     leaq .Ls2725(%rip), %rsi
     call __han_nonefield
 1:
@@ -46134,7 +46146,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4381, %rdx
+    movq $4385, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46147,7 +46159,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4383, %rdi
+    movq $4387, %rdi
     leaq .Ls2726(%rip), %rsi
     call __han_nonefield
 1:
@@ -46158,7 +46170,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4383, %rdx
+    movq $4387, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46171,7 +46183,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4385, %rdi
+    movq $4389, %rdi
     leaq .Ls2727(%rip), %rsi
     call __han_nonefield
 1:
@@ -46182,7 +46194,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4385, %rdx
+    movq $4389, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46269,7 +46281,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4404, %rdi
+    movq $4408, %rdi
     leaq .Ls2743(%rip), %rsi
     call __han_nonefield
 1:
@@ -46280,7 +46292,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4404, %rdx
+    movq $4408, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46293,7 +46305,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4406, %rdi
+    movq $4410, %rdi
     leaq .Ls2744(%rip), %rsi
     call __han_nonefield
 1:
@@ -46304,7 +46316,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4406, %rdx
+    movq $4410, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46317,7 +46329,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4408, %rdi
+    movq $4412, %rdi
     leaq .Ls2745(%rip), %rsi
     call __han_nonefield
 1:
@@ -46328,7 +46340,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4408, %rdx
+    movq $4412, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46367,60 +46379,12 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4416, %rdi
+    movq $4420, %rdi
     leaq .Ls2751(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
     movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4416, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn129
-    movq %rbx, %rdi
-    call fn134
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4418, %rdi
-    leaq .Ls2752(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $2, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4418, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn129
-    movq %rbx, %rdi
-    call fn134
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4420, %rdi
-    leaq .Ls2753(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $3, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -46440,6 +46404,54 @@ fn122:
     testq %rax, %rax
     jne 1f
     movq $4422, %rdi
+    leaq .Ls2752(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $2, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4422, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn129
+    movq %rbx, %rdi
+    call fn134
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4424, %rdi
+    leaq .Ls2753(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $3, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4424, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn129
+    movq %rbx, %rdi
+    call fn134
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4426, %rdi
     leaq .Ls2754(%rip), %rsi
     call __han_nonefield
 1:
@@ -46450,7 +46462,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4422, %rdx
+    movq $4426, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46507,7 +46519,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4432, %rdi
+    movq $4436, %rdi
     leaq .Ls2763(%rip), %rsi
     call __han_nonefield
 1:
@@ -46518,7 +46530,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4432, %rdx
+    movq $4436, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46531,7 +46543,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4434, %rdi
+    movq $4438, %rdi
     leaq .Ls2764(%rip), %rsi
     call __han_nonefield
 1:
@@ -46542,7 +46554,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4434, %rdx
+    movq $4438, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46561,7 +46573,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4437, %rdi
+    movq $4441, %rdi
     leaq .Ls2767(%rip), %rsi
     call __han_nonefield
 1:
@@ -46604,7 +46616,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4441, %rdi
+    movq $4445, %rdi
     leaq .Ls2772(%rip), %rsi
     call __han_nonefield
 1:
@@ -46615,7 +46627,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4441, %rdx
+    movq $4445, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46628,7 +46640,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4443, %rdi
+    movq $4447, %rdi
     leaq .Ls2773(%rip), %rsi
     call __han_nonefield
 1:
@@ -46639,7 +46651,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4443, %rdx
+    movq $4447, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46664,7 +46676,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4447, %rdi
+    movq $4451, %rdi
     leaq .Ls2777(%rip), %rsi
     call __han_nonefield
 1:
@@ -46702,7 +46714,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4451, %rdi
+    movq $4455, %rdi
     leaq .Ls2780(%rip), %rsi
     call __han_nonefield
 1:
@@ -46713,7 +46725,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4451, %rdx
+    movq $4455, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46723,7 +46735,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4451, %rdi
+    movq $4455, %rdi
     leaq .Ls2781(%rip), %rsi
     call __han_nonefield
 1:
@@ -46734,7 +46746,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4451, %rdx
+    movq $4455, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46763,7 +46775,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4458, %rdi
+    movq $4462, %rdi
     leaq .Ls2784(%rip), %rsi
     call __han_nonefield
 1:
@@ -46774,7 +46786,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4458, %rdx
+    movq $4462, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46786,7 +46798,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4461, %rdi
+    movq $4465, %rdi
     leaq .Ls2785(%rip), %rsi
     call __han_nonefield
 1:
@@ -46805,7 +46817,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4464, %rdi
+    movq $4468, %rdi
     leaq .Ls2788(%rip), %rsi
     call __han_nonefield
 1:
@@ -46835,7 +46847,7 @@ fn122:
     movq -128(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4467, %rdi
+    movq $4471, %rdi
     leaq .Ls2791(%rip), %rsi
     call __han_nonefield
 1:
@@ -46851,7 +46863,7 @@ fn122:
     movq -128(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4469, %rdi
+    movq $4473, %rdi
     leaq .Ls2793(%rip), %rsi
     call __han_nonefield
 1:
@@ -46885,7 +46897,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4474, %rdi
+    movq $4478, %rdi
     leaq .Ls2797(%rip), %rsi
     call __han_nonefield
 1:
@@ -46896,7 +46908,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4474, %rdx
+    movq $4478, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -46907,7 +46919,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4475, %rdi
+    movq $4479, %rdi
     leaq .Ls2798(%rip), %rsi
     call __han_nonefield
 1:
@@ -46918,14 +46930,14 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4475, %rdx
+    movq $4479, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $4475, %rdi
+    movq $4479, %rdi
     leaq .Ls2799(%rip), %rsi
     call __han_nonefield
 1:
@@ -46974,7 +46986,7 @@ fn122:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4481, %rdi
+    movq $4485, %rdi
     leaq .Ls2804(%rip), %rsi
     call __han_nonefield
 1:
@@ -47075,7 +47087,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4485, %rdi
+    movq $4489, %rdi
     leaq .Ls2823(%rip), %rsi
     call __han_nonefield
 1:
@@ -47088,7 +47100,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4488, %rdi
+    movq $4492, %rdi
     leaq .Ls2824(%rip), %rsi
     call __han_nonefield
 1:
@@ -47099,7 +47111,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4488, %rdx
+    movq $4492, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -47111,7 +47123,7 @@ fn122:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $4490, %rdi
+    movq $4494, %rdi
     leaq .Ls2825(%rip), %rsi
     call __han_nonefield
 1:
@@ -47144,7 +47156,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4499, %rdx
+    movq $4503, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -47179,7 +47191,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4502, %rdx
+    movq $4506, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -47212,7 +47224,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4506, %rdi
+    movq $4510, %rdi
     leaq .Ls2833(%rip), %rsi
     call __han_nonefield
 1:
@@ -47227,7 +47239,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4506, %rdx
+    movq $4510, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -47255,7 +47267,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4511, %rdi
+    movq $4515, %rdi
     leaq .Ls2835(%rip), %rsi
     call __han_nonefield
 1:
@@ -47272,7 +47284,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4514, %rdi
+    movq $4518, %rdi
     leaq .Ls2837(%rip), %rsi
     call __han_nonefield
 1:
@@ -47283,7 +47295,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4514, %rdx
+    movq $4518, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -47315,7 +47327,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4522, %rdi
+    movq $4526, %rdi
     leaq .Ls2841(%rip), %rsi
     call __han_nonefield
 1:
@@ -47333,7 +47345,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4524, %rdi
+    movq $4528, %rdi
     leaq .Ls2843(%rip), %rsi
     call __han_nonefield
 1:
@@ -47352,7 +47364,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4527, %rdi
+    movq $4531, %rdi
     leaq .Ls2844(%rip), %rsi
     call __han_nonefield
 1:
@@ -47363,7 +47375,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4527, %rdx
+    movq $4531, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -47381,7 +47393,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4529, %rdi
+    movq $4533, %rdi
     leaq .Ls2847(%rip), %rsi
     call __han_nonefield
 1:
@@ -47478,17 +47490,17 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4538, %rdi
+    movq $4542, %rdi
     leaq .Ls2858(%rip), %rsi
     call __han_nonefield
 1:
-    movq 472(%rax), %rax
+    movq 480(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4538, %rdi
+    movq $4542, %rdi
     leaq .Ls2859(%rip), %rsi
     call __han_nonefield
 1:
@@ -47500,17 +47512,17 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4539, %rdi
+    movq $4543, %rdi
     leaq .Ls2860(%rip), %rsi
     call __han_nonefield
 1:
-    movq 480(%rax), %rax
+    movq 488(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4539, %rdi
+    movq $4543, %rdi
     leaq .Ls2861(%rip), %rsi
     call __han_nonefield
 1:
@@ -47522,7 +47534,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4540, %rdi
+    movq $4544, %rdi
     leaq .Ls2862(%rip), %rsi
     call __han_nonefield
 1:
@@ -47533,7 +47545,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4540, %rdx
+    movq $4544, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -47544,24 +47556,24 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4541, %rdi
+    movq $4545, %rdi
     leaq .Ls2863(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 472(%rax), %rax
-    movq %rax, %rdi
-    movq $4541, %rsi
-    call __han_lpop
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4542, %rdi
-    leaq .Ls2864(%rip), %rsi
     call __han_nonefield
 1:
     movq 480(%rax), %rax
     movq %rax, %rdi
-    movq $4542, %rsi
+    movq $4545, %rsi
+    call __han_lpop
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4546, %rdi
+    leaq .Ls2864(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 488(%rax), %rax
+    movq %rax, %rdi
+    movq $4546, %rsi
     call __han_lpop
     leaq .Ls2865(%rip), %rax
     movq %rax, %rdi
@@ -47583,7 +47595,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4544, %rdi
+    movq $4548, %rdi
     leaq .Ls2868(%rip), %rsi
     call __han_nonefield
 1:
@@ -47654,7 +47666,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4549, %rdi
+    movq $4553, %rdi
     leaq .Ls2875(%rip), %rsi
     call __han_nonefield
 1:
@@ -47665,7 +47677,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4549, %rdx
+    movq $4553, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -47709,7 +47721,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4555, %rdi
+    movq $4559, %rdi
     leaq .Ls2879(%rip), %rsi
     call __han_nonefield
 1:
@@ -47720,7 +47732,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4555, %rdx
+    movq $4559, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -47731,11 +47743,11 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4556, %rdi
+    movq $4560, %rdi
     leaq .Ls2880(%rip), %rsi
     call __han_nonefield
 1:
-    movq 472(%rax), %rax
+    movq 480(%rax), %rax
     movq (%rax), %rax
     cmpq $0, %rax
     jle .L1822
@@ -47755,11 +47767,11 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4561, %rdi
+    movq $4565, %rdi
     leaq .Ls2883(%rip), %rsi
     call __han_nonefield
 1:
-    movq 440(%rax), %rax
+    movq 448(%rax), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -47788,7 +47800,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4567, %rdi
+    movq $4571, %rdi
     leaq .Ls2885(%rip), %rsi
     call __han_nonefield
 1:
@@ -47799,7 +47811,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4567, %rdx
+    movq $4571, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -47812,7 +47824,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4568, %rdi
+    movq $4572, %rdi
     leaq .Ls2886(%rip), %rsi
     call __han_nonefield
 1:
@@ -47823,7 +47835,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4568, %rdx
+    movq $4572, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -47834,7 +47846,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4569, %rdi
+    movq $4573, %rdi
     leaq .Ls2887(%rip), %rsi
     call __han_nonefield
 1:
@@ -47868,7 +47880,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4574, %rdi
+    movq $4578, %rdi
     leaq .Ls2890(%rip), %rsi
     call __han_nonefield
 1:
@@ -47879,7 +47891,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4574, %rdx
+    movq $4578, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -47932,7 +47944,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4576, %rdi
+    movq $4580, %rdi
     leaq .Ls2895(%rip), %rsi
     call __han_nonefield
 1:
@@ -47943,7 +47955,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4576, %rdx
+    movq $4580, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -48038,7 +48050,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4588, %rdi
+    movq $4592, %rdi
     leaq .Ls2903(%rip), %rsi
     call __han_nonefield
 1:
@@ -48049,7 +48061,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4588, %rdx
+    movq $4592, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -48082,7 +48094,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4590, %rdi
+    movq $4594, %rdi
     leaq .Ls2906(%rip), %rsi
     call __han_nonefield
 1:
@@ -48093,7 +48105,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4590, %rdx
+    movq $4594, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -48141,7 +48153,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4596, %rdi
+    movq $4600, %rdi
     leaq .Ls2910(%rip), %rsi
     call __han_nonefield
 1:
@@ -48162,7 +48174,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4600, %rdi
+    movq $4604, %rdi
     leaq .Ls2911(%rip), %rsi
     call __han_nonefield
 1:
@@ -48173,7 +48185,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4600, %rdx
+    movq $4604, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -48241,7 +48253,7 @@ fn122:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4607, %rdi
+    movq $4611, %rdi
     leaq .Ls2918(%rip), %rsi
     call __han_nonefield
 1:
@@ -48252,7 +48264,7 @@ fn122:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4607, %rdx
+    movq $4611, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -48357,28 +48369,28 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4616, %rdi
+    movq $4620, %rdi
     leaq .Ls2928(%rip), %rsi
     call __han_nonefield
 1:
-    movq 448(%rax), %rax
+    movq 456(%rax), %rax
     movq (%rax), %rax
     movq %rax, -240(%rbp)
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4618, %rdi
+    movq $4622, %rdi
     leaq .Ls2929(%rip), %rsi
     call __han_nonefield
 1:
-    movq 464(%rax), %rax
+    movq 472(%rax), %rax
     movq -240(%rbp), %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4618, %rdx
+    movq $4622, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -48401,18 +48413,18 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4620, %rdi
+    movq $4624, %rdi
     leaq .Ls2932(%rip), %rsi
     call __han_nonefield
 1:
-    movq 448(%rax), %rax
+    movq 456(%rax), %rax
     movq -240(%rbp), %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4620, %rdx
+    movq $4624, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -48434,18 +48446,18 @@ fn122:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4622, %rdi
+    movq $4626, %rdi
     leaq .Ls2934(%rip), %rsi
     call __han_nonefield
 1:
-    movq 456(%rax), %rax
+    movq 464(%rax), %rax
     movq -240(%rbp), %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4622, %rdx
+    movq $4626, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -48514,7 +48526,7 @@ fn124:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3194, %rdi
+    movq $3195, %rdi
     leaq .Ls2936(%rip), %rsi
     call __han_nonefield
 1:
@@ -48532,7 +48544,7 @@ fn124:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3196, %rdi
+    movq $3197, %rdi
     leaq .Ls2938(%rip), %rsi
     call __han_nonefield
 1:
@@ -48542,7 +48554,7 @@ fn124:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3196, %rdi
+    movq $3197, %rdi
     leaq .Ls2939(%rip), %rsi
     call __han_nonefield
 1:
@@ -48555,7 +48567,7 @@ fn124:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3196, %rdi
+    movq $3197, %rdi
     leaq .Ls2941(%rip), %rsi
     call __han_nonefield
 1:
@@ -48583,28 +48595,28 @@ fn124:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3199, %rdi
+    movq $3200, %rdi
     leaq .Ls2944(%rip), %rsi
     call __han_nonefield
 1:
-    movq 400(%rax), %rax
+    movq 408(%rax), %rax
     movq (%rax), %rax
     cmpq $0, %rax
     jle .L1843
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3200, %rdi
+    movq $3201, %rdi
     leaq .Ls2945(%rip), %rsi
     call __han_nonefield
 1:
-    movq 400(%rax), %rax
+    movq 408(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3200, %rdi
+    movq $3201, %rdi
     leaq .Ls2946(%rip), %rsi
     call __han_nonefield
 1:
@@ -48619,18 +48631,18 @@ fn124:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3202, %rdi
+    movq $3203, %rdi
     leaq .Ls2947(%rip), %rsi
     call __han_nonefield
 1:
-    movq 408(%rax), %rax
+    movq 416(%rax), %rax
     movq %r15, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3202, %rdx
+    movq $3203, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -48639,20 +48651,20 @@ fn124:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3203, %rdi
+    movq $3204, %rdi
     leaq .Ls2948(%rip), %rsi
     call __han_nonefield
 1:
-    movq 400(%rax), %rax
+    movq 408(%rax), %rax
     movq %rax, -48(%rbp)
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3204, %rdi
+    movq $3205, %rdi
     leaq .Ls2949(%rip), %rsi
     call __han_nonefield
 1:
-    movq 408(%rax), %rax
+    movq 416(%rax), %rax
     movq %rax, -56(%rbp)
     movq %rbx, %rax
     subq $16, %rsp
@@ -48664,11 +48676,11 @@ fn124:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3205, %rdi
+    movq $3206, %rdi
     leaq .Ls2950(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 400(%rax)
+    movq %rdx, 408(%rax)
     movq %rbx, %rax
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -48679,11 +48691,11 @@ fn124:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3206, %rdi
+    movq $3207, %rdi
     leaq .Ls2951(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 408(%rax)
+    movq %rdx, 416(%rax)
     movq %rbx, %rdi
     movq -40(%rbp), %rsi
     call fn124
@@ -48697,11 +48709,11 @@ fn124:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3208, %rdi
+    movq $3209, %rdi
     leaq .Ls2952(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 400(%rax)
+    movq %rdx, 408(%rax)
     movq %rbx, %rax
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -48711,11 +48723,11 @@ fn124:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3209, %rdi
+    movq $3210, %rdi
     leaq .Ls2953(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 408(%rax)
+    movq %rdx, 416(%rax)
     movq -64(%rbp), %rax
     jmp .Lret_fn124
 .L1845:
@@ -48769,7 +48781,7 @@ fn124:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3218, %rdi
+    movq $3219, %rdi
     leaq .Ls2958(%rip), %rsi
     call __han_nonefield
 1:
@@ -48821,7 +48833,7 @@ fn125:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3225, %rdi
+    movq $3226, %rdi
     leaq .Ls2962(%rip), %rsi
     call __han_nonefield
 1:
@@ -48851,28 +48863,28 @@ fn125:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3227, %rdi
+    movq $3228, %rdi
     leaq .Ls2965(%rip), %rsi
     call __han_nonefield
 1:
-    movq 400(%rax), %rax
+    movq 408(%rax), %rax
     movq (%rax), %rax
     cmpq $0, %rax
     jle .L1857
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3228, %rdi
+    movq $3229, %rdi
     leaq .Ls2966(%rip), %rsi
     call __han_nonefield
 1:
-    movq 400(%rax), %rax
+    movq 408(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3228, %rdi
+    movq $3229, %rdi
     leaq .Ls2967(%rip), %rsi
     call __han_nonefield
 1:
@@ -48887,25 +48899,25 @@ fn125:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3229, %rdi
+    movq $3230, %rdi
     leaq .Ls2968(%rip), %rsi
     call __han_nonefield
 1:
-    movq 408(%rax), %rax
+    movq 416(%rax), %rax
     movq %r14, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3229, %rdx
+    movq $3230, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $3229, %rdi
+    movq $3230, %rdi
     leaq .Ls2969(%rip), %rsi
     call __han_nonefield
 1:
@@ -48937,7 +48949,7 @@ fn125:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3232, %rdi
+    movq $3233, %rdi
     leaq .Ls2972(%rip), %rsi
     call __han_nonefield
 1:
@@ -48991,7 +49003,7 @@ fn125:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3233, %rdi
+    movq $3234, %rdi
     leaq .Ls2981(%rip), %rsi
     call __han_nonefield
 1:
@@ -49008,7 +49020,7 @@ fn125:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3234, %rdi
+    movq $3235, %rdi
     leaq .Ls2982(%rip), %rsi
     call __han_nonefield
 1:
@@ -49019,7 +49031,7 @@ fn125:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3234, %rdx
+    movq $3235, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -49032,7 +49044,7 @@ fn125:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3234, %rdi
+    movq $3235, %rdi
     leaq .Ls2983(%rip), %rsi
     call __han_nonefield
 1:
@@ -49043,7 +49055,7 @@ fn125:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3234, %rdx
+    movq $3235, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -49066,7 +49078,7 @@ fn125:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3235, %rdi
+    movq $3236, %rdi
     leaq .Ls2984(%rip), %rsi
     call __han_nonefield
 1:
@@ -49086,7 +49098,7 @@ fn125:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3235, %rdi
+    movq $3236, %rdi
     leaq .Ls2986(%rip), %rsi
     call __han_nonefield
 1:
@@ -49107,7 +49119,7 @@ fn125:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3236, %rdi
+    movq $3237, %rdi
     leaq .Ls2988(%rip), %rsi
     call __han_nonefield
 1:
@@ -49118,7 +49130,7 @@ fn125:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3236, %rdx
+    movq $3237, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -49175,7 +49187,7 @@ fn126:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $3243, %rdi
+    movq $3244, %rdi
     leaq .Ls2989(%rip), %rsi
     call __han_nonefield
 1:
@@ -49193,7 +49205,7 @@ fn126:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $3244, %rdi
+    movq $3245, %rdi
     leaq .Ls2991(%rip), %rsi
     call __han_nonefield
 1:
@@ -49212,27 +49224,27 @@ fn126:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $3246, %rdi
+    movq $3247, %rdi
     leaq .Ls2993(%rip), %rsi
     call __han_nonefield
 1:
-    movq 408(%rax), %rax
+    movq 416(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $3246, %rdi
+    movq $3247, %rdi
     leaq .Ls2994(%rip), %rsi
     call __han_nonefield
 1:
-    movq 400(%rax), %rax
+    movq 408(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $3246, %rdi
+    movq $3247, %rdi
     leaq .Ls2995(%rip), %rsi
     call __han_nonefield
 1:
@@ -49249,14 +49261,14 @@ fn126:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3246, %rdx
+    movq $3247, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $3246, %rdi
+    movq $3247, %rdi
     leaq .Ls2996(%rip), %rsi
     call __han_nonefield
 1:
@@ -49266,35 +49278,12 @@ fn126:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $3248, %rdi
+    movq $3249, %rdi
     leaq .Ls2997(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
     movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $3248, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %r15, %rdi
-    call fn126
-    movq %rax, %rbx
-    movq %r14, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3249, %rdi
-    leaq .Ls2998(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $2, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -49308,11 +49297,34 @@ fn126:
     movq %rax, %rsi
     movq %r15, %rdi
     call fn126
-    movq %rax, %r12
+    movq %rax, %rbx
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
     movq $3250, %rdi
+    leaq .Ls2998(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $2, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $3250, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq %r15, %rdi
+    call fn126
+    movq %rax, %r12
+    movq %r14, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3251, %rdi
     leaq .Ls2999(%rip), %rsi
     call __han_nonefield
 1:
@@ -49409,7 +49421,7 @@ fn126:
     movq %r12, %rcx
     cmpq $63, %rcx
     jbe 1f
-    movl $3257, %edi
+    movl $3258, %edi
     movq %rcx, %rsi
     call __han_shift
 1:
@@ -49420,7 +49432,7 @@ fn126:
     movq %r12, %rcx
     cmpq $63, %rcx
     jbe 1f
-    movl $3258, %edi
+    movl $3259, %edi
     movq %rcx, %rsi
     call __han_shift
 1:
@@ -49454,7 +49466,7 @@ fn127:
     movq %rbx, %rax
     movq %rax, %rdi
     movq $1, %rsi
-    movq $3274, %rdx
+    movq $3275, %rdx
     call __han_schar
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -49491,7 +49503,7 @@ fn128:
     movq %rbx, %rax
     movq %rax, %rdi
     movq $1, %rsi
-    movq $3279, %rdx
+    movq $3280, %rdx
     call __han_schar
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -49528,7 +49540,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3659, %rdi
+    movq $3660, %rdi
     leaq .Ls3009(%rip), %rsi
     call __han_nonefield
 1:
@@ -49537,7 +49549,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3660, %rdi
+    movq $3661, %rdi
     leaq .Ls3010(%rip), %rsi
     call __han_nonefield
 1:
@@ -49560,7 +49572,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3662, %rdi
+    movq $3663, %rdi
     leaq .Ls3013(%rip), %rsi
     call __han_nonefield
 1:
@@ -49635,7 +49647,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3670, %rdi
+    movq $3671, %rdi
     leaq .Ls3019(%rip), %rsi
     call __han_nonefield
 1:
@@ -49645,7 +49657,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3670, %rdi
+    movq $3671, %rdi
     leaq .Ls3020(%rip), %rsi
     call __han_nonefield
 1:
@@ -49665,7 +49677,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3670, %rdi
+    movq $3671, %rdi
     leaq .Ls3022(%rip), %rsi
     call __han_nonefield
 1:
@@ -49686,7 +49698,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3671, %rdi
+    movq $3672, %rdi
     leaq .Ls3024(%rip), %rsi
     call __han_nonefield
 1:
@@ -49697,7 +49709,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3671, %rdx
+    movq $3672, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -49709,7 +49721,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3672, %rdi
+    movq $3673, %rdi
     leaq .Ls3025(%rip), %rsi
     call __han_nonefield
 1:
@@ -49720,7 +49732,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3672, %rdx
+    movq $3673, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -49733,7 +49745,7 @@ fn129:
     movq -48(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3673, %rdi
+    movq $3674, %rdi
     leaq .Ls3026(%rip), %rsi
     call __han_nonefield
 1:
@@ -49753,7 +49765,7 @@ fn129:
     movq -48(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3673, %rdi
+    movq $3674, %rdi
     leaq .Ls3028(%rip), %rsi
     call __han_nonefield
 1:
@@ -49763,7 +49775,7 @@ fn129:
     movq -48(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3673, %rdi
+    movq $3674, %rdi
     leaq .Ls3029(%rip), %rsi
     call __han_nonefield
 1:
@@ -49773,7 +49785,7 @@ fn129:
     movq -48(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3674, %rdi
+    movq $3675, %rdi
     leaq .Ls3030(%rip), %rsi
     call __han_nonefield
 1:
@@ -49782,7 +49794,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3675, %rdi
+    movq $3676, %rdi
     leaq .Ls3031(%rip), %rsi
     call __han_nonefield
 1:
@@ -49852,7 +49864,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3681, %rdi
+    movq $3682, %rdi
     leaq .Ls3038(%rip), %rsi
     call __han_nonefield
 1:
@@ -49892,7 +49904,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3685, %rdi
+    movq $3686, %rdi
     leaq .Ls3042(%rip), %rsi
     call __han_nonefield
 1:
@@ -49929,28 +49941,28 @@ fn129:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3688, %rdi
+    movq $3689, %rdi
     leaq .Ls3045(%rip), %rsi
     call __han_nonefield
 1:
-    movq 400(%rax), %rax
+    movq 408(%rax), %rax
     movq (%rax), %rax
     cmpq $0, %rax
     jle .L1912
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3689, %rdi
+    movq $3690, %rdi
     leaq .Ls3046(%rip), %rsi
     call __han_nonefield
 1:
-    movq 400(%rax), %rax
+    movq 408(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3689, %rdi
+    movq $3690, %rdi
     leaq .Ls3047(%rip), %rsi
     call __han_nonefield
 1:
@@ -49965,18 +49977,18 @@ fn129:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3691, %rdi
+    movq $3692, %rdi
     leaq .Ls3048(%rip), %rsi
     call __han_nonefield
 1:
-    movq 408(%rax), %rax
+    movq 416(%rax), %rax
     movq -64(%rbp), %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3691, %rdx
+    movq $3692, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -49985,20 +49997,20 @@ fn129:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3692, %rdi
+    movq $3693, %rdi
     leaq .Ls3049(%rip), %rsi
     call __han_nonefield
 1:
-    movq 400(%rax), %rax
+    movq 408(%rax), %rax
     movq %rax, -80(%rbp)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3693, %rdi
+    movq $3694, %rdi
     leaq .Ls3050(%rip), %rsi
     call __han_nonefield
 1:
-    movq 408(%rax), %rax
+    movq 416(%rax), %rax
     movq %rax, -88(%rbp)
     movq %r12, %rax
     subq $16, %rsp
@@ -50010,11 +50022,11 @@ fn129:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3694, %rdi
+    movq $3695, %rdi
     leaq .Ls3051(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 400(%rax)
+    movq %rdx, 408(%rax)
     movq %r12, %rax
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -50025,11 +50037,11 @@ fn129:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3695, %rdi
+    movq $3696, %rdi
     leaq .Ls3052(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 408(%rax)
+    movq %rdx, 416(%rax)
     movq %r12, %rdi
     movq -72(%rbp), %rsi
     call fn129
@@ -50042,11 +50054,11 @@ fn129:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3697, %rdi
+    movq $3698, %rdi
     leaq .Ls3053(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 400(%rax)
+    movq %rdx, 408(%rax)
     movq %r12, %rax
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -50056,11 +50068,11 @@ fn129:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3698, %rdi
+    movq $3699, %rdi
     leaq .Ls3054(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 408(%rax)
+    movq %rdx, 416(%rax)
     movq $0, %rax
     jmp .Lret_fn129
 .L1914:
@@ -50077,7 +50089,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3703, %rdi
+    movq $3704, %rdi
     leaq .Ls3056(%rip), %rsi
     call __han_nonefield
 1:
@@ -50089,16 +50101,16 @@ fn129:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3704, %rdi
+    movq $3705, %rdi
     leaq .Ls3057(%rip), %rsi
     call __han_nonefield
 1:
-    movq 424(%rax), %rax
+    movq 432(%rax), %rax
     movq %rax, %r10
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3704, %rdi
+    movq $3705, %rdi
     leaq .Ls3058(%rip), %rsi
     call __han_nonefield
 1:
@@ -50111,11 +50123,11 @@ fn129:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3704, %rdi
+    movq $3705, %rdi
     leaq .Ls3059(%rip), %rsi
     call __han_nonefield
 1:
-    movq 416(%rax), %rax
+    movq 424(%rax), %rax
     movq %rax, %rdi
     movq -96(%rbp), %rsi
     call strcmp
@@ -50236,7 +50248,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3717, %rdi
+    movq $3718, %rdi
     leaq .Ls3073(%rip), %rsi
     call __han_nonefield
 1:
@@ -50247,7 +50259,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3717, %rdx
+    movq $3718, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -50257,7 +50269,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3717, %rdi
+    movq $3718, %rdi
     leaq .Ls3074(%rip), %rsi
     call __han_nonefield
 1:
@@ -50268,7 +50280,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3717, %rdx
+    movq $3718, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -50311,7 +50323,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3723, %rdi
+    movq $3724, %rdi
     leaq .Ls3079(%rip), %rsi
     call __han_nonefield
 1:
@@ -50322,7 +50334,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3723, %rdx
+    movq $3724, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -50379,7 +50391,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3730, %rdi
+    movq $3731, %rdi
     leaq .Ls3086(%rip), %rsi
     call __han_nonefield
 1:
@@ -50389,7 +50401,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3731, %rdi
+    movq $3732, %rdi
     leaq .Ls3087(%rip), %rsi
     call __han_nonefield
 1:
@@ -50401,7 +50413,7 @@ fn129:
     movq %r10, %rax
     cmpq $63, %rcx
     jbe 1f
-    movl $3731, %edi
+    movl $3732, %edi
     movq %rcx, %rsi
     call __han_shift
 1:
@@ -50458,7 +50470,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3740, %rdi
+    movq $3741, %rdi
     leaq .Ls3094(%rip), %rsi
     call __han_nonefield
 1:
@@ -50469,7 +50481,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3740, %rdx
+    movq $3741, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -50479,7 +50491,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3740, %rdi
+    movq $3741, %rdi
     leaq .Ls3095(%rip), %rsi
     call __han_nonefield
 1:
@@ -50490,7 +50502,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3740, %rdx
+    movq $3741, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -50571,7 +50583,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3748, %rdi
+    movq $3749, %rdi
     leaq .Ls3105(%rip), %rsi
     call __han_nonefield
 1:
@@ -50582,7 +50594,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3748, %rdx
+    movq $3749, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -50613,7 +50625,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3754, %rdi
+    movq $3755, %rdi
     leaq .Ls3109(%rip), %rsi
     call __han_nonefield
 1:
@@ -50656,7 +50668,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3761, %rdi
+    movq $3762, %rdi
     leaq .Ls3113(%rip), %rsi
     call __han_nonefield
 1:
@@ -50667,7 +50679,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3761, %rdx
+    movq $3762, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -50692,7 +50704,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3760, %rdi
+    movq $3761, %rdi
     leaq .Ls3117(%rip), %rsi
     call __han_nonefield
 1:
@@ -50727,7 +50739,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3772, %rdi
+    movq $3773, %rdi
     leaq .Ls3120(%rip), %rsi
     call __han_nonefield
 1:
@@ -50738,14 +50750,14 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3772, %rdx
+    movq $3773, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $3772, %rdi
+    movq $3773, %rdi
     leaq .Ls3121(%rip), %rsi
     call __han_nonefield
 1:
@@ -50754,7 +50766,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3773, %rdi
+    movq $3774, %rdi
     leaq .Ls3122(%rip), %rsi
     call __han_nonefield
 1:
@@ -50765,7 +50777,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3773, %rdx
+    movq $3774, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -50904,7 +50916,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3789, %rdi
+    movq $3790, %rdi
     leaq .Ls3141(%rip), %rsi
     call __han_nonefield
 1:
@@ -50915,14 +50927,14 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3789, %rdx
+    movq $3790, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $3789, %rdi
+    movq $3790, %rdi
     leaq .Ls3142(%rip), %rsi
     call __han_nonefield
 1:
@@ -50963,7 +50975,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3792, %rdi
+    movq $3793, %rdi
     leaq .Ls3145(%rip), %rsi
     call __han_nonefield
 1:
@@ -50974,14 +50986,14 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3792, %rdx
+    movq $3793, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $3792, %rdi
+    movq $3793, %rdi
     leaq .Ls3146(%rip), %rsi
     call __han_nonefield
 1:
@@ -50991,7 +51003,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3794, %rdi
+    movq $3795, %rdi
     leaq .Ls3147(%rip), %rsi
     call __han_nonefield
 1:
@@ -51002,7 +51014,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3794, %rdx
+    movq $3795, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51012,7 +51024,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3794, %rdi
+    movq $3795, %rdi
     leaq .Ls3148(%rip), %rsi
     call __han_nonefield
 1:
@@ -51023,7 +51035,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3794, %rdx
+    movq $3795, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51102,7 +51114,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3809, %rdi
+    movq $3810, %rdi
     leaq .Ls3161(%rip), %rsi
     call __han_nonefield
 1:
@@ -51113,7 +51125,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3809, %rdx
+    movq $3810, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51122,7 +51134,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3810, %rdi
+    movq $3811, %rdi
     leaq .Ls3162(%rip), %rsi
     call __han_nonefield
 1:
@@ -51133,7 +51145,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3810, %rdx
+    movq $3811, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51159,7 +51171,7 @@ fn129:
     movq -152(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3812, %rdi
+    movq $3813, %rdi
     leaq .Ls3165(%rip), %rsi
     call __han_nonefield
 1:
@@ -51192,7 +51204,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3816, %rdi
+    movq $3817, %rdi
     leaq .Ls3169(%rip), %rsi
     call __han_nonefield
 1:
@@ -51203,7 +51215,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3816, %rdx
+    movq $3817, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51248,7 +51260,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3823, %rdi
+    movq $3824, %rdi
     leaq .Ls3175(%rip), %rsi
     call __han_nonefield
 1:
@@ -51259,7 +51271,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3823, %rdx
+    movq $3824, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51269,7 +51281,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3823, %rdi
+    movq $3824, %rdi
     leaq .Ls3176(%rip), %rsi
     call __han_nonefield
 1:
@@ -51280,7 +51292,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3823, %rdx
+    movq $3824, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51323,7 +51335,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3829, %rdi
+    movq $3830, %rdi
     leaq .Ls3181(%rip), %rsi
     call __han_nonefield
 1:
@@ -51334,7 +51346,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3829, %rdx
+    movq $3830, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51346,7 +51358,7 @@ fn129:
     movq -152(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3831, %rdi
+    movq $3832, %rdi
     leaq .Ls3182(%rip), %rsi
     call __han_nonefield
 1:
@@ -51383,7 +51395,7 @@ fn129:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3840, %rdi
+    movq $3841, %rdi
     leaq .Ls3187(%rip), %rsi
     call __han_nonefield
 1:
@@ -51392,7 +51404,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3840, %rdi
+    movq $3841, %rdi
     leaq .Ls3188(%rip), %rsi
     call __han_nonefield
 1:
@@ -51404,7 +51416,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3840, %rdx
+    movq $3841, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51412,7 +51424,7 @@ fn129:
     movq %rax, -160(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $3841, %rdi
+    movq $3842, %rdi
     leaq .Ls3189(%rip), %rsi
     call __han_nonefield
 1:
@@ -51454,7 +51466,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3848, %rdx
+    movq $3849, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51507,7 +51519,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3858, %rdx
+    movq $3859, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51521,7 +51533,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3858, %rdx
+    movq $3859, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51557,7 +51569,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3865, %rdx
+    movq $3866, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51603,7 +51615,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3870, %rdx
+    movq $3871, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51693,29 +51705,8 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3885, %rdi
-    leaq .Ls3209(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $3885, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, -184(%rbp)
-.L2004:
-    movq -184(%rbp), %rax
-    testq %rax, %rax
-    jne 1f
     movq $3886, %rdi
-    leaq .Ls3210(%rip), %rsi
+    leaq .Ls3209(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -51730,6 +51721,27 @@ fn129:
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
+    movq %rax, -184(%rbp)
+.L2004:
+    movq -184(%rbp), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3887, %rdi
+    leaq .Ls3210(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $1, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $3887, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call fn129
@@ -51738,7 +51750,7 @@ fn129:
     movq -184(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3888, %rdi
+    movq $3889, %rdi
     leaq .Ls3211(%rip), %rsi
     call __han_nonefield
 1:
@@ -51749,7 +51761,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3888, %rdx
+    movq $3889, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51771,7 +51783,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3890, %rdi
+    movq $3891, %rdi
     leaq .Ls3213(%rip), %rsi
     call __han_nonefield
 1:
@@ -51782,7 +51794,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3890, %rdx
+    movq $3891, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51842,7 +51854,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3899, %rdi
+    movq $3900, %rdi
     leaq .Ls3222(%rip), %rsi
     call __han_nonefield
 1:
@@ -51853,7 +51865,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3899, %rdx
+    movq $3900, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51866,7 +51878,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3901, %rdi
+    movq $3902, %rdi
     leaq .Ls3223(%rip), %rsi
     call __han_nonefield
 1:
@@ -51877,7 +51889,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3901, %rdx
+    movq $3902, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51890,7 +51902,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3903, %rdi
+    movq $3904, %rdi
     leaq .Ls3224(%rip), %rsi
     call __han_nonefield
 1:
@@ -51901,7 +51913,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3903, %rdx
+    movq $3904, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -51964,7 +51976,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3912, %rdi
+    movq $3913, %rdi
     leaq .Ls3233(%rip), %rsi
     call __han_nonefield
 1:
@@ -51975,7 +51987,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3912, %rdx
+    movq $3913, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52036,7 +52048,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3919, %rdi
+    movq $3920, %rdi
     leaq .Ls3241(%rip), %rsi
     call __han_nonefield
 1:
@@ -52047,7 +52059,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3919, %rdx
+    movq $3920, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52058,7 +52070,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3920, %rdi
+    movq $3921, %rdi
     leaq .Ls3242(%rip), %rsi
     call __han_nonefield
 1:
@@ -52110,7 +52122,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3923, %rdi
+    movq $3924, %rdi
     leaq .Ls3248(%rip), %rsi
     call __han_nonefield
 1:
@@ -52131,7 +52143,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3924, %rdi
+    movq $3925, %rdi
     leaq .Ls3250(%rip), %rsi
     call __han_nonefield
 1:
@@ -52142,7 +52154,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3924, %rdx
+    movq $3925, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52165,7 +52177,7 @@ fn129:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3928, %rdi
+    movq $3929, %rdi
     leaq .Ls3252(%rip), %rsi
     call __han_nonefield
 1:
@@ -52174,7 +52186,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3928, %rdi
+    movq $3929, %rdi
     leaq .Ls3253(%rip), %rsi
     call __han_nonefield
 1:
@@ -52186,7 +52198,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3928, %rdx
+    movq $3929, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52194,7 +52206,7 @@ fn129:
     movq %rax, -192(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $3929, %rdi
+    movq $3930, %rdi
     leaq .Ls3254(%rip), %rsi
     call __han_nonefield
 1:
@@ -52211,7 +52223,7 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3935, %rdi
+    movq $3936, %rdi
     leaq .Ls3255(%rip), %rsi
     call __han_nonefield
 1:
@@ -52222,7 +52234,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3935, %rdx
+    movq $3936, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52235,7 +52247,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3936, %rdx
+    movq $3937, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52262,7 +52274,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3937, %rdx
+    movq $3938, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52289,7 +52301,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3939, %rdx
+    movq $3940, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52299,7 +52311,7 @@ fn129:
     movq -224(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3939, %rdi
+    movq $3940, %rdi
     leaq .Ls3258(%rip), %rsi
     call __han_nonefield
 1:
@@ -52366,7 +52378,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3951, %rdx
+    movq $3952, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52409,7 +52421,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3957, %rdx
+    movq $3958, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52430,7 +52442,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3959, %rdx
+    movq $3960, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52453,7 +52465,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3961, %rdx
+    movq $3962, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52477,7 +52489,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3961, %rdx
+    movq $3962, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52490,7 +52502,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3961, %rdx
+    movq $3962, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52515,7 +52527,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3967, %rdx
+    movq $3968, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52542,7 +52554,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3967, %rdx
+    movq $3968, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52567,7 +52579,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3967, %rdx
+    movq $3968, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52580,7 +52592,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3967, %rdx
+    movq $3968, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52624,7 +52636,7 @@ fn129:
     movq -192(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3971, %rdi
+    movq $3972, %rdi
     leaq .Ls3274(%rip), %rsi
     call __han_nonefield
 1:
@@ -52639,7 +52651,7 @@ fn129:
     movq -192(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $3972, %rdi
+    movq $3973, %rdi
     leaq .Ls3275(%rip), %rsi
     call __han_nonefield
 1:
@@ -52651,10 +52663,61 @@ fn129:
     movq %r12, %rdi
     call fn105
 .L2050:
+    movq -192(%rbp), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3974, %rdi
+    leaq .Ls3277(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 0(%rax), %rax
+    movq %rax, %rdi
+    call __han_slen
+    cmpq $5, %rax
+    jle .L2052
+    movq -192(%rbp), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3975, %rdi
+    leaq .Ls3278(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 0(%rax), %rax
+    movq %rax, %rdi
+    movq $5, %rsi
+    call fn2
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3279(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2054
+    movq %r12, %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq $1, %rax
+    movq %rax, %rdx
+    movq (%rsp), %rax
+    addq $16, %rsp
+    testq %rax, %rax
+    jne 1f
+    movq $3975, %rdi
+    leaq .Ls3280(%rip), %rsi
+    call __han_nonefield
+1:
+    movq %rdx, 312(%rax)
+.L2054:
+.L2052:
     movq $0, %rax
     jmp .Lret_fn129
 .L2022:
-    leaq .Ls3277(%rip), %rax
+    leaq .Ls3281(%rip), %rax
     movq %rax, %rsi
     movq -24(%rbp), %rdi
     call strcmp
@@ -52662,12 +52725,12 @@ fn129:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2052
+    je .L2056
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3976, %rdi
-    leaq .Ls3278(%rip), %rsi
+    movq $3980, %rdi
+    leaq .Ls3282(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -52677,7 +52740,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3976, %rdx
+    movq $3980, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52688,14 +52751,14 @@ fn129:
     movq %r12, %rdi
     movq %r13, %rsi
     call fn141
-    leaq .Ls3279(%rip), %rax
+    leaq .Ls3283(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3978, %rdi
-    leaq .Ls3280(%rip), %rsi
+    movq $3982, %rdi
+    leaq .Ls3284(%rip), %rsi
     call __han_nonefield
 1:
     movq 16(%rax), %rax
@@ -52709,7 +52772,7 @@ fn129:
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3281(%rip), %rax
+    leaq .Ls3285(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -52719,8 +52782,8 @@ fn129:
     call fn105
     movq $0, %rax
     jmp .Lret_fn129
-.L2052:
-    leaq .Ls3282(%rip), %rax
+.L2056:
+    leaq .Ls3286(%rip), %rax
     movq %rax, %rsi
     movq -24(%rbp), %rdi
     call strcmp
@@ -52728,12 +52791,12 @@ fn129:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2054
+    je .L2058
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3982, %rdi
-    leaq .Ls3283(%rip), %rsi
+    movq $3986, %rdi
+    leaq .Ls3287(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -52743,7 +52806,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3982, %rdx
+    movq $3986, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -52752,8 +52815,8 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $3983, %rdi
-    leaq .Ls3284(%rip), %rsi
+    movq $3987, %rdi
+    leaq .Ls3288(%rip), %rsi
     call __han_nonefield
 1:
     movq 8(%rax), %rax
@@ -52761,53 +52824,16 @@ fn129:
     movq %r12, %rdi
     movq -152(%rbp), %rsi
     call fn129
-    leaq .Ls3285(%rip), %rax
-    movq %rax, %rsi
-    movq -272(%rbp), %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2058
-    leaq .Ls3286(%rip), %rax
-    movq %rax, %rsi
-    movq -272(%rbp), %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2056
-.L2058:
-    leaq .Ls3287(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-    leaq .Ls3288(%rip), %rax
-    movq %rax, %rsi
-    movq -272(%rbp), %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2059
     leaq .Ls3289(%rip), %rax
     movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-    jmp .L2060
-.L2059:
+    movq -272(%rbp), %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2062
     leaq .Ls3290(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-.L2060:
-    movq $0, %rax
-    jmp .Lret_fn129
-.L2056:
-    leaq .Ls3291(%rip), %rax
     movq %rax, %rsi
     movq -272(%rbp), %rdi
     call strcmp
@@ -52815,7 +52841,12 @@ fn129:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    jne .L2063
+    je .L2060
+.L2062:
+    leaq .Ls3291(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
     leaq .Ls3292(%rip), %rax
     movq %rax, %rsi
     movq -272(%rbp), %rdi
@@ -52824,8 +52855,22 @@ fn129:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    jne .L2063
+    je .L2063
     leaq .Ls3293(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+    jmp .L2064
+.L2063:
+    leaq .Ls3294(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+.L2064:
+    movq $0, %rax
+    jmp .Lret_fn129
+.L2060:
+    leaq .Ls3295(%rip), %rax
     movq %rax, %rsi
     movq -272(%rbp), %rdi
     call strcmp
@@ -52833,26 +52878,16 @@ fn129:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2061
-.L2063:
-    leaq .Ls3294(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-    leaq .Ls3295(%rip), %rax
-    movq %rax, %rdi
-    movq -32(%rbp), %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
+    jne .L2067
     leaq .Ls3296(%rip), %rax
     movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
+    movq -272(%rbp), %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2067
     leaq .Ls3297(%rip), %rax
     movq %rax, %rsi
     movq -272(%rbp), %rdi
@@ -52861,26 +52896,26 @@ fn129:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2064
+    je .L2065
+.L2067:
     leaq .Ls3298(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-.L2064:
     leaq .Ls3299(%rip), %rax
-    movq %rax, %rsi
-    movq -272(%rbp), %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2066
+    movq %rax, %rdi
+    movq -32(%rbp), %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
     leaq .Ls3300(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-.L2066:
     leaq .Ls3301(%rip), %rax
     movq %rax, %rsi
     movq -272(%rbp), %rdi
@@ -52895,9 +52930,6 @@ fn129:
     movq %r12, %rdi
     call fn105
 .L2068:
-    movq $0, %rax
-    jmp .Lret_fn129
-.L2061:
     leaq .Ls3303(%rip), %rax
     movq %rax, %rsi
     movq -272(%rbp), %rdi
@@ -52907,56 +52939,12 @@ fn129:
     movzbq %al, %rax
     testq %rax, %rax
     je .L2070
-    movq -152(%rbp), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3999, %rdi
-    leaq .Ls3304(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $2, %rax
-    jne .L2072
-    leaq .Ls3305(%rip), %rax
+    leaq .Ls3304(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-    leaq .Ls3306(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-    jmp .L2073
-.L2072:
-    leaq .Ls3307(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-    leaq .Ls3308(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-    leaq .Ls3309(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-.L2073:
-    movq $0, %rax
-    jmp .Lret_fn129
 .L2070:
-    movq -152(%rbp), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4009, %rdi
-    leaq .Ls3310(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $0, %rax
-    jne .L2074
-    movq %r12, %rdi
-    call fn140
-.L2074:
-    leaq .Ls3311(%rip), %rax
+    leaq .Ls3305(%rip), %rax
     movq %rax, %rsi
     movq -272(%rbp), %rdi
     call strcmp
@@ -52964,7 +52952,48 @@ fn129:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2076
+    je .L2072
+    leaq .Ls3306(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+.L2072:
+    movq $0, %rax
+    jmp .Lret_fn129
+.L2065:
+    leaq .Ls3307(%rip), %rax
+    movq %rax, %rsi
+    movq -272(%rbp), %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2074
+    movq -152(%rbp), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4003, %rdi
+    leaq .Ls3308(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $2, %rax
+    jne .L2076
+    leaq .Ls3309(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+    leaq .Ls3310(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+    jmp .L2077
+.L2076:
+    leaq .Ls3311(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
     leaq .Ls3312(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
@@ -52973,25 +53002,37 @@ fn129:
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-    leaq .Ls3314(%rip), %rax
-    movq %rax, %rsi
+.L2077:
+    movq $0, %rax
+    jmp .Lret_fn129
+.L2074:
+    movq -152(%rbp), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4013, %rdi
+    leaq .Ls3314(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $0, %rax
+    jne .L2078
     movq %r12, %rdi
-    call fn105
+    call fn140
+.L2078:
     leaq .Ls3315(%rip), %rax
     movq %rax, %rsi
+    movq -272(%rbp), %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2080
+    leaq .Ls3316(%rip), %rax
+    movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-    leaq .Ls3316(%rip), %rax
-    movq %rax, %rdi
-    movq -32(%rbp), %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
     leaq .Ls3317(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
@@ -53004,61 +53045,83 @@ fn129:
     movq %r12, %rdi
     call fn105
     leaq .Ls3320(%rip), %rax
+    movq %rax, %rdi
+    movq -32(%rbp), %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3321(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-    leaq .Ls3321(%rip), %rax
+    leaq .Ls3322(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+    leaq .Ls3323(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+    leaq .Ls3324(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+    leaq .Ls3325(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
     movq $0, %rax
     jmp .Lret_fn129
-.L2076:
-    leaq .Ls3322(%rip), %rax
-    movq %rax, -280(%rbp)
-    leaq .Ls3323(%rip), %rax
-    movq %rax, %rsi
-    movq -272(%rbp), %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2078
-    leaq .Ls3324(%rip), %rax
-    movq %rax, -280(%rbp)
-.L2078:
-    leaq .Ls3325(%rip), %rax
-    movq %rax, %rsi
-    movq -272(%rbp), %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2080
+.L2080:
     leaq .Ls3326(%rip), %rax
     movq %rax, -280(%rbp)
-.L2080:
     leaq .Ls3327(%rip), %rax
+    movq %rax, %rsi
+    movq -272(%rbp), %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2082
+    leaq .Ls3328(%rip), %rax
+    movq %rax, -280(%rbp)
+.L2082:
+    leaq .Ls3329(%rip), %rax
+    movq %rax, %rsi
+    movq -272(%rbp), %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2084
+    leaq .Ls3330(%rip), %rax
+    movq %rax, -280(%rbp)
+.L2084:
+    leaq .Ls3331(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-    leaq .Ls3328(%rip), %rax
+    leaq .Ls3332(%rip), %rax
     movq %rax, %rdi
     movq -280(%rbp), %rsi
     call __han_concat
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-    leaq .Ls3329(%rip), %rax
+    leaq .Ls3333(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
     movq $0, %rax
     jmp .Lret_fn129
-.L2054:
-    leaq .Ls3330(%rip), %rax
+.L2058:
+    leaq .Ls3334(%rip), %rax
     movq %rax, %rsi
     movq -24(%rbp), %rdi
     call strcmp
@@ -53066,12 +53129,12 @@ fn129:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2082
+    je .L2086
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $4032, %rdi
-    leaq .Ls3331(%rip), %rsi
+    movq $4036, %rdi
+    leaq .Ls3335(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -53081,7 +53144,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4032, %rdx
+    movq $4036, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -53093,8 +53156,8 @@ fn129:
     movq -288(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4034, %rdi
-    leaq .Ls3332(%rip), %rsi
+    movq $4038, %rdi
+    leaq .Ls3336(%rip), %rsi
     call __han_nonefield
 1:
     movq 72(%rax), %rax
@@ -53102,82 +53165,46 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $4034, %rdi
-    leaq .Ls3333(%rip), %rsi
+    movq $4038, %rdi
+    leaq .Ls3337(%rip), %rsi
     call __han_nonefield
 1:
     movq 72(%rax), %rax
     movq %rax, %rcx
     movq %r10, %rax
     cmpq %rcx, %rax
-    jne .L2084
+    jne .L2088
     movq $0, %rax
     jmp .Lret_fn129
-.L2084:
+.L2088:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $4035, %rdi
-    leaq .Ls3334(%rip), %rsi
+    movq $4039, %rdi
+    leaq .Ls3338(%rip), %rsi
     call __han_nonefield
 1:
     movq 72(%rax), %rax
     cmpq $0, %rax
-    jne .L2086
-    movq -288(%rbp), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4036, %rdi
-    leaq .Ls3335(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $2, %rax
-    jne .L2088
-    leaq .Ls3336(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-    leaq .Ls3337(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-    jmp .L2089
-.L2088:
-    leaq .Ls3338(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-    leaq .Ls3339(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-.L2089:
-    movq $0, %rax
-    jmp .Lret_fn129
-.L2086:
-    movq %r13, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4045, %rdi
-    leaq .Ls3340(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $2, %rax
     jne .L2090
     movq -288(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4046, %rdi
-    leaq .Ls3341(%rip), %rsi
+    movq $4040, %rdi
+    leaq .Ls3339(%rip), %rsi
     call __han_nonefield
 1:
     movq 72(%rax), %rax
-    cmpq $0, %rax
+    cmpq $2, %rax
     jne .L2092
+    leaq .Ls3340(%rip), %rax
+    movq %rax, %rsi
     movq %r12, %rdi
-    call fn140
+    call fn105
+    leaq .Ls3341(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
     jmp .L2093
 .L2092:
     leaq .Ls3342(%rip), %rax
@@ -53188,43 +53215,79 @@ fn129:
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-    leaq .Ls3344(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
 .L2093:
     movq $0, %rax
     jmp .Lret_fn129
 .L2090:
-    leaq .Ls3345(%rip), %rax
+    movq %r13, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4049, %rdi
+    leaq .Ls3344(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $2, %rax
+    jne .L2094
+    movq -288(%rbp), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4050, %rdi
+    leaq .Ls3345(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $0, %rax
+    jne .L2096
+    movq %r12, %rdi
+    call fn140
+    jmp .L2097
+.L2096:
+    leaq .Ls3346(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+    leaq .Ls3347(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+    leaq .Ls3348(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+.L2097:
+    movq $0, %rax
+    jmp .Lret_fn129
+.L2094:
+    leaq .Ls3349(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
     movq -288(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4056, %rdi
-    leaq .Ls3346(%rip), %rsi
+    movq $4060, %rdi
+    leaq .Ls3350(%rip), %rsi
     call __han_nonefield
 1:
     movq 72(%rax), %rax
     cmpq $0, %rax
-    jne .L2094
-    leaq .Ls3347(%rip), %rax
+    jne .L2098
+    leaq .Ls3351(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-    jmp .L2095
-.L2094:
-    leaq .Ls3348(%rip), %rax
+    jmp .L2099
+.L2098:
+    leaq .Ls3352(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-.L2095:
+.L2099:
     movq $0, %rax
     jmp .Lret_fn129
-.L2082:
-    leaq .Ls3349(%rip), %rax
+.L2086:
+    leaq .Ls3353(%rip), %rax
     movq %rax, %rsi
     movq -24(%rbp), %rdi
     call strcmp
@@ -53232,12 +53295,12 @@ fn129:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2096
+    je .L2100
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $4060, %rdi
-    leaq .Ls3350(%rip), %rsi
+    movq $4064, %rdi
+    leaq .Ls3354(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -53247,7 +53310,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4060, %rdx
+    movq $4064, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -53258,60 +53321,14 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $4061, %rdi
-    leaq .Ls3351(%rip), %rsi
+    movq $4065, %rdi
+    leaq .Ls3355(%rip), %rsi
     call __han_nonefield
 1:
     movq 8(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3352(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2098
-    movq %r13, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4062, %rdi
-    leaq .Ls3353(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $2, %rax
-    jne .L2100
-    leaq .Ls3354(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-    leaq .Ls3355(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-    jmp .L2101
-.L2100:
     leaq .Ls3356(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-.L2101:
-.L2098:
-    movq %r13, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4069, %rdi
-    leaq .Ls3357(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 8(%rax), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3358(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -53321,22 +53338,43 @@ fn129:
     movzbq %al, %rax
     testq %rax, %rax
     je .L2102
+    movq %r13, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4066, %rdi
+    leaq .Ls3357(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $2, %rax
+    jne .L2104
+    leaq .Ls3358(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
     leaq .Ls3359(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
+    jmp .L2105
+.L2104:
+    leaq .Ls3360(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+.L2105:
 .L2102:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $4070, %rdi
-    leaq .Ls3360(%rip), %rsi
+    movq $4073, %rdi
+    leaq .Ls3361(%rip), %rsi
     call __han_nonefield
 1:
     movq 8(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3361(%rip), %rax
+    leaq .Ls3362(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -53345,24 +53383,49 @@ fn129:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2104
-    leaq .Ls3362(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
+    je .L2106
     leaq .Ls3363(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-    leaq .Ls3364(%rip), %rax
+.L2106:
+    movq %r13, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4074, %rdi
+    leaq .Ls3364(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 8(%rax), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3365(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2108
+    leaq .Ls3366(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-.L2104:
+    leaq .Ls3367(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+    leaq .Ls3368(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+.L2108:
     movq $0, %rax
     jmp .Lret_fn129
-.L2096:
-    leaq .Ls3365(%rip), %rax
+.L2100:
+    leaq .Ls3369(%rip), %rax
     movq %rax, %rsi
     movq -24(%rbp), %rdi
     call strcmp
@@ -53370,30 +53433,30 @@ fn129:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2106
+    je .L2110
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $4078, %rdi
-    leaq .Ls3366(%rip), %rsi
+    movq $4082, %rdi
+    leaq .Ls3370(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
     movq (%rax), %rax
     movq %rax, %r15
     cmpq $6, %r15
-    jle .L2108
-    leaq .Ls3367(%rip), %rax
+    jle .L2112
+    leaq .Ls3371(%rip), %rax
     movq %rax, %rdx
     movq %r12, %rdi
     movq %r13, %rsi
     call fn75
-.L2108:
+.L2112:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4081, %rdi
-    leaq .Ls3368(%rip), %rsi
+    movq $4085, %rdi
+    leaq .Ls3372(%rip), %rsi
     call __han_nonefield
 1:
     movq 256(%rax), %rax
@@ -53401,8 +53464,8 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $4081, %rdi
-    leaq .Ls3369(%rip), %rsi
+    movq $4085, %rdi
+    leaq .Ls3373(%rip), %rsi
     call __han_nonefield
 1:
     movq 16(%rax), %rax
@@ -53413,7 +53476,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4081, %rdx
+    movq $4085, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -53421,8 +53484,8 @@ fn129:
     movq %rax, -296(%rbp)
     testq %rax, %rax
     jne 1f
-    movq $4082, %rdi
-    leaq .Ls3370(%rip), %rsi
+    movq $4086, %rdi
+    leaq .Ls3374(%rip), %rsi
     call __han_nonefield
 1:
     movq 40(%rax), %rax
@@ -53430,90 +53493,29 @@ fn129:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4083, %rdi
-    leaq .Ls3371(%rip), %rsi
+    movq $4087, %rdi
+    leaq .Ls3375(%rip), %rsi
     call __han_nonefield
 1:
-    movq 400(%rax), %rax
+    movq 408(%rax), %rax
     movq (%rax), %rax
     cmpq $0, %rax
-    jne .L2110
+    jne .L2114
     movq -304(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4083, %rdi
-    leaq .Ls3372(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq (%rax), %rax
-    cmpq $1, %rax
-    jne .L2110
-    movq -304(%rbp), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4084, %rdi
-    leaq .Ls3373(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4084, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, -312(%rbp)
-    testq %rax, %rax
-    jne 1f
-    movq $4085, %rdi
-    leaq .Ls3374(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 0(%rax), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3375(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    cmpq $0, %rax
-    je .L2112
-    movq -312(%rbp), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4085, %rdi
+    movq $4087, %rdi
     leaq .Ls3376(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
     movq (%rax), %rax
     cmpq $1, %rax
-    sete %al
-    movzbq %al, %rax
-    cmpq $0, %rax
-    setne %al
-    movzbq %al, %rax
-    jmp .L2113
-.L2112:
-    movq $0, %rax
-.L2113:
-    movq %rax, -320(%rbp)
-    testq %rax, %rax
-    je .L2114
-    movq -312(%rbp), %rax
+    jne .L2114
+    movq -304(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4086, %rdi
+    movq $4088, %rdi
     leaq .Ls3377(%rip), %rsi
     call __han_nonefield
 1:
@@ -53524,43 +53526,19 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4086, %rdx
+    movq $4088, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
-    movq %rax, %rdi
-    call fn142
-    cmpq $0, %rax
-    sete %al
-    movzbq %al, %rax
-    movq %rax, -320(%rbp)
-.L2114:
-    movq $1, %rbx
-    jmp .L2117
-.L2116:
-    movq %r13, %rax
+    movq %rax, -312(%rbp)
     testq %rax, %rax
     jne 1f
     movq $4089, %rdi
     leaq .Ls3378(%rip), %rsi
     call __han_nonefield
 1:
-    movq 24(%rax), %rax
-    movq %rbx, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4089, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn124
+    movq 0(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     leaq .Ls3379(%rip), %rax
@@ -53571,41 +53549,68 @@ fn129:
     cmpl $0, %eax
     sete %al
     movzbq %al, %rax
-    testq %rax, %rax
-    je .L2119
-    movq $0, -320(%rbp)
-.L2119:
-    addq $1, %rbx
-.L2117:
-    cmpq %r15, %rbx
-    jg .L2121
-    movq -320(%rbp), %rax
-    testq %rax, %rax
-    jne .L2116
-.L2121:
-.L2118:
-    movq -320(%rbp), %rax
-    testq %rax, %rax
-    je .L2122
-    movq %r12, %rax
+    cmpq $0, %rax
+    je .L2116
+    movq -312(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4093, %rdi
+    movq $4089, %rdi
     leaq .Ls3380(%rip), %rsi
     call __han_nonefield
 1:
-    movq 192(%rax), %rax
-    movq %rax, %r10
-    movq -296(%rbp), %rax
+    movq 24(%rax), %rax
+    movq (%rax), %rax
+    cmpq $1, %rax
+    sete %al
+    movzbq %al, %rax
+    cmpq $0, %rax
+    setne %al
+    movzbq %al, %rax
+    jmp .L2117
+.L2116:
+    movq $0, %rax
+.L2117:
+    movq %rax, -320(%rbp)
+    testq %rax, %rax
+    je .L2118
+    movq -312(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4093, %rdi
+    movq $4090, %rdi
     leaq .Ls3381(%rip), %rsi
     call __han_nonefield
 1:
-    movq 8(%rax), %rax
-    movq %rax, %rcx
-    movq %r10, %rax
+    movq 24(%rax), %rax
+    movq $1, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4090, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rdi
+    call fn142
+    cmpq $0, %rax
+    sete %al
+    movzbq %al, %rax
+    movq %rax, -320(%rbp)
+.L2118:
+    movq $1, %rbx
+    jmp .L2121
+.L2120:
+    movq %r13, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4093, %rdi
+    leaq .Ls3382(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq %rbx, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -53616,43 +53621,35 @@ fn129:
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4093, %rdi
-    leaq .Ls3382(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 8(%rax), %rax
-    movq %rax, -328(%rbp)
-    movq $1, %rbx
-    jmp .L2125
-.L2124:
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4096, %rdi
-    leaq .Ls3383(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 400(%rax), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn124
     subq $16, %rsp
     movq %rax, (%rsp)
-    movq -328(%rbp), %rax
-    movq %rbx, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4096, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
+    leaq .Ls3383(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
-    call __han_lpush
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2123
+    movq $0, -320(%rbp)
+.L2123:
+    addq $1, %rbx
+.L2121:
+    cmpq %r15, %rbx
+    jg .L2125
+    movq -320(%rbp), %rax
+    testq %rax, %rax
+    jne .L2120
+.L2125:
+.L2122:
+    movq -320(%rbp), %rax
+    testq %rax, %rax
+    je .L2126
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
@@ -53660,18 +53657,18 @@ fn129:
     leaq .Ls3384(%rip), %rsi
     call __han_nonefield
 1:
-    movq 408(%rax), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq %r13, %rax
+    movq 192(%rax), %rax
+    movq %rax, %r10
+    movq -296(%rbp), %rax
     testq %rax, %rax
     jne 1f
     movq $4097, %rdi
     leaq .Ls3385(%rip), %rsi
     call __han_nonefield
 1:
-    movq 24(%rax), %rax
-    movq %rbx, %rcx
+    movq 8(%rax), %rax
+    movq %rax, %rcx
+    movq %r10, %rax
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -53682,24 +53679,29 @@ fn129:
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_lpush
-    addq $1, %rbx
-.L2125:
-    cmpq %r15, %rbx
-    jle .L2124
-.L2126:
-    movq -312(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4100, %rdi
+    movq $4097, %rdi
     leaq .Ls3386(%rip), %rsi
     call __han_nonefield
 1:
-    movq 24(%rax), %rax
-    movq $1, %rcx
+    movq 8(%rax), %rax
+    movq %rax, -328(%rbp)
+    movq $1, %rbx
+    jmp .L2129
+.L2128:
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4100, %rdi
+    leaq .Ls3387(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 408(%rax), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq -328(%rbp), %rax
+    movq %rbx, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -53711,6 +53713,67 @@ fn129:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_lpush
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4101, %rdi
+    leaq .Ls3388(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 416(%rax), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq %r13, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4101, %rdi
+    leaq .Ls3389(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq %rbx, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4101, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_lpush
+    addq $1, %rbx
+.L2129:
+    cmpq %r15, %rbx
+    jle .L2128
+.L2130:
+    movq -312(%rbp), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4104, %rdi
+    leaq .Ls3390(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $1, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4104, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
     movq %r12, %rdi
     call fn129
     movq %r12, %rax
@@ -53723,11 +53786,11 @@ fn129:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4101, %rdi
-    leaq .Ls3387(%rip), %rsi
+    movq $4105, %rdi
+    leaq .Ls3391(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 400(%rax)
+    movq %rdx, 408(%rax)
     movq %r12, %rax
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -53738,40 +53801,40 @@ fn129:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4102, %rdi
-    leaq .Ls3388(%rip), %rsi
+    movq $4106, %rdi
+    leaq .Ls3392(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 408(%rax)
+    movq %rdx, 416(%rax)
     movq $0, %rax
     jmp .Lret_fn129
-.L2122:
-.L2110:
+.L2126:
+.L2114:
     movl $6, %edi
     call __han_lnew
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3389(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3390(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3391(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3392(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
     leaq .Ls3393(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
     leaq .Ls3394(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3395(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3396(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3397(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3398(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
@@ -53783,13 +53846,13 @@ fn129:
     movq %rax, %r14
     movq $0, -336(%rbp)
     movq $1, %rbx
-    jmp .L2128
-.L2127:
+    jmp .L2132
+.L2131:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $4111, %rdi
-    leaq .Ls3395(%rip), %rsi
+    movq $4115, %rdi
+    leaq .Ls3399(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -53799,7 +53862,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4111, %rdx
+    movq $4115, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -53817,125 +53880,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4112, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3396(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2130
-    movq %rbx, -336(%rbp)
-.L2130:
-    addq $1, %rbx
-.L2128:
-    cmpq %r15, %rbx
-    jle .L2127
-.L2129:
-    movq $1, %rbx
-    jmp .L2133
-.L2132:
-    movq %r14, %rax
-    movq %rbx, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4117, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3397(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2135
-    movq %r13, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4118, %rdi
-    leaq .Ls3398(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq %rbx, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4118, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn129
-    cmpq -336(%rbp), %rbx
-    jne .L2137
-    leaq .Ls3399(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq -232(%rbp), %rax
-    movq %rbx, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4119, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn105
-    jmp .L2138
-.L2137:
-    movq %r12, %rdi
-    call fn134
-.L2138:
-.L2135:
-    addq $1, %rbx
-.L2133:
-    cmpq %r15, %rbx
-    jle .L2132
-.L2134:
-    movq %r15, %rbx
-    jmp .L2140
-.L2139:
-    movq %r14, %rax
-    movq %rbx, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4125, %rdx
+    movq $4116, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -53951,33 +53896,17 @@ fn129:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2142
-    cmpq -336(%rbp), %rbx
-    je .L2142
-    movq -232(%rbp), %rax
-    movq %rbx, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4125, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call fn135
-.L2142:
-    subq $1, %rbx
-.L2140:
-    cmpq $1, %rbx
-    jge .L2139
-.L2141:
+    je .L2134
+    movq %rbx, -336(%rbp)
+.L2134:
+    addq $1, %rbx
+.L2132:
+    cmpq %r15, %rbx
+    jle .L2131
+.L2133:
     movq $1, %rbx
-    jmp .L2145
-.L2144:
+    jmp .L2137
+.L2136:
     movq %r14, %rax
     movq %rbx, %rcx
     leaq -1(%rcx), %rdx
@@ -53985,7 +53914,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4130, %rdx
+    movq $4121, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -53998,11 +53927,145 @@ fn129:
     addq $16, %rsp
     call strcmp
     cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2139
+    movq %r13, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4122, %rdi
+    leaq .Ls3402(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq %rbx, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4122, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn129
+    cmpq -336(%rbp), %rbx
+    jne .L2141
+    leaq .Ls3403(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq -232(%rbp), %rax
+    movq %rbx, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4123, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn105
+    jmp .L2142
+.L2141:
+    movq %r12, %rdi
+    call fn134
+.L2142:
+.L2139:
+    addq $1, %rbx
+.L2137:
+    cmpq %r15, %rbx
+    jle .L2136
+.L2138:
+    movq %r15, %rbx
+    jmp .L2144
+.L2143:
+    movq %r14, %rax
+    movq %rbx, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4129, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3404(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2146
+    cmpq -336(%rbp), %rbx
+    je .L2146
+    movq -232(%rbp), %rax
+    movq %rbx, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4129, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call fn135
+.L2146:
+    subq $1, %rbx
+.L2144:
+    cmpq $1, %rbx
+    jge .L2143
+.L2145:
+    movq $1, %rbx
+    jmp .L2149
+.L2148:
+    movq %r14, %rax
+    movq %rbx, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4134, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3405(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call strcmp
+    cmpl $0, %eax
     setne %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2147
-    leaq .Ls3402(%rip), %rax
+    je .L2151
+    leaq .Ls3406(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r14, %rax
@@ -54012,7 +54075,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4130, %rdx
+    movq $4134, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -54023,7 +54086,7 @@ fn129:
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3403(%rip), %rax
+    leaq .Ls3407(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -54037,7 +54100,7 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4130, %rdx
+    movq $4134, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -54049,20 +54112,20 @@ fn129:
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-.L2147:
+.L2151:
     addq $1, %rbx
-.L2145:
+.L2149:
     cmpq %r15, %rbx
-    jle .L2144
-.L2146:
-    leaq .Ls3404(%rip), %rax
+    jle .L2148
+.L2150:
+    leaq .Ls3408(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4134, %rdi
-    leaq .Ls3405(%rip), %rsi
+    movq $4138, %rdi
+    leaq .Ls3409(%rip), %rsi
     call __han_nonefield
 1:
     movq 256(%rax), %rax
@@ -54070,8 +54133,8 @@ fn129:
     movq %r13, %rax
     testq %rax, %rax
     jne 1f
-    movq $4134, %rdi
-    leaq .Ls3406(%rip), %rsi
+    movq $4138, %rdi
+    leaq .Ls3410(%rip), %rsi
     call __han_nonefield
 1:
     movq 16(%rax), %rax
@@ -54082,15 +54145,15 @@ fn129:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4134, %rdx
+    movq $4138, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $4134, %rdi
-    leaq .Ls3407(%rip), %rsi
+    movq $4138, %rdi
+    leaq .Ls3411(%rip), %rsi
     call __han_nonefield
 1:
     movq 48(%rax), %rax
@@ -54103,7 +54166,7 @@ fn129:
     call fn105
     movq $0, %rax
     jmp .Lret_fn129
-.L2106:
+.L2110:
     movq %r12, %rdi
     movq %r13, %rsi
     call fn143
@@ -54135,61 +54198,33 @@ fn130:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3150, %rdi
-    leaq .Ls3408(%rip), %rsi
+    movq $3151, %rdi
+    leaq .Ls3412(%rip), %rsi
     call __han_nonefield
 1:
-    movq 336(%rax), %rax
+    movq 344(%rax), %rax
     addq $1, %rax
     movq %rax, %rdx
     movq (%rsp), %rax
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3150, %rdi
-    leaq .Ls3409(%rip), %rsi
-    call __han_nonefield
-1:
-    movq %rdx, 336(%rax)
-    leaq .Ls3410(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
     movq $3151, %rdi
-    leaq .Ls3411(%rip), %rsi
+    leaq .Ls3413(%rip), %rsi
     call __han_nonefield
 1:
-    movq 336(%rax), %rax
-    movq %rax, %rdi
-    call __han_tostr
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %r12
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3152, %rdi
-    leaq .Ls3412(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 432(%rax), %rax
-    cmpq $1, %rax
-    jne .L2149
-    leaq .Ls3413(%rip), %rax
+    movq %rdx, 344(%rax)
+    leaq .Ls3414(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
     movq $3152, %rdi
-    leaq .Ls3414(%rip), %rsi
+    leaq .Ls3415(%rip), %rsi
     call __han_nonefield
 1:
-    movq 336(%rax), %rax
+    movq 344(%rax), %rax
     movq %rax, %rdi
     call __han_tostr
     movq %rax, %rsi
@@ -54197,18 +54232,46 @@ fn130:
     addq $16, %rsp
     call __han_concat
     movq %rax, %r12
-.L2149:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
     movq $3153, %rdi
-    leaq .Ls3415(%rip), %rsi
+    leaq .Ls3416(%rip), %rsi
     call __han_nonefield
 1:
-    movq 312(%rax), %rax
+    movq 440(%rax), %rax
+    cmpq $1, %rax
+    jne .L2153
+    leaq .Ls3417(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3416(%rip), %rax
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3153, %rdi
+    leaq .Ls3418(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 344(%rax), %rax
+    movq %rax, %rdi
+    call __han_tostr
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %r12
+.L2153:
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3154, %rdi
+    leaq .Ls3419(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 320(%rax), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3420(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call __han_concat
@@ -54219,14 +54282,14 @@ fn130:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3154, %rdi
-    leaq .Ls3417(%rip), %rsi
+    movq $3155, %rdi
+    leaq .Ls3421(%rip), %rsi
     call __han_nonefield
 1:
-    movq 312(%rax), %rax
+    movq 320(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3418(%rip), %rax
+    leaq .Ls3422(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r13, %rdi
@@ -54237,7 +54300,7 @@ fn130:
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3419(%rip), %rax
+    leaq .Ls3423(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -54271,90 +54334,90 @@ fn131:
     xorl %r12d, %r12d
     xorl %r13d, %r13d
     xorl %r14d, %r14d
-    leaq .Ls3420(%rip), %rax
+    leaq .Ls3424(%rip), %rax
     movq %rax, %rbx
     movq $1, %r13
-    jmp .L2152
-.L2151:
+    jmp .L2156
+.L2155:
     movq %r15, %rax
     movq %rax, %rdi
     movq %r13, %rsi
-    movq $3128, %rdx
+    movq $3129, %rdx
     call __han_schar
     movq %rax, %r12
     movq %rax, %rdi
-    movq $3129, %rsi
+    movq $3130, %rsi
     call __han_ord
     movq %rax, %r14
-    leaq .Ls3421(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2154
-    leaq .Ls3422(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call __han_concat
-    movq %rax, %rbx
-    jmp .L2155
-.L2154:
-    leaq .Ls3423(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2156
-    leaq .Ls3424(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call __han_concat
-    movq %rax, %rbx
-    jmp .L2157
-.L2156:
-    cmpq $10, %r14
-    jne .L2158
     leaq .Ls3425(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2158
+    leaq .Ls3426(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call __han_concat
     movq %rax, %rbx
     jmp .L2159
 .L2158:
-    cmpq $9, %r14
-    jne .L2160
-    leaq .Ls3426(%rip), %rax
+    leaq .Ls3427(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2160
+    leaq .Ls3428(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call __han_concat
     movq %rax, %rbx
     jmp .L2161
 .L2160:
+    cmpq $10, %r14
+    jne .L2162
+    leaq .Ls3429(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call __han_concat
+    movq %rax, %rbx
+    jmp .L2163
+.L2162:
+    cmpq $9, %r14
+    jne .L2164
+    leaq .Ls3430(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call __han_concat
+    movq %rax, %rbx
+    jmp .L2165
+.L2164:
     movq %rbx, %rax
     movq %rax, %rdi
     movq %r12, %rsi
     call __han_concat
     movq %rax, %rbx
+.L2165:
+.L2163:
 .L2161:
 .L2159:
-.L2157:
-.L2155:
     addq $1, %r13
-.L2152:
+.L2156:
     movq %r15, %rax
     movq %rax, %rdi
     call __han_slen
     movq %rax, %rcx
     movq %r13, %rax
     cmpq %rcx, %rax
-    jle .L2151
-.L2153:
+    jle .L2155
+.L2157:
     movq %rbx, %rax
 .Lret_fn131:
     movq -48(%rbp), %rbx
@@ -54384,61 +54447,33 @@ fn132:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3160, %rdi
-    leaq .Ls3427(%rip), %rsi
+    movq $3161, %rdi
+    leaq .Ls3431(%rip), %rsi
     call __han_nonefield
 1:
-    movq 336(%rax), %rax
+    movq 344(%rax), %rax
     addq $1, %rax
     movq %rax, %rdx
     movq (%rsp), %rax
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3160, %rdi
-    leaq .Ls3428(%rip), %rsi
-    call __han_nonefield
-1:
-    movq %rdx, 336(%rax)
-    leaq .Ls3429(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
     movq $3161, %rdi
-    leaq .Ls3430(%rip), %rsi
+    leaq .Ls3432(%rip), %rsi
     call __han_nonefield
 1:
-    movq 336(%rax), %rax
-    movq %rax, %rdi
-    call __han_tostr
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %r12
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3162, %rdi
-    leaq .Ls3431(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 432(%rax), %rax
-    cmpq $1, %rax
-    jne .L2162
-    leaq .Ls3432(%rip), %rax
+    movq %rdx, 344(%rax)
+    leaq .Ls3433(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
     movq $3162, %rdi
-    leaq .Ls3433(%rip), %rsi
+    leaq .Ls3434(%rip), %rsi
     call __han_nonefield
 1:
-    movq 336(%rax), %rax
+    movq 344(%rax), %rax
     movq %rax, %rdi
     call __han_tostr
     movq %rax, %rsi
@@ -54446,18 +54481,46 @@ fn132:
     addq $16, %rsp
     call __han_concat
     movq %rax, %r12
-.L2162:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
     movq $3163, %rdi
-    leaq .Ls3434(%rip), %rsi
+    leaq .Ls3435(%rip), %rsi
     call __han_nonefield
 1:
-    movq 312(%rax), %rax
+    movq 440(%rax), %rax
+    cmpq $1, %rax
+    jne .L2166
+    leaq .Ls3436(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3435(%rip), %rax
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3163, %rdi
+    leaq .Ls3437(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 344(%rax), %rax
+    movq %rax, %rdi
+    call __han_tostr
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %r12
+.L2166:
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3164, %rdi
+    leaq .Ls3438(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 320(%rax), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3439(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -54465,14 +54528,14 @@ fn132:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3164, %rdi
-    leaq .Ls3436(%rip), %rsi
+    movq $3165, %rdi
+    leaq .Ls3440(%rip), %rsi
     call __han_nonefield
 1:
-    movq 312(%rax), %rax
+    movq 320(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3437(%rip), %rax
+    leaq .Ls3441(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call __han_concat
@@ -54483,14 +54546,14 @@ fn132:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3165, %rdi
-    leaq .Ls3438(%rip), %rsi
+    movq $3166, %rdi
+    leaq .Ls3442(%rip), %rsi
     call __han_nonefield
 1:
-    movq 312(%rax), %rax
+    movq 320(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3439(%rip), %rax
+    leaq .Ls3443(%rip), %rax
     movq %rax, %rdi
     movq %r13, %rsi
     call __han_concat
@@ -54527,7 +54590,7 @@ fn133:
     movq %r13, %rsi
     call fn124
     movq %rax, %r14
-    leaq .Ls3440(%rip), %rax
+    leaq .Ls3444(%rip), %rax
     movq %rax, %rsi
     movq %r14, %rdi
     call strcmp
@@ -54535,46 +54598,9 @@ fn133:
     setne %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2164
+    je .L2168
     movq %rbx, %rdi
     movq %r12, %rsi
-    call fn129
-    leaq .Ls3441(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3442(%rip), %rax
-    movq %rax, %rdi
-    movq %r14, %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3443(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    movq $0, %rax
-    jmp .Lret_fn133
-.L2164:
-    movq %rbx, %rdi
-    movq %r12, %rsi
-    call fn124
-    movq %rax, %r15
-    leaq .Ls3444(%rip), %rax
-    movq %rax, %rsi
-    movq %r15, %rdi
-    call strcmp
-    cmpl $0, %eax
-    setne %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2166
-    movq %rbx, %rdi
-    movq %r13, %rsi
     call fn129
     leaq .Ls3445(%rip), %rax
     movq %rax, %rsi
@@ -54582,7 +54608,7 @@ fn133:
     call fn105
     leaq .Ls3446(%rip), %rax
     movq %rax, %rdi
-    movq %r15, %rsi
+    movq %r14, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -54596,7 +54622,44 @@ fn133:
     call fn105
     movq $0, %rax
     jmp .Lret_fn133
-.L2166:
+.L2168:
+    movq %rbx, %rdi
+    movq %r12, %rsi
+    call fn124
+    movq %rax, %r15
+    leaq .Ls3448(%rip), %rax
+    movq %rax, %rsi
+    movq %r15, %rdi
+    call strcmp
+    cmpl $0, %eax
+    setne %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2170
+    movq %rbx, %rdi
+    movq %r13, %rsi
+    call fn129
+    leaq .Ls3449(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3450(%rip), %rax
+    movq %rax, %rdi
+    movq %r15, %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3451(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    movq $0, %rax
+    jmp .Lret_fn133
+.L2170:
     movq %rbx, %rdi
     movq %r12, %rsi
     call fn129
@@ -54605,11 +54668,11 @@ fn133:
     movq %rbx, %rdi
     movq %r13, %rsi
     call fn129
-    leaq .Ls3448(%rip), %rax
+    leaq .Ls3452(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3449(%rip), %rax
+    leaq .Ls3453(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn135
@@ -54631,11 +54694,11 @@ fn134:
     subq $16, %rsp
     movq %rbx, -16(%rbp)
     movq %rdi, %rbx
-    leaq .Ls3450(%rip), %rax
+    leaq .Ls3454(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3451(%rip), %rax
+    leaq .Ls3455(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
@@ -54655,14 +54718,14 @@ fn135:
     movq %r12, -32(%rbp)
     movq %rdi, %rbx
     movq %rsi, %r12
-    leaq .Ls3452(%rip), %rax
+    leaq .Ls3456(%rip), %rax
     movq %rax, %rdi
     movq %r12, %rsi
     call __han_concat
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3453(%rip), %rax
+    leaq .Ls3457(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
@@ -54683,7 +54746,7 @@ fn136:
     movq %r12, -32(%rbp)
     movq %rdi, %r12
     movq %rsi, %rbx
-    leaq .Ls3454(%rip), %rax
+    leaq .Ls3458(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call strcmp
@@ -54691,14 +54754,14 @@ fn136:
     setne %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2168
-    leaq .Ls3455(%rip), %rax
+    je .L2172
+    leaq .Ls3459(%rip), %rax
     movq %rax, %rdi
     movq %rbx, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3456(%rip), %rax
+    leaq .Ls3460(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -54706,7 +54769,7 @@ fn136:
     movq %rax, %rsi
     movq %r12, %rdi
     call fn105
-.L2168:
+.L2172:
 .Lret_fn136:
     movq -24(%rbp), %rbx
     movq -32(%rbp), %r12
@@ -54733,14 +54796,14 @@ fn137:
     movq %r12, %rdi
     call fn128
     testq %rax, %rax
-    je .L2170
-    leaq .Ls3457(%rip), %rax
+    je .L2174
+    leaq .Ls3461(%rip), %rax
     movq %rax, %rdi
     movq %r12, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3458(%rip), %rax
+    leaq .Ls3462(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -54750,14 +54813,14 @@ fn137:
     call fn105
     movq $0, %rax
     jmp .Lret_fn137
-.L2170:
-    leaq .Ls3459(%rip), %rax
+.L2174:
+    leaq .Ls3463(%rip), %rax
     movq %rax, %rdi
     movq %r12, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3460(%rip), %rax
+    leaq .Ls3464(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -54765,7 +54828,7 @@ fn137:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3461(%rip), %rax
+    leaq .Ls3465(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
@@ -54797,7 +54860,7 @@ fn138:
     movq %r12, %rsi
     call fn124
     movq %rax, %r14
-    leaq .Ls3462(%rip), %rax
+    leaq .Ls3466(%rip), %rax
     movq %rax, %rsi
     movq %r14, %rdi
     call strcmp
@@ -54805,18 +54868,18 @@ fn138:
     setne %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2172
+    je .L2176
     movq %rbx, %rdi
     movq %r13, %rsi
     call fn129
     movq %r14, %rax
     jmp .Lret_fn138
-.L2172:
+.L2176:
     movq %rbx, %rdi
     movq %r13, %rsi
     call fn124
     movq %rax, %r15
-    leaq .Ls3463(%rip), %rax
+    leaq .Ls3467(%rip), %rax
     movq %rax, %rsi
     movq %r15, %rdi
     call strcmp
@@ -54824,21 +54887,21 @@ fn138:
     setne %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2174
+    je .L2178
     movq %rbx, %rdi
     movq %r12, %rsi
     call fn129
-    leaq .Ls3464(%rip), %rax
+    leaq .Ls3468(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3465(%rip), %rax
+    leaq .Ls3469(%rip), %rax
     movq %rax, %rdi
     movq %r15, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3466(%rip), %rax
+    leaq .Ls3470(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -54846,33 +54909,33 @@ fn138:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3467(%rip), %rax
+    leaq .Ls3471(%rip), %rax
     jmp .Lret_fn138
-.L2174:
+.L2178:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3297, %rdi
-    leaq .Ls3468(%rip), %rsi
+    movq $3298, %rdi
+    leaq .Ls3472(%rip), %rsi
     call __han_nonefield
 1:
-    movq 376(%rax), %rax
+    movq 384(%rax), %rax
     cmpq $2, %rax
-    jge .L2176
+    jge .L2180
     movq %rbx, %rdi
     movq %r12, %rsi
     call fn139
     testq %rax, %rax
-    je .L2176
+    je .L2180
     movl $2, %edi
     call __han_lnew
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3469(%rip), %rax
+    leaq .Ls3473(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
-    leaq .Ls3470(%rip), %rax
+    leaq .Ls3474(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
@@ -54882,11 +54945,11 @@ fn138:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3298, %rdi
-    leaq .Ls3471(%rip), %rsi
+    movq $3299, %rdi
+    leaq .Ls3475(%rip), %rsi
     call __han_nonefield
 1:
-    movq 376(%rax), %rax
+    movq 384(%rax), %rax
     addq $1, %rax
     movq %rax, %rcx
     movq %r10, %rax
@@ -54895,7 +54958,7 @@ fn138:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3298, %rdx
+    movq $3299, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -54904,7 +54967,7 @@ fn138:
     movq %rbx, %rdi
     movq %r13, %rsi
     call fn129
-    leaq .Ls3472(%rip), %rax
+    leaq .Ls3476(%rip), %rax
     movq %rax, %rdi
     movq -48(%rbp), %rsi
     call __han_concat
@@ -54917,22 +54980,22 @@ fn138:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3301, %rdi
-    leaq .Ls3473(%rip), %rsi
+    movq $3302, %rdi
+    leaq .Ls3477(%rip), %rsi
     call __han_nonefield
 1:
-    movq 376(%rax), %rax
+    movq 384(%rax), %rax
     addq $1, %rax
     movq %rax, %rdx
     movq (%rsp), %rax
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3301, %rdi
-    leaq .Ls3474(%rip), %rsi
+    movq $3302, %rdi
+    leaq .Ls3478(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 376(%rax)
+    movq %rdx, 384(%rax)
     movq %rbx, %rdi
     movq %r12, %rsi
     call fn129
@@ -54942,33 +55005,33 @@ fn138:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3303, %rdi
-    leaq .Ls3475(%rip), %rsi
+    movq $3304, %rdi
+    leaq .Ls3479(%rip), %rsi
     call __han_nonefield
 1:
-    movq 376(%rax), %rax
+    movq 384(%rax), %rax
     subq $1, %rax
     movq %rax, %rdx
     movq (%rsp), %rax
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3303, %rdi
-    leaq .Ls3476(%rip), %rsi
+    movq $3304, %rdi
+    leaq .Ls3480(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 376(%rax)
-    leaq .Ls3477(%rip), %rax
+    movq %rdx, 384(%rax)
+    leaq .Ls3481(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3478(%rip), %rax
+    leaq .Ls3482(%rip), %rax
     movq %rax, %rdi
     movq -48(%rbp), %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3479(%rip), %rax
+    leaq .Ls3483(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -54976,9 +55039,9 @@ fn138:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3480(%rip), %rax
+    leaq .Ls3484(%rip), %rax
     jmp .Lret_fn138
-.L2176:
+.L2180:
     movq %rbx, %rdi
     movq %r13, %rsi
     call fn129
@@ -54987,15 +55050,15 @@ fn138:
     movq %rbx, %rdi
     movq %r12, %rsi
     call fn129
-    leaq .Ls3481(%rip), %rax
+    leaq .Ls3485(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3482(%rip), %rax
+    leaq .Ls3486(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn135
-    leaq .Ls3483(%rip), %rax
+    leaq .Ls3487(%rip), %rax
 .Lret_fn138:
     movq -56(%rbp), %rbx
     movq -64(%rbp), %r12
@@ -55025,53 +55088,12 @@ fn139:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3319, %rdi
-    leaq .Ls3484(%rip), %rsi
+    movq $3320, %rdi
+    leaq .Ls3488(%rip), %rsi
     call __han_nonefield
 1:
     movq 0(%rax), %rax
     movq %rax, %r13
-    leaq .Ls3485(%rip), %rax
-    movq %rax, %rsi
-    movq %r13, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2180
-    leaq .Ls3486(%rip), %rax
-    movq %rax, %rsi
-    movq %r13, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2180
-    leaq .Ls3487(%rip), %rax
-    movq %rax, %rsi
-    movq %r13, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2180
-    leaq .Ls3488(%rip), %rax
-    movq %rax, %rsi
-    movq %r13, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2178
-.L2180:
-    movq $1, %rax
-    jmp .Lret_fn139
-.L2178:
-    movq $0, %r15
     leaq .Ls3489(%rip), %rax
     movq %rax, %rsi
     movq %r13, %rdi
@@ -55080,28 +55102,69 @@ fn139:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2181
+    jne .L2184
+    leaq .Ls3490(%rip), %rax
+    movq %rax, %rsi
+    movq %r13, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2184
+    leaq .Ls3491(%rip), %rax
+    movq %rax, %rsi
+    movq %r13, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2184
+    leaq .Ls3492(%rip), %rax
+    movq %rax, %rsi
+    movq %r13, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2182
+.L2184:
+    movq $1, %rax
+    jmp .Lret_fn139
+.L2182:
+    movq $0, %r15
+    leaq .Ls3493(%rip), %rax
+    movq %rax, %rsi
+    movq %r13, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2185
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3322, %rdi
-    leaq .Ls3490(%rip), %rsi
+    movq $3323, %rdi
+    leaq .Ls3494(%rip), %rsi
     call __han_nonefield
 1:
     movq 72(%rax), %rax
     cmpq $0, %rax
-    jne .L2181
+    jne .L2185
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3322, %rdi
-    leaq .Ls3491(%rip), %rsi
+    movq $3323, %rdi
+    leaq .Ls3495(%rip), %rsi
     call __han_nonefield
 1:
     movq 8(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3492(%rip), %rax
+    leaq .Ls3496(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -55110,43 +55173,16 @@ fn139:
     setne %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2181
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3323, %rdi
-    leaq .Ls3493(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $3323, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3323, %rdi
-    leaq .Ls3494(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    movq %rax, -40(%rbp)
+    je .L2185
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
     movq $3324, %rdi
-    leaq .Ls3495(%rip), %rsi
+    leaq .Ls3497(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
-    movq $2, %rcx
+    movq $1, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -55160,7 +55196,34 @@ fn139:
     testq %rax, %rax
     jne 1f
     movq $3324, %rdi
-    leaq .Ls3496(%rip), %rsi
+    leaq .Ls3498(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    movq %rax, -40(%rbp)
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3325, %rdi
+    leaq .Ls3499(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $2, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $3325, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3325, %rdi
+    leaq .Ls3500(%rip), %rsi
     call __han_nonefield
 1:
     movq 72(%rax), %rax
@@ -55170,7 +55233,7 @@ fn139:
     setne %al
     movzbq %al, %rax
     cmpq $0, %rax
-    je .L2184
+    je .L2188
     movq -40(%rbp), %rax
     cmpq $2, %rax
     setne %al
@@ -55178,12 +55241,12 @@ fn139:
     cmpq $0, %rax
     setne %al
     movzbq %al, %rax
-    jmp .L2185
-.L2184:
+    jmp .L2189
+.L2188:
     movq $0, %rax
-.L2185:
+.L2189:
     cmpq $0, %rax
-    je .L2183
+    je .L2187
     movq -48(%rbp), %rax
     cmpq $2, %rax
     setne %al
@@ -55191,34 +55254,13 @@ fn139:
     cmpq $0, %rax
     setne %al
     movzbq %al, %rax
-    jmp .L2186
-.L2183:
-    movq $0, %rax
-.L2186:
-    movq %rax, %r15
-.L2181:
-    leaq .Ls3497(%rip), %rax
-    movq %rax, %rsi
-    movq %r13, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2187
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3327, %rdi
-    leaq .Ls3498(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $0, %rax
-    jne .L2187
-    movq $1, %r15
+    jmp .L2190
 .L2187:
-    leaq .Ls3499(%rip), %rax
+    movq $0, %rax
+.L2190:
+    movq %rax, %r15
+.L2185:
+    leaq .Ls3501(%rip), %rax
     movq %rax, %rsi
     movq %r13, %rdi
     call strcmp
@@ -55226,22 +55268,43 @@ fn139:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    jne .L2191
-    leaq .Ls3500(%rip), %rax
-    movq %rax, %rsi
-    movq %r13, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2189
-.L2191:
+    je .L2191
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
     movq $3328, %rdi
-    leaq .Ls3501(%rip), %rsi
+    leaq .Ls3502(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $0, %rax
+    jne .L2191
+    movq $1, %r15
+.L2191:
+    leaq .Ls3503(%rip), %rax
+    movq %rax, %rsi
+    movq %r13, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2195
+    leaq .Ls3504(%rip), %rax
+    movq %rax, %rsi
+    movq %r13, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2193
+.L2195:
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3329, %rdi
+    leaq .Ls3505(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -55251,23 +55314,23 @@ fn139:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3328, %rdx
+    movq $3329, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     testq %rax, %rax
     jne 1f
-    movq $3328, %rdi
-    leaq .Ls3502(%rip), %rsi
+    movq $3329, %rdi
+    leaq .Ls3506(%rip), %rsi
     call __han_nonefield
 1:
     movq 72(%rax), %rax
     cmpq $1, %rax
-    je .L2189
+    je .L2193
     movq $1, %r15
-.L2189:
-    leaq .Ls3503(%rip), %rax
+.L2193:
+    leaq .Ls3507(%rip), %rax
     movq %rax, %rsi
     movq %r13, %rdi
     call strcmp
@@ -55275,8 +55338,8 @@ fn139:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    jne .L2194
-    leaq .Ls3504(%rip), %rax
+    jne .L2198
+    leaq .Ls3508(%rip), %rax
     movq %rax, %rsi
     movq %r13, %rdi
     call strcmp
@@ -55284,8 +55347,8 @@ fn139:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    jne .L2194
-    leaq .Ls3505(%rip), %rax
+    jne .L2198
+    leaq .Ls3509(%rip), %rax
     movq %rax, %rsi
     movq %r13, %rdi
     call strcmp
@@ -55293,11 +55356,11 @@ fn139:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2192
-.L2194:
+    je .L2196
+.L2198:
     movq $1, %r15
-.L2192:
-    leaq .Ls3506(%rip), %rax
+.L2196:
+    leaq .Ls3510(%rip), %rax
     movq %rax, %rsi
     movq %r13, %rdi
     call strcmp
@@ -55305,18 +55368,18 @@ fn139:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2195
+    je .L2199
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3330, %rdi
-    leaq .Ls3507(%rip), %rsi
+    movq $3331, %rdi
+    leaq .Ls3511(%rip), %rsi
     call __han_nonefield
 1:
     movq 8(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3508(%rip), %rax
+    leaq .Ls3512(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -55325,22 +55388,22 @@ fn139:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2195
+    je .L2199
     movq $1, %r15
-.L2195:
+.L2199:
     cmpq $0, %r15
-    jne .L2197
+    jne .L2201
     movq $0, %rax
     jmp .Lret_fn139
-.L2197:
+.L2201:
     movq $1, %rbx
-    jmp .L2200
-.L2199:
+    jmp .L2204
+.L2203:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3334, %rdi
-    leaq .Ls3509(%rip), %rsi
+    movq $3335, %rdi
+    leaq .Ls3513(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -55350,7 +55413,7 @@ fn139:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3334, %rdx
+    movq $3335, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -55359,17 +55422,17 @@ fn139:
     movq %r14, %rdi
     call fn139
     cmpq $0, %rax
-    jne .L2202
+    jne .L2206
     movq $0, %rax
     jmp .Lret_fn139
-.L2202:
+.L2206:
     addq $1, %rbx
-.L2200:
+.L2204:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3333, %rdi
-    leaq .Ls3510(%rip), %rsi
+    movq $3334, %rdi
+    leaq .Ls3514(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -55377,8 +55440,8 @@ fn139:
     movq %rax, %rcx
     movq %rbx, %rax
     cmpq %rcx, %rax
-    jle .L2199
-.L2201:
+    jle .L2203
+.L2205:
     movq $1, %rax
 .Lret_fn139:
     movq -64(%rbp), %rbx
@@ -55398,11 +55461,11 @@ fn140:
     subq $16, %rsp
     movq %rbx, -16(%rbp)
     movq %rdi, %rbx
-    leaq .Ls3511(%rip), %rax
+    leaq .Ls3515(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3512(%rip), %rax
+    leaq .Ls3516(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
@@ -55427,8 +55490,8 @@ fn141:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3603, %rdi
-    leaq .Ls3513(%rip), %rsi
+    movq $3604, %rdi
+    leaq .Ls3517(%rip), %rsi
     call __han_nonefield
 1:
     movq 8(%rax), %rax
@@ -55436,22 +55499,22 @@ fn141:
     movq %rbx, %rdi
     call fn130
     movq %rax, %r13
-    leaq .Ls3514(%rip), %rax
+    leaq .Ls3518(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3515(%rip), %rax
+    leaq .Ls3519(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3516(%rip), %rax
+    leaq .Ls3520(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3606, %rdi
-    leaq .Ls3517(%rip), %rsi
+    movq $3607, %rdi
+    leaq .Ls3521(%rip), %rsi
     call __han_nonefield
 1:
     movq 32(%rax), %rax
@@ -55463,7 +55526,7 @@ fn141:
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3518(%rip), %rax
+    leaq .Ls3522(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -55471,13 +55534,13 @@ fn141:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3519(%rip), %rax
+    leaq .Ls3523(%rip), %rax
     movq %rax, %rdi
     movq %r13, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3520(%rip), %rax
+    leaq .Ls3524(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -55485,11 +55548,11 @@ fn141:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3521(%rip), %rax
+    leaq .Ls3525(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3522(%rip), %rax
+    leaq .Ls3526(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
@@ -55514,14 +55577,14 @@ fn142:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3263, %rdi
-    leaq .Ls3523(%rip), %rsi
+    movq $3264, %rdi
+    leaq .Ls3527(%rip), %rsi
     call __han_nonefield
 1:
     movq 0(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3524(%rip), %rax
+    leaq .Ls3528(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -55530,18 +55593,18 @@ fn142:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2204
+    je .L2208
     movq $1, %rax
     jmp .Lret_fn142
-.L2204:
+.L2208:
     movq $1, %rbx
-    jmp .L2207
-.L2206:
+    jmp .L2211
+.L2210:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3266, %rdi
-    leaq .Ls3525(%rip), %rsi
+    movq $3267, %rdi
+    leaq .Ls3529(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -55551,7 +55614,7 @@ fn142:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3266, %rdx
+    movq $3267, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -55559,17 +55622,17 @@ fn142:
     movq %rax, %rdi
     call fn142
     testq %rax, %rax
-    je .L2209
+    je .L2213
     movq $1, %rax
     jmp .Lret_fn142
-.L2209:
+.L2213:
     addq $1, %rbx
-.L2207:
+.L2211:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3265, %rdi
-    leaq .Ls3526(%rip), %rsi
+    movq $3266, %rdi
+    leaq .Ls3530(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -55577,8 +55640,8 @@ fn142:
     movq %rax, %rcx
     movq %rbx, %rax
     cmpq %rcx, %rax
-    jle .L2206
-.L2208:
+    jle .L2210
+.L2212:
     movq $0, %rax
 .Lret_fn142:
     movq -24(%rbp), %rbx
@@ -55607,8 +55670,8 @@ fn143:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4141, %rdi
-    leaq .Ls3527(%rip), %rsi
+    movq $4145, %rdi
+    leaq .Ls3531(%rip), %rsi
     call __han_nonefield
 1:
     movq 8(%rax), %rax
@@ -55616,8 +55679,8 @@ fn143:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4142, %rdi
-    leaq .Ls3528(%rip), %rsi
+    movq $4146, %rdi
+    leaq .Ls3532(%rip), %rsi
     call __han_nonefield
 1:
     movq 32(%rax), %rax
@@ -55627,8 +55690,8 @@ fn143:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4143, %rdi
-    leaq .Ls3529(%rip), %rsi
+    movq $4147, %rdi
+    leaq .Ls3533(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -55638,7 +55701,7 @@ fn143:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4143, %rdx
+    movq $4147, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -55647,8 +55710,8 @@ fn143:
     movq -16(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4144, %rdi
-    leaq .Ls3530(%rip), %rsi
+    movq $4148, %rdi
+    leaq .Ls3534(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -55658,13 +55721,13 @@ fn143:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4144, %rdx
+    movq $4148, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     movq %rax, %r15
-    leaq .Ls3531(%rip), %rax
+    leaq .Ls3535(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -55672,8 +55735,8 @@ fn143:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    jne .L2213
-    leaq .Ls3532(%rip), %rax
+    jne .L2217
+    leaq .Ls3536(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -55681,172 +55744,19 @@ fn143:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2211
-.L2213:
+    je .L2215
+.L2217:
     movq %rbx, %rdi
     call fn144
     movq %rax, -56(%rbp)
     movq %rbx, %rdi
     movq -40(%rbp), %rsi
     call fn129
-    leaq .Ls3533(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3534(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2214
-    leaq .Ls3535(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3536(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq -56(%rbp), %rax
-    movq %rax, %rdi
-    call __han_tostr
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    jmp .L2215
-.L2214:
     leaq .Ls3537(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
     leaq .Ls3538(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq -56(%rbp), %rax
-    movq %rax, %rdi
-    call __han_tostr
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-.L2215:
-    movq %rbx, %rdi
-    movq %r15, %rsi
-    call fn129
-    leaq .Ls3539(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3540(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3541(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    movq %rbx, %rdi
-    call fn144
-    movq %rax, -64(%rbp)
-    leaq .Ls3542(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3543(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq -64(%rbp), %rax
-    movq %rax, %rdi
-    call __han_tostr
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3544(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq -56(%rbp), %rax
-    movq %rax, %rdi
-    call __han_tostr
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3545(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3546(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2216
-    leaq .Ls3547(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    jmp .L2217
-.L2216:
-    leaq .Ls3548(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-.L2217:
-    leaq .Ls3549(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq -64(%rbp), %rax
-    movq %rax, %rdi
-    call __han_tostr
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3550(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    movq $0, %rax
-    jmp .Lret_fn143
-.L2211:
-    leaq .Ls3551(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -55855,83 +55765,108 @@ fn143:
     movzbq %al, %rax
     testq %rax, %rax
     je .L2218
-    movq -16(%rbp), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4163, %rdi
-    leaq .Ls3552(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $1, %rax
-    jne .L2218
-    movq %rbx, %rdi
-    movq -40(%rbp), %rsi
-    movq %r15, %rdx
-    call fn133
-    leaq .Ls3553(%rip), %rax
+    leaq .Ls3539(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3540(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq -56(%rbp), %rax
+    movq %rax, %rdi
+    call __han_tostr
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    movq $0, %rax
-    jmp .Lret_fn143
+    jmp .L2219
 .L2218:
-    movq -40(%rbp), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4168, %rdi
-    leaq .Ls3554(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $1, %rax
-    jne .L2220
-    leaq .Ls3555(%rip), %rax
+    leaq .Ls3541(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3542(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq -56(%rbp), %rax
+    movq %rax, %rdi
+    call __han_tostr
     movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2222
-    leaq .Ls3556(%rip), %rax
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
     movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2222
-    leaq .Ls3557(%rip), %rax
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
     movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2222
-    leaq .Ls3558(%rip), %rax
+    movq %rbx, %rdi
+    call fn105
+.L2219:
+    movq %rbx, %rdi
+    movq %r15, %rsi
+    call fn129
+    leaq .Ls3543(%rip), %rax
     movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2222
-    leaq .Ls3559(%rip), %rax
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3544(%rip), %rax
     movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2222
-    leaq .Ls3560(%rip), %rax
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3545(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    movq %rbx, %rdi
+    call fn144
+    movq %rax, -64(%rbp)
+    leaq .Ls3546(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3547(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq -64(%rbp), %rax
+    movq %rax, %rdi
+    call __han_tostr
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3548(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq -56(%rbp), %rax
+    movq %rax, %rdi
+    call __han_tostr
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3549(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3550(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -55940,21 +55875,125 @@ fn143:
     movzbq %al, %rax
     testq %rax, %rax
     je .L2220
-.L2222:
+    leaq .Ls3551(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    jmp .L2221
+.L2220:
+    leaq .Ls3552(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+.L2221:
+    leaq .Ls3553(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq -64(%rbp), %rax
+    movq %rax, %rdi
+    call __han_tostr
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3554(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    movq $0, %rax
+    jmp .Lret_fn143
+.L2215:
+    leaq .Ls3555(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2222
+    movq -16(%rbp), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4167, %rdi
+    leaq .Ls3556(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $1, %rax
+    jne .L2222
     movq %rbx, %rdi
     movq -40(%rbp), %rsi
     movq %r15, %rdx
     call fn133
+    leaq .Ls3557(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    movq $0, %rax
+    jmp .Lret_fn143
+.L2222:
+    movq -40(%rbp), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4172, %rdi
+    leaq .Ls3558(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $1, %rax
+    jne .L2224
+    leaq .Ls3559(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2226
+    leaq .Ls3560(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2226
     leaq .Ls3561(%rip), %rax
     movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2226
     leaq .Ls3562(%rip), %rax
     movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2226
     leaq .Ls3563(%rip), %rax
-    movq %rax, %r14
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2226
     leaq .Ls3564(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
@@ -55963,22 +56002,22 @@ fn143:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2223
+    je .L2224
+.L2226:
+    movq %rbx, %rdi
+    movq -40(%rbp), %rsi
+    movq %r15, %rdx
+    call fn133
     leaq .Ls3565(%rip), %rax
-    movq %rax, %r14
-.L2223:
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
     leaq .Ls3566(%rip), %rax
     movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2225
+    movq %rbx, %rdi
+    call fn105
     leaq .Ls3567(%rip), %rax
     movq %rax, %r14
-.L2225:
     leaq .Ls3568(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
@@ -56016,47 +56055,6 @@ fn143:
     movq %rax, %r14
 .L2231:
     leaq .Ls3574(%rip), %rax
-    movq %rax, %rdi
-    movq %r14, %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3575(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3576(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    movq $0, %rax
-    jmp .Lret_fn143
-.L2220:
-    movq -40(%rbp), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4183, %rdi
-    leaq .Ls3577(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $2, %rax
-    je .L2235
-    movq %r15, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4183, %rdi
-    leaq .Ls3578(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    cmpq $2, %rax
-    je .L2235
-    leaq .Ls3579(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -56065,23 +56063,88 @@ fn143:
     movzbq %al, %rax
     testq %rax, %rax
     je .L2233
+    leaq .Ls3575(%rip), %rax
+    movq %rax, %r14
+.L2233:
+    leaq .Ls3576(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2235
+    leaq .Ls3577(%rip), %rax
+    movq %rax, %r14
 .L2235:
+    leaq .Ls3578(%rip), %rax
+    movq %rax, %rdi
+    movq %r14, %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3579(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3580(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    movq $0, %rax
+    jmp .Lret_fn143
+.L2224:
+    movq -40(%rbp), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4187, %rdi
+    leaq .Ls3581(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $2, %rax
+    je .L2239
+    movq %r15, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4187, %rdi
+    leaq .Ls3582(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    cmpq $2, %rax
+    je .L2239
+    leaq .Ls3583(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2237
+.L2239:
     movq %rbx, %rdi
     movq -40(%rbp), %rsi
     call fn129
     movq -40(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4185, %rdi
-    leaq .Ls3580(%rip), %rsi
+    movq $4189, %rdi
+    leaq .Ls3584(%rip), %rsi
     call __han_nonefield
 1:
     movq 72(%rax), %rax
     cmpq $0, %rax
-    jne .L2236
+    jne .L2240
     movq %rbx, %rdi
     call fn140
-.L2236:
+.L2240:
     movq %rbx, %rdi
     call fn134
     movq %rbx, %rdi
@@ -56090,37 +56153,16 @@ fn143:
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $4188, %rdi
-    leaq .Ls3581(%rip), %rsi
+    movq $4192, %rdi
+    leaq .Ls3585(%rip), %rsi
     call __han_nonefield
 1:
     movq 72(%rax), %rax
     cmpq $0, %rax
-    jne .L2238
+    jne .L2242
     movq %rbx, %rdi
     call fn140
-.L2238:
-    leaq .Ls3582(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3583(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn135
-    leaq .Ls3584(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3585(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2240
+.L2242:
     leaq .Ls3586(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
@@ -56128,26 +56170,25 @@ fn143:
     leaq .Ls3587(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
-    call fn105
+    call fn135
     leaq .Ls3588(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
     leaq .Ls3589(%rip), %rax
     movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2244
+    leaq .Ls3590(%rip), %rax
+    movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3590(%rip), %rax
-    movq %rax, %rdi
-    movq -32(%rbp), %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
     leaq .Ls3591(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
@@ -56159,33 +56200,31 @@ fn143:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-.L2240:
     leaq .Ls3594(%rip), %rax
-    movq %rax, -80(%rbp)
+    movq %rax, %rdi
+    movq -32(%rbp), %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
     leaq .Ls3595(%rip), %rax
     movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2242
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
     leaq .Ls3596(%rip), %rax
-    movq %rax, -80(%rbp)
-.L2242:
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
     leaq .Ls3597(%rip), %rax
     movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2244
+    movq %rbx, %rdi
+    call fn105
+.L2244:
     leaq .Ls3598(%rip), %rax
     movq %rax, -80(%rbp)
-.L2244:
     leaq .Ls3599(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
@@ -56212,37 +56251,17 @@ fn143:
 .L2248:
     leaq .Ls3603(%rip), %rax
     movq %rax, %rsi
-    movq -80(%rbp), %rdi
+    movq %r12, %rdi
     call strcmp
     cmpl $0, %eax
-    setne %al
+    sete %al
     movzbq %al, %rax
     testq %rax, %rax
     je .L2250
     leaq .Ls3604(%rip), %rax
-    movq %rax, %rdi
-    movq -80(%rbp), %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3605(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3606(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    movq $0, %rax
-    jmp .Lret_fn143
+    movq %rax, -80(%rbp)
 .L2250:
-    leaq .Ls3607(%rip), %rax
-    movq %rax, %r14
-    leaq .Ls3608(%rip), %rax
+    leaq .Ls3605(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -56251,21 +56270,41 @@ fn143:
     movzbq %al, %rax
     testq %rax, %rax
     je .L2252
-    leaq .Ls3609(%rip), %rax
-    movq %rax, %r14
+    leaq .Ls3606(%rip), %rax
+    movq %rax, -80(%rbp)
 .L2252:
-    leaq .Ls3610(%rip), %rax
+    leaq .Ls3607(%rip), %rax
     movq %rax, %rsi
-    movq %r12, %rdi
+    movq -80(%rbp), %rdi
     call strcmp
     cmpl $0, %eax
-    sete %al
+    setne %al
     movzbq %al, %rax
     testq %rax, %rax
     je .L2254
+    leaq .Ls3608(%rip), %rax
+    movq %rax, %rdi
+    movq -80(%rbp), %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3609(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3610(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    movq $0, %rax
+    jmp .Lret_fn143
+.L2254:
     leaq .Ls3611(%rip), %rax
     movq %rax, %r14
-.L2254:
     leaq .Ls3612(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
@@ -56304,126 +56343,74 @@ fn143:
 .L2260:
     leaq .Ls3618(%rip), %rax
     movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3619(%rip), %rax
-    movq %rax, %rdi
-    movq %r14, %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3620(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3621(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    movq $0, %rax
-    jmp .Lret_fn143
-.L2233:
-    movl $5, %edi
-    call __han_lnew
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3622(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3623(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3624(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3625(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3626(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    movq (%rsp), %rax
-    addq $16, %rsp
-    movq %rax, %rdi
-    movq %r12, %rsi
-    call fn13
-    testq %rax, %rax
-    je .L2262
-    movq %rbx, %rdi
-    movq -40(%rbp), %rsi
-    call fn124
-    movq %rax, -88(%rbp)
-    leaq .Ls3627(%rip), %rax
-    movq %rax, %rsi
-    movq -88(%rbp), %rdi
+    movq %r12, %rdi
     call strcmp
     cmpl $0, %eax
-    setne %al
+    sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2264
-    movq %rbx, %rdi
-    movq %r15, %rsi
-    call fn124
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3628(%rip), %rax
+    je .L2262
+    leaq .Ls3619(%rip), %rax
+    movq %rax, %r14
+.L2262:
+    leaq .Ls3620(%rip), %rax
     movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
+    movq %r12, %rdi
     call strcmp
     cmpl $0, %eax
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
     je .L2264
+    leaq .Ls3621(%rip), %rax
+    movq %rax, %r14
+.L2264:
+    leaq .Ls3622(%rip), %rax
+    movq %rax, %rsi
     movq %rbx, %rdi
-    movq %r15, %rsi
-    call fn129
+    call fn105
+    leaq .Ls3623(%rip), %rax
+    movq %rax, %rdi
+    movq %r14, %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3624(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
     movq %rbx, %rdi
-    movq %r12, %rsi
-    movq -88(%rbp), %rdx
-    movq -40(%rbp), %rcx
-    call fn146
+    call fn105
+    leaq .Ls3625(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
     movq $0, %rax
     jmp .Lret_fn143
-.L2264:
-.L2262:
-    movq %rbx, %rdi
-    movq -40(%rbp), %rsi
-    movq %r15, %rdx
-    call fn138
-    movq %rax, %r13
+.L2237:
     movl $5, %edi
     call __han_lnew
     subq $16, %rsp
     movq %rax, (%rsp)
+    leaq .Ls3626(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3627(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3628(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
     leaq .Ls3629(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
     leaq .Ls3630(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3631(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3632(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3633(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
@@ -56435,66 +56422,90 @@ fn143:
     testq %rax, %rax
     je .L2266
     movq %rbx, %rdi
-    movq %r12, %rsi
-    movq %r13, %rdx
-    movq %r15, %rcx
-    call fn146
-    movq $0, %rax
-    jmp .Lret_fn143
-.L2266:
-    leaq .Ls3634(%rip), %rax
+    movq -40(%rbp), %rsi
+    call fn124
+    movq %rax, -88(%rbp)
+    leaq .Ls3631(%rip), %rax
     movq %rax, %rsi
-    movq %r12, %rdi
+    movq -88(%rbp), %rdi
+    call strcmp
+    cmpl $0, %eax
+    setne %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2268
+    movq %rbx, %rdi
+    movq %r15, %rsi
+    call fn124
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3632(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
     call strcmp
     cmpl $0, %eax
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
     je .L2268
-    leaq .Ls3635(%rip), %rax
-    movq %rax, %rdi
-    movq %r13, %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3636(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
     movq %rbx, %rdi
-    call fn105
+    movq %r15, %rsi
+    call fn129
+    movq %rbx, %rdi
+    movq %r12, %rsi
+    movq -88(%rbp), %rdx
+    movq -40(%rbp), %rcx
+    call fn146
     movq $0, %rax
     jmp .Lret_fn143
 .L2268:
-    leaq .Ls3637(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2270
-    leaq .Ls3638(%rip), %rax
-    movq %rax, %rdi
-    movq %r13, %rsi
-    call __han_concat
+.L2266:
+    movq %rbx, %rdi
+    movq -40(%rbp), %rsi
+    movq %r15, %rdx
+    call fn138
+    movq %rax, %r13
+    movl $5, %edi
+    call __han_lnew
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3639(%rip), %rax
+    leaq .Ls3633(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
+    call __han_lpush
+    leaq .Ls3634(%rip), %rax
     movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3635(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3636(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3637(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    movq (%rsp), %rax
+    addq $16, %rsp
+    movq %rax, %rdi
+    movq %r12, %rsi
+    call fn13
+    testq %rax, %rax
+    je .L2270
     movq %rbx, %rdi
-    call fn105
+    movq %r12, %rsi
+    movq %r13, %rdx
+    movq %r15, %rcx
+    call fn146
     movq $0, %rax
     jmp .Lret_fn143
 .L2270:
-    leaq .Ls3640(%rip), %rax
+    leaq .Ls3638(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -56503,13 +56514,13 @@ fn143:
     movzbq %al, %rax
     testq %rax, %rax
     je .L2272
-    leaq .Ls3641(%rip), %rax
+    leaq .Ls3639(%rip), %rax
     movq %rax, %rdi
     movq %r13, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3642(%rip), %rax
+    leaq .Ls3640(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -56520,7 +56531,7 @@ fn143:
     movq $0, %rax
     jmp .Lret_fn143
 .L2272:
-    leaq .Ls3643(%rip), %rax
+    leaq .Ls3641(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -56529,13 +56540,13 @@ fn143:
     movzbq %al, %rax
     testq %rax, %rax
     je .L2274
-    leaq .Ls3644(%rip), %rax
+    leaq .Ls3642(%rip), %rax
     movq %rax, %rdi
     movq %r13, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3645(%rip), %rax
+    leaq .Ls3643(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -56546,7 +56557,7 @@ fn143:
     movq $0, %rax
     jmp .Lret_fn143
 .L2274:
-    leaq .Ls3646(%rip), %rax
+    leaq .Ls3644(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -56555,13 +56566,13 @@ fn143:
     movzbq %al, %rax
     testq %rax, %rax
     je .L2276
-    leaq .Ls3647(%rip), %rax
+    leaq .Ls3645(%rip), %rax
     movq %rax, %rdi
     movq %r13, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3648(%rip), %rax
+    leaq .Ls3646(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -56572,7 +56583,7 @@ fn143:
     movq $0, %rax
     jmp .Lret_fn143
 .L2276:
-    leaq .Ls3649(%rip), %rax
+    leaq .Ls3647(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -56581,13 +56592,13 @@ fn143:
     movzbq %al, %rax
     testq %rax, %rax
     je .L2278
-    leaq .Ls3650(%rip), %rax
+    leaq .Ls3648(%rip), %rax
     movq %rax, %rdi
     movq %r13, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3651(%rip), %rax
+    leaq .Ls3649(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -56598,7 +56609,7 @@ fn143:
     movq $0, %rax
     jmp .Lret_fn143
 .L2278:
-    leaq .Ls3652(%rip), %rax
+    leaq .Ls3650(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -56606,7 +56617,24 @@ fn143:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    jne .L2282
+    je .L2280
+    leaq .Ls3651(%rip), %rax
+    movq %rax, %rdi
+    movq %r13, %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3652(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    movq $0, %rax
+    jmp .Lret_fn143
+.L2280:
     leaq .Ls3653(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
@@ -56615,70 +56643,105 @@ fn143:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2280
+    je .L2282
+    leaq .Ls3654(%rip), %rax
+    movq %rax, %rdi
+    movq %r13, %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3655(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    movq $0, %rax
+    jmp .Lret_fn143
 .L2282:
+    leaq .Ls3656(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2286
+    leaq .Ls3657(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2284
+.L2286:
     movq %r13, %rdi
     call fn127
     testq %rax, %rax
-    je .L2280
+    je .L2284
     movq %r15, %rax
     testq %rax, %rax
     jne 1f
-    movq $4242, %rdi
-    leaq .Ls3654(%rip), %rsi
+    movq $4246, %rdi
+    leaq .Ls3658(%rip), %rsi
     call __han_nonefield
 1:
     movq 16(%rax), %rax
     movq %rax, -104(%rbp)
     cmpq $0, -104(%rbp)
-    jl .L2283
+    jl .L2287
     cmpq $63, -104(%rbp)
-    jg .L2283
-    leaq .Ls3655(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2285
-    leaq .Ls3656(%rip), %rax
-    movq %rax, %rdi
-    movq %r13, %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3657(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    jmp .L2286
-.L2285:
-    leaq .Ls3658(%rip), %rax
-    movq %rax, %rdi
-    movq %r13, %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
+    jg .L2287
     leaq .Ls3659(%rip), %rax
     movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2289
+    leaq .Ls3660(%rip), %rax
+    movq %rax, %rdi
+    movq %r13, %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3661(%rip), %rax
+    movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
     call __han_concat
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-.L2286:
+    jmp .L2290
+.L2289:
+    leaq .Ls3662(%rip), %rax
+    movq %rax, %rdi
+    movq %r13, %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3663(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+.L2290:
     movq $0, %rax
     jmp .Lret_fn143
-.L2283:
-.L2280:
-    leaq .Ls3660(%rip), %rax
+.L2287:
+.L2284:
+    leaq .Ls3664(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -56686,8 +56749,8 @@ fn143:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    jne .L2289
-    leaq .Ls3661(%rip), %rax
+    jne .L2293
+    leaq .Ls3665(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -56695,33 +56758,11 @@ fn143:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2287
-.L2289:
+    je .L2291
+.L2293:
     movq %rbx, %rdi
     movq %r13, %rsi
     call fn136
-    leaq .Ls3662(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3663(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3664(%rip), %rax
-    movq %rax, %rdi
-    movq -32(%rbp), %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3665(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
     leaq .Ls3666(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
@@ -56731,41 +56772,31 @@ fn143:
     movq %rbx, %rdi
     call fn105
     leaq .Ls3668(%rip), %rax
+    movq %rax, %rdi
+    movq -32(%rbp), %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3669(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3669(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2290
     leaq .Ls3670(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    jmp .L2291
-.L2290:
     leaq .Ls3671(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-.L2291:
-    movq $0, %rax
-    jmp .Lret_fn143
-.L2287:
     leaq .Ls3672(%rip), %rax
     movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2294
+    movq %rbx, %rdi
+    call fn105
     leaq .Ls3673(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
@@ -56774,13 +56805,45 @@ fn143:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2292
+    je .L2294
+    leaq .Ls3674(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    jmp .L2295
 .L2294:
+    leaq .Ls3675(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+.L2295:
+    movq $0, %rax
+    jmp .Lret_fn143
+.L2291:
+    leaq .Ls3676(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2298
+    leaq .Ls3677(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2296
+.L2298:
     movq %r13, %rdi
     call fn127
     cmpq $0, %rax
-    je .L2297
-    leaq .Ls3674(%rip), %rax
+    je .L2301
+    leaq .Ls3678(%rip), %rax
     movq %rax, %rsi
     movq %r13, %rdi
     call strcmp
@@ -56788,33 +56851,11 @@ fn143:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2295
-.L2297:
+    je .L2299
+.L2301:
     movq %rbx, %rdi
     movq %r13, %rsi
     call fn136
-    leaq .Ls3675(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3676(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3677(%rip), %rax
-    movq %rax, %rdi
-    movq -32(%rbp), %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3678(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
     leaq .Ls3679(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
@@ -56823,21 +56864,43 @@ fn143:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    jmp .L2296
-.L2295:
-    movq %rbx, %rdi
-    movq %r13, %rsi
-    call fn136
-.L2296:
     leaq .Ls3681(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
+    movq %rax, %rdi
+    movq -32(%rbp), %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
     leaq .Ls3682(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
     leaq .Ls3683(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3684(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    jmp .L2300
+.L2299:
+    movq %rbx, %rdi
+    movq %r13, %rsi
+    call fn136
+.L2300:
+    leaq .Ls3685(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3686(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3687(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
     call strcmp
@@ -56845,15 +56908,15 @@ fn143:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2298
-    leaq .Ls3684(%rip), %rax
+    je .L2302
+    leaq .Ls3688(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-.L2298:
+.L2302:
     movq $0, %rax
     jmp .Lret_fn143
-.L2292:
+.L2296:
     movq %rbx, %rdi
     movq %r12, %rsi
     movq %r13, %rdx
@@ -56882,30 +56945,30 @@ fn144:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3111, %rdi
-    leaq .Ls3685(%rip), %rsi
+    movq $3112, %rdi
+    leaq .Ls3689(%rip), %rsi
     call __han_nonefield
 1:
-    movq 328(%rax), %rax
+    movq 336(%rax), %rax
     addq $1, %rax
     movq %rax, %rdx
     movq (%rsp), %rax
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $3111, %rdi
-    leaq .Ls3686(%rip), %rsi
+    movq $3112, %rdi
+    leaq .Ls3690(%rip), %rsi
     call __han_nonefield
 1:
-    movq %rdx, 328(%rax)
+    movq %rdx, 336(%rax)
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3112, %rdi
-    leaq .Ls3687(%rip), %rsi
+    movq $3113, %rdi
+    leaq .Ls3691(%rip), %rsi
     call __han_nonefield
 1:
-    movq 328(%rax), %rax
+    movq 336(%rax), %rax
 .Lret_fn144:
     movq -16(%rbp), %rbx
     leave
@@ -56920,7 +56983,7 @@ fn145:
     subq $16, %rsp
     movq %rbx, -16(%rbp)
     movq %rdi, %rbx
-    leaq .Ls3688(%rip), %rax
+    leaq .Ls3692(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %rbx, %rax
@@ -56953,102 +57016,18 @@ fn146:
     movq %rcx, -32(%rbp)
     xorl %ebx, %ebx
     xorl %r12d, %r12d
-    leaq .Ls3689(%rip), %rax
+    leaq .Ls3693(%rip), %rax
     movq %rax, %rsi
     movq %r15, %rdi
     call strcmp
     cmpl $0, %eax
     sete %al
     movzbq %al, %rax
-    testq %rax, %rax
-    je .L2300
-    leaq .Ls3690(%rip), %rax
-    movq %rax, %rdi
-    movq %r14, %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3691(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %r13, %rdi
-    call fn105
-.L2300:
-    leaq .Ls3692(%rip), %rax
-    movq %rax, %rsi
-    movq %r15, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2302
-    movq $-1, -40(%rbp)
-    movq %r14, %rdi
-    call fn127
     testq %rax, %rax
     je .L2304
-    movq -32(%rbp), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3346, %rdi
-    leaq .Ls3693(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 16(%rax), %rax
-    movq %rax, %r12
-    movq $0, %rbx
-    jmp .L2307
-.L2306:
-    addq $1, %rbx
-.L2307:
-    cmpq $31, %rbx
-    jge .L2309
-    movq $1, %rax
-    movq %rbx, %rcx
-    cmpq $63, %rcx
-    jbe 1f
-    movl $3348, %edi
-    movq %rcx, %rsi
-    call __han_shift
-1:
-    shlq %cl, %rax
-    cmpq %r12, %rax
-    jl .L2306
-.L2309:
-.L2308:
-    cmpq $0, %r12
-    jle .L2310
-    movq $1, %rax
-    movq %rbx, %rcx
-    cmpq $63, %rcx
-    jbe 1f
-    movl $3349, %edi
-    movq %rcx, %rsi
-    call __han_shift
-1:
-    shlq %cl, %rax
-    cmpq %r12, %rax
-    jne .L2310
-    movq %rbx, -40(%rbp)
-.L2310:
-.L2304:
-    cmpq $0, -40(%rbp)
-    jl .L2312
-    cmpq $0, -40(%rbp)
-    jle .L2314
     leaq .Ls3694(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq -40(%rbp), %rax
     movq %rax, %rdi
-    call __han_tostr
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
+    movq %r14, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
@@ -57060,65 +57039,83 @@ fn146:
     movq %rax, %rsi
     movq %r13, %rdi
     call fn105
-.L2314:
-    jmp .L2313
-.L2312:
+.L2304:
     leaq .Ls3696(%rip), %rax
-    movq %rax, %rdi
-    movq %r14, %rsi
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3697(%rip), %rax
     movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %r13, %rdi
-    call fn105
+    movq %r15, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2306
+    movq $-1, -40(%rbp)
+    movq %r14, %rdi
+    call fn127
+    testq %rax, %rax
+    je .L2308
+    movq -32(%rbp), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3347, %rdi
+    leaq .Ls3697(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 16(%rax), %rax
+    movq %rax, %r12
+    movq $0, %rbx
+    jmp .L2311
+.L2310:
+    addq $1, %rbx
+.L2311:
+    cmpq $31, %rbx
+    jge .L2313
+    movq $1, %rax
+    movq %rbx, %rcx
+    cmpq $63, %rcx
+    jbe 1f
+    movl $3349, %edi
+    movq %rcx, %rsi
+    call __han_shift
+1:
+    shlq %cl, %rax
+    cmpq %r12, %rax
+    jl .L2310
 .L2313:
-.L2302:
+.L2312:
+    cmpq $0, %r12
+    jle .L2314
+    movq $1, %rax
+    movq %rbx, %rcx
+    cmpq $63, %rcx
+    jbe 1f
+    movl $3350, %edi
+    movq %rcx, %rsi
+    call __han_shift
+1:
+    shlq %cl, %rax
+    cmpq %r12, %rax
+    jne .L2314
+    movq %rbx, -40(%rbp)
+.L2314:
+.L2308:
+    cmpq $0, -40(%rbp)
+    jl .L2316
+    cmpq $0, -40(%rbp)
+    jle .L2318
     leaq .Ls3698(%rip), %rax
-    movq %rax, %rsi
-    movq %r15, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2316
-    leaq .Ls3699(%rip), %rax
-    movq %rax, %rdi
-    movq %r14, %rsi
-    call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3700(%rip), %rax
+    movq -40(%rbp), %rax
+    movq %rax, %rdi
+    call __han_tostr
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
     call __han_concat
-    movq %rax, %rsi
-    movq %r13, %rdi
-    call fn105
-.L2316:
-    leaq .Ls3701(%rip), %rax
-    movq %rax, %rsi
-    movq %r15, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2318
-    leaq .Ls3702(%rip), %rax
-    movq %rax, %rdi
-    movq %r14, %rsi
-    call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3703(%rip), %rax
+    leaq .Ls3699(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -57127,7 +57124,25 @@ fn146:
     movq %r13, %rdi
     call fn105
 .L2318:
-    leaq .Ls3704(%rip), %rax
+    jmp .L2317
+.L2316:
+    leaq .Ls3700(%rip), %rax
+    movq %rax, %rdi
+    movq %r14, %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3701(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %r13, %rdi
+    call fn105
+.L2317:
+.L2306:
+    leaq .Ls3702(%rip), %rax
     movq %rax, %rsi
     movq %r15, %rdi
     call strcmp
@@ -57136,13 +57151,13 @@ fn146:
     movzbq %al, %rax
     testq %rax, %rax
     je .L2320
-    leaq .Ls3705(%rip), %rax
+    leaq .Ls3703(%rip), %rax
     movq %rax, %rdi
     movq %r14, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3706(%rip), %rax
+    leaq .Ls3704(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -57151,6 +57166,54 @@ fn146:
     movq %r13, %rdi
     call fn105
 .L2320:
+    leaq .Ls3705(%rip), %rax
+    movq %rax, %rsi
+    movq %r15, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2322
+    leaq .Ls3706(%rip), %rax
+    movq %rax, %rdi
+    movq %r14, %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3707(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %r13, %rdi
+    call fn105
+.L2322:
+    leaq .Ls3708(%rip), %rax
+    movq %rax, %rsi
+    movq %r15, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2324
+    leaq .Ls3709(%rip), %rax
+    movq %rax, %rdi
+    movq %r14, %rsi
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3710(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %r13, %rdi
+    call fn105
+.L2324:
 .Lret_fn146:
     movq -64(%rbp), %rbx
     movq -72(%rbp), %r12
@@ -57175,32 +57238,8 @@ fn147:
     movq %rsi, %r12
     movq %rdx, %r14
     xorl %ebx, %ebx
-    leaq .Ls3707(%rip), %rax
-    movq %rax, %rbx
-    leaq .Ls3708(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2322
-    leaq .Ls3709(%rip), %rax
-    movq %rax, %rbx
-.L2322:
-    leaq .Ls3710(%rip), %rax
-    movq %rax, %rsi
-    movq %r12, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2324
     leaq .Ls3711(%rip), %rax
     movq %rax, %rbx
-.L2324:
     leaq .Ls3712(%rip), %rax
     movq %rax, %rsi
     movq %r12, %rdi
@@ -57238,12 +57277,36 @@ fn147:
     movq %rax, %rbx
 .L2330:
     leaq .Ls3718(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2332
+    leaq .Ls3719(%rip), %rax
+    movq %rax, %rbx
+.L2332:
+    leaq .Ls3720(%rip), %rax
+    movq %rax, %rsi
+    movq %r12, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2334
+    leaq .Ls3721(%rip), %rax
+    movq %rax, %rbx
+.L2334:
+    leaq .Ls3722(%rip), %rax
     movq %rax, %rdi
     movq %r14, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3719(%rip), %rax
+    leaq .Ls3723(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -57251,13 +57314,13 @@ fn147:
     movq %rax, %rsi
     movq %r13, %rdi
     call fn105
-    leaq .Ls3720(%rip), %rax
+    leaq .Ls3724(%rip), %rax
     movq %rax, %rdi
     movq %rbx, %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3721(%rip), %rax
+    leaq .Ls3725(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -57265,7 +57328,7 @@ fn147:
     movq %rax, %rsi
     movq %r13, %rdi
     call fn105
-    leaq .Ls3722(%rip), %rax
+    leaq .Ls3726(%rip), %rax
     movq %rax, %rsi
     movq %r13, %rdi
     call fn105
@@ -57293,61 +57356,23 @@ fn148:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3614, %rdi
-    leaq .Ls3723(%rip), %rsi
+    movq $3615, %rdi
+    leaq .Ls3727(%rip), %rsi
     call __han_nonefield
 1:
-    movq 472(%rax), %rax
+    movq 480(%rax), %rax
     movq (%rax), %rax
     movq %rax, %r12
-    jmp .L2333
-.L2332:
-    leaq .Ls3724(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3616, %rdi
-    leaq .Ls3725(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 472(%rax), %rax
-    movq %r12, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $3616, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rdi
-    call __han_tostr
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3726(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3727(%rip), %rax
+    jmp .L2337
+.L2336:
+    leaq .Ls3728(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
     movq $3617, %rdi
-    leaq .Ls3728(%rip), %rsi
+    leaq .Ls3729(%rip), %rsi
     call __han_nonefield
 1:
     movq 480(%rax), %rax
@@ -57370,7 +57395,7 @@ fn148:
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3729(%rip), %rax
+    leaq .Ls3730(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -57378,15 +57403,53 @@ fn148:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3730(%rip), %rax
+    leaq .Ls3731(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3618, %rdi
+    leaq .Ls3732(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 488(%rax), %rax
+    movq %r12, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $3618, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rdi
+    call __han_tostr
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3733(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3734(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
     subq $1, %r12
-.L2333:
+.L2337:
     cmpq %r13, %r12
-    jg .L2332
-.L2334:
+    jg .L2336
+.L2338:
 .Lret_fn148:
     movq -32(%rbp), %rbx
     movq -40(%rbp), %r12
@@ -57414,13 +57477,13 @@ fn149:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3386, %rdi
-    leaq .Ls3731(%rip), %rsi
+    movq $3387, %rdi
+    leaq .Ls3735(%rip), %rsi
     call __han_nonefield
 1:
     movq 0(%rax), %rax
     movq %rax, -40(%rbp)
-    leaq .Ls3732(%rip), %rax
+    leaq .Ls3736(%rip), %rax
     movq %rax, %rsi
     movq -40(%rbp), %rdi
     call strcmp
@@ -57428,12 +57491,12 @@ fn149:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2335
+    je .L2339
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3388, %rdi
-    leaq .Ls3733(%rip), %rsi
+    movq $3389, %rdi
+    leaq .Ls3737(%rip), %rsi
     call __han_nonefield
 1:
     movq 16(%rax), %rax
@@ -57441,11 +57504,11 @@ fn149:
     setne %al
     movzbq %al, %rax
     cmpq %r14, %rax
-    jne .L2337
-    leaq .Ls3734(%rip), %rax
+    jne .L2341
+    leaq .Ls3738(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3735(%rip), %rax
+    leaq .Ls3739(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r13, %rax
@@ -57462,11 +57525,11 @@ fn149:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-.L2337:
+.L2341:
     movq $0, %rax
     jmp .Lret_fn149
-.L2335:
-    leaq .Ls3736(%rip), %rax
+.L2339:
+    leaq .Ls3740(%rip), %rax
     movq %rax, %rsi
     movq -40(%rbp), %rdi
     call strcmp
@@ -57474,18 +57537,18 @@ fn149:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2339
+    je .L2343
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3391, %rdi
-    leaq .Ls3737(%rip), %rsi
+    movq $3392, %rdi
+    leaq .Ls3741(%rip), %rsi
     call __han_nonefield
 1:
     movq 8(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3738(%rip), %rax
+    leaq .Ls3742(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -57494,12 +57557,12 @@ fn149:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2339
+    je .L2343
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3392, %rdi
-    leaq .Ls3739(%rip), %rsi
+    movq $3393, %rdi
+    leaq .Ls3743(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -57509,7 +57572,7 @@ fn149:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3392, %rdx
+    movq $3393, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -57528,8 +57591,8 @@ fn149:
     call fn149
     movq $0, %rax
     jmp .Lret_fn149
-.L2339:
-    leaq .Ls3740(%rip), %rax
+.L2343:
+    leaq .Ls3744(%rip), %rax
     movq %rax, %rsi
     movq -40(%rbp), %rdi
     call strcmp
@@ -57537,48 +57600,7 @@ fn149:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2341
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3395, %rdi
-    leaq .Ls3741(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 8(%rax), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3742(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2343
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3395, %rdi
-    leaq .Ls3743(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 8(%rax), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3744(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2341
-.L2343:
+    je .L2345
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
@@ -57597,17 +57619,58 @@ fn149:
     cmpl $0, %eax
     sete %al
     movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2347
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3396, %rdi
+    leaq .Ls3747(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 8(%rax), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3748(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2345
+.L2347:
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3397, %rdi
+    leaq .Ls3749(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 8(%rax), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3750(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
     movq %rax, -48(%rbp)
     cmpq %r14, -48(%rbp)
-    jne .L2344
+    jne .L2348
     movq %rbx, %rdi
     call fn144
     movq %rax, -56(%rbp)
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3399, %rdi
-    leaq .Ls3747(%rip), %rsi
+    movq $3400, %rdi
+    leaq .Ls3751(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -57617,7 +57680,7 @@ fn149:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3399, %rdx
+    movq $3400, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -57637,8 +57700,8 @@ fn149:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3400, %rdi
-    leaq .Ls3748(%rip), %rsi
+    movq $3401, %rdi
+    leaq .Ls3752(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -57648,7 +57711,7 @@ fn149:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3400, %rdx
+    movq $3401, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -57658,7 +57721,7 @@ fn149:
     movq %r13, %rdx
     movq %r14, %rcx
     call fn149
-    leaq .Ls3749(%rip), %rax
+    leaq .Ls3753(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq -56(%rbp), %rax
@@ -57670,7 +57733,7 @@ fn149:
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3750(%rip), %rax
+    leaq .Ls3754(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -57678,41 +57741,17 @@ fn149:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    jmp .L2345
-.L2344:
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3403, %rdi
-    leaq .Ls3751(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $3403, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    movq %r13, %rdx
-    movq %r14, %rcx
-    call fn149
+    jmp .L2349
+.L2348:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
     movq $3404, %rdi
-    leaq .Ls3752(%rip), %rsi
+    leaq .Ls3755(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
-    movq $2, %rcx
+    movq $1, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -57728,20 +57767,44 @@ fn149:
     movq %r13, %rdx
     movq %r14, %rcx
     call fn149
-.L2345:
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3405, %rdi
+    leaq .Ls3756(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $2, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $3405, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    movq %r13, %rdx
+    movq %r14, %rcx
+    call fn149
+.L2349:
     movq $0, %rax
     jmp .Lret_fn149
-.L2341:
+.L2345:
     movq %rbx, %rdi
     movq %r12, %rsi
     call fn150
     testq %rax, %rax
-    je .L2346
+    je .L2350
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3409, %rdi
-    leaq .Ls3753(%rip), %rsi
+    movq $3410, %rdi
+    leaq .Ls3757(%rip), %rsi
     call __han_nonefield
 1:
     movq 8(%rax), %rax
@@ -57749,35 +57812,12 @@ fn149:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3410, %rdi
-    leaq .Ls3754(%rip), %rsi
+    movq $3411, %rdi
+    leaq .Ls3758(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
     movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $3410, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn124
-    movq %rax, %r15
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3411, %rdi
-    leaq .Ls3755(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $2, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -57791,8 +57831,31 @@ fn149:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn124
+    movq %rax, %r15
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3412, %rdi
+    leaq .Ls3759(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $2, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $3412, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn124
     movq %rax, -80(%rbp)
-    leaq .Ls3756(%rip), %rax
+    leaq .Ls3760(%rip), %rax
     movq %rax, %rsi
     movq %r15, %rdi
     call strcmp
@@ -57800,8 +57863,8 @@ fn149:
     setne %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2348
-    leaq .Ls3757(%rip), %rax
+    je .L2352
+    leaq .Ls3761(%rip), %rax
     movq %rax, %rsi
     movq -80(%rbp), %rdi
     call strcmp
@@ -57809,31 +57872,31 @@ fn149:
     setne %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2348
+    je .L2352
     movq %r15, %rdi
     call fn127
     cmpq $0, %rax
-    jne .L2348
+    jne .L2352
     movq %r15, %rdi
     call fn128
     testq %rax, %rax
-    jne .L2350
+    jne .L2354
     movq -80(%rbp), %rdi
     call fn127
     testq %rax, %rax
-    jne .L2350
+    jne .L2354
     movq -80(%rbp), %rdi
     call fn128
     testq %rax, %rax
-    je .L2348
-.L2350:
-    leaq .Ls3758(%rip), %rax
+    je .L2352
+.L2354:
+    leaq .Ls3762(%rip), %rax
     movq %rax, %rdi
     movq -80(%rbp), %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3759(%rip), %rax
+    leaq .Ls3763(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -57844,13 +57907,13 @@ fn149:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    jmp .L2349
-.L2348:
+    jmp .L2353
+.L2352:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3416, %rdi
-    leaq .Ls3760(%rip), %rsi
+    movq $3417, %rdi
+    leaq .Ls3764(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -57860,7 +57923,7 @@ fn149:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3416, %rdx
+    movq $3417, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -57870,8 +57933,8 @@ fn149:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $3416, %rdi
-    leaq .Ls3761(%rip), %rsi
+    movq $3417, %rdi
+    leaq .Ls3765(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -57881,7 +57944,7 @@ fn149:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3416, %rdx
+    movq $3417, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -57892,13 +57955,13 @@ fn149:
     movq %rbx, %rdi
     call fn138
     movq %rax, -88(%rbp)
-    leaq .Ls3762(%rip), %rax
+    leaq .Ls3766(%rip), %rax
     movq %rax, %rdi
     movq -88(%rbp), %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3763(%rip), %rax
+    leaq .Ls3767(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -57906,27 +57969,11 @@ fn149:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-.L2349:
+.L2353:
     movl $6, %edi
     call __han_lnew
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3764(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3765(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3766(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3767(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
     leaq .Ls3768(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -57935,13 +57982,6 @@ fn149:
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
-    movq (%rsp), %rax
-    addq $16, %rsp
-    movq %rax, -96(%rbp)
-    movl $6, %edi
-    call __han_lnew
-    subq $16, %rsp
-    movq %rax, (%rsp)
     leaq .Ls3770(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -57958,6 +57998,13 @@ fn149:
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
+    movq (%rsp), %rax
+    addq $16, %rsp
+    movq %rax, -96(%rbp)
+    movl $6, %edi
+    call __han_lnew
+    subq $16, %rsp
+    movq %rax, (%rsp)
     leaq .Ls3774(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -57966,13 +58013,6 @@ fn149:
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
-    movq (%rsp), %rax
-    addq $16, %rsp
-    movq %rax, -104(%rbp)
-    movl $6, %edi
-    call __han_lnew
-    subq $16, %rsp
-    movq %rax, (%rsp)
     leaq .Ls3776(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -57989,11 +58029,34 @@ fn149:
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
+    movq (%rsp), %rax
+    addq $16, %rsp
+    movq %rax, -104(%rbp)
+    movl $6, %edi
+    call __han_lnew
+    subq $16, %rsp
+    movq %rax, (%rsp)
     leaq .Ls3780(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
     leaq .Ls3781(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3782(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3783(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3784(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3785(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
@@ -58006,58 +58069,11 @@ fn149:
     movq %rax, -120(%rbp)
     movq %r14, %rax
     testq %rax, %rax
-    je .L2351
-    leaq .Ls3782(%rip), %rax
+    je .L2355
+    leaq .Ls3786(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq -104(%rbp), %rax
-    movq -120(%rbp), %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $3423, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3783(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3784(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq %r13, %rax
-    movq %rax, %rdi
-    call __han_tostr
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    jmp .L2352
-.L2351:
-    leaq .Ls3785(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq -112(%rbp), %rax
     movq -120(%rbp), %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
@@ -58075,14 +58091,14 @@ fn149:
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3786(%rip), %rax
+    leaq .Ls3787(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3787(%rip), %rax
+    leaq .Ls3788(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r13, %rax
@@ -58099,46 +58115,71 @@ fn149:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-.L2352:
+    jmp .L2356
+.L2355:
+    leaq .Ls3789(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq -112(%rbp), %rax
+    movq -120(%rbp), %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $3425, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3790(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3791(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq %r13, %rax
+    movq %rax, %rdi
+    call __han_tostr
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+.L2356:
     movq $0, %rax
     jmp .Lret_fn149
-.L2346:
+.L2350:
     movq %rbx, %rdi
     movq %r12, %rsi
     call fn129
-    leaq .Ls3788(%rip), %rax
+    leaq .Ls3792(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
     movq %r14, %rax
     testq %rax, %rax
-    je .L2353
-    leaq .Ls3789(%rip), %rax
+    je .L2357
+    leaq .Ls3793(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3790(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq %r13, %rax
-    movq %rax, %rdi
-    call __han_tostr
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    jmp .L2354
-.L2353:
-    leaq .Ls3791(%rip), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3792(%rip), %rax
+    leaq .Ls3794(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %r13, %rax
@@ -58155,7 +58196,29 @@ fn149:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-.L2354:
+    jmp .L2358
+.L2357:
+    leaq .Ls3795(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3796(%rip), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq %r13, %rax
+    movq %rax, %rdi
+    call __han_tostr
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call __han_concat
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+.L2358:
 .Lret_fn149:
     movq -128(%rbp), %rbx
     movq -136(%rbp), %r12
@@ -58185,14 +58248,14 @@ fn150:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3376, %rdi
-    leaq .Ls3793(%rip), %rsi
+    movq $3377, %rdi
+    leaq .Ls3797(%rip), %rsi
     call __han_nonefield
 1:
     movq 0(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3794(%rip), %rax
+    leaq .Ls3798(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -58201,15 +58264,15 @@ fn150:
     setne %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2355
+    je .L2359
     movq $0, %rax
     jmp .Lret_fn150
-.L2355:
+.L2359:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3377, %rdi
-    leaq .Ls3795(%rip), %rsi
+    movq $3378, %rdi
+    leaq .Ls3799(%rip), %rsi
     call __han_nonefield
 1:
     movq 8(%rax), %rax
@@ -58218,27 +58281,27 @@ fn150:
     call __han_lnew
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3796(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3797(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3798(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3799(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
     leaq .Ls3800(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
     leaq .Ls3801(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3802(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3803(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3804(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3805(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
@@ -58248,46 +58311,19 @@ fn150:
     movq %r13, %rsi
     call fn13
     cmpq $0, %rax
-    jne .L2357
+    jne .L2361
     movq $0, %rax
     jmp .Lret_fn150
-.L2357:
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3379, %rdi
-    leaq .Ls3802(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 24(%rax), %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $3379, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    testq %rax, %rax
-    jne 1f
-    movq $3379, %rdi
-    leaq .Ls3803(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    movq %rax, %r12
+.L2361:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
     movq $3380, %rdi
-    leaq .Ls3804(%rip), %rsi
+    leaq .Ls3806(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
-    movq $2, %rcx
+    movq $1, %rcx
     leaq -1(%rcx), %rdx
     cmpq (%rax), %rdx
     jb 1f
@@ -58301,7 +58337,34 @@ fn150:
     testq %rax, %rax
     jne 1f
     movq $3380, %rdi
-    leaq .Ls3805(%rip), %rsi
+    leaq .Ls3807(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
+    movq %rax, %r12
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3381, %rdi
+    leaq .Ls3808(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 24(%rax), %rax
+    movq $2, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $3381, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    testq %rax, %rax
+    jne 1f
+    movq $3381, %rdi
+    leaq .Ls3809(%rip), %rsi
     call __han_nonefield
 1:
     movq 72(%rax), %rax
@@ -58311,7 +58374,7 @@ fn150:
     setne %al
     movzbq %al, %rax
     cmpq $0, %rax
-    je .L2360
+    je .L2364
     movq %r12, %rax
     cmpq $2, %rax
     setne %al
@@ -58319,12 +58382,12 @@ fn150:
     cmpq $0, %rax
     setne %al
     movzbq %al, %rax
-    jmp .L2361
-.L2360:
+    jmp .L2365
+.L2364:
     movq $0, %rax
-.L2361:
+.L2365:
     cmpq $0, %rax
-    je .L2359
+    je .L2363
     movq %r14, %rax
     cmpq $2, %rax
     setne %al
@@ -58332,10 +58395,10 @@ fn150:
     cmpq $0, %rax
     setne %al
     movzbq %al, %rax
-    jmp .L2362
-.L2359:
+    jmp .L2366
+.L2363:
     movq $0, %rax
-.L2362:
+.L2366:
 .Lret_fn150:
     movq -48(%rbp), %rbx
     movq -56(%rbp), %r12
@@ -58359,52 +58422,12 @@ fn151:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4631, %rdi
-    leaq .Ls3806(%rip), %rsi
+    movq $4635, %rdi
+    leaq .Ls3810(%rip), %rsi
     call __han_nonefield
 1:
     movq 0(%rax), %rax
     movq %rax, %rbx
-    leaq .Ls3807(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2365
-    leaq .Ls3808(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2365
-    leaq .Ls3809(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2365
-    leaq .Ls3810(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2363
-.L2365:
-    movq $1, %rax
-    jmp .Lret_fn151
-.L2363:
     leaq .Ls3811(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
@@ -58413,23 +58436,63 @@ fn151:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2366
+    jne .L2369
+    leaq .Ls3812(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2369
+    leaq .Ls3813(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2369
+    leaq .Ls3814(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2367
+.L2369:
+    movq $1, %rax
+    jmp .Lret_fn151
+.L2367:
+    leaq .Ls3815(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2370
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4633, %rdi
-    leaq .Ls3812(%rip), %rsi
+    movq $4637, %rdi
+    leaq .Ls3816(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
     movq (%rax), %rax
     cmpq $0, %rax
-    jle .L2366
+    jle .L2370
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4634, %rdi
-    leaq .Ls3813(%rip), %rsi
+    movq $4638, %rdi
+    leaq .Ls3817(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -58437,8 +58500,8 @@ fn151:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4634, %rdi
-    leaq .Ls3814(%rip), %rsi
+    movq $4638, %rdi
+    leaq .Ls3818(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
@@ -58450,7 +58513,7 @@ fn151:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4634, %rdx
+    movq $4638, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -58458,7 +58521,7 @@ fn151:
     movq %rax, %rdi
     call fn151
     jmp .Lret_fn151
-.L2366:
+.L2370:
     movq $0, %rax
 .Lret_fn151:
     movq -24(%rbp), %rbx
@@ -58482,13 +58545,13 @@ fn152:
     xorl %r12d, %r12d
     xorl %r13d, %r13d
     movq $1, %r13
-    jmp .L2369
-.L2368:
+    jmp .L2373
+.L2372:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $3512, %rdi
-    leaq .Ls3815(%rip), %rsi
+    movq $3513, %rdi
+    leaq .Ls3819(%rip), %rsi
     call __han_nonefield
 1:
     movq 88(%rax), %rax
@@ -58498,21 +58561,21 @@ fn152:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $3512, %rdx
+    movq $3513, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     movq %rax, %r12
-    leaq .Ls3816(%rip), %rax
+    leaq .Ls3820(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3817(%rip), %rax
+    leaq .Ls3821(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3818(%rip), %rax
+    leaq .Ls3822(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %rbx, %rdi
@@ -58524,27 +58587,11 @@ fn152:
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3819(%rip), %rax
+    leaq .Ls3823(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
     call __han_concat
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3820(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3821(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3822(%rip), %rax
-    movq %rax, %rsi
-    movq %rbx, %rdi
-    call fn105
-    leaq .Ls3823(%rip), %rax
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
@@ -58553,9 +58600,25 @@ fn152:
     movq %rbx, %rdi
     call fn105
     leaq .Ls3825(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3826(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3827(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3828(%rip), %rax
+    movq %rax, %rsi
+    movq %rbx, %rdi
+    call fn105
+    leaq .Ls3829(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3826(%rip), %rax
+    leaq .Ls3830(%rip), %rax
     movq %rax, %rdi
     movq %r12, %rsi
     call __han_concat
@@ -58569,10 +58632,10 @@ fn152:
     movq %rax, %rsi
     movq %rbx, %rdi
     call fn105
-    leaq .Ls3827(%rip), %rax
+    leaq .Ls3831(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3828(%rip), %rax
+    leaq .Ls3832(%rip), %rax
     movq %rax, %rdi
     movq %r12, %rsi
     call __han_concat
@@ -58589,21 +58652,21 @@ fn152:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $3523, %rdi
-    leaq .Ls3829(%rip), %rsi
+    movq $3524, %rdi
+    leaq .Ls3833(%rip), %rsi
     call __han_nonefield
 1:
-    movq 384(%rax), %rax
+    movq 392(%rax), %rax
     movq %rax, %rdi
     movq %r12, %rsi
     call __han_lpush
     addq $1, %r13
-.L2369:
+.L2373:
     movq %r14, %rax
     testq %rax, %rax
     jne 1f
-    movq $3511, %rdi
-    leaq .Ls3830(%rip), %rsi
+    movq $3512, %rdi
+    leaq .Ls3834(%rip), %rsi
     call __han_nonefield
 1:
     movq 88(%rax), %rax
@@ -58611,8 +58674,8 @@ fn152:
     movq %rax, %rcx
     movq %r13, %rax
     cmpq %rcx, %rax
-    jle .L2368
-.L2370:
+    jle .L2372
+.L2374:
 .Lret_fn152:
     movq -40(%rbp), %rbx
     movq -48(%rbp), %r12
@@ -58639,43 +58702,43 @@ fn153:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4640, %rdi
-    leaq .Ls3831(%rip), %rsi
+    movq $4644, %rdi
+    leaq .Ls3835(%rip), %rsi
     call __han_nonefield
 1:
-    movq 448(%rax), %rax
+    movq 456(%rax), %rax
     movq %rax, %rdi
     movq %r12, %rsi
     call __han_lpush
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4641, %rdi
-    leaq .Ls3832(%rip), %rsi
+    movq $4645, %rdi
+    leaq .Ls3836(%rip), %rsi
     call __han_nonefield
 1:
-    movq 456(%rax), %rax
+    movq 464(%rax), %rax
     movq %rax, %rdi
     movq %r13, %rsi
     call __han_lpush
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4642, %rdi
-    leaq .Ls3833(%rip), %rsi
+    movq $4646, %rdi
+    leaq .Ls3837(%rip), %rsi
     call __han_nonefield
 1:
-    movq 464(%rax), %rax
+    movq 472(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4642, %rdi
-    leaq .Ls3834(%rip), %rsi
+    movq $4646, %rdi
+    leaq .Ls3838(%rip), %rsi
     call __han_nonefield
 1:
-    movq 472(%rax), %rax
+    movq 480(%rax), %rax
     movq (%rax), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -58687,35 +58750,35 @@ fn153:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4644, %rdi
-    leaq .Ls3835(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 448(%rax), %rax
-    movq %rax, %rdi
-    movq $4644, %rsi
-    call __han_lpop
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4645, %rdi
-    leaq .Ls3836(%rip), %rsi
+    movq $4648, %rdi
+    leaq .Ls3839(%rip), %rsi
     call __han_nonefield
 1:
     movq 456(%rax), %rax
     movq %rax, %rdi
-    movq $4645, %rsi
+    movq $4648, %rsi
     call __han_lpop
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4646, %rdi
-    leaq .Ls3837(%rip), %rsi
+    movq $4649, %rdi
+    leaq .Ls3840(%rip), %rsi
     call __han_nonefield
 1:
     movq 464(%rax), %rax
     movq %rax, %rdi
-    movq $4646, %rsi
+    movq $4649, %rsi
+    call __han_lpop
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4650, %rdi
+    leaq .Ls3841(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 472(%rax), %rax
+    movq %rax, %rdi
+    movq $4650, %rsi
     call __han_lpop
 .Lret_fn153:
     movq -40(%rbp), %rbx
@@ -58738,87 +58801,87 @@ fn154:
     movq %rdi, %r12
     movq %rsi, %r13
     xorl %ebx, %ebx
-    leaq .Ls3838(%rip), %rax
+    leaq .Ls3842(%rip), %rax
     xorl %esi, %esi
     movq %rax, %rdi
     call __han_say_s
     movq $1, %rbx
-    jmp .L2372
-.L2371:
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4801, %rdi
-    leaq .Ls3839(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 312(%rax), %rax
-    movq %rbx, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4801, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    xorl %esi, %esi
-    movq %rax, %rdi
-    call __han_say_s
-    addq $1, %rbx
-.L2372:
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4800, %rdi
-    leaq .Ls3840(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 312(%rax), %rax
-    movq (%rax), %rax
-    movq %rax, %rcx
-    movq %rbx, %rax
-    cmpq %rcx, %rax
-    jle .L2371
-.L2373:
-    leaq .Ls3841(%rip), %rax
-    xorl %esi, %esi
-    movq %rax, %rdi
-    call __han_say_s
-    movq $1, %rbx
-    jmp .L2375
-.L2374:
-    movq %r12, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4807, %rdi
-    leaq .Ls3842(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 296(%rax), %rax
-    movq %rbx, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4807, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    xorl %esi, %esi
-    movq %rax, %rdi
-    call __han_say_s
-    addq $1, %rbx
+    jmp .L2376
 .L2375:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4806, %rdi
+    movq $4805, %rdi
     leaq .Ls3843(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 320(%rax), %rax
+    movq %rbx, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4805, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    xorl %esi, %esi
+    movq %rax, %rdi
+    call __han_say_s
+    addq $1, %rbx
+.L2376:
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4804, %rdi
+    leaq .Ls3844(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 320(%rax), %rax
+    movq (%rax), %rax
+    movq %rax, %rcx
+    movq %rbx, %rax
+    cmpq %rcx, %rax
+    jle .L2375
+.L2377:
+    leaq .Ls3845(%rip), %rax
+    xorl %esi, %esi
+    movq %rax, %rdi
+    call __han_say_s
+    movq $1, %rbx
+    jmp .L2379
+.L2378:
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4811, %rdi
+    leaq .Ls3846(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 296(%rax), %rax
+    movq %rbx, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4811, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    xorl %esi, %esi
+    movq %rax, %rdi
+    call __han_say_s
+    addq $1, %rbx
+.L2379:
+    movq %r12, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4810, %rdi
+    leaq .Ls3847(%rip), %rsi
     call __han_nonefield
 1:
     movq 296(%rax), %rax
@@ -58826,45 +58889,45 @@ fn154:
     movq %rax, %rcx
     movq %rbx, %rax
     cmpq %rcx, %rax
-    jle .L2374
-.L2376:
+    jle .L2378
+.L2380:
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4810, %rdi
-    leaq .Ls3844(%rip), %rsi
+    movq $4814, %rdi
+    leaq .Ls3848(%rip), %rsi
     call __han_nonefield
 1:
-    movq 432(%rax), %rax
+    movq 440(%rax), %rax
     cmpq $1, %rax
-    jne .L2377
+    jne .L2381
     movq $0, %rax
     jmp .Lret_fn154
-.L2377:
+.L2381:
     movq %r12, %rdi
     movq %r13, %rsi
     call fn3
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4812, %rdi
-    leaq .Ls3845(%rip), %rsi
+    movq $4816, %rdi
+    leaq .Ls3849(%rip), %rsi
     call __han_nonefield
 1:
     movq 304(%rax), %rax
     cmpq $1, %rax
-    jne .L2379
+    jne .L2383
     movq %r12, %rax
     testq %rax, %rax
     jne 1f
-    movq $4813, %rdi
-    leaq .Ls3846(%rip), %rsi
+    movq $4817, %rdi
+    leaq .Ls3850(%rip), %rsi
     call __han_nonefield
 1:
     movq 72(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3847(%rip), %rax
+    leaq .Ls3851(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -58872,7 +58935,7 @@ fn154:
     movq %rax, %rsi
     movq %r12, %rdi
     call fn3
-.L2379:
+.L2383:
 .Lret_fn154:
     movq -32(%rbp), %rbx
     movq -40(%rbp), %r12
@@ -58898,7 +58961,7 @@ main:
     xorl %r13d, %r13d
     xorl %r14d, %r14d
     xorl %r15d, %r15d
-    movl $488, %edi
+    movl $496, %edi
     call __han_alloc
     leaq .Lempty(%rip), %rcx
     movq %rcx, 64(%rax)
@@ -58909,9 +58972,9 @@ main:
     leaq .Lempty(%rip), %rcx
     movq %rcx, 224(%rax)
     leaq .Lempty(%rip), %rcx
-    movq %rcx, 416(%rax)
+    movq %rcx, 424(%rax)
     leaq .Lempty(%rip), %rcx
-    movq %rcx, 440(%rax)
+    movq %rcx, 448(%rax)
     subq $16, %rsp
     movq %rax, (%rsp)
     movl $1, %edi
@@ -59009,15 +59072,11 @@ main:
     movl $1, %edi
     call __han_lnew
     movq (%rsp), %rcx
-    movq %rax, 312(%rcx)
-    movl $1, %edi
-    call __han_lnew
-    movq (%rsp), %rcx
     movq %rax, 320(%rcx)
     movl $1, %edi
     call __han_lnew
     movq (%rsp), %rcx
-    movq %rax, 344(%rcx)
+    movq %rax, 328(%rcx)
     movl $1, %edi
     call __han_lnew
     movq (%rsp), %rcx
@@ -59033,11 +59092,11 @@ main:
     movl $1, %edi
     call __han_lnew
     movq (%rsp), %rcx
-    movq %rax, 384(%rcx)
+    movq %rax, 376(%rcx)
     movl $1, %edi
     call __han_lnew
     movq (%rsp), %rcx
-    movq %rax, 400(%rcx)
+    movq %rax, 392(%rcx)
     movl $1, %edi
     call __han_lnew
     movq (%rsp), %rcx
@@ -59045,7 +59104,7 @@ main:
     movl $1, %edi
     call __han_lnew
     movq (%rsp), %rcx
-    movq %rax, 448(%rcx)
+    movq %rax, 416(%rcx)
     movl $1, %edi
     call __han_lnew
     movq (%rsp), %rcx
@@ -59062,6 +59121,10 @@ main:
     call __han_lnew
     movq (%rsp), %rcx
     movq %rax, 480(%rcx)
+    movl $1, %edi
+    call __han_lnew
+    movq (%rsp), %rcx
+    movq %rax, 488(%rcx)
     movq (%rsp), %rax
     addq $16, %rsp
     movq %rax, %rbx
@@ -59071,22 +59134,6 @@ main:
     call __han_lnew
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3848(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3849(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3850(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
-    leaq .Ls3851(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
     leaq .Ls3852(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -59271,25 +59318,10 @@ main:
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
-    movq (%rsp), %rax
-    addq $16, %rsp
-    movq %rax, %rdx
-    movq (%rsp), %rax
-    addq $16, %rsp
-    testq %rax, %rax
-    jne 1f
-    movq $4819, %rdi
-    leaq .Ls3898(%rip), %rsi
-    call __han_nonefield
-1:
-    movq %rdx, 160(%rax)
-    movq %rbx, %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movl $16, %edi
-    call __han_lnew
-    subq $16, %rsp
-    movq %rax, (%rsp)
+    leaq .Ls3898(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
     leaq .Ls3899(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -59302,10 +59334,25 @@ main:
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
-    leaq .Ls3902(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
+    movq (%rsp), %rax
+    addq $16, %rsp
+    movq %rax, %rdx
+    movq (%rsp), %rax
+    addq $16, %rsp
+    testq %rax, %rax
+    jne 1f
+    movq $4823, %rdi
+    leaq .Ls3902(%rip), %rsi
+    call __han_nonefield
+1:
+    movq %rdx, 160(%rax)
+    movq %rbx, %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movl $16, %edi
+    call __han_lnew
+    subq $16, %rsp
+    movq %rax, (%rsp)
     leaq .Ls3903(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -59354,25 +59401,10 @@ main:
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
-    movq (%rsp), %rax
-    addq $16, %rsp
-    movq %rax, %rdx
-    movq (%rsp), %rax
-    addq $16, %rsp
-    testq %rax, %rax
-    jne 1f
-    movq $4825, %rdi
-    leaq .Ls3915(%rip), %rsi
-    call __han_nonefield
-1:
-    movq %rdx, 168(%rax)
-    movq %rbx, %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movl $24, %edi
-    call __han_lnew
-    subq $16, %rsp
-    movq %rax, (%rsp)
+    leaq .Ls3915(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
     leaq .Ls3916(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -59385,10 +59417,25 @@ main:
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
-    leaq .Ls3919(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    call __han_lpush
+    movq (%rsp), %rax
+    addq $16, %rsp
+    movq %rax, %rdx
+    movq (%rsp), %rax
+    addq $16, %rsp
+    testq %rax, %rax
+    jne 1f
+    movq $4829, %rdi
+    leaq .Ls3919(%rip), %rsi
+    call __han_nonefield
+1:
+    movq %rdx, 168(%rax)
+    movq %rbx, %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movl $24, %edi
+    call __han_lnew
+    subq $16, %rsp
+    movq %rax, (%rsp)
     leaq .Ls3920(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -59469,6 +59516,22 @@ main:
     movq %rax, %rsi
     movq (%rsp), %rdi
     call __han_lpush
+    leaq .Ls3940(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3941(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3942(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
+    leaq .Ls3943(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    call __han_lpush
     movq (%rsp), %rax
     addq $16, %rsp
     movq %rax, %rdx
@@ -59476,8 +59539,8 @@ main:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4826, %rdi
-    leaq .Ls3940(%rip), %rsi
+    movq $4830, %rdi
+    leaq .Ls3944(%rip), %rsi
     call __han_nonefield
 1:
     movq %rdx, 176(%rax)
@@ -59492,8 +59555,8 @@ main:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4829, %rdi
-    leaq .Ls3941(%rip), %rsi
+    movq $4833, %rdi
+    leaq .Ls3945(%rip), %rsi
     call __han_nonefield
 1:
     movq %rdx, 64(%rax)
@@ -59503,14 +59566,14 @@ main:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4830, %rdi
-    leaq .Ls3942(%rip), %rsi
+    movq $4834, %rdi
+    leaq .Ls3946(%rip), %rsi
     call __han_nonefield
 1:
     movq 64(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3943(%rip), %rax
+    leaq .Ls3947(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -59520,174 +59583,89 @@ main:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4830, %rdi
-    leaq .Ls3944(%rip), %rsi
+    movq $4834, %rdi
+    leaq .Ls3948(%rip), %rsi
     call __han_nonefield
 1:
     movq %rdx, 72(%rax)
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4831, %rdi
-    leaq .Ls3945(%rip), %rsi
+    movq $4835, %rdi
+    leaq .Ls3949(%rip), %rsi
     call __han_nonefield
 1:
     movq 72(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3946(%rip), %rax
+    leaq .Ls3950(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
     call __han_concat
     movq %rax, %rdi
     movq $0, %rsi
-    movq $4831, %rdx
+    movq $4835, %rdx
     movq $1, %rcx
     call __han_fopen
     cmpq $-1, %rax
-    je .L2381
+    je .L2385
     movq %rax, -16(%rbp)
     movq -16(%rbp), %rdi
     movq $0, %rsi
     call __han_fclose
-    jmp .L2382
-.L2381:
+    jmp .L2386
+.L2385:
     movq %rbx, %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4832, %rdi
-    leaq .Ls3947(%rip), %rsi
+    movq $4836, %rdi
+    leaq .Ls3951(%rip), %rsi
     call __han_nonefield
 1:
     movq 64(%rax), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3948(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %rdx
-    movq (%rsp), %rax
-    addq $16, %rsp
-    testq %rax, %rax
-    jne 1f
-    movq $4832, %rdi
-    leaq .Ls3949(%rip), %rsi
-    call __han_nonefield
-1:
-    movq %rdx, 72(%rax)
-.L2382:
-    movq %rbx, %rax
-    testq %rax, %rax
-    jne 1f
-    movq $4834, %rdi
-    leaq .Ls3950(%rip), %rsi
-    call __han_nonefield
-1:
-    movq 72(%rax), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3951(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call __han_concat
-    movq %rax, %r14
-    call __han_args
-    movq %rax, %r12
-    movq (%rax), %rax
-    cmpq $1, %rax
-    jl .L2383
-    movq %r12, %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4836, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     leaq .Ls3952(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2385
-    movq %r12, %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4836, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3953(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
+    call __han_concat
+    movq %rax, %rdx
+    movq (%rsp), %rax
     addq $16, %rsp
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
     testq %rax, %rax
-    je .L2383
-.L2385:
-    leaq .Ls3954(%rip), %rax
-    xorl %esi, %esi
-    movq %rax, %rdi
-    call __han_say_s
-    xorl %eax, %eax
-    movq %rax, %rdi
-    call exit
-.L2383:
-    movq %r12, %rax
-    movq (%rax), %rax
-    cmpq $1, %rax
-    jl .L2386
-    movq %r12, %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4840, %rdx
-    call __han_lget
+    jne 1f
+    movq $4836, %rdi
+    leaq .Ls3953(%rip), %rsi
+    call __han_nonefield
 1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
+    movq %rdx, 72(%rax)
+.L2386:
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4838, %rdi
+    leaq .Ls3954(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 72(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
     leaq .Ls3955(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    jne .L2388
+    call __han_concat
+    movq %rax, %r15
+    call __han_args
+    movq %rax, %r12
+    movq (%rax), %rax
+    cmpq $1, %rax
+    jl .L2387
     movq %r12, %rax
     movq $1, %rcx
     leaq -1(%rcx), %rdx
@@ -59711,24 +59689,93 @@ main:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2386
-.L2388:
-    leaq .Ls3957(%rip), %rax
-    xorl %esi, %esi
+    jne .L2389
+    movq %r12, %rax
+    movq $1, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
     movq %rax, %rdi
-    call __han_say_s
+    movq %rcx, %rsi
+    movq $4840, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3957(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2387
+.L2389:
     leaq .Ls3958(%rip), %rax
     xorl %esi, %esi
     movq %rax, %rdi
     call __han_say_s
+    xorl %eax, %eax
+    movq %rax, %rdi
+    call exit
+.L2387:
+    movq %r12, %rax
+    movq (%rax), %rax
+    cmpq $1, %rax
+    jl .L2390
+    movq %r12, %rax
+    movq $1, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4844, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
     leaq .Ls3959(%rip), %rax
-    xorl %esi, %esi
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    jne .L2392
+    movq %r12, %rax
+    movq $1, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
     movq %rax, %rdi
-    call __han_say_s
+    movq %rcx, %rsi
+    movq $4844, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
     leaq .Ls3960(%rip), %rax
-    xorl %esi, %esi
-    movq %rax, %rdi
-    call __han_say_s
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2390
+.L2392:
     leaq .Ls3961(%rip), %rax
     xorl %esi, %esi
     movq %rax, %rdi
@@ -59749,14 +59796,30 @@ main:
     xorl %esi, %esi
     movq %rax, %rdi
     call __han_say_s
+    leaq .Ls3966(%rip), %rax
+    xorl %esi, %esi
+    movq %rax, %rdi
+    call __han_say_s
+    leaq .Ls3967(%rip), %rax
+    xorl %esi, %esi
+    movq %rax, %rdi
+    call __han_say_s
+    leaq .Ls3968(%rip), %rax
+    xorl %esi, %esi
+    movq %rax, %rdi
+    call __han_say_s
+    leaq .Ls3969(%rip), %rax
+    xorl %esi, %esi
+    movq %rax, %rdi
+    call __han_say_s
     xorl %eax, %eax
     movq %rax, %rdi
     call exit
-.L2386:
+.L2390:
     movq %r12, %rax
     movq (%rax), %rax
     cmpq $1, %rax
-    jl .L2389
+    jl .L2393
     movq %r12, %rax
     movq $1, %rcx
     leaq -1(%rcx), %rdx
@@ -59764,14 +59827,14 @@ main:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4852, %rdx
+    movq $4856, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3966(%rip), %rax
+    leaq .Ls3970(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -59780,30 +59843,30 @@ main:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2389
+    je .L2393
     movq %rbx, %rdi
-    movq %r14, %rsi
+    movq %r15, %rsi
     call fn3
     xorl %eax, %eax
     movq %rax, %rdi
     call exit
-.L2389:
+.L2393:
     movq %r12, %rax
     movq (%rax), %rax
     cmpq $1, %rax
-    jge .L2391
+    jge .L2395
     xorl %eax, %eax
     movq %rax, %rdi
     movq $1, %rsi
-    movq $4857, %rdx
+    movq $4861, %rdx
     movq $0, %rcx
     call __han_fopen
     movq %rax, -40(%rbp)
-    leaq .Ls3967(%rip), %rax
+    leaq .Ls3971(%rip), %rax
     xorl %esi, %esi
     movq %rax, %rdi
     call __han_say_s
-    leaq .Ls3968(%rip), %rax
+    leaq .Ls3972(%rip), %rax
     xorl %esi, %esi
     movq %rax, %rdi
     call __han_say_s
@@ -59813,11 +59876,11 @@ main:
     movq $1, %rax
     movq %rax, %rdi
     call exit
-.L2391:
+.L2395:
     movq %r12, %rax
     movq (%rax), %rax
     cmpq $2, %rax
-    jl .L2395
+    jl .L2399
     movq %r12, %rax
     movq $1, %rcx
     leaq -1(%rcx), %rdx
@@ -59825,84 +59888,7 @@ main:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4865, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    leaq .Ls3969(%rip), %rax
-    movq %rax, %rsi
-    movq (%rsp), %rdi
-    addq $16, %rsp
-    call strcmp
-    cmpl $0, %eax
-    sete %al
-    movzbq %al, %rax
-    testq %rax, %rax
-    je .L2395
-    movq %rbx, %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq $1, %rax
-    movq %rax, %rdx
-    movq (%rsp), %rax
-    addq $16, %rsp
-    testq %rax, %rax
-    jne 1f
-    movq $4866, %rdi
-    leaq .Ls3970(%rip), %rsi
-    call __han_nonefield
-1:
-    movq %rdx, 432(%rax)
-    movq %rbx, %rax
-    subq $16, %rsp
-    movq %rax, (%rsp)
-    movq $900000000, %rax
-    movq %rax, %rdx
-    movq (%rsp), %rax
-    addq $16, %rsp
-    testq %rax, %rax
-    jne 1f
-    movq $4867, %rdi
-    leaq .Ls3971(%rip), %rsi
-    call __han_nonefield
-1:
-    movq %rdx, 328(%rax)
-    movq %r12, %rax
-    movq %rax, %rdi
-    movq $1, %rsi
-    movq $4868, %rdx
-    call __han_lremove
-.L2395:
-    movq %r12, %rax
-    movq $1, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4870, %rdx
-    call __han_lget
-1:
-    movq 16(%rax), %rax
-    movq (%rax,%rdx,8), %rax
-    movq %rax, %r15
-    leaq .Ls3972(%rip), %rax
-    movq %rax, %r13
-    movq %r12, %rax
-    movq (%rax), %rax
-    cmpq $3, %rax
-    jl .L2397
-    movq %r12, %rax
-    movq $2, %rcx
-    leaq -1(%rcx), %rdx
-    cmpq (%rax), %rdx
-    jb 1f
-    movq %rax, %rdi
-    movq %rcx, %rsi
-    movq $4872, %rdx
+    movq $4869, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -59918,7 +59904,84 @@ main:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2397
+    je .L2399
+    movq %rbx, %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq $1, %rax
+    movq %rax, %rdx
+    movq (%rsp), %rax
+    addq $16, %rsp
+    testq %rax, %rax
+    jne 1f
+    movq $4870, %rdi
+    leaq .Ls3974(%rip), %rsi
+    call __han_nonefield
+1:
+    movq %rdx, 440(%rax)
+    movq %rbx, %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    movq $900000000, %rax
+    movq %rax, %rdx
+    movq (%rsp), %rax
+    addq $16, %rsp
+    testq %rax, %rax
+    jne 1f
+    movq $4871, %rdi
+    leaq .Ls3975(%rip), %rsi
+    call __han_nonefield
+1:
+    movq %rdx, 336(%rax)
+    movq %r12, %rax
+    movq %rax, %rdi
+    movq $1, %rsi
+    movq $4872, %rdx
+    call __han_lremove
+.L2399:
+    movq %r12, %rax
+    movq $1, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4874, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    movq %rax, -48(%rbp)
+    leaq .Ls3976(%rip), %rax
+    movq %rax, %r13
+    movq %r12, %rax
+    movq (%rax), %rax
+    cmpq $3, %rax
+    jl .L2401
+    movq %r12, %rax
+    movq $2, %rcx
+    leaq -1(%rcx), %rdx
+    cmpq (%rax), %rdx
+    jb 1f
+    movq %rax, %rdi
+    movq %rcx, %rsi
+    movq $4876, %rdx
+    call __han_lget
+1:
+    movq 16(%rax), %rax
+    movq (%rax,%rdx,8), %rax
+    subq $16, %rsp
+    movq %rax, (%rsp)
+    leaq .Ls3977(%rip), %rax
+    movq %rax, %rsi
+    movq (%rsp), %rdi
+    addq $16, %rsp
+    call strcmp
+    cmpl $0, %eax
+    sete %al
+    movzbq %al, %rax
+    testq %rax, %rax
+    je .L2401
     movq %r12, %rax
     movq $3, %rcx
     leaq -1(%rcx), %rdx
@@ -59926,24 +59989,24 @@ main:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4872, %rdx
+    movq $4876, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
     movq (%rax,%rdx,8), %rax
     movq %rax, %r13
-.L2397:
+.L2401:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4873, %rdi
-    leaq .Ls3974(%rip), %rsi
+    movq $4877, %rdi
+    leaq .Ls3978(%rip), %rsi
     call __han_nonefield
 1:
     movq 24(%rax), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    movq %r15, %rdi
+    movq -48(%rbp), %rdi
     call fn4
     movq %rax, %rsi
     movq (%rsp), %rdi
@@ -59952,8 +60015,8 @@ main:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4874, %rdi
-    leaq .Ls3975(%rip), %rsi
+    movq $4878, %rdi
+    leaq .Ls3979(%rip), %rsi
     call __han_nonefield
 1:
     movq 32(%rax), %rax
@@ -59964,26 +60027,26 @@ main:
     subq $16, %rsp
     movq %rax, (%rsp)
     movq %rbx, %rdi
-    movq %r15, %rsi
-    movq %r15, %rdx
+    movq -48(%rbp), %rsi
+    movq -48(%rbp), %rdx
     call fn5
     movq %rax, %rdx
     movq (%rsp), %rax
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4875, %rdi
-    leaq .Ls3976(%rip), %rsi
+    movq $4879, %rdi
+    leaq .Ls3980(%rip), %rsi
     call __han_nonefield
 1:
     movq %rdx, 96(%rax)
-    leaq .Ls3977(%rip), %rax
+    leaq .Ls3981(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3978(%rip), %rax
+    leaq .Ls3982(%rip), %rax
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3979(%rip), %rax
+    leaq .Ls3983(%rip), %rax
     movq %rax, %rdx
     movq (%rsp), %rsi
     addq $16, %rsp
@@ -59997,19 +60060,19 @@ main:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4877, %rdi
-    leaq .Ls3980(%rip), %rsi
+    movq $4881, %rdi
+    leaq .Ls3984(%rip), %rsi
     call __han_nonefield
 1:
     movq 96(%rax), %rax
     movq (%rax), %rax
     cmpq $0, %rax
-    jle .L2399
+    jle .L2403
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4878, %rdi
-    leaq .Ls3981(%rip), %rsi
+    movq $4882, %rdi
+    leaq .Ls3985(%rip), %rsi
     call __han_nonefield
 1:
     movq 96(%rax), %rax
@@ -60017,8 +60080,8 @@ main:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4878, %rdi
-    leaq .Ls3982(%rip), %rsi
+    movq $4882, %rdi
+    leaq .Ls3986(%rip), %rsi
     call __han_nonefield
 1:
     movq 96(%rax), %rax
@@ -60030,7 +60093,7 @@ main:
     jb 1f
     movq %rax, %rdi
     movq %rcx, %rsi
-    movq $4878, %rdx
+    movq $4882, %rdx
     call __han_lget
 1:
     movq 16(%rax), %rax
@@ -60042,8 +60105,8 @@ main:
     movq -72(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4879, %rdi
-    leaq .Ls3983(%rip), %rsi
+    movq $4883, %rdi
+    leaq .Ls3987(%rip), %rsi
     call __han_nonefield
 1:
     movq 32(%rax), %rax
@@ -60052,8 +60115,8 @@ main:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4879, %rdi
-    leaq .Ls3984(%rip), %rsi
+    movq $4883, %rdi
+    leaq .Ls3988(%rip), %rsi
     call __han_nonefield
 1:
     movq %rdx, 32(%rax)
@@ -60063,8 +60126,8 @@ main:
     movq -72(%rbp), %rax
     testq %rax, %rax
     jne 1f
-    movq $4880, %rdi
-    leaq .Ls3985(%rip), %rsi
+    movq $4884, %rdi
+    leaq .Ls3989(%rip), %rsi
     call __han_nonefield
 1:
     movq 56(%rax), %rax
@@ -60073,17 +60136,17 @@ main:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4880, %rdi
-    leaq .Ls3986(%rip), %rsi
+    movq $4884, %rdi
+    leaq .Ls3990(%rip), %rsi
     call __han_nonefield
 1:
     movq %rdx, 56(%rax)
-.L2399:
+.L2403:
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4882, %rdi
-    leaq .Ls3987(%rip), %rsi
+    movq $4886, %rdi
+    leaq .Ls3991(%rip), %rsi
     call __han_nonefield
 1:
     movq 96(%rax), %rax
@@ -60101,8 +60164,8 @@ main:
     addq $16, %rsp
     testq %rax, %rax
     jne 1f
-    movq $4885, %rdi
-    leaq .Ls3988(%rip), %rsi
+    movq $4889, %rdi
+    leaq .Ls3992(%rip), %rsi
     call __han_nonefield
 1:
     movq %rdx, 104(%rax)
@@ -60115,7 +60178,7 @@ main:
     movq %rbx, %rdi
     movq -80(%rbp), %rsi
     call fn104
-    leaq .Ls3989(%rip), %rax
+    leaq .Ls3993(%rip), %rax
     movq %rax, %rsi
     movq %r13, %rdi
     call strcmp
@@ -60123,53 +60186,69 @@ main:
     sete %al
     movzbq %al, %rax
     testq %rax, %rax
-    je .L2401
+    je .L2405
     movq %rbx, %rdi
-    movq %r14, %rsi
+    movq %r15, %rsi
     call fn154
     xorl %eax, %eax
     movq %rax, %rdi
     call exit
-.L2401:
-    leaq .Ls3990(%rip), %rax
+.L2405:
+    leaq .Ls3994(%rip), %rax
     movq %rax, %rsi
     movq %r13, %rdi
     call __han_concat
     movq %rax, -88(%rbp)
     movq %rax, %rdi
     movq $1, %rsi
-    movq $4897, %rdx
+    movq $4901, %rdx
     movq $0, %rcx
     call __han_fopen
     movq %rax, -96(%rbp)
     movq %rbx, %rdi
-    movq %r14, %rsi
+    movq %r15, %rsi
     call fn154
     movq -96(%rbp), %rdi
     movq $1, %rsi
     call __han_fclose
-    leaq .Ls3991(%rip), %rax
-    movq %rax, -104(%rbp)
+    leaq .Ls3995(%rip), %rax
+    movq %rax, %r14
     movq %rbx, %rax
     testq %rax, %rax
     jne 1f
-    movq $4901, %rdi
-    leaq .Ls3992(%rip), %rsi
+    movq $4905, %rdi
+    leaq .Ls3996(%rip), %rsi
     call __han_nonefield
 1:
     movq 304(%rax), %rax
     cmpq $1, %rax
-    jne .L2405
-    leaq .Ls3993(%rip), %rax
-    movq %rax, -104(%rbp)
-.L2405:
-    leaq .Ls3994(%rip), %rax
+    jne .L2409
+    leaq .Ls3997(%rip), %rax
+    movq %rax, %r14
+.L2409:
+    movq %rbx, %rax
+    testq %rax, %rax
+    jne 1f
+    movq $4906, %rdi
+    leaq .Ls3998(%rip), %rsi
+    call __han_nonefield
+1:
+    movq 312(%rax), %rax
+    cmpq $1, %rax
+    jne .L2411
+    leaq .Ls3999(%rip), %rax
+    movq %rax, %rsi
+    movq %r14, %rdi
+    call __han_concat
+    movq %rax, %r14
+.L2411:
+    leaq .Ls4000(%rip), %rax
     movq %rax, %rdi
     movq -88(%rbp), %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3995(%rip), %rax
+    leaq .Ls4001(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
@@ -60179,26 +60258,26 @@ main:
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3996(%rip), %rax
+    leaq .Ls4002(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp
     call __han_concat
     movq %rax, %rdi
-    movq -104(%rbp), %rsi
+    movq %r14, %rsi
     call __han_concat
     movq %rax, %rdi
     call __han_system
     cmpq $0, %rax
-    je .L2407
+    je .L2413
     xorl %eax, %eax
     movq %rax, %rdi
     movq $1, %rsi
-    movq $4903, %rdx
+    movq $4908, %rdx
     movq $0, %rcx
     call __han_fopen
     movq %rax, -112(%rbp)
-    leaq .Ls3997(%rip), %rax
+    leaq .Ls4003(%rip), %rax
     xorl %esi, %esi
     movq %rax, %rdi
     call __han_say_s
@@ -60208,14 +60287,14 @@ main:
     movq $1, %rax
     movq %rax, %rdi
     call exit
-.L2407:
-    leaq .Ls3998(%rip), %rax
+.L2413:
+    leaq .Ls4004(%rip), %rax
     movq %rax, %rdi
     movq -88(%rbp), %rsi
     call __han_concat
     subq $16, %rsp
     movq %rax, (%rsp)
-    leaq .Ls3999(%rip), %rax
+    leaq .Ls4005(%rip), %rax
     movq %rax, %rsi
     movq (%rsp), %rdi
     addq $16, %rsp

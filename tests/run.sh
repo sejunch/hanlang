@@ -126,7 +126,10 @@ echo "== 정답 비교 (출력·종료코드·에러 메시지를 tests/expected
 # 그것과 똑같이 돌아야 한다. 프로그램은 임시 폴더에서 같은 입력·인자로 돌린다.
 # 새 기능을 넣어 출력이 바뀌는 게 맞으면: 눈으로 확인한 뒤 tests/expected/ 의 그 파일을 새로 쓰기.
 export HAN_SEED=1          # (N의 무작위) 를 쓰는 프로그램도 결과가 늘 같게
-for f in $(ls examples/*.han tests/t_*.han | grep -v t_win); do
+# t_req 은 libcurl 이 있을 때만 (lib/요청.han 이 -lcurl 로 링크)
+skip='t_win'
+ldconfig -p 2>/dev/null | grep -q 'libcurl\.so' || skip='t_win\|t_req'
+for f in $(ls examples/*.han tests/t_*.han | grep -v "$skip"); do
     exp="tests/expected/$(dirname "$f" | tr / _)_$(basename "$f" .han).out"
     if [ ! -f "$exp" ]; then bad "$f (정답 파일 $exp 이 없음)"; continue; fi
     if ./hanc "$f" -o "$tmp/gp" 2>"$tmp/err" &&
