@@ -25,6 +25,7 @@ static Atom wmDelete;
 static const char *keyq[KEYMAX];      /* 눌린 키 이름 (고정 문자열) — 눌린키들 이 꺼내 감 */
 static char keybuf[KEYMAX][4];        /* 글자 키는 여기에 */
 static int nkeys;
+static int resizable, newW, newH;      /* 늘어나게 열었나 · 창이 바뀐 크기 (ConfigureNotify) */
 static int mousex, mousey, mousedown;   /* (마우스위치)·(마우스눌림) — 창 안 좌표, 왼쪽 버튼 */
 void *__han_lnew(long cap);
 void __han_lpush(void *list, long v);
@@ -60,7 +61,8 @@ static void setrgb(unsigned c) {
     XftColorAllocValue(dpy, DefaultVisual(dpy, scr), DefaultColormap(dpy, scr), &rc, &xcol);
 }
 
-void __han_wopen(long w, long h, long line) {
+/* 창 가로와 세로를 [늘어나게] 열다. — 늘어나게(flag 1) 가 아니면 창 관리자에 크기 고정을 알림 */
+void __han_wopen(long w, long h, long line, long flag) {
     if (w < 1 || h < 1 || w > 8000 || h > 8000) werr(line, "창 크기는 1~8000 이어야 함");
     if (dpy) werr(line, "창은 하나만 열 수 있음 (보여주다 로 닫은 뒤 다시 열기)");
     mapped = closed = frames = nkeys = 0;
@@ -68,8 +70,18 @@ void __han_wopen(long w, long h, long line) {
     dpy = XOpenDisplay(NULL);
     if (!dpy) werr(line, "창을 띄울 화면이 없음 (DISPLAY 가 없음)");
     scr = DefaultScreen(dpy);
-    W = (int)w; H = (int)h;
+    W = newW = (int)w; H = newH = (int)h;
+    resizable = flag != 0;
     win = XCreateSimpleWindow(dpy, RootWindow(dpy, scr), 0, 0, W, H, 0, 0, 0xFFFFFF);
+    XSizeHints *hint = XAllocSizeHints();
+    if (hint) {
+        hint->flags = PSize | PMinSize;
+        hint->width = hint->min_width = W; hint->height = hint->min_height = H;
+        if (resizable) hint->min_width = hint->min_height = 1;
+        else { hint->flags |= PMaxSize; hint->max_width = W; hint->max_height = H; }
+        XSetWMNormalHints(dpy, win, hint);
+        XFree(hint);
+    }
     XStoreName(dpy, win, "한랭");
     Xutf8SetWMProperties(dpy, win, "한랭", "한랭", NULL, 0, NULL, NULL, NULL);
     pm = XCreatePixmap(dpy, win, W, H, DefaultDepth(dpy, scr));
@@ -177,7 +189,11 @@ static void mapWin(void) {                         /* 창을 화면에 처음 �
     XSelectInput(dpy, win, ExposureMask | KeyPressMask | StructureNotifyMask |
                  PointerMotionMask | ButtonPressMask | ButtonReleaseMask);
     XMapWindow(dpy, win);
-    for (;;) { XEvent e; XNextEvent(dpy, &e); if (e.type == MapNotify) break; }
+    for (;;) {
+        XEvent e; XNextEvent(dpy, &e);
+        if (e.type == ConfigureNotify) { newW = e.xconfigure.width; newH = e.xconfigure.height; }
+        if (e.type == MapNotify) break;
+    }
     mapped = 1;
 }
 
@@ -206,6 +222,7 @@ static void pump(void) {                            /* 쌓인 창 사건을 처�
         if (e.type == Expose) XCopyArea(dpy, pm, win, gc, 0, 0, W, H, 0, 0);
         else if (e.type == ClientMessage && (Atom)e.xclient.data.l[0] == wmDelete) closed = 1;
         else if (e.type == KeyPress) pushKey(&e.xkey);
+        else if (e.type == ConfigureNotify) { newW = e.xconfigure.width; newH = e.xconfigure.height; }
         else if (e.type == MotionNotify) { mousex = e.xmotion.x; mousey = e.xmotion.y; }
         else if (e.type == ButtonPress || e.type == ButtonRelease) {
             mousex = e.xbutton.x; mousey = e.xbutton.y;
@@ -253,6 +270,30 @@ void *__han_wkeys(void) {
 void *__han_wmouse(void) {
     pump();
     double x = mousex, y = mousey;
+    long xb, yb;
+    memcpy(&xb, &x, 8); memcpy(&yb, &y, 8);
+    return __han_vnew(2, xb, yb, 0);
+}
+
+/* (창크기): 지금 도화지 크기 (평면벡터). 늘어나게 연 창이 커지거나 작아졌으면 여기서 도화지를 새 크기로 바꾼다
+ * (그리던 중에 바뀌면 반쯤 그린 게 날아가니까, 프로그램이 크기를 물어볼 때만). 겹치는 부분은 옮기고 새 곳은 하양 */
+void *__han_wsize(long line) {
+    need(line);
+    pump();
+    if (resizable && newW > 0 && newH > 0 && (newW != W || newH != H)) {
+        Pixmap np = XCreatePixmap(dpy, win, newW, newH, DefaultDepth(dpy, scr));
+        unsigned long keep = pix;
+        XSetForeground(dpy, gc, WhitePixel(dpy, scr));
+        XFillRectangle(dpy, np, gc, 0, 0, newW, newH);
+        XSetForeground(dpy, gc, keep);
+        XCopyArea(dpy, pm, np, gc, 0, 0, W < newW ? W : newW, H < newH ? H : newH, 0, 0);
+        XftDrawDestroy(xd);
+        XFreePixmap(dpy, pm);
+        pm = np;
+        W = newW; H = newH;
+        xd = XftDrawCreate(dpy, pm, DefaultVisual(dpy, scr), DefaultColormap(dpy, scr));
+    }
+    double x = W, y = H;
     long xb, yb;
     memcpy(&xb, &x, 8); memcpy(&yb, &y, 8);
     return __han_vnew(2, xb, yb, 0);

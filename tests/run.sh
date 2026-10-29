@@ -94,6 +94,11 @@ if [ $HAS_X = 1 ]; then
        [ "$("$tmp/tw4")" = "$(printf '(0, 0)\n0\n0\n안 눌림\n7')" ] &&
        [ "$(head -c 14 "$HAN_SCREENSHOT")" = "$(printf 'P6\n120 80\n255\n')" ]; then ok
     else bad "tests/t_win4.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+    # 늘어나게 연 창 + (창크기): 창 없이 돌리면 연 크기 그대로
+    if ./hanc tests/t_win5.han -o "$tmp/tw5" 2>"$tmp/err" &&
+       [ "$("$tmp/tw5")" = "$(printf '(150, 90)\n13500\n(150, 90)\n3')" ] &&
+       [ "$(head -c 14 "$HAN_SCREENSHOT")" = "$(printf 'P6\n150 90\n255\n')" ]; then ok
+    else bad "tests/t_win5.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
     if ./hanc examples/게임/상자모으기.han -o "$tmp/game3" 2>"$tmp/err" &&
        [ "$(HAN_SEED=1 HAN_FRAMES=2 "$tmp/game3")" = "모은 상자: 0" ]; then ok
     else bad "examples/게임/상자모으기.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
