@@ -145,11 +145,14 @@ done
 unset HAN_SEED
 
 echo "== 웹 놀이터 모드 (hanc --놀이터: 바깥 세상을 건드리는 기능은 컴파일 오류)"
-for f in tests/play/p[1-4].han; do
+for f in tests/play/p[1-2].han; do
     ./hanc --놀이터 "$f" -o "$tmp/gp" >/dev/null 2>"$tmp/err"
     if cmp -s "$tmp/err" "tests/expected/play_$(basename "$f" .han).out"; then ok
     else bad "$f (놀이터 에러 메시지가 정답과 다름)"; diff "$tmp/err" "tests/expected/play_$(basename "$f" .han).out" | head -4 | sed 's/^/    /'; fi
 done
+if ./hanc --놀이터 tests/play/p3.han -o "$tmp/gp" 2>"$tmp/err" &&
+   [ "$(cd "$tmp" && HAN_PLAYGROUND=1 ./gp 2>&1)" = "$(printf "안에 씀\n1\n[실행 오류] 5행: 놀이터(웹)에서는 이 폴더 안의 파일만 열 수 있음 ('../밖.txt')")" ]; then ok
+else bad "tests/play/p3.han (놀이터 파일 막기가 틀림)"; fi
 if ./hanc --놀이터 tests/play/p5.han -o "$tmp/gp" 2>"$tmp/err" && [ "$("$tmp/gp" 2>&1)" = "$(printf '에러로 감\n3')" ]; then ok
 else bad "tests/play/p5.han (놀이터에서 되는 기능이 막힘)"; fi
 

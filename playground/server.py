@@ -3,8 +3,8 @@
 
 브라우저가 보낸 한랭 코드를 진짜 hanc 로 컴파일해서 돌리고 결과를 돌려준다.
 남의 코드를 이 서버에서 돌리는 것이라 막는 장치가 여러 겹이다:
-  1. hanc --놀이터 : 실행하다 · 낮은 수준 · 파일 · 환경값 은 컴파일 오류 (한랭은 범위 검사가 있어서
-     이것들을 막으면 계산하고 출력하는 것밖에 못 한다)
+  1. hanc --놀이터 : 실행하다 · 낮은 수준(요청.han 포함) 은 컴파일 오류. 파일은 HAN_PLAYGROUND 를 넘겨서
+     런타임이 이 폴더 안만 열게 막는다. 한랭은 범위 검사가 있어서 이러면 서버를 건드릴 길이 없다
   2. 실행 제한 : CPU 5초 · 벽시계 8초 · 메모리 512MB · 파일 32MB (넘으면 운영체제가 끝냄), 보여주는 출력은 1MB 까지
   3. 서버 환경 변수는 안 넘김 (비밀값이 새지 않게), 실행마다 새 임시 폴더
   4. 동시에 2개, IP 마다 1분에 30번
@@ -77,6 +77,7 @@ def 돌리다(명령, 폴더, 입력, cpu, mem, 벽시계, 파일크기):
     출력경로 = os.path.join(폴더, "out.txt")
     환경 = 깨끗한환경(폴더)
     환경["HAN_SCREENSHOT"] = os.path.join(폴더, "shot.ppm")
+    환경["HAN_PLAYGROUND"] = "1"
     with open(출력경로, "wb") as 출력:
         p = subprocess.Popen(명령, cwd=폴더, stdin=subprocess.PIPE, stdout=출력, stderr=subprocess.STDOUT,
                              env=환경, preexec_fn=제한걸기(cpu, mem, 파일크기))
