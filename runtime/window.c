@@ -25,9 +25,11 @@ static Atom wmDelete;
 static const char *keyq[KEYMAX];      /* 눌린 키 이름 (고정 문자열) — 눌린키들 이 꺼내 감 */
 static char keybuf[KEYMAX][4];        /* 글자 키는 여기에 */
 static int nkeys;
+static int mousex, mousey, mousedown;   /* (마우스위치)·(마우스눌림) — 창 안 좌표, 왼쪽 버튼 */
 void *__han_lnew(long cap);
 void __han_lpush(void *list, long v);
 char *__han_strdup(const char *s);
+void *__han_vnew(long dim, long x, long y, long z);
 
 static void werr(long line, const char *msg) {
     fflush(stdout);
@@ -62,6 +64,7 @@ void __han_wopen(long w, long h, long line) {
     if (w < 1 || h < 1 || w > 8000 || h > 8000) werr(line, "창 크기는 1~8000 이어야 함");
     if (dpy) werr(line, "창은 하나만 열 수 있음 (보여주다 로 닫은 뒤 다시 열기)");
     mapped = closed = frames = nkeys = 0;
+    mousex = mousey = mousedown = 0;
     dpy = XOpenDisplay(NULL);
     if (!dpy) werr(line, "창을 띄울 화면이 없음 (DISPLAY 가 없음)");
     scr = DefaultScreen(dpy);
@@ -171,7 +174,8 @@ static void mapWin(void) {                         /* 창을 화면에 처음 �
     if (mapped) return;
     wmDelete = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
     XSetWMProtocols(dpy, win, &wmDelete, 1);
-    XSelectInput(dpy, win, ExposureMask | KeyPressMask | StructureNotifyMask);
+    XSelectInput(dpy, win, ExposureMask | KeyPressMask | StructureNotifyMask |
+                 PointerMotionMask | ButtonPressMask | ButtonReleaseMask);
     XMapWindow(dpy, win);
     for (;;) { XEvent e; XNextEvent(dpy, &e); if (e.type == MapNotify) break; }
     mapped = 1;
@@ -202,6 +206,11 @@ static void pump(void) {                            /* 쌓인 창 사건을 처�
         if (e.type == Expose) XCopyArea(dpy, pm, win, gc, 0, 0, W, H, 0, 0);
         else if (e.type == ClientMessage && (Atom)e.xclient.data.l[0] == wmDelete) closed = 1;
         else if (e.type == KeyPress) pushKey(&e.xkey);
+        else if (e.type == MotionNotify) { mousex = e.xmotion.x; mousey = e.xmotion.y; }
+        else if (e.type == ButtonPress || e.type == ButtonRelease) {
+            mousex = e.xbutton.x; mousey = e.xbutton.y;
+            if (e.xbutton.button == Button1) mousedown = (e.type == ButtonPress);
+        }
     }
 }
 
@@ -238,6 +247,21 @@ void *__han_wkeys(void) {
     for (int i = 0; i < nkeys; i++) __han_lpush(l, (long)__han_strdup(keyq[i]));
     nkeys = 0;
     return l;
+}
+
+/* (마우스위치): 마지막으로 본 마우스 자리 (평면벡터, 창 왼쪽 위가 (0, 0)). 창이 뜨기 전엔 (0, 0) */
+void *__han_wmouse(void) {
+    pump();
+    double x = mousex, y = mousey;
+    long xb, yb;
+    memcpy(&xb, &x, 8); memcpy(&yb, &y, 8);
+    return __han_vnew(2, xb, yb, 0);
+}
+
+/* (마우스눌림): 왼쪽 버튼을 누르고 있으면 참 */
+long __han_wmousedown(void) {
+    pump();
+    return mousedown;
 }
 
 /* 보여주다: 창을 띄우고 닫을 때까지(창의 X, Esc, q) 기다린다 */

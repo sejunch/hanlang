@@ -89,6 +89,11 @@ if [ $HAS_X = 1 ]; then
        [ "$(HAN_FRAMES=2 "$tmp/tw3")" = "$(printf '380\n그림 둘')" ] &&
        [ "$(head -c 15 "$HAN_SCREENSHOT")" = "$(printf 'P6\n160 120\n255\n')" ]; then ok
     else bad "tests/t_win3.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+    # 마우스: 창 없이 돌리면 (0, 0) · 안 눌림, 같은 이름 변수가 먼저
+    if ./hanc tests/t_win4.han -o "$tmp/tw4" 2>"$tmp/err" &&
+       [ "$("$tmp/tw4")" = "$(printf '(0, 0)\n0\n0\n안 눌림\n7')" ] &&
+       [ "$(head -c 14 "$HAN_SCREENSHOT")" = "$(printf 'P6\n120 80\n255\n')" ]; then ok
+    else bad "tests/t_win4.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
     if ./hanc examples/게임/상자모으기.han -o "$tmp/game3" 2>"$tmp/err" &&
        [ "$(HAN_SEED=1 HAN_FRAMES=2 "$tmp/game3")" = "모은 상자: 0" ]; then ok
     else bad "examples/게임/상자모으기.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
@@ -177,14 +182,14 @@ if ldconfig -p 2>/dev/null | grep -q 'libvulkan\.so' && ./hanc tests/t_gpu.han -
         if ./hanc tests/t_gpu3.han -o "$tmp/tg3" 2>"$tmp/err" && { "$tmp/tg3"; echo "rc=$?"; } > "$tmp/out" 2>&1 &&
            cmp -s "$tmp/out" tests/expected/tests_t_gpu3.out; then ok
         else bad "tests/t_gpu3.han (GPU 벡터 답이 정답과 다름)"; diff "$tmp/out" tests/expected/tests_t_gpu3.out | head -4 | sed 's/^/    /'; fi
-        # 레이 트레이서 예제: 작게 64비트·32비트로 그려서 PPM 이 제대로 나오나
-        for m in 64 32; do
-            if ./hanc examples/GPU/광선추적.han -o "$tmp/gpurt" 2>"$tmp/err" &&
-               (cd "$tmp" && rm -f 그림.ppm && ./gpurt $m 64 36 | grep -q "^그림.ppm: 64x36, 소수 ${m}비트" &&
-                [ "$(wc -l < 그림.ppm)" = $((3 + 64 * 36)) ]); then ok
-            else bad "examples/GPU/광선추적.han ($m 비트)"; sed 's/^/    /' "$tmp/err" | head -3; fi
-        done
         if [ $HAS_X = 1 ]; then
+            # 레이 트레이서 예제 (창): 작게 64비트·32비트로 한 장씩 그려 봄 (창 대신 PPM)
+            for m in 64 32; do
+                if ./hanc examples/GPU/광선추적.han -o "$tmp/gpurt" 2>"$tmp/err" &&
+                   [ "$(HAN_FRAMES=2 "$tmp/gpurt" $m 64 36)" = "프레임 1개" ] &&
+                   [ "$(head -c 13 "$HAN_SCREENSHOT")" = "$(printf 'P6\n64 36\n255\n')" ]; then ok
+                else bad "examples/GPU/광선추적.han ($m 비트)"; sed 's/^/    /' "$tmp/err" | head -3; fi
+            done
             if ./hanc examples/GPU/만델브로.han -o "$tmp/mb" 2>"$tmp/err" &&
                [ "$(HAN_FRAMES=2 "$tmp/mb")" = "프레임 2개" ]; then ok
             else bad "examples/GPU/만델브로.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
