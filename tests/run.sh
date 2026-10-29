@@ -144,6 +144,15 @@ for f in tests/e*.han; do
 done
 unset HAN_SEED
 
+echo "== 웹 놀이터 모드 (hanc --놀이터: 바깥 세상을 건드리는 기능은 컴파일 오류)"
+for f in tests/play/p[1-4].han; do
+    ./hanc --놀이터 "$f" -o "$tmp/gp" >/dev/null 2>"$tmp/err"
+    if cmp -s "$tmp/err" "tests/expected/play_$(basename "$f" .han).out"; then ok
+    else bad "$f (놀이터 에러 메시지가 정답과 다름)"; diff "$tmp/err" "tests/expected/play_$(basename "$f" .han).out" | head -4 | sed 's/^/    /'; fi
+done
+if ./hanc --놀이터 tests/play/p5.han -o "$tmp/gp" 2>"$tmp/err" && [ "$("$tmp/gp" 2>&1)" = "$(printf '에러로 감\n3')" ]; then ok
+else bad "tests/play/p5.han (놀이터에서 되는 기능이 막힘)"; fi
+
 echo "== 셀프호스팅 (compiler/한랭.han 이 자기 자신을 컴파일)"
 # 지금 hanc 로 컴파일러를 새로 만들고(1세대), 그게 자기 자신을 컴파일한 것(2세대 어셈블리)이
 # ① bootstrap/hanc.s 와 같아야 하고 (다르면 컴파일러를 고친 뒤 make bootstrap 을 안 한 것)

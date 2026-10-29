@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>한랭 놀이터</title>
+<style>
+:root {
+  --바탕: #f7f6f2; --면: #ffffff; --선: #dedbd2; --글: #23211c; --흐린글: #6d685d;
+  --강조: #2f6f5e; --강조글: #ffffff; --오류: #b3261e; --경고: #8a5a00; --번호: #a29c8f;
+  --코드바탕: #fbfaf7; --선택: #2f6f5e22;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --바탕: #171614; --면: #201f1c; --선: #36332d; --글: #ebe7dd; --흐린글: #a29c8f;
+    --강조: #6cc3a6; --강조글: #10221c; --오류: #ff8a80; --경고: #f0c060; --번호: #6d685d;
+    --코드바탕: #1b1a17; --선택: #6cc3a633; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --바탕: #171614; --면: #201f1c; --선: #36332d; --글: #ebe7dd; --흐린글: #a29c8f;
+  --강조: #6cc3a6; --강조글: #10221c; --오류: #ff8a80; --경고: #f0c060; --번호: #6d685d;
+  --코드바탕: #1b1a17; --선택: #6cc3a633; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--바탕); color: var(--글);
+  font: 15px/1.5 "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif; }
+.틀 { max-width: 1200px; margin: 0 auto; padding: 20px 16px 40px; }
+header { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+h1 { font-size: 22px; margin: 0; letter-spacing: -0.02em; }
+header p { margin: 0; color: var(--흐린글); font-size: 14px; }
+header a { color: var(--강조); }
+.도구 { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+select, button, textarea { font: inherit; color: inherit; }
+select { background: var(--면); border: 1px solid var(--선); border-radius: 8px; padding: 6px 10px; }
+button { border: 1px solid var(--선); background: var(--면); border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+button.실행 { background: var(--강조); color: var(--강조글); border-color: var(--강조); font-weight: 600; padding: 6px 20px; }
+button:disabled { opacity: .55; cursor: wait; }
+.상태 { color: var(--흐린글); font-size: 13px; }
+.판 { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 14px; }
+@media (max-width: 820px) { .판 { grid-template-columns: 1fr; } }
+.칸 { background: var(--면); border: 1px solid var(--선); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+.칸 h2 { font-size: 13px; font-weight: 600; color: var(--흐린글); margin: 0; padding: 8px 12px; border-bottom: 1px solid var(--선); }
+.편집기 { display: flex; height: 520px; background: var(--코드바탕); }
+.줄번호 { padding: 10px 8px 10px 12px; text-align: right; color: var(--번호); user-select: none; overflow: hidden;
+  font: 14px/1.6 "D2Coding", "JetBrains Mono", "Noto Sans Mono CJK KR", ui-monospace, monospace; white-space: pre; }
+.줄번호 .빨강 { color: var(--오류); font-weight: 700; }
+textarea.코드 { flex: 1; border: 0; outline: 0; resize: none; background: transparent; padding: 10px 12px 10px 4px;
+  font: 14px/1.6 "D2Coding", "JetBrains Mono", "Noto Sans Mono CJK KR", ui-monospace, monospace; tab-size: 4; white-space: pre; overflow: auto; }
+textarea.입력 { border: 0; outline: 0; resize: vertical; min-height: 70px; background: var(--코드바탕); padding: 10px 12px;
+  font: 14px/1.5 ui-monospace, monospace; }
+.오른쪽 { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+pre.출력 { margin: 0; padding: 10px 12px; min-height: 260px; max-height: 520px; overflow: auto; white-space: pre-wrap; word-break: break-word;
+  font: 14px/1.55 "D2Coding", "JetBrains Mono", "Noto Sans Mono CJK KR", ui-monospace, monospace; background: var(--코드바탕); }
+pre.출력 .오류 { color: var(--오류); }
+pre.출력 .경고 { color: var(--경고); }
+pre.출력 .줄링크 { text-decoration: underline dotted; cursor: pointer; }
+pre.출력 .꼬리 { color: var(--흐린글); }
+.그림칸 { padding: 10px; background: var(--코드바탕); overflow: auto; }
+.그림칸 canvas { max-width: 100%; height: auto; border: 1px solid var(--선); background: #fff; }
+.안내 { margin-top: 16px; color: var(--흐린글); font-size: 13px; }
+.안내 code { font-family: ui-monospace, monospace; }
+kbd { font: 12px ui-monospace, monospace; border: 1px solid var(--선); border-bottom-width: 2px; border-radius: 4px; padding: 0 4px; }
+</style>
+</head>
+<body>
+<div class="틀">
+  <header>
+    <h1>한랭 놀이터</h1>
+    <p>한글로 쓰는 교육용 프로그래밍 언어. 진짜 컴파일러(hanc)로 돌린다 —
+      <a href="https://github.com/sejunch/hanlang" target="_blank" rel="noopener">저장소</a> ·
+      <a href="https://github.com/sejunch/hanlang/blob/main/문법.md" target="_blank" rel="noopener">문법</a> ·
+      <a href="https://github.com/sejunch/hanlang/blob/main/라이브러리.md" target="_blank" rel="noopener">라이브러리</a></p>
+  </header>
+
+  <div class="도구">
+    <button class="실행" id="실행단추" title="Ctrl+Enter">▶ 실행</button>
+    <select id="예제고르기" aria-label="예제"><option value="">예제 불러오기…</option></select>
+    <button id="공유단추" title="주소에 코드를 담아 복사">주소로 공유</button>
+    <span class="상태" id="상태">코드를 쓰고 <kbd>Ctrl</kbd>+<kbd>Enter</kbd></span>
+  </div>
+
+  <div class="판">
+    <section class="칸">
+      <h2>코드</h2>
+      <div class="편집기">
+        <div class="줄번호" id="줄번호">1</div>
+        <textarea class="코드" id="코드" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="코드"></textarea>
+      </div>
+    </section>
+    <div class="오른쪽">
+      <section class="칸">
+        <h2>입력 (<code>듣다</code> 가 한 줄씩 읽음)</h2>
+        <textarea class="입력" id="입력" spellcheck="false" aria-label="입력"></textarea>
+      </section>
+      <section class="칸">
+        <h2 id="출력제목">출력</h2>
+        <pre class="출력" id="출력"></pre>
+        <div class="그림칸" id="그림칸" hidden><canvas id="그림"></canvas></div>
+      </section>
+    </div>
+  </div>
+
+  <p class="안내">
+    놀이터에서는 서버를 지키려고 <code>실행하다</code>, 파일 열기(표준 에러는 됨), <code>환경값</code>, 낮은 수준,
+    <code>요청.han</code> 을 막아 두었다 — 내 컴퓨터에 설치하면 다 된다.
+    한 번에 CPU 5초·메모리 512MB 까지. 창 그리기는 <code>보여주다</code> 때의 그림을 아래에 보여준다.
+  </p>
+</div>
+
+<script>
+const 코드칸 = document.getElementById("코드");
+const 줄번호칸 = document.getElementById("줄번호");
+const 출력칸 = document.getElementById("출력");
+const 상태칸 = document.getElementById("상태");
+const 실행단추 = document.getElementById("실행단추");
+const 예제고르기 = document.getElementById("예제고르기");
+let 빨간줄 = new Set();
+
+const 처음코드 = `// 한랭 놀이터에 온 걸 환영해!
+이름은 듣다.
+("안녕, " + 이름 + "!")을 말하다.
+
+수를 팩토리얼하다 란 {
+    만약 (수 <= 1) 라면 { 1을 돌려주다. }
+    (수 * ((수 - 1)을 팩토리얼하다))를 돌려주다.
+}
+
+번호는 1이다.
+(번호 <= 10) 인 동안 {
+    (번호를 문자로 바꾸다)를 끝"! = " 말하다.
+    (번호를 팩토리얼하다)를 말하다.
+    번호는 (번호 + 1)이다.
+}
+`;
+
+function 줄번호그리다() {
+  const 줄수 = 코드칸.value.split("\n").length;
+  let 글 = "";
+  for (let i = 1; i <= 줄수; i++) 글 += (빨간줄.has(i) ? `<span class="빨강">${i}</span>` : i) + "\n";
+  줄번호칸.innerHTML = 글;
+  줄번호칸.scrollTop = 코드칸.scrollTop;
+}
+코드칸.addEventListener("input", () => { 빨간줄.clear(); 줄번호그리다(); 저장하다(); });
+코드칸.addEventListener("scroll", () => { 줄번호칸.scrollTop = 코드칸.scrollTop; });
+코드칸.addEventListener("keydown", e => {
+  if (e.key === "Tab" && !e.shiftKey) {
+    e.preventDefault();
+    const s = 코드칸.selectionStart, t = 코드칸.selectionEnd;
+    코드칸.setRangeText("    ", s, t, "end");
+    코드칸.dispatchEvent(new Event("input"));
+  } else if (e.key === "Enter" && !e.ctrlKey && !e.metaKey) {
+    // 들여쓰기 이어 가기, { 뒤면 한 칸 더
+    const s = 코드칸.selectionStart;
+    const 줄앞 = 코드칸.value.slice(0, s).split("\n").pop();
+    let 들여 = 줄앞.match(/^\s*/)[0];
+    if (/\{\s*$/.test(줄앞)) 들여 += "    ";
+    e.preventDefault();
+    코드칸.setRangeText("\n" + 들여, s, 코드칸.selectionEnd, "end");
+    코드칸.dispatchEvent(new Event("input"));
+  }
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); 실행하다(); }
+});
+
+function 저장하다() { try { localStorage.setItem("한랭코드", 코드칸.value); } catch (_) {} }
+
+function 이스케이프(글) { return 글.replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c])); }
+
+// [오류] 3행: … / [경고] … / [실행 오류] 5행: … 에 색과 줄 이동을 붙인다
+function 출력꾸미다(글) {
+  빨간줄.clear();
+  const 줄들 = 글.split("\n").map(줄 => {
+    let 꾸민 = 이스케이프(줄);
+    const m = 줄.match(/^\[(오류|실행 오류|경고)\]\s*(?:([^\s:]+\.han)\s+)?(\d+)행/);
+    if (m) {
+      const 번호 = Number(m[3]);
+      const 내파일 = !m[2] || m[2] === "놀이터.han";
+      if (내파일 && m[1] !== "경고") 빨간줄.add(번호);
+      const 종류 = m[1] === "경고" ? "경고" : "오류";
+      꾸민 = 꾸민.replace(/(\d+)행/, 내파일 ? `<span class="줄링크" data-줄="${번호}">$1행</span>` : "$1행");
+      return `<span class="${종류}">${꾸민}</span>`;
+    }
+    if (/^\[(오류|실행 오류)\]/.test(줄)) return `<span class="오류">${꾸민}</span>`;
+    if (/^\[경고\]/.test(줄)) return `<span class="경고">${꾸민}</span>`;
+    return 꾸민;
+  });
+  줄번호그리다();
+  return 줄들.join("\n");
+}
+
+출력칸.addEventListener("click", e => {
+  const 줄 = e.target.dataset && e.target.dataset["줄"];
+  if (!줄) return;
+  const 줄들 = 코드칸.value.split("\n");
+  let 시작 = 0;
+  for (let i = 0; i < Number(줄) - 1 && i < 줄들.length; i++) 시작 += 줄들[i].length + 1;
+  코드칸.focus();
+  코드칸.setSelectionRange(시작, 시작 + (줄들[Number(줄) - 1] || "").length);
+  const 줄높이 = parseFloat(getComputedStyle(코드칸).lineHeight) || 22;
+  코드칸.scrollTop = Math.max(0, (Number(줄) - 5) * 줄높이);
+});
+
+function 그림그리다(바이트64) {
+  const 칸 = document.getElementById("그림칸");
+  if (!바이트64) { 칸.hidden = true; return; }
+  const 바이트 = Uint8Array.from(atob(바이트64), c => c.charCodeAt(0));
+  // P6 PPM: "P6\n폭 높이\n255\n" + RGB
+  let 자리 = 0, 낱말들 = [];
+  while (낱말들.length < 4) {
+    while (바이트[자리] === 0x23 || /\s/.test(String.fromCharCode(바이트[자리]))) {
+      if (바이트[자리] === 0x23) while (바이트[자리] !== 10) 자리++;
+      자리++;
+    }
+    let 낱말 = "";
+    while (!/\s/.test(String.fromCharCode(바이트[자리]))) 낱말 += String.fromCharCode(바이트[자리++]);
+    낱말들.push(낱말);
+  }
+  자리++;
+  const 폭 = Number(낱말들[1]), 높이 = Number(낱말들[2]);
+  const 캔버스 = document.getElementById("그림");
+  캔버스.width = 폭; 캔버스.height = 높이;
+  const 붓 = 캔버스.getContext("2d");
+  const 그림 = 붓.createImageData(폭, 높이);
+  for (let i = 0, j = 자리; i < 폭 * 높이; i++, j += 3) {
+    그림.data[i * 4] = 바이트[j]; 그림.data[i * 4 + 1] = 바이트[j + 1]; 그림.data[i * 4 + 2] = 바이트[j + 2]; 그림.data[i * 4 + 3] = 255;
+  }
+  붓.putImageData(그림, 0, 0);
+  칸.hidden = false;
+}
+
+async function 실행하다() {
+  if (실행단추.disabled) return;
+  실행단추.disabled = true;
+  상태칸.textContent = "컴파일하고 돌리는 중…";
+  출력칸.textContent = "";
+  그림그리다(null);
+  const 시작 = performance.now();
+  try {
+    const 답 = await fetch("run", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ 코드: 코드칸.value, 입력: document.getElementById("입력").value }),
+    });
+    const 값 = await 답.json();
+    if (값["오류"]) { 출력칸.innerHTML = `<span class="오류">${이스케이프(값["오류"])}</span>`; 상태칸.textContent = "못 돌림"; return; }
+    let html = 출력꾸미다(값["출력"] || "");
+    const 까닭 = 값["까닭"];
+    if (까닭) html += `\n<span class="오류">[${이스케이프(까닭)}]</span>`;
+    if (값["단계"] === "컴파일") {
+      상태칸.textContent = "컴파일 오류";
+    } else {
+      const 끝 = 값["종료코드"];
+      html += `\n<span class="꼬리">— 종료코드 ${끝}, ${값["걸린시간"]}초</span>`;
+      상태칸.textContent = 끝 === 0 ? `끝 (${((performance.now() - 시작) / 1000).toFixed(2)}초 걸림, 컴파일 포함)` : "실행 오류로 끝남";
+      그림그리다(값["그림"]);
+    }
+    출력칸.innerHTML = html;
+  } catch (오류) {
+    출력칸.innerHTML = `<span class="오류">서버와 연결이 안 됨 — 잠시 뒤 다시 (처음 접속이면 서버가 깨어나는 데 1분쯤 걸림)</span>`;
+    상태칸.textContent = "연결 실패";
+  } finally {
+    실행단추.disabled = false;
+  }
+}
+실행단추.addEventListener("click", 실행하다);
+
+// 주소로 공유: 코드를 #code= 에 담는다 (UTF-8 → base64url)
+function 담다(글) {
+  const 바이트 = new TextEncoder().encode(글);
+  let 이진 = ""; 바이트.forEach(b => 이진 += String.fromCharCode(b));
+  return btoa(이진).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+function 꺼내다(글) {
+  const 이진 = atob(글.replace(/-/g, "+").replace(/_/g, "/"));
+  return new TextDecoder().decode(Uint8Array.from(이진, c => c.charCodeAt(0)));
+}
+document.getElementById("공유단추").addEventListener("click", async () => {
+  const 주소 = location.href.split("#")[0] + "#code=" + 담다(코드칸.value);
+  history.replaceState(null, "", 주소);
+  try { await navigator.clipboard.writeText(주소); 상태칸.textContent = "주소를 복사함"; }
+  catch (_) { 상태칸.textContent = "주소창의 주소를 복사해서 보내면 됨"; }
+});
+
+// 예제
+fetch("examples.json").then(r => r.json()).then(목록 => {
+  목록.forEach((예, i) => {
+    const 고름 = document.createElement("option");
+    고름.value = i; 고름.textContent = 예["이름"];
+    예제고르기.appendChild(고름);
+  });
+  예제고르기.addEventListener("change", () => {
+    if (예제고르기.value === "") return;
+    코드칸.value = 목록[Number(예제고르기.value)]["코드"];
+    코드칸.dispatchEvent(new Event("input"));
+    예제고르기.value = "";
+  });
+}).catch(() => {});
+
+// 처음 코드: 주소 → 지난번 → 기본
+(function () {
+  const m = location.hash.match(/#code=([A-Za-z0-9_-]+)/);
+  let 글 = null;
+  if (m) { try { 글 = 꺼내다(m[1]); } catch (_) {} }
+  if (글 === null) { try { 글 = localStorage.getItem("한랭코드"); } catch (_) {} }
+  코드칸.value = 글 || 처음코드;
+  document.getElementById("입력").value = "친구";
+  줄번호그리다();
+})();
+</script>
+</body>
+</html>

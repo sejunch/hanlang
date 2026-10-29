@@ -133,6 +133,17 @@ C 는 창 그리기(X11, [runtime/window.c](runtime/window.c))에만 남아 있�
 컴파일러는 자주 쓰는 변수를 레지스터에 두고, 비교는 바로 분기하고, 목록 칸 읽기·쓰기를 그 자리에 펼치고,
 작은 함수를 펼치고 상수를 미리 계산한다. 대략 C 를 최적화 없이(-O0) 컴파일한 정도의 속도가 나온다.
 
+## 웹 놀이터
+
+[playground/](playground/) — 브라우저에서 바로 돌려 보는 페이지와 서버. 서버는 진짜 hanc 로 컴파일해서 돌리고,
+서버를 지키려고 `hanc --놀이터` 로 `실행하다`·파일·`환경값`·낮은 수준을 막는다.
+
+```bash
+python3 playground/server.py      # http://localhost:7860
+```
+
+Hugging Face Spaces(Docker)에 올리는 파일은 [playground/space/](playground/space/) 에 있다.
+
 ## 파일
 
 | | |
