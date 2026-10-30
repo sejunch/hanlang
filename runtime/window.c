@@ -4,6 +4,7 @@
 #include <X11/Xutil.h>
 #include <X11/Xft/Xft.h>
 #include <X11/keysym.h>
+#include <X11/XKBlib.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -25,6 +26,9 @@ static Atom wmDelete;
 static const char *keyq[KEYMAX];      /* 눌린 키 이름 (고정 문자열) — 눌린키들 이 꺼내 감 */
 static char keybuf[KEYMAX][4];        /* 글자 키는 여기에 */
 static int nkeys;
+#define HELDMAX 32
+static char held[HELDMAX][12];        /* 지금 누르고 있는 키 이름 — (누른키들)·("위"를 누르고있나) */
+static int nheld;
 static int resizable, newW, newH;      /* 늘어나게 열었나 · 창이 바뀐 크기 (ConfigureNotify) */
 static int mousex, mousey, mousedown;   /* (마우스위치)·(마우스눌림) — 창 안 좌표, 왼쪽 버튼 */
 void *__han_lnew(long cap);
@@ -65,7 +69,7 @@ static void setrgb(unsigned c) {
 void __han_wopen(long w, long h, long line, long flag) {
     if (w < 1 || h < 1 || w > 8000 || h > 8000) werr(line, "창 크기는 1~8000 이어야 함");
     if (dpy) werr(line, "창은 하나만 열 수 있음 (보여주다 로 닫은 뒤 다시 열기)");
-    mapped = closed = frames = nkeys = 0;
+    mapped = closed = frames = nkeys = nheld = 0;
     mousex = mousey = mousedown = 0;
     dpy = XOpenDisplay(NULL);
     if (!dpy) werr(line, "창을 띄울 화면이 없음 (DISPLAY 가 없음)");
@@ -186,8 +190,9 @@ static void mapWin(void) {                         /* 창을 화면에 처음 �
     if (mapped) return;
     wmDelete = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
     XSetWMProtocols(dpy, win, &wmDelete, 1);
-    XSelectInput(dpy, win, ExposureMask | KeyPressMask | StructureNotifyMask |
+    XSelectInput(dpy, win, ExposureMask | KeyPressMask | KeyReleaseMask | StructureNotifyMask | FocusChangeMask |
                  PointerMotionMask | ButtonPressMask | ButtonReleaseMask);
+    XkbSetDetectableAutoRepeat(dpy, True, NULL);   /* 꾹 누를 때 가짜 '뗌' 사건을 안 받게 */
     XMapWindow(dpy, win);
     for (;;) {
         XEvent e; XNextEvent(dpy, &e);
@@ -197,21 +202,38 @@ static void mapWin(void) {                         /* 창을 화면에 처음 �
     mapped = 1;
 }
 
-static void pushKey(XKeyEvent *k) {
-    if (nkeys >= KEYMAX) return;
+/* 키 이름 — 모르는 키면 0. buf 는 글자 키 이름을 담을 곳 (2바이트 이상) */
+static const char *keyName(XKeyEvent *k, char *buf) {
     KeySym s = XLookupKeysym(k, 0);
-    const char *n = NULL;
     switch (s) {
-    case XK_Left: n = "왼쪽"; break;   case XK_Right: n = "오른쪽"; break;
-    case XK_Up: n = "위"; break;       case XK_Down: n = "아래"; break;
-    case XK_space: n = "스페이스"; break; case XK_Return: n = "엔터"; break;
-    case XK_Escape: n = "esc"; break;  case XK_BackSpace: n = "지우기"; break;
+    case XK_Left: return "왼쪽";   case XK_Right: return "오른쪽";
+    case XK_Up: return "위";       case XK_Down: return "아래";
+    case XK_space: return "스페이스"; case XK_Return: return "엔터";
+    case XK_Escape: return "esc";  case XK_BackSpace: return "지우기";
     default:
-        if ((s >= XK_a && s <= XK_z) || (s >= XK_0 && s <= XK_9)) {
-            keybuf[nkeys][0] = (char)s; keybuf[nkeys][1] = 0; n = keybuf[nkeys];
-        }
+        if ((s >= XK_a && s <= XK_z) || (s >= XK_0 && s <= XK_9)) { buf[0] = (char)s; buf[1] = 0; return buf; }
     }
-    if (n) keyq[nkeys++] = n;
+    return 0;
+}
+
+static void pushKey(XKeyEvent *k) {
+    char tmp[2];
+    const char *n = keyName(k, tmp);
+    if (!n) return;
+    int i;
+    for (i = 0; i < nheld; i++) if (strcmp(held[i], n) == 0) break;
+    if (i == nheld && nheld < HELDMAX) strcpy(held[nheld++], n);
+    if (nkeys >= KEYMAX) return;
+    if (n == tmp) { strcpy(keybuf[nkeys], tmp); n = keybuf[nkeys]; }
+    keyq[nkeys++] = n;
+}
+
+static void releaseKey(XKeyEvent *k) {
+    char tmp[2];
+    const char *n = keyName(k, tmp);
+    if (!n) return;
+    for (int i = 0; i < nheld; i++)
+        if (strcmp(held[i], n) == 0) { if (i != --nheld) strcpy(held[i], held[nheld]); break; }
 }
 
 static void pump(void) {                            /* 쌓인 창 사건을 처리 (기다리지 않음) */
@@ -222,6 +244,8 @@ static void pump(void) {                            /* 쌓인 창 사건을 처�
         if (e.type == Expose) XCopyArea(dpy, pm, win, gc, 0, 0, W, H, 0, 0);
         else if (e.type == ClientMessage && (Atom)e.xclient.data.l[0] == wmDelete) closed = 1;
         else if (e.type == KeyPress) pushKey(&e.xkey);
+        else if (e.type == KeyRelease) releaseKey(&e.xkey);
+        else if (e.type == FocusOut) nheld = 0;          /* 다른 창으로 가면 뗀 걸로 (안 그러면 키가 눌린 채로 남음) */
         else if (e.type == ConfigureNotify) { newW = e.xconfigure.width; newH = e.xconfigure.height; }
         else if (e.type == MotionNotify) { mousex = e.xmotion.x; mousey = e.xmotion.y; }
         else if (e.type == ButtonPress || e.type == ButtonRelease) {
@@ -303,6 +327,22 @@ void *__han_wsize(long line) {
 long __han_wmousedown(void) {
     pump();
     return mousedown;
+}
+
+/* (누른키들): 지금 누르고 있는 키 이름들 (문자 목록) */
+void *__han_wheld(void) {
+    pump();
+    void *l = __han_lnew(nheld > 0 ? nheld : 1);
+    for (int i = 0; i < nheld; i++) __han_lpush(l, (long)__han_strdup(held[i]));
+    return l;
+}
+
+/* ("위"를 누르고있나): 그 키를 지금 누르고 있으면 참 */
+long __han_wisheld(const char *name, long line) {
+    need(line);
+    pump();
+    for (int i = 0; i < nheld; i++) if (strcmp(held[i], name) == 0) return 1;
+    return 0;
 }
 
 /* 보여주다: 창을 띄우고 닫을 때까지(창의 X, Esc, q) 기다린다 */

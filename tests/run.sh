@@ -99,6 +99,10 @@ if [ $HAS_X = 1 ]; then
        [ "$("$tmp/tw5")" = "$(printf '(150, 90)\n13500\n(150, 90)\n3')" ] &&
        [ "$(head -c 14 "$HAN_SCREENSHOT")" = "$(printf 'P6\n150 90\n255\n')" ]; then ok
     else bad "tests/t_win5.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+    # 누르고 있는 키: 창 없이 돌리면 아무것도 안 눌림, 누른키들 은 변수 이름으로도
+    if ./hanc tests/t_win6.han -o "$tmp/tw6" 2>"$tmp/err" &&
+       [ "$("$tmp/tw6")" = "$(printf '0\n0\n안 눌림\n2')" ]; then ok
+    else bad "tests/t_win6.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
     if ./hanc examples/게임/상자모으기.han -o "$tmp/game3" 2>"$tmp/err" &&
        [ "$(HAN_SEED=1 HAN_FRAMES=2 "$tmp/game3")" = "모은 상자: 0" ]; then ok
     else bad "examples/게임/상자모으기.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
@@ -188,6 +192,10 @@ if ldconfig -p 2>/dev/null | grep -q 'libvulkan\.so' && ./hanc tests/t_gpu.han -
            cmp -s "$tmp/out" tests/expected/tests_t_gpu3.out; then ok
         else bad "tests/t_gpu3.han (GPU 벡터 답이 정답과 다름)"; diff "$tmp/out" tests/expected/tests_t_gpu3.out | head -4 | sed 's/^/    /'; fi
         if [ $HAS_X = 1 ]; then
+            # GPU 레이 트레이싱 3D 게임: 몇 프레임 돌다 끝나는지
+            if ./hanc examples/게임/구슬굴리기.han -o "$tmp/marble" 2>"$tmp/err" &&
+               [ "$(HAN_SEED=1 HAN_FRAMES=3 "$tmp/marble")" = "점수: 0" ]; then ok
+            else bad "examples/게임/구슬굴리기.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
             # 레이 트레이서 예제 (창): 작게 64비트·32비트로 한 장씩 그려 봄 (창 대신 PPM)
             for m in 64 32; do
                 if ./hanc examples/GPU/광선추적.han -o "$tmp/gpurt" 2>"$tmp/err" &&
