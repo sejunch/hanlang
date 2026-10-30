@@ -19,7 +19,14 @@ __han_argc:                     # 칸 2
 .globl __han_argv
 __han_argv:                     # 칸 3
     .skip 8
-    .skip 1000
+    .skip 472                   # 칸 4~62
+.globl __han_glob_lo
+__han_glob_lo:                  # 칸 63: 프로그램 전역 변수 칸의 시작 (main 이 적음, 없으면 0)
+    .skip 8
+.globl __han_glob_hi
+__han_glob_hi:                  # 칸 64: 그 끝
+    .skip 8
+    .skip 512
 
     .text
 .globl __han_rtvars
