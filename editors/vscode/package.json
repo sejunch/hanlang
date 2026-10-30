@@ -1,45 +1,91 @@
 {
   "name": "hanlang",
   "displayName": "한랭 (Hanlang)",
-  "description": "교육용 한글 프로그래밍 언어 한랭(.han) — 문법 색칠, 저장할 때 오류 밑줄, 실행 버튼, 키워드 설명",
-  "version": "0.1.0",
+  "description": "교육용 한글 프로그래밍 언어 한랭(.han) — 문법 색칠, 저장할 때 오류 밑줄, 실행 버튼, 디버거(멈춤점·한 줄씩·변수), 키워드 설명",
+  "version": "0.2.0",
   "publisher": "sejunch",
   "license": "MIT",
-  "repository": { "type": "git", "url": "https://github.com/sejunch/hanlang" },
-  "engines": { "vscode": "^1.74.0" },
-  "categories": ["Programming Languages", "Snippets", "Linters"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sejunch/hanlang"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Linters",
+    "Debuggers"
+  ],
   "main": "./extension.js",
-  "activationEvents": [],
+  "activationEvents": [
+    "onDebugResolve:hanlang",
+    "onDebugDynamicConfigurations:hanlang"
+  ],
   "contributes": {
     "languages": [
       {
         "id": "hanlang",
-        "aliases": ["한랭", "Hanlang"],
-        "extensions": [".han"],
+        "aliases": [
+          "한랭",
+          "Hanlang"
+        ],
+        "extensions": [
+          ".han"
+        ],
         "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
-      { "language": "hanlang", "scopeName": "source.hanlang", "path": "./syntaxes/hanlang.tmLanguage.json" }
+      {
+        "language": "hanlang",
+        "scopeName": "source.hanlang",
+        "path": "./syntaxes/hanlang.tmLanguage.json"
+      }
     ],
     "snippets": [
-      { "language": "hanlang", "path": "./snippets/hanlang.json" }
+      {
+        "language": "hanlang",
+        "path": "./snippets/hanlang.json"
+      }
     ],
     "commands": [
-      { "command": "hanlang.run", "title": "한랭: 실행", "icon": "$(play)" },
-      { "command": "hanlang.check", "title": "한랭: 오류 검사" }
+      {
+        "command": "hanlang.run",
+        "title": "한랭: 실행",
+        "icon": "$(play)"
+      },
+      {
+        "command": "hanlang.check",
+        "title": "한랭: 오류 검사"
+      }
     ],
     "menus": {
       "editor/title/run": [
-        { "command": "hanlang.run", "when": "editorLangId == hanlang", "group": "navigation" }
+        {
+          "command": "hanlang.run",
+          "when": "editorLangId == hanlang",
+          "group": "navigation"
+        }
       ],
       "commandPalette": [
-        { "command": "hanlang.run", "when": "editorLangId == hanlang" },
-        { "command": "hanlang.check", "when": "editorLangId == hanlang" }
+        {
+          "command": "hanlang.run",
+          "when": "editorLangId == hanlang"
+        },
+        {
+          "command": "hanlang.check",
+          "when": "editorLangId == hanlang"
+        }
       ]
     },
     "keybindings": [
-      { "command": "hanlang.run", "key": "f5", "when": "editorLangId == hanlang && !inDebugMode" }
+      {
+        "command": "hanlang.run",
+        "key": "ctrl+f5",
+        "when": "editorLangId == hanlang && !inDebugMode"
+      }
     ],
     "configuration": {
       "title": "한랭",
@@ -60,6 +106,58 @@
           "description": "저장할 때(와 열 때) hanc 로 검사해서 오류·경고에 밑줄 긋기"
         }
       }
-    }
+    },
+    "breakpoints": [
+      {
+        "language": "hanlang"
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "hanlang",
+        "label": "한랭",
+        "languages": [
+          "hanlang"
+        ],
+        "configurationAttributes": {
+          "launch": {
+            "required": [
+              "program"
+            ],
+            "properties": {
+              "program": {
+                "type": "string",
+                "description": "디버그할 .han 파일",
+                "default": "${file}"
+              },
+              "stopOnEntry": {
+                "type": "boolean",
+                "description": "첫 줄에서 바로 멈추기",
+                "default": false
+              }
+            }
+          }
+        },
+        "initialConfigurations": [
+          {
+            "type": "hanlang",
+            "request": "launch",
+            "name": "한랭: 지금 파일 디버그",
+            "program": "${file}"
+          }
+        ],
+        "configurationSnippets": [
+          {
+            "label": "한랭: 디버그",
+            "body": {
+              "type": "hanlang",
+              "request": "launch",
+              "name": "한랭: 지금 파일 디버그",
+              "program": "^\"\\${file}\""
+            }
+          }
+        ]
+      }
+    ]
   }
 }

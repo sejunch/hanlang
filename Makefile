@@ -10,7 +10,7 @@ CC     ?= gcc
 
 RTFLAGS = -O2 -S -fno-asynchronous-unwind-tables
 
-all: hanc runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s
+all: hanc runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s runtime/runtime-debug.s
 
 hanc: bootstrap/hanc.s
 	$(CC) -no-pie bootstrap/hanc.s -o $@ -lm
@@ -35,6 +35,10 @@ runtime/runtime-gpu.s: runtime/gpu.c runtime/gpu_none.c
 	sed -e '/\.note\.GNU-stack/d' -e 's/\.L/.Lgp/g' runtime/gpu.s.tmp > $@
 	rm -f runtime/gpu.s.tmp
 
+# 디버거 런타임 (hanc --디버그 로 컴파일한 프로그램에만 붙는다 — VS Code 디버거와 TCP 로 주고받음)
+runtime/runtime-debug.s: runtime/debug.c
+	$(CC) $(RTFLAGS) -o - runtime/debug.c | sed -e '/\.note\.GNU-stack/d' -e 's/\.L/.Ldb/g' > $@
+
 # 컴파일러 소스로 bootstrap/hanc.s 를 새로 만든다. 두 번 돌려서(새 컴파일러로 다시 컴파일)
 # 결과가 같은지(고정점)까지 확인한다 — 다르면 새 컴파일러가 자기 자신을 다르게 컴파일한다는 뜻.
 bootstrap: hanc runtime/runtime.s
@@ -57,7 +61,7 @@ install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin $(DESTDIR)$(PREFIX)/lib/hanlang
 	cp hanc han $(DESTDIR)$(PREFIX)/bin/
 	chmod +x $(DESTDIR)$(PREFIX)/bin/hanc $(DESTDIR)$(PREFIX)/bin/han
-	cp lib/*.han runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s $(DESTDIR)$(PREFIX)/lib/hanlang/
+	cp lib/*.han runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s runtime/runtime-debug.s $(DESTDIR)$(PREFIX)/lib/hanlang/
 	@echo "설치 끝.  han 프로그램.han  으로 실행."
 
 uninstall:
@@ -65,9 +69,9 @@ uninstall:
 	rm -rf $(DESTDIR)$(PREFIX)/lib/hanlang
 
 clean:
-	rm -f hanc runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s
+	rm -f hanc runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s runtime/runtime-debug.s
 
 # VS Code 확장: .vsix 만들고 설치 (editors/vscode/)
 vscode:
 	python3 editors/vscode/pack.py
-	code --install-extension editors/vscode/hanlang-0.1.0.vsix --force
+	code --install-extension editors/vscode/hanlang-0.2.0.vsix --force

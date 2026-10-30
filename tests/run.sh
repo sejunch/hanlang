@@ -210,6 +210,23 @@ if ldconfig -p 2>/dev/null | grep -q 'libvulkan\.so' && ./hanc tests/t_gpu.han -
     fi
 else echo "  (libvulkan 이 없어서 GPU 테스트는 건너뜀)"; fi
 
+echo "== 디버거 (hanc --디버그 + VS Code 디버그 어댑터)"
+# --디버그 로 컴파일해도 결과가 같아야 함 (훅·타입 칸이 프로그램 뜻을 바꾸면 안 됨)
+for f in examples/demo4.han examples/demo7.han tests/t_list.han tests/t_struct.han tests/t_holes.han tests/t_global.han tests/t_funcval.han tests/t_vec.han tests/t_dict.han tests/t_nest.han; do
+    [ -f "$f" ] || continue
+    exp="tests/expected/$(dirname "$f" | tr / _)_$(basename "$f" .han).out"
+    if ./hanc --디버그 "$f" -o "$tmp/dbgp" 2>"$tmp/err" &&
+       (cd "$tmp" && rm -f t_*.txt t_*.csv; printf '10\n20\n12\n' | HAN_SEED=1 ./dbgp 가나 12 > out 2>&1; echo "rc=$?" >> out) &&
+       cmp -s "$tmp/out" "$exp"; then ok
+    else bad "$f (--디버그 로 컴파일하면 결과가 다름)"; diff "$tmp/out" "$exp" 2>/dev/null | head -4 | sed 's/^/    /'; fi
+done
+# 어댑터(debug.js)에 VS Code 처럼 DAP 를 보내 멈춤점·한 줄씩·함수 안으로·밖으로·변수를 확인 (node 가 있을 때만)
+if command -v node >/dev/null; then
+    if timeout 30 node tests/debug/vscode흉내.js "$PWD/editors/vscode/debug.js" "$PWD/tests/debug/d1.han" "$PWD/hanc" 14 stepIn next stepOut next continue > "$tmp/out" 2>&1 &&
+       cmp -s "$tmp/out" tests/expected/debug_d1.out; then ok
+    else bad "tests/debug/d1.han (디버거 대화가 정답과 다름)"; diff "$tmp/out" tests/expected/debug_d1.out | head -6 | sed 's/^/    /'; fi
+else echo "  (node 가 없어서 디버그 어댑터 시험은 건너뜀)"; fi
+
 echo "== 웹 놀이터 모드 (hanc --놀이터: 바깥 세상을 건드리는 기능은 컴파일 오류)"
 for f in tests/play/p[1-2].han; do
     ./hanc --놀이터 "$f" -o "$tmp/gp" >/dev/null 2>"$tmp/err"

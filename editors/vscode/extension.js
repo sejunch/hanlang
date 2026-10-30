@@ -1,6 +1,6 @@
 // 한랭 VS Code 확장
 //   - 저장할 때(와 열 때) hanc 로 검사해서 [오류]·[경고] 를 문제 패널과 밑줄로
-//   - ▶ / F5 로 현재 파일 실행 (han 스크립트)
+//   - ▶ / Ctrl+F5 로 현재 파일 실행 (han 스크립트), F5 로 디버그 (멈춤점·한 줄씩·변수 — debug.js)
 //   - 키워드·내장 값에 마우스를 올리면 짧은 설명
 // 빌드 단계 없이 그대로 돌아가게 순수 JS 로 짰다.
 'use strict';
@@ -9,6 +9,7 @@ const cp = require('child_process');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
+const { HanDebugSession } = require('./debug');
 
 // ---------- 도구 찾기 ----------
 function findTool(setting, name, docUri) {
@@ -145,6 +146,8 @@ const DOCS = {
     '라면': '`만약 (조건) 라면 { }` 의 끝맺음', '이라면': '`라면` 과 같음',
     '아니면': '`만약` 의 조건이 거짓일 때 블록. `아니면 만약 (…) 라면 { }` 으로 이어 쓰기도 됨',
     '따라': '`키에 따라 { "위", "w" 라면 { } 아니면 { } }` — 값 하나로 여러 갈래 고르기',
+    '부르다': '함수 값 부르기 — `(앞과 뒤를 기준으로 부르다)` (마지막 \'로\' 쪽이 함수 값, 나머지는 쓴 차례대로)',
+    '함수': '`(큰순 함수)` — 함수를 값으로. `(가와 나로 { … })` 는 이름 없는 함수',
     '전역': '`전역 점수는 0이다.` — 맨 위에서 만들면 그 파일의 모든 함수에서 보이는 변수',
     '지역': '`지역 임시는 0이다.` — 그 { } 블록 안에서만 사는 변수',
     '늘리다': '`번호를 늘리다.` (+1) / `번호를 3 늘리다.` — 변수·목록 칸·묶음 칸·사전 값',
@@ -241,6 +244,26 @@ function activate(ctx) {
         vscode.workspace.onDidOpenTextDocument(check),
         vscode.workspace.onDidCloseTextDocument(d => collection.delete(d.uri)),
         vscode.languages.registerHoverProvider('hanlang', { provideHover: hover }),
+        // 디버거: 어댑터는 확장 안에서 바로 (debug.js), F5 를 누르면 지금 파일을 디버그
+        vscode.debug.registerDebugAdapterDescriptorFactory('hanlang', {
+            createDebugAdapterDescriptor(session) {
+                const prog = session.configuration.program;
+                const uri = prog ? vscode.Uri.file(prog) : (vscode.window.activeTextEditor && vscode.window.activeTextEditor.document.uri);
+                return new vscode.DebugAdapterInlineImplementation(new HanDebugSession(findTool('hancPath', 'hanc', uri)));
+            },
+        }),
+        vscode.debug.registerDebugConfigurationProvider('hanlang', {
+            resolveDebugConfiguration(folder, config) {
+                const ed = vscode.window.activeTextEditor;
+                if (!config.type && !config.request && !config.name) {   // launch.json 없이 F5
+                    if (!ed || ed.document.languageId !== 'hanlang') return undefined;
+                    config.type = 'hanlang'; config.name = '한랭: 지금 파일 디버그'; config.request = 'launch';
+                }
+                if (!config.program && ed) config.program = ed.document.uri.fsPath;
+                if (ed && ed.document.isDirty) ed.document.save();
+                return config;
+            },
+        }),
     );
     for (const d of vscode.workspace.textDocuments) check(d);
 }
