@@ -13,7 +13,7 @@ RTFLAGS = -O2 -S -fno-asynchronous-unwind-tables
 all: hanc runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s runtime/runtime-debug.s
 
 hanc: bootstrap/hanc.s
-	$(CC) -no-pie bootstrap/hanc.s -o $@ -lm
+	$(CC) -no-pie bootstrap/hanc.s -o $@ -lm -lpthread
 
 # 런타임: 어셈블리 몇 줄(helpers.s) + 한랭으로 짠 것(runtime/기본.han, hanc --모듈). C 는 없다.
 # 한랭 모듈 쪽은 컴파일러가 알아서 hm… / .L9억… 라벨을 써서 프로그램 라벨과 안 겹친다.
@@ -46,12 +46,12 @@ runtime/runtime-debug.s: runtime/debug.c
 bootstrap: hanc runtime/runtime.s
 	./hanc compiler/한랭.han -o hanc.new
 	./hanc.new compiler/한랭.han > bootstrap/new.s
-	$(CC) -no-pie bootstrap/new.s -o hanc.new2 -lm
+	$(CC) -no-pie bootstrap/new.s -o hanc.new2 -lm -lpthread
 	./hanc.new2 compiler/한랭.han > bootstrap/new2.s
 	cmp bootstrap/new.s bootstrap/new2.s
 	mv bootstrap/new.s bootstrap/hanc.s
 	rm -f hanc.new hanc.new2 bootstrap/new2.s
-	$(CC) -no-pie bootstrap/hanc.s -o hanc -lm
+	$(CC) -no-pie bootstrap/hanc.s -o hanc -lm -lpthread
 	@echo "bootstrap/hanc.s 를 새로 만듦 (고정점 확인)."
 
 test: all

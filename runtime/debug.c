@@ -14,6 +14,12 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <pthread.h>
+
+/* 디버거는 main 스레드만 따라간다 (일꾼 스레드에서 불리면 그냥 지나감) */
+static pthread_t mainthr;
+static int inited_main;
+static int notmain(void) { return inited_main && !pthread_equal(pthread_self(), mainthr); }
 
 char *__han_show(long value, const char *desc);
 
@@ -177,6 +183,8 @@ static void serve(void) {              /* 멈춘 동안: 다시 달리라고 할
 static void init(void) {
     if (inited) return;
     inited = 1;
+    mainthr = pthread_self();
+    inited_main = 1;
     const char *port = getenv("HAN_DEBUG_PORT");
     if (!port || !*port) return;
     sock = socket(AF_INET, SOCK_STREAM, 0);
@@ -191,11 +199,13 @@ void __han_dbg_globals(const DGlobs *g) { globs = g; init(); }
 
 void __han_dbg_enter(const DFunc *f, long rbp) {
     init();
+    if (notmain()) return;
     if (depth < MAXF) { fr[depth].f = f; fr[depth].rbp = rbp; fr[depth].line = 0; fr[depth].path = 0; }
     depth++;
 }
 
 long __han_dbg_leave(long rax) {
+    if (notmain()) return rax;
     if (depth > 0) depth--;
     return rax;
 }
@@ -207,7 +217,7 @@ static int hasbp(const char *path, long line) {
 
 void __han_dbg_line(long line, const char *path) {
     static unsigned tick;
-    if (sock < 0 || depth == 0 || depth > MAXF) return;
+    if (sock < 0 || depth == 0 || depth > MAXF || notmain()) return;
     fr[depth - 1].line = line; fr[depth - 1].path = path;
     if ((++tick & 63) == 0) {                      /* 달리는 중에 온 명령 (멈춤점 바꾸기·잠깐 멈춤) */
         char *c;
@@ -236,5 +246,6 @@ void __han_dbg_line(long line, const char *path) {
 
 /* 실패를 '안 되면' 이 받았을 때: 그 틀보다 안쪽(먼저 들어간) 함수들을 호출 스택에서 걷어 낸다 */
 void __han_dbg_resync(long rbp) {
+    if (notmain()) return;
     while (depth > 1 && depth <= MAXF && fr[depth - 1].rbp != rbp) depth--;
 }
