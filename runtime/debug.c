@@ -233,3 +233,8 @@ void __han_dbg_line(long line, const char *path) {
     mode = RUN;
     serve();
 }
+
+/* 실패를 '안 되면' 이 받았을 때: 그 틀보다 안쪽(먼저 들어간) 함수들을 호출 스택에서 걷어 낸다 */
+void __han_dbg_resync(long rbp) {
+    while (depth > 1 && depth <= MAXF && fr[depth - 1].rbp != rbp) depth--;
+}

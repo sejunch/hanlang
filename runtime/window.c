@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+__attribute__((noreturn)) void __han_fail_msg(long line, const char *msg);
 
 static Display *dpy;
 static Window win;
@@ -38,9 +39,7 @@ void *__han_vnew(long dim, long x, long y, long z);
 
 static void werr(long line, const char *msg) {
     fflush(stdout);
-    if (line > 0) printf("[실행 오류] %ld행: %s\n", line, msg);
-    else printf("[실행 오류] %s\n", msg);
-    exit(1);
+    __han_fail_msg(line, msg);        /* thread.c: 해보다 안이면 잡히고 아니면 찍고 끝냄 */
 }
 static void need(long line) {
     if (!dpy) werr(line, "창을 먼저 열어야 함 (예: 창 640과 480을 열다.)");

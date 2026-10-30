@@ -17,10 +17,12 @@ hanc: bootstrap/hanc.s
 
 # 런타임: 어셈블리 몇 줄(helpers.s) + 한랭으로 짠 것(runtime/기본.han, hanc --모듈). C 는 없다.
 # 한랭 모듈 쪽은 컴파일러가 알아서 hm… / .L9억… 라벨을 써서 프로그램 라벨과 안 겹친다.
-runtime/runtime.s: runtime/helpers.s runtime/기본.han hanc
+# thread.c = 실패(예외)·스레드·스레드마다 따로인 칸 (한랭으로 못 짜는 setjmp·__thread·pthread). 늘 붙는다
+runtime/runtime.s: runtime/helpers.s runtime/기본.han runtime/thread.c hanc
 	./hanc --모듈 runtime/기본.han > runtime/기본.s.tmp
-	cat runtime/helpers.s runtime/기본.s.tmp > $@
-	rm -f runtime/기본.s.tmp
+	$(CC) $(RTFLAGS) -o - runtime/thread.c | sed -e '/\.note\.GNU-stack/d' -e 's/\.L/.Lth/g' > runtime/thread.s.tmp
+	cat runtime/helpers.s runtime/기본.s.tmp runtime/thread.s.tmp > $@
+	rm -f runtime/기본.s.tmp runtime/thread.s.tmp
 
 # 창 그리기 런타임 (X11 + Xft). 창을 쓰는 프로그램에만 붙는다.
 runtime/runtime-window.s: runtime/window.c

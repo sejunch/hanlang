@@ -141,7 +141,7 @@ else bad "tests/t_gc.han (메모리 제한 안에서 끝나야 하고 출력이 
 # 할당할 때마다 수거하는 모드로 기능 테스트를 다시 돌려 출력이 보통 모드와 똑같은지 본다.
 # 살아 있는 값을 잘못 치우면 여기서 깨진 값·죽음으로 드러난다.
 # 보통 모드에선 수거가 거의 안 일어나서 못 잡는 버그들이다. (무작위 쓰는 테스트는 뺐다)
-for f in examples/demo4.han examples/demo7.han tests/t_list.han tests/t_str.han \
+for f in examples/demo4.han examples/demo7.han tests/t_try.han tests/t_list.han tests/t_str.han \
          tests/t_struct.han tests/t_split.han tests/t_pop.han tests/t_grid.han \
          tests/t_poly.han tests/t_lib.han tests/t_sortlib.han tests/t_fraclib.han \
          tests/t_biglib.han tests/t_statlib.han tests/t_gridlib.han tests/t_strcmp.han \
@@ -212,7 +212,7 @@ else echo "  (libvulkan 이 없어서 GPU 테스트는 건너뜀)"; fi
 
 echo "== 디버거·자동완성 (hanc --디버그 / --기호 + VS Code 확장)"
 # --디버그 로 컴파일해도 결과가 같아야 함 (훅·타입 칸이 프로그램 뜻을 바꾸면 안 됨)
-for f in examples/demo4.han examples/demo7.han tests/t_list.han tests/t_struct.han tests/t_holes.han tests/t_global.han tests/t_funcval.han tests/t_vec.han tests/t_dict.han tests/t_nest.han; do
+for f in examples/demo4.han examples/demo7.han tests/t_try.han tests/t_list.han tests/t_struct.han tests/t_holes.han tests/t_global.han tests/t_funcval.han tests/t_vec.han tests/t_dict.han tests/t_nest.han; do
     [ -f "$f" ] || continue
     exp="tests/expected/$(dirname "$f" | tr / _)_$(basename "$f" .han).out"
     if ./hanc --디버그 "$f" -o "$tmp/dbgp" 2>"$tmp/err" &&
