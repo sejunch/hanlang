@@ -210,7 +210,7 @@ if ldconfig -p 2>/dev/null | grep -q 'libvulkan\.so' && ./hanc tests/t_gpu.han -
     fi
 else echo "  (libvulkan 이 없어서 GPU 테스트는 건너뜀)"; fi
 
-echo "== 디버거 (hanc --디버그 + VS Code 디버그 어댑터)"
+echo "== 디버거·자동완성 (hanc --디버그 / --기호 + VS Code 확장)"
 # --디버그 로 컴파일해도 결과가 같아야 함 (훅·타입 칸이 프로그램 뜻을 바꾸면 안 됨)
 for f in examples/demo4.han examples/demo7.han tests/t_list.han tests/t_struct.han tests/t_holes.han tests/t_global.han tests/t_funcval.han tests/t_vec.han tests/t_dict.han tests/t_nest.han; do
     [ -f "$f" ] || continue
@@ -226,6 +226,12 @@ if command -v node >/dev/null; then
        cmp -s "$tmp/out" tests/expected/debug_d1.out; then ok
     else bad "tests/debug/d1.han (디버거 대화가 정답과 다름)"; diff "$tmp/out" tests/expected/debug_d1.out | head -6 | sed 's/^/    /'; fi
 else echo "  (node 가 없어서 디버그 어댑터 시험은 건너뜀)"; fi
+# 자동완성: hanc --기호 + editors/vscode/complete.js 가 자리마다 알맞은 것을 추천하나 (node 가 있을 때만)
+if command -v node >/dev/null; then
+    if node tests/editor/완성시험.js "$PWD/editors/vscode/complete.js" "$PWD/hanc" "$PWD/tests/editor/완성.han" > "$tmp/out" 2>&1 &&
+       cmp -s "$tmp/out" tests/expected/editor_완성.out; then ok
+    else bad "tests/editor/완성.han (자동완성 추천이 정답과 다름)"; diff "$tmp/out" tests/expected/editor_완성.out | head -6 | sed 's/^/    /'; fi
+fi
 
 echo "== 웹 놀이터 모드 (hanc --놀이터: 바깥 세상을 건드리는 기능은 컴파일 오류)"
 for f in tests/play/p[1-2].han; do

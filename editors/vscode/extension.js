@@ -2,6 +2,7 @@
 //   - 저장할 때(와 열 때) hanc 로 검사해서 [오류]·[경고] 를 문제 패널과 밑줄로
 //   - ▶ / Ctrl+F5 로 현재 파일 실행 (han 스크립트), F5 로 디버그 (멈춤점·한 줄씩·변수 — debug.js)
 //   - 키워드·내장 값에 마우스를 올리면 짧은 설명
+//   - 자동완성: 변수·함수(조사 붙은 부르는 꼴)·라이브러리 함수·묶음 칸·키워드 (hanc --기호 + complete.js)
 // 빌드 단계 없이 그대로 돌아가게 순수 JS 로 짰다.
 'use strict';
 const vscode = require('vscode');
@@ -10,6 +11,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { HanDebugSession } = require('./debug');
+const completion = require('./complete');
 
 // ---------- 도구 찾기 ----------
 function findTool(setting, name, docUri) {
@@ -84,8 +86,61 @@ function parseOutput(out) {
 const collection = vscode.languages.createDiagnosticCollection('hanlang');
 const running = new Map();
 
+// ---------- 자동완성용 기호 ----------
+// 저장할 때(와 열 때) hanc --기호 로 받아 둔다. 파싱 오류면 지난번 것을 그대로 (입력 중엔 늘 깨져 있어서)
+const symbols = new Map();               // 문서 uri → parseSymbols 결과
+function refreshSymbols(doc) {
+    if (doc.languageId !== 'hanlang' || doc.uri.scheme !== 'file') return;
+    const hanc = findTool('hancPath', 'hanc', doc.uri);
+    cp.execFile(hanc, ['--기호', doc.uri.fsPath], { cwd: path.dirname(doc.uri.fsPath), timeout: 20000 }, (err, stdout) => {
+        if (!err) symbols.set(doc.uri.toString(), completion.parseSymbols(stdout));
+    });
+}
+
+function libFiles(docUri) {
+    const hanc = findTool('hancPath', 'hanc', docUri);
+    const dirs = [path.join(path.dirname(hanc), 'lib'), path.join(path.dirname(hanc), '..', 'lib', 'hanlang')];
+    const ws = vscode.workspace.getWorkspaceFolder(docUri);
+    if (ws) dirs.unshift(path.join(ws.uri.fsPath, 'lib'));
+    for (const d of dirs) {
+        try { return fs.readdirSync(d).filter(f => f.endsWith('.han')); } catch (e) { }
+    }
+    return [];
+}
+
+const KINDS = {
+    function: vscode.CompletionItemKind.Function, struct: vscode.CompletionItemKind.Struct,
+    field: vscode.CompletionItemKind.Field, variable: vscode.CompletionItemKind.Variable,
+    keyword: vscode.CompletionItemKind.Keyword, value: vscode.CompletionItemKind.Constant,
+    file: vscode.CompletionItemKind.File, snippet: vscode.CompletionItemKind.Snippet,
+};
+function provideCompletion(doc, pos, token, context) {
+    const prefix = doc.lineAt(pos.line).text.slice(0, pos.character);
+    // 띄어쓰기마다 목록이 뜨면 시끄러워서, 띄어쓰기로 불렸을 땐 'X의 ' 뒤에서만
+    if (context && context.triggerCharacter === ' ' && !/의 $/.test(prefix)) return [];
+    const its = completion.complete({
+        symbols: symbols.get(doc.uri.toString()),
+        docText: doc.getText(),
+        line: pos.line + 1,
+        linePrefix: doc.lineAt(pos.line).text.slice(0, pos.character),
+        libFiles: libFiles(doc.uri),
+    });
+    return its.map(it => {
+        const c = new vscode.CompletionItem(it.label, KINDS[it.kind] || vscode.CompletionItemKind.Text);
+        c.detail = it.detail;
+        if (it.snippet) c.insertText = new vscode.SnippetString(it.snippet);
+        else c.insertText = it.insert;
+        if (it.filter) c.filterText = it.filter;
+        c.sortText = (it.sort || '5') + it.label;
+        const doc_ = DOCS[it.label] || DOCS[it.label.split(' ')[0]];
+        if (doc_) c.documentation = new vscode.MarkdownString(doc_);
+        return c;
+    });
+}
+
 function check(doc) {
     if (doc.languageId !== 'hanlang' || doc.uri.scheme !== 'file') return;
+    refreshSymbols(doc);
     if (!vscode.workspace.getConfiguration('hanlang').get('checkOnSave')) return;
     const hanc = findTool('hancPath', 'hanc', doc.uri);
     const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'hanlang-'));
@@ -244,6 +299,7 @@ function activate(ctx) {
         vscode.workspace.onDidOpenTextDocument(check),
         vscode.workspace.onDidCloseTextDocument(d => collection.delete(d.uri)),
         vscode.languages.registerHoverProvider('hanlang', { provideHover: hover }),
+        vscode.languages.registerCompletionItemProvider('hanlang', { provideCompletionItems: provideCompletion }, ' ', '"'),
         // 디버거: 어댑터는 확장 안에서 바로 (debug.js), F5 를 누르면 지금 파일을 디버그
         vscode.debug.registerDebugAdapterDescriptorFactory('hanlang', {
             createDebugAdapterDescriptor(session) {

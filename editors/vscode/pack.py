@@ -7,7 +7,7 @@ from xml.sax.saxutils import escape
 
 here = os.path.dirname(os.path.abspath(__file__))
 pkg = json.load(open(os.path.join(here, 'package.json'), encoding='utf-8'))
-files = ['package.json', 'language-configuration.json', 'extension.js', 'debug.js', 'README.md',
+files = ['package.json', 'language-configuration.json', 'extension.js', 'debug.js', 'complete.js', 'README.md',
          'syntaxes/hanlang.tmLanguage.json', 'snippets/hanlang.json']
 out = os.path.join(here, f"hanlang-{pkg['version']}.vsix")
 
