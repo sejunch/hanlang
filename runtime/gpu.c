@@ -117,10 +117,16 @@ static void makeBuffer(VkDeviceSize size, VkBuffer *buf, VkDeviceMemory *mem, vo
     check(vkCreateBuffer(dev, &bci, NULL, buf), line, "버퍼 만들기");
     VkMemoryRequirements req;
     vkGetBufferMemoryRequirements(dev, *buf, &req);
+    /* CPU 가 읽어 올 버퍼라 '캐시되는' 메모리를 먼저 고른다 — 캐시 안 되는 메모리에서 결과(수 MB)를 읽으면
+     * 한 칸씩 PCIe 너머로 읽어 프레임당 10ms 넘게 걸렸다 */
     VkMemoryPropertyFlags need = VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT;
+    VkMemoryPropertyFlags want = need | VK_MEMORY_PROPERTY_HOST_CACHED_BIT;
     uint32_t type = UINT32_MAX;
     for (uint32_t i = 0; i < memprops.memoryTypeCount; i++)
-        if ((req.memoryTypeBits & (1u << i)) && (memprops.memoryTypes[i].propertyFlags & need) == need) { type = i; break; }
+        if ((req.memoryTypeBits & (1u << i)) && (memprops.memoryTypes[i].propertyFlags & want) == want) { type = i; break; }
+    if (type == UINT32_MAX)
+        for (uint32_t i = 0; i < memprops.memoryTypeCount; i++)
+            if ((req.memoryTypeBits & (1u << i)) && (memprops.memoryTypes[i].propertyFlags & need) == need) { type = i; break; }
     if (type == UINT32_MAX) gerr(line, "GPU 메모리를 잡을 수 없음");
     VkMemoryAllocateInfo mai = { VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO };
     mai.allocationSize = req.size;
@@ -176,6 +182,24 @@ static int64_t fromF32(uint32_t u) {
 }
 
 /* 한랭 목록 핸들: {개수, 용량, 자료*, 열 수} */
+/* 버퍼는 호출마다 새로 잡지 않고 다시 쓴다 (모자라면 그때만 더 크게) — 프레임마다 부르는 게임에서 GPU 메모리를
+ * 잡았다 풀었다 하는 데 시간이 들어서. 일은 한 번에 하나씩 끝까지 기다리니 같은 버퍼를 다시 써도 안전 */
+typedef struct { VkBuffer buf; VkDeviceMemory mem; void *map; VkDeviceSize cap; } Keep;
+static Keep keepIn, keepOut, keepData;
+static void ensure(Keep *k, VkDeviceSize size, long line) {
+    if (size < 64) size = 64;
+    if (k->cap >= size) return;
+    if (k->cap) {
+        vkUnmapMemory(dev, k->mem);
+        vkDestroyBuffer(dev, k->buf, NULL);
+        vkFreeMemory(dev, k->mem, NULL);
+    }
+    VkDeviceSize cap = k->cap ? k->cap : 4096;
+    while (cap < size) cap *= 2;
+    makeBuffer(cap, &k->buf, &k->mem, &k->map, line);
+    k->cap = cap;
+}
+
 void *__han_gpu_run(const uint64_t *blob, long n, long *args, long *data, long info, long line) {
     long nparams = info & 255, flags = info >> 8;
     int f32 = (flags & 1) != 0;
@@ -201,12 +225,11 @@ void *__han_gpu_run(const uint64_t *blob, long n, long *args, long *data, long i
     long dlen = (flags & 8) ? data[0] : 0;
     long *dvals = (flags & 8) ? (long *)data[2] : NULL;
     int dsmall = (flags & 16) && f32;                  /* 소수 자료를 f32 줄로 */
-    VkBuffer inBuf, outBuf, dataBuf;
-    VkDeviceMemory inMem, outMem, dataMem;
-    void *inMap, *outMap, *dataMap;
-    makeBuffer((VkDeviceSize)(8 * (2 + argc)), &inBuf, &inMem, &inMap, line);
-    makeBuffer((VkDeviceSize)(8 * n), &outBuf, &outMem, &outMap, line);
-    makeBuffer((VkDeviceSize)((dlen > 0 ? dlen : 1) * (dsmall ? 4 : 8)), &dataBuf, &dataMem, &dataMap, line);
+    ensure(&keepIn, (VkDeviceSize)(8 * (2 + argc)), line);
+    ensure(&keepOut, (VkDeviceSize)(8 * n), line);
+    ensure(&keepData, (VkDeviceSize)((dlen > 0 ? dlen : 1) * (dsmall ? 4 : 8)), line);
+    VkBuffer inBuf = keepIn.buf, outBuf = keepOut.buf, dataBuf = keepData.buf;
+    void *inMap = keepIn.map, *outMap = keepOut.map, *dataMap = keepData.map;
     int64_t *in = inMap;
     in[0] = n;
     for (long i = 0; i < argc; i++) in[1 + i] = (f32 && (flags & 4)) ? (int64_t)toF32(argv[i]) : argv[i];
@@ -277,14 +300,5 @@ void *__han_gpu_run(const uint64_t *blob, long n, long *args, long *data, long i
     vkDestroyFence(dev, fence, NULL);
     vkFreeCommandBuffers(dev, pool, 1, &cmd);
     vkDestroyDescriptorPool(dev, dpool, NULL);
-    vkUnmapMemory(dev, inMem);
-    vkUnmapMemory(dev, outMem);
-    vkUnmapMemory(dev, dataMem);
-    vkDestroyBuffer(dev, inBuf, NULL);
-    vkDestroyBuffer(dev, outBuf, NULL);
-    vkDestroyBuffer(dev, dataBuf, NULL);
-    vkFreeMemory(dev, inMem, NULL);
-    vkFreeMemory(dev, outMem, NULL);
-    vkFreeMemory(dev, dataMem, NULL);
     return res;
 }
