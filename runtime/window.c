@@ -32,6 +32,10 @@ static int nkeys;
 static char held[HELDMAX][12];        /* 지금 누르고 있는 키 이름 — (누른키들)·("위"를 누르고있나) */
 static int nheld;
 static int resizable, newW, newH;      /* 늘어나게 열었나 · 창이 바뀐 크기 (ConfigureNotify) */
+/* 마우스 가두기 (1인칭 게임): 커서를 숨기고 창에 가둔 뒤, 움직일 때마다 창 가운데로 되돌리며 움직인 양을 모은다 */
+static int grabbed, wantgrab;
+static long reldx, reldy;
+static Cursor blankCursor;
 static int mousex, mousey, mousedown;   /* (마우스위치)·(마우스눌림) — 창 안 좌표, 왼쪽 버튼 */
 void *__han_lnew(long cap);
 void __han_lpush(void *list, long v);
@@ -71,6 +75,7 @@ void __han_wopen(long w, long h, long line, long flag) {
     if (dpy) werr(line, "창은 하나만 열 수 있음 (보여주다 로 닫은 뒤 다시 열기)");
     mapped = closed = frames = nkeys = nheld = 0;
     mousex = mousey = mousedown = 0;
+    grabbed = wantgrab = 0; reldx = reldy = 0; blankCursor = 0;
     dpy = XOpenDisplay(NULL);
     if (!dpy) werr(line, "창을 띄울 화면이 없음 (DISPLAY 가 없음)");
     scr = DefaultScreen(dpy);
@@ -213,6 +218,7 @@ static void closeAll(void) {
     dpy = NULL;
 }
 
+static void dograb(void);
 static void mapWin(void) {                         /* 창을 화면에 처음 띄움 (한 번만) */
     if (mapped) return;
     wmDelete = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
@@ -227,6 +233,7 @@ static void mapWin(void) {                         /* 창을 화면에 처음 �
         if (e.type == MapNotify) break;
     }
     mapped = 1;
+    if (wantgrab) dograb();
 }
 
 /* 키 이름 — 모르는 키면 0. buf 는 글자 키 이름을 담을 곳 (2바이트 이상) */
@@ -237,6 +244,9 @@ static const char *keyName(XKeyEvent *k, char *buf) {
     case XK_Up: return "위";       case XK_Down: return "아래";
     case XK_space: return "스페이스"; case XK_Return: return "엔터";
     case XK_Escape: return "esc";  case XK_BackSpace: return "지우기";
+    case XK_Shift_L: case XK_Shift_R: return "시프트";
+    case XK_Control_L: case XK_Control_R: return "컨트롤";
+    case XK_Tab: return "탭";
     default:
         if ((s >= XK_a && s <= XK_z) || (s >= XK_0 && s <= XK_9)) { buf[0] = (char)s; buf[1] = 0; return buf; }
     }
@@ -272,9 +282,23 @@ static void pump(void) {                            /* 쌓인 창 사건을 처�
         else if (e.type == ClientMessage && (Atom)e.xclient.data.l[0] == wmDelete) closed = 1;
         else if (e.type == KeyPress) pushKey(&e.xkey);
         else if (e.type == KeyRelease) releaseKey(&e.xkey);
-        else if (e.type == FocusOut) nheld = 0;          /* 다른 창으로 가면 뗀 걸로 (안 그러면 키가 눌린 채로 남음) */
+        else if (e.type == FocusOut) {                     /* 다른 창으로 가면 뗀 걸로 (안 그러면 키가 눌린 채로 남음) */
+            nheld = 0;
+            if (grabbed) { XUngrabPointer(dpy, CurrentTime); grabbed = 0; }   /* 가두기도 잠깐 풂 (돌아오면 다시) */
+        }
+        else if (e.type == FocusIn) { if (wantgrab && !grabbed) dograb(); }
         else if (e.type == ConfigureNotify) { newW = e.xconfigure.width; newH = e.xconfigure.height; }
-        else if (e.type == MotionNotify) { mousex = e.xmotion.x; mousey = e.xmotion.y; }
+        else if (e.type == MotionNotify) {
+            mousex = e.xmotion.x; mousey = e.xmotion.y;
+            if (grabbed) {                                  /* 가운데에서 움직인 만큼 모으고 다시 가운데로 */
+                int cx = (newW > 0 ? newW : W) / 2, cy = (newH > 0 ? newH : H) / 2;
+                int dx = mousex - cx, dy = mousey - cy;
+                if (dx || dy) {
+                    reldx += dx; reldy += dy;
+                    XWarpPointer(dpy, None, win, 0, 0, 0, 0, cx, cy);
+                }
+            }
+        }
         else if (e.type == ButtonPress || e.type == ButtonRelease) {
             mousex = e.xbutton.x; mousey = e.xbutton.y;
             if (e.xbutton.button == Button1) mousedown = (e.type == ButtonPress);
@@ -345,6 +369,47 @@ void *__han_wsize(long line) {
         xd = XftDrawCreate(dpy, pm, DefaultVisual(dpy, scr), DefaultColormap(dpy, scr));
     }
     double x = W, y = H;
+    long xb, yb;
+    memcpy(&xb, &x, 8); memcpy(&yb, &y, 8);
+    return __han_vnew(2, xb, yb, 0);
+}
+
+static void dograb(void) {
+    if (!mapped) return;                               /* 창이 뜰 때 (mapWin) 다시 한다 */
+    if (!blankCursor) {
+        char zero = 0;
+        Pixmap p = XCreateBitmapFromData(dpy, win, &zero, 1, 1);
+        XColor c; memset(&c, 0, sizeof c);
+        blankCursor = XCreatePixmapCursor(dpy, p, p, &c, &c, 0, 0);
+        XFreePixmap(dpy, p);
+    }
+    if (XGrabPointer(dpy, win, True, PointerMotionMask | ButtonPressMask | ButtonReleaseMask,
+                     GrabModeAsync, GrabModeAsync, win, blankCursor, CurrentTime) == GrabSuccess) {
+        grabbed = 1;
+        XWarpPointer(dpy, None, win, 0, 0, 0, 0, (newW > 0 ? newW : W) / 2, (newH > 0 ? newH : H) / 2);
+        XFlush(dpy);
+    }
+}
+
+/* 마우스를 가두다. / 마우스를 풀다.  (HAN_SCREENSHOT 이면 아무것도 안 함) */
+void __han_wgrab(long line) {
+    need(line);
+    const char *sp = getenv("HAN_SCREENSHOT");
+    if (sp && *sp) return;
+    wantgrab = 1;
+    if (!grabbed) dograb();
+}
+void __han_wungrab(long line) {
+    need(line);
+    wantgrab = 0;
+    if (grabbed) { XUngrabPointer(dpy, CurrentTime); grabbed = 0; XFlush(dpy); }
+}
+
+/* (마우스움직임): 지난번 뒤로 마우스가 움직인 양 (평면벡터, 픽셀). 가둬 둔 동안만 쌓인다 */
+void *__han_wrel(void) {
+    pump();
+    double x = (double)reldx, y = (double)reldy;
+    reldx = reldy = 0;
     long xb, yb;
     memcpy(&xb, &x, 8); memcpy(&yb, &y, 8);
     return __han_vnew(2, xb, yb, 0);

@@ -103,6 +103,10 @@ if [ $HAS_X = 1 ]; then
     if ./hanc tests/t_win6.han -o "$tmp/tw6" 2>"$tmp/err" &&
        [ "$("$tmp/tw6")" = "$(printf '0\n0\n안 눌림\n2')" ]; then ok
     else bad "tests/t_win6.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
+    # 마우스 가두기: 창 없이 돌리면 가두기는 안 하고 움직임 (0, 0), 풀다 는 잠금에도 그대로
+    if ./hanc tests/t_win7.han -o "$tmp/tw7" 2>"$tmp/err" &&
+       [ "$("$tmp/tw7")" = "$(printf '(0, 0)\n0\n3')" ]; then ok
+    else bad "tests/t_win7.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
     if ./hanc examples/게임/상자모으기.han -o "$tmp/game3" 2>"$tmp/err" &&
        [ "$(HAN_SEED=1 HAN_FRAMES=2 "$tmp/game3")" = "모은 상자: 0" ]; then ok
     else bad "examples/게임/상자모으기.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
@@ -207,6 +211,11 @@ if ldconfig -p 2>/dev/null | grep -q 'libvulkan\.so' && ./hanc tests/t_gpu.han -
             if [ "$(HAN_SEED=1 HAN_FRAMES=3 "$tmp/marble" 끔)" = "점수: 0" ] &&
                [ "$(VK_ICD_FILENAMES=/없음.json VK_DRIVER_FILES=/없음.json HAN_SEED=1 HAN_FRAMES=2 "$tmp/marble")" = "점수: 0" ]; then ok
             else bad "examples/게임/구슬굴리기.han (RT 끔 / GPU 없을 때 CPU)"; fi
+            # 1인칭 총 게임 (마우스 가두기 — 창 없이 돌리면 안 가둠): 몇 프레임 + GPU 없을 때 알림 화면
+            if ./hanc examples/게임/빛구슬사냥.han -o "$tmp/fps" 2>"$tmp/err" &&
+               [ "$(HAN_SEED=1 HAN_FRAMES=3 "$tmp/fps")" = "점수: 0" ] &&
+               [ "$(VK_ICD_FILENAMES=/없음.json VK_DRIVER_FILES=/없음.json HAN_SEED=1 HAN_FRAMES=2 "$tmp/fps")" = "점수: 0" ]; then ok
+            else bad "examples/게임/빛구슬사냥.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
             # 레이 트레이서 예제 (창): 작게 64비트·32비트로 한 장씩 그려 봄 (창 대신 PPM)
             for m in 64 32; do
                 if ./hanc examples/GPU/광선추적.han -o "$tmp/gpurt" 2>"$tmp/err" &&
