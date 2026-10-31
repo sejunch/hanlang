@@ -196,10 +196,10 @@ if ldconfig -p 2>/dev/null | grep -q 'libvulkan\.so' && ./hanc tests/t_gpu.han -
             if ./hanc examples/게임/구슬굴리기.han -o "$tmp/marble" 2>"$tmp/err" &&
                [ "$(HAN_SEED=1 HAN_FRAMES=3 "$tmp/marble")" = "점수: 0" ]; then ok
             else bad "examples/게임/구슬굴리기.han"; sed 's/^/    /' "$tmp/err" | head -3; fi
-            # RT 끔 (입체.han 삼각형·깊이 버퍼) 과, GPU 를 못 쓸 때 해보다 로 잡아 RT 끔으로 넘어가기
+            # RT 끔(GPU, 광선 한 번) 과, GPU 를 못 쓸 때 해보다 로 잡아 CPU 삼각형 그리기(입체.han)로 넘어가기
             if [ "$(HAN_SEED=1 HAN_FRAMES=3 "$tmp/marble" 끔)" = "점수: 0" ] &&
                [ "$(VK_ICD_FILENAMES=/없음.json VK_DRIVER_FILES=/없음.json HAN_SEED=1 HAN_FRAMES=2 "$tmp/marble")" = "점수: 0" ]; then ok
-            else bad "examples/게임/구슬굴리기.han (RT 끔 / GPU 없을 때)"; fi
+            else bad "examples/게임/구슬굴리기.han (RT 끔 / GPU 없을 때 CPU)"; fi
             # 레이 트레이서 예제 (창): 작게 64비트·32비트로 한 장씩 그려 봄 (창 대신 PPM)
             for m in 64 32; do
                 if ./hanc examples/GPU/광선추적.han -o "$tmp/gpurt" 2>"$tmp/err" &&
