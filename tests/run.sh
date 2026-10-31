@@ -192,6 +192,13 @@ if ldconfig -p 2>/dev/null | grep -q 'libvulkan\.so' && ./hanc tests/t_gpu.han -
            cmp -s "$tmp/out" tests/expected/tests_t_gpu3.out; then ok
         else bad "tests/t_gpu3.han (GPU 벡터 답이 정답과 다름)"; diff "$tmp/out" tests/expected/tests_t_gpu3.out | head -4 | sed 's/^/    /'; fi
         if [ $HAS_X = 1 ]; then
+            # 그려내다(창 도화지로 바로) = 돌리다 + 그림으로그리다 (그림이 바이트까지 같아야)
+            if ./hanc tests/t_gpu4.han -o "$tmp/tg4" 2>"$tmp/err" &&
+               [ "$("$tmp/tg4")" = "그림 완료" ] && cp "$HAN_SCREENSHOT" "$tmp/g4a.ppm" &&
+               [ "$("$tmp/tg4" 목록)" = "그림 완료" ] && cmp -s "$HAN_SCREENSHOT" "$tmp/g4a.ppm"; then ok
+            else bad "tests/t_gpu4.han (그려내다 그림이 돌리다 + 그림으로그리다 와 다름)"; sed 's/^/    /' "$tmp/err" | head -3; fi
+        fi
+        if [ $HAS_X = 1 ]; then
             # GPU 레이 트레이싱 3D 게임: 몇 프레임 돌다 끝나는지
             if ./hanc examples/게임/구슬굴리기.han -o "$tmp/marble" 2>"$tmp/err" &&
                [ "$(HAN_SEED=1 HAN_FRAMES=3 "$tmp/marble")" = "점수: 0" ]; then ok

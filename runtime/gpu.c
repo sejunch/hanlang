@@ -15,6 +15,9 @@ __attribute__((noreturn)) void __han_fail_msg(long line, const char *msg);
 #include <stdint.h>
 
 void *__han_lnew(long cap);
+/* 그려내다: 창 런타임(window.c)이 붙어 있을 때만 있음 — 약한 기호라 창을 안 쓰는 GPU 프로그램도 링크된다 */
+long __han_wdims(long line) __attribute__((weak));
+void __han_wblit64(const int64_t *vals, long n, long line) __attribute__((weak));
 
 static VkInstance inst;
 static VkPhysicalDevice phys;
@@ -203,6 +206,12 @@ static void ensure(Keep *k, VkDeviceSize size, long line) {
 void *__han_gpu_run(const uint64_t *blob, long n, long *args, long *data, long info, long line) {
     long nparams = info & 255, flags = info >> 8;
     int f32 = (flags & 1) != 0;
+    int draw = (flags & 32) != 0;                      /* 그려내다: 개수 = 창 칸 수, 답은 창 도화지로 */
+    if (draw) {
+        if (!__han_wdims) gerr(line, "'그려내다' 는 창을 연 뒤에 쓸 수 있음 (창 640과 480을 열다.)");
+        long d = __han_wdims(line);
+        n = (d >> 32) * (d & 0xffffffff);
+    }
     long argc = args[0];
     long *argv = (long *)args[2];
     if (argc != nparams) {
@@ -211,7 +220,7 @@ void *__han_gpu_run(const uint64_t *blob, long n, long *args, long *data, long i
         gerr(line, m);
     }
     if (n < 0) gerr(line, "GPU 로 돌릴 개수가 음수임");
-    if (n == 0) return __han_lnew(1);
+    if (n == 0) return draw ? 0 : __han_lnew(1);
     init(line);
     if (!f32 && !hasF64) gerr(line, "이 GPU 는 64비트 소수를 못 함 — \"GPU32.han\" 을 쓰기 (소수를 32비트로)");
     long groups = (n + 63) / 64;
@@ -290,6 +299,13 @@ void *__han_gpu_run(const uint64_t *blob, long n, long *args, long *data, long i
     if (r == VK_ERROR_DEVICE_LOST) gerr(line, "GPU 가 멈춤 — 한 일꾼이 너무 오래 걸렸을 수 있음 (끝나지 않는 반복?)");
     check(r, line, "기다리기");
 
+    if (draw) {                                    /* 한랭 목록을 안 거치고 창 도화지로 바로 */
+        __han_wblit64((const int64_t *)outMap, n, line);
+        vkDestroyFence(dev, fence, NULL);
+        vkFreeCommandBuffers(dev, pool, 1, &cmd);
+        vkDestroyDescriptorPool(dev, dpool, NULL);
+        return 0;
+    }
     long *res = __han_lnew(n);                     /* 결과를 한랭 목록으로 */
     if (f32 && (flags & 2)) {                      /* 32비트 소수 답 → 한랭 소수(64비트) */
         int64_t *o = outMap, *d = (int64_t *)res[2];

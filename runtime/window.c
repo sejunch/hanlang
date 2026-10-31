@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 __attribute__((noreturn)) void __han_fail_msg(long line, const char *msg);
 
 static Display *dpy;
@@ -152,6 +153,33 @@ void __han_wimage(long *grid, long line) {
     if (!im) { free(buf); werr(line, "그림을 만들 수 없음"); }
     XPutImage(dpy, pm, gc, im, 0, 0, 0, 0, w, h);
     XDestroyImage(im);                                 /* buf 도 같이 풀림 */
+}
+
+/* GPU 의 그려내다 가 쓰는 것: 지금 도화지 크기 (너비<<32 | 높이) */
+long __han_wdims(long line) {
+    need(line);
+    return ((long)W << 32) | (long)H;
+}
+
+/* 그려내다: GPU 가 칸마다 낸 0xRRGGBB(64비트 칸) 를 도화지 (0,0) 에 바로 — 한랭 목록·격자를 안 거친다.
+ * XImage 는 크기가 같으면 다시 쓴다 */
+void __han_wblit64(const int64_t *vals, long n, long line) {
+    need(line);
+    static XImage *im;
+    static int iw, ih;
+    if (!im || iw != W || ih != H) {
+        if (im) XDestroyImage(im);
+        unsigned int *buf = malloc((size_t)W * H * 4);
+        if (!buf) werr(line, "그림을 만들 메모리가 모자람");
+        im = XCreateImage(dpy, DefaultVisual(dpy, scr), DefaultDepth(dpy, scr), ZPixmap, 0, (char *)buf, W, H, 32, 0);
+        if (!im) { free(buf); werr(line, "그림을 만들 수 없음"); }
+        iw = W; ih = H;
+    }
+    unsigned int *buf = (unsigned int *)im->data;
+    long cnt = (long)W * H;
+    if (n < cnt) cnt = n;
+    for (long i = 0; i < cnt; i++) buf[i] = (unsigned int)(vals[i] & 0xFFFFFF);
+    XPutImage(dpy, pm, gc, im, 0, 0, 0, 0, W, H);
 }
 
 /* y 는 글자의 위쪽 (기준선이 아니라) — 사각형과 같은 셈법이 헷갈리지 않는다 */
