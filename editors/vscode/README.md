@@ -19,7 +19,7 @@
 
 ## 설치
 
-VS Code 확장 탭에서 **한랭** 검색 (마켓플레이스, `sejunch.hanlang`). 컴파일러 `hanc` 는 따로 —
+VS Code 확장 탭에서 **한랭** 검색 (마켓플레이스, `sejunch.hanlang-vscode`). 컴파일러 `hanc` 는 따로 —
 [릴리즈](https://github.com/sejunch/hanlang/releases)에서 받아 `bin` 을 PATH 에 넣거나 설정 `hanlang.hancPath` 에 적기.
 
 한랭 저장소에서 직접 빌드해 깔려면:
@@ -29,7 +29,7 @@ make vscode          # editors/vscode/hanlang-0.2.0.vsix 를 만들고 설치
 ```
 
 설치 후 VS Code 창을 다시 불러오기(`Ctrl+Shift+P` → `Developer: Reload Window`).
-지우려면 `code --uninstall-extension sejunch.hanlang`.
+지우려면 `code --uninstall-extension sejunch.hanlang-vscode`.
 
 ## 설정
 
