@@ -10,7 +10,7 @@ CC     ?= gcc
 
 RTFLAGS = -O2 -S -fno-asynchronous-unwind-tables
 
-all: hanc runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s runtime/runtime-debug.s
+all: hanc runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s runtime/runtime-sound.s runtime/runtime-debug.s
 
 hanc: bootstrap/hanc.s
 	$(CC) -no-pie bootstrap/hanc.s -o $@ -lm -lpthread
@@ -36,6 +36,13 @@ runtime/runtime-gpu.s: runtime/gpu.c runtime/gpu_none.c
 	  $(CC) $(RTFLAGS) -o runtime/gpu.s.tmp runtime/gpu_none.c; }
 	sed -e '/\.note\.GNU-stack/d' -e 's/\.L/.Lgp/g' runtime/gpu.s.tmp > $@
 	rm -f runtime/gpu.s.tmp
+
+# 소리 런타임 (ALSA). 소리내다 를 쓰는 프로그램에만 붙는다. alsa 헤더가 없으면 대체품(sound_none.c)
+runtime/runtime-sound.s: runtime/sound.c runtime/sound_none.c
+	{ $(CC) $(RTFLAGS) -o runtime/sound.s.tmp runtime/sound.c 2>/dev/null || \
+	  $(CC) $(RTFLAGS) -o runtime/sound.s.tmp runtime/sound_none.c; }
+	sed -e '/\.note\.GNU-stack/d' -e 's/\.L/.Lsn/g' runtime/sound.s.tmp > $@
+	rm -f runtime/sound.s.tmp
 
 # 디버거 런타임 (hanc --디버그 로 컴파일한 프로그램에만 붙는다 — VS Code 디버거와 TCP 로 주고받음)
 runtime/runtime-debug.s: runtime/debug.c
@@ -63,7 +70,7 @@ install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin $(DESTDIR)$(PREFIX)/lib/hanlang
 	cp hanc han $(DESTDIR)$(PREFIX)/bin/
 	chmod +x $(DESTDIR)$(PREFIX)/bin/hanc $(DESTDIR)$(PREFIX)/bin/han
-	cp lib/*.han runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s runtime/runtime-debug.s $(DESTDIR)$(PREFIX)/lib/hanlang/
+	cp lib/*.han runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s runtime/runtime-sound.s runtime/runtime-debug.s $(DESTDIR)$(PREFIX)/lib/hanlang/
 	@echo "설치 끝.  han 프로그램.han  으로 실행."
 
 uninstall:
@@ -71,7 +78,7 @@ uninstall:
 	rm -rf $(DESTDIR)$(PREFIX)/lib/hanlang
 
 clean:
-	rm -f hanc runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s runtime/runtime-debug.s
+	rm -f hanc runtime/runtime.s runtime/runtime-window.s runtime/runtime-gpu.s runtime/runtime-sound.s runtime/runtime-debug.s
 
 # VS Code 확장: .vsix 만들고 설치 (editors/vscode/)
 vscode:

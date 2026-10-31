@@ -8,6 +8,8 @@ pass=0; fail=0
 export HAN_SCREENSHOT="$(mktemp -u)".ppm
 HAS_X=0; [ -n "$DISPLAY" ] && HAS_X=1
 tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+# 소리는 스피커 대신 파일로 (테스트가 소리를 내지 않게)
+export HAN_SOUND_OUT="$tmp/sound.raw"
 
 ok()   { pass=$((pass+1)); }
 bad()  { fail=$((fail+1)); echo "  실패: $1"; }
@@ -164,6 +166,7 @@ export HAN_SEED=1          # (N의 무작위) 를 쓰는 프로그램도 결과�
 # t_req 은 libcurl 이 있을 때만 (lib/요청.han 이 -lcurl 로 링크)
 skip='t_win\|t_gpu'                   # 창·GPU 테스트는 따로 (화면·장치가 있을 때만)
 ldconfig -p 2>/dev/null | grep -q 'libcurl\.so' || skip='t_win\|t_gpu\|t_req'
+ldconfig -p 2>/dev/null | grep -q 'libasound\.so' || skip="$skip\\|t_sound"
 for f in $(ls examples/*.han tests/t_*.han | grep -v "$skip"); do
     exp="tests/expected/$(dirname "$f" | tr / _)_$(basename "$f" .han).out"
     if [ ! -f "$exp" ]; then bad "$f (정답 파일 $exp 이 없음)"; continue; fi
@@ -178,6 +181,15 @@ for f in tests/e*.han; do
     else bad "$f (에러 메시지가 정답과 다름)"; diff "$tmp/err" "tests/expected/err_$(basename "$f" .han).out" | head -4 | sed 's/^/    /'; fi
 done
 unset HAN_SEED
+
+echo "== 소리 (ALSA) — libasound 가 있을 때만"
+if ldconfig -p 2>/dev/null | grep -q 'libasound\.so'; then
+    # 소리낸 표본이 다 나갔나 (4410 + 6615 개 × 2바이트), ALSA 'null' 장치로 진짜 섞는 스레드를 거쳐도 출력이 같은가
+    if ./hanc tests/t_sound.han -o "$tmp/ts" 2>"$tmp/err" && rm -f "$HAN_SOUND_OUT" &&
+       "$tmp/ts" > "$tmp/so1" && [ "$(stat -c %s "$HAN_SOUND_OUT")" = 22050 ] &&
+       HAN_SOUND_OUT= HAN_SOUND_DEVICE=null timeout 10 "$tmp/ts" > "$tmp/so2" && cmp -s "$tmp/so1" "$tmp/so2"; then ok
+    else bad "tests/t_sound.han (소리 표본 수 / null 장치)"; sed 's/^/    /' "$tmp/err" | head -3; fi
+else echo "  (libasound 가 없어서 소리 테스트는 건너뜀)"; fi
 
 echo "== GPU (Vulkan) — 장치가 있을 때만"
 if ldconfig -p 2>/dev/null | grep -q 'libvulkan\.so' && ./hanc tests/t_gpu.han -o "$tmp/tg" 2>"$tmp/err"; then
