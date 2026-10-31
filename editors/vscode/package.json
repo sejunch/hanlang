@@ -5,6 +5,7 @@
   "version": "0.2.0",
   "publisher": "sejunch",
   "license": "MIT",
+  "icon": "icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/sejunch/hanlang"
