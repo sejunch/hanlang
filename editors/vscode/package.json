@@ -1,5 +1,5 @@
 {
-  "name": "hanlang-vscode",
+  "name": "hanraeng",
   "displayName": "한랭 (Hanlang)",
   "description": "교육용 한글 프로그래밍 언어 한랭(.han) — 문법 색칠, 저장할 때 오류 밑줄, 실행 버튼, 디버거(멈춤점·한 줄씩·변수), 키워드 설명",
   "version": "0.2.0",
