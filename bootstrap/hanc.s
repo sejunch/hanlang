@@ -12428,13 +12428,13 @@
 .Ls6205:
     .asciz "-v"
 .Ls6206:
-    .asciz "한랭 0.11"
+    .asciz "한랭 0.1.0"
 .Ls6207:
     .asciz "--help"
 .Ls6208:
     .asciz "-h"
 .Ls6209:
-    .asciz "한랭 0.11"
+    .asciz "한랭 0.1.0"
 .Ls6210:
     .asciz ""
 .Ls6211:
